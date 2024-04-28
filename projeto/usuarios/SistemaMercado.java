@@ -15,14 +15,12 @@ public class SistemaMercado {
         this.usuariosDoSistema = usuariosDoSistema;
     }
 
-    public boolean verificarExistenciaGerente(){
-
-        System.out.println("Sistema iniciado");
+    public boolean verificarExistenciaDeUsuarios(){
         
-        if(usuariosDoSistema.equals(null)){
-            return true;
+        if(usuariosDoSistema.isEmpty()){
+            return false;
         }
-        return false;
+        return true;
     }         
     public void cadastrarUsuario(String tipoDeUsuario) throws Exception{ 
 
@@ -61,7 +59,6 @@ public class SistemaMercado {
 
         }
         usuariosDoSistema.add(novoUsuario);
-
     }
 }
            
