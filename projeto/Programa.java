@@ -14,7 +14,17 @@ public class Programa{
                     System.out.println("Sistema iniciado pela primeira vez, requer o cadastro de gerente");
                     sistema.cadastrarUsuario("gerente");
                 }
+                System.out.print("Faça seu login: ");
+                String login = scanner.next();
+                System.out.print("Informe sua senha: ");
+                String senha = scanner.next();
 
+                if(sistema.validarLogin(login, senha)){
+                    System.out.println("Login efetuado.");
+                }else{
+                    System.out.println("Credenciais informadas são inválidas");
+                    continue;
+                }
             }catch(Exception e){
                 System.out.println("Erro: " + e.getMessage());
             }

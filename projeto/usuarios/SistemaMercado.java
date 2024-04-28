@@ -60,5 +60,15 @@ public class SistemaMercado {
         }
         usuariosDoSistema.add(novoUsuario);
     }
+    
+    public boolean validarLogin(String login, String senha) {
+        for(Usuario usuario : usuariosDoSistema){
+            if(usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
            

@@ -1,7 +1,5 @@
 package projeto.usuarios;
 
-import java.util.Scanner;
-
 public abstract class Usuario {
     private String nome;
     private String login;
