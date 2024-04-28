@@ -1,5 +1,5 @@
 package projeto.usuarios;
 
-public class CaixaEletronico {
+public class CaixaEletronico extends Usuario {
     
 }

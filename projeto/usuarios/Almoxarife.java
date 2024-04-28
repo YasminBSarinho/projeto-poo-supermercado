@@ -1,5 +1,5 @@
 package projeto.usuarios;
 
-public class Almoxarife {
+public class Almoxarife extends Usuario {
     
 }

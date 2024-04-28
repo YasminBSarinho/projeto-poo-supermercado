@@ -1,5 +1,6 @@
 package projeto.usuarios;
 
-public class Gerente extends Usuario {
+public class Gerente extends Usuario  {
+    
 
 }
