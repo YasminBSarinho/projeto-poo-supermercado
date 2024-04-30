@@ -3,6 +3,7 @@ package projeto.usuarios;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class SistemaMercado {
 
     private ArrayList<Usuario> usuariosDoSistema = new ArrayList<Usuario>();
@@ -22,8 +23,10 @@ public class SistemaMercado {
         }
         return true;
     }         
+    
     public void cadastrarUsuario(String tipoDeUsuario) throws Exception{ 
-
+    	
+    	
         Scanner scanner = new Scanner(System.in);
 
         Usuario novoUsuario = null;
@@ -33,7 +36,7 @@ public class SistemaMercado {
         else if(tipoDeUsuario.equals("almoxarife")){
             novoUsuario = new Almoxarife();
         }
-        else if(tipoDeUsuario.equals("caixaeletronico")){
+        else if(tipoDeUsuario.equals("caixa eletronico")){
             novoUsuario = new CaixaEletronico();
         }else{
             Exception tipoInvalido = new Exception("O Tipo de usuario informa é inválido");
@@ -59,6 +62,7 @@ public class SistemaMercado {
 
         }
         usuariosDoSistema.add(novoUsuario);
+
     }
     
     public boolean validarLogin(String login, String senha) {
@@ -69,6 +73,5 @@ public class SistemaMercado {
         }
         return false;
     }
-
+    
 }
-           
