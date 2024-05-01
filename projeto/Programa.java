@@ -8,18 +8,30 @@ import java.io.FileReader;
 
 public class Programa{
     public static void main(String[] args) {
+    	
         SistemaMercado sistema = new SistemaMercado();
         Scanner scanner = new Scanner(System.in);
     	Gson json = new Gson();
-    	String tipoDeUsuario;
     	FileWriter escritor;
     	FileReader leitor;
+    	String cargo;
+    	
     	while (true){
     		
+	    	try {
+				leitor = new FileReader("sistema.json");
+		        sistema = json.fromJson(leitor, SistemaMercado.class);
+		        leitor.close();
+			}
+	    	catch (Exception e) {
+					System.out.println("Não há arquivo por enquanto");
+				}
+
             try{
             	
+
                 if (sistema.verificarExistenciaDeUsuarios() == false){
-                    System.out.println("Sistema iniciado pela primeira vez, requer o cadastro de gerente");
+                	System.out.println("Sistema iniciado pela primeira vez, requer o cadastro de gerente");
                     sistema.cadastrarUsuario("gerente");
                     escritor = new FileWriter("sistema.json");   
                     String jsonSistema = json.toJson(sistema);
@@ -27,33 +39,49 @@ public class Programa{
                     escritor.close();
                     
                 }else{
-                	leitor = new FileReader("sistema.json");
-                	sistema = json.fromJson(leitor, SistemaMercado.class);
-                	leitor.close();
-                }
-                
-                System.out.print("Faça seu login: ");
-                String login = scanner.next();
-                System.out.print("Informe sua senha: ");
-                String senha = scanner.next();
-                
-                if(sistema.validarLogin(login, senha)) {
-                    System.out.println("Login efetuado.");
-                    
-                    break;
-                    
-                }else{
-                    System.out.println("Credenciais informadas são inválidas");
-                    continue;
-                }
+                	
+            		System.out.print("Digite o seu login: ");
+            		String login = scanner.next();
+            		System.out.print("Digite o sua Senha: ");
+            		String senha = scanner.next();
+            		 
+        			cargo = sistema.getCargoUsuarioLogado(login, senha);
+        			 
+            		if(cargo != null) {
+            			 System.out.println("Login efetuado");
 
-                
-            }catch(Exception e){
-                System.out.println("Erro: " + e.getMessage());
+            		}
+            		else {
+            			System.out.println("Credenciais informadas são inválidas");
+            			continue;
+            		}
+            		
+            		while(true) {
+            			System.out.print("""
+            			 		
+        			 		---Opções--- 
+        			 	[1] - Cadastrar um usuário.
+        			 	[5] - Sair
+        			 		""");
+            			int escolha = scanner.nextInt();
+            			if(escolha == 5) {
+            				break;
+            			}
+            			sistema.executarEscolha(escolha, cargo);
+            			
+                        escritor = new FileWriter("sistema.json");   
+                        String jsonSistema = json.toJson(sistema);
+                        escritor.write(jsonSistema);
+                        escritor.close();
+            		}
+            		
+                }
             }
+            catch(Exception e){
+            	System.out.println("Erro: " + e.getMessage());
+            }
+            
     	}
     	
-    	
-     
     }   
 }

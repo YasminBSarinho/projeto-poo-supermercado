@@ -30,34 +30,38 @@ public class SistemaMercado {
         Scanner scanner = new Scanner(System.in);
 
         Usuario novoUsuario = null;
+        
         if(tipoDeUsuario.equals("gerente")){
-            novoUsuario = new Gerente();
+            novoUsuario = (Gerente) new Gerente();
+            novoUsuario.setCargo("gerente");
         }
         else if(tipoDeUsuario.equals("almoxarife")){
-            novoUsuario = new Almoxarife();
+            novoUsuario =(Almoxarife) new Almoxarife();
+            novoUsuario.setCargo("almafarife");
         }
         else if(tipoDeUsuario.equals("caixa eletronico")){
-            novoUsuario = new CaixaEletronico();
+            novoUsuario = (CaixaEletronico) new CaixaEletronico();
+            novoUsuario.setCargo("caixa eletronico");
         }else{
-            Exception tipoInvalido = new Exception("O Tipo de usuario informa é inválido");
+            Exception tipoInvalido = new Exception("O Tipo de usuario informado é inválido");
             throw tipoInvalido;
         }
 
-        System.out.print("Informe seu nome:");
+        System.out.print("Informe o nome:");
         novoUsuario.setNome(scanner.next());
-        System.out.print("Informe seu novo login:");
+        System.out.print("Informe o novo login:");
         novoUsuario.setLogin(scanner.next());
-        System.out.print("Informe sua nova senha:");
+        System.out.print("Informe a nova senha:");
         novoUsuario.setSenha(scanner.next());
 
 
-        System.out.print("Deseja informar seu email e NIS/PIS? sim(s) ou não(n)");
+        System.out.print("Deseja informar o email e NIS/PIS? sim(s) ou não(n)");
         String escolha = scanner.next();
 
         if(escolha.equals("s")){
-            System.out.print("digite seu email: ");
+            System.out.print("digite o email: ");
             novoUsuario.setEmail(scanner.next());
-            System.out.print("Digite ssua matricula NIS/PIS: ");
+            System.out.print("Digite a matricula NIS/PIS: ");
             novoUsuario.setMatricula(scanner.next());
 
         }
@@ -65,13 +69,32 @@ public class SistemaMercado {
 
     }
     
-    public boolean validarLogin(String login, String senha) {
-        for(Usuario usuario : usuariosDoSistema){
-            if(usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)){
-                return true;
-            }
-        }
-        return false;
+    public String getCargoUsuarioLogado(String login, String senha) {
+    	for(Usuario usuario : usuariosDoSistema){
+    		if(usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
+        		return usuario.getCargo();
+        		
+    		} 
+    	}
+    	return null;
     }
     
+    public void executarEscolha(int escolha, String cargo) {
+    	Scanner scanner = new Scanner(System.in);
+    	switch(escolha) {
+    		case 1:
+    			if(cargo.equals("gerente") ) {
+    				System.out.print("Para cadastras digite: 'almoxarife' ou 'caixa eletronico': ");
+    				String tipo = scanner.nextLine();
+    				try{
+        				this.cadastrarUsuario(tipo.toLowerCase());
+        				break;
+    				}catch(Exception e) {
+    					System.out.println(e.getMessage());
+    				}
+    			}else{
+    				System.out.println("Você não possui cargo de gerente para isso");
+    			}
+    	}
+    }
 }

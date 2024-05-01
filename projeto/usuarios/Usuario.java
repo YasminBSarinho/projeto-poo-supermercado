@@ -1,13 +1,21 @@
 package projeto.usuarios;
 
-public abstract class Usuario {
-    private String nome;
+public class Usuario {
+	private String cargo;
+	private String nome;
     private String login;
     private String senha;
     private String email;
     private String matricula;
 
+	public String getCargo() {
+		return cargo;
+	}
 
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+	
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
@@ -42,6 +50,8 @@ public abstract class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+
 
     
 }
