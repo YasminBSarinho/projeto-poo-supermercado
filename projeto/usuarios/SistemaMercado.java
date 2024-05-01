@@ -46,14 +46,14 @@ public class SistemaMercado {
 			throw tipoInvalido;
 		}
 
-		System.out.print("Informe o nome:");
+		System.out.print("Informe o nome: ");
 		novoUsuario.setNome(scanner.next());
-		System.out.print("Informe o novo login:");
+		System.out.print("Informe o novo login: ");
 		novoUsuario.setLogin(scanner.next());
-		System.out.print("Informe a nova senha:");
+		System.out.print("Informe a nova senha: ");
 		novoUsuario.setSenha(scanner.next());
 
-		System.out.print("Deseja informar o email e NIS/PIS? sim(s) ou não(n)");
+		System.out.print("Deseja informar o email e NIS/PIS? sim(s) ou não(n): ");
 		String escolha = scanner.next();
 
 		if (escolha.equals("s")) {
@@ -80,6 +80,7 @@ public class SistemaMercado {
 	public void executarEscolha(int escolha, String cargo) {
 		
 		Scanner scanner = new Scanner(System.in);
+		
 		switch (escolha) {
 		case 1:
 			

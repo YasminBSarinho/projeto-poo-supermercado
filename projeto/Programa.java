@@ -59,7 +59,7 @@ public class Programa {
 						continue;
 					}
 
-					// Sistema em si
+					// Sistema
 
 					while (true) {
 						System.out.print("""
