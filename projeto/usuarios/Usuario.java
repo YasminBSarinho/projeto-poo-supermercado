@@ -13,7 +13,7 @@ public class Usuario extends Pessoa{
 		this.senha = senha;
 	}
 
-	public Usuario(String nome, String email, String cargo, String login, String senha, String matricula){
+	public Usuario(String nome, String cargo, String login, String senha, String email, String matricula){
 		super(nome, email);
 		this.cargo = cargo;
 		this.login = login;

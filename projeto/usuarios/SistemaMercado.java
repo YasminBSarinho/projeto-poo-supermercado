@@ -26,46 +26,59 @@ public class SistemaMercado {
 		return true;
 	}
 
-	public void cadastrarUsuario(String tipoDeUsuario) throws Exception {
+	public void cadastrarUsuario(String cargo) throws Exception {
 
 		Scanner scanner = new Scanner(System.in);
 
 		Usuario novoUsuario = null;
-
-		if (tipoDeUsuario.equals("gerente")) {
-			novoUsuario = (Gerente) new Gerente();
-			novoUsuario.setCargo("gerente");
-		} else if (tipoDeUsuario.equals("almoxarife")) {
-			novoUsuario = (Almoxarife) new Almoxarife();
-			novoUsuario.setCargo("almafarife");
-		} else if (tipoDeUsuario.equals("caixa eletronico")) {
-			novoUsuario = (CaixaEletronico) new CaixaEletronico();
-			novoUsuario.setCargo("caixa eletronico");
-		} else {
-			Exception tipoInvalido = new Exception("O Tipo de usuario informado é inválido");
-			throw tipoInvalido;
-		}
-
+		
 		System.out.print("Informe o nome: ");
-		novoUsuario.setNome(scanner.next());
+		String nome = scanner.next();
 		System.out.print("Informe o novo login: ");
-		novoUsuario.setLogin(scanner.next());
+		String login = scanner.next();
 		System.out.print("Informe a nova senha: ");
-		novoUsuario.setSenha(scanner.next());
-
+		String senha = scanner.next();
+		
 		System.out.print("Deseja informar o email e NIS/PIS? sim(s) ou não(n): ");
 		String escolha = scanner.next();
+		
+		String email, matricula;
+		
 
-		if (escolha.equals("s")) {
-			System.out.print("digite o email: ");
-			novoUsuario.setEmail(scanner.next());
+	    if (escolha.equals("s")) {
+	    	
+	    	System.out.print("digite o email: ");
+			email = scanner.next();
 			System.out.print("Digite a matricula NIS/PIS: ");
-			novoUsuario.setMatricula(scanner.next());
+			matricula = scanner.next();
+			
+	        if (cargo.equals("gerente")) {
+	            novoUsuario = (Gerente) new  Gerente(nome, cargo, login, senha, email, matricula);
+	        } else if (cargo.equals("almoxarife")) {
+	            novoUsuario = (Almoxarife) new Almoxarife(nome, cargo, login, senha, email, matricula);
+	        } else if (cargo.equals("caixa eletronico")) {
+	            novoUsuario = (CaixaEletronico) new CaixaEletronico(nome, cargo, login, senha, email, matricula);
+	        } else {
+	            throw new Exception("O Tipo de usuario informado é inválido");
+	        }
+	        
+	    } else if (escolha.equals("n")) {
+	        if (cargo.equals("gerente")) {
+	            novoUsuario = (Gerente) new Gerente(nome, cargo, login, senha);
+	        } else if (cargo.equals("almoxarife")) {
+	            novoUsuario = (Almoxarife) new Almoxarife(nome, cargo, login, senha);
+	        } else if (cargo.equals("caixa eletronico")) {
+	            novoUsuario = (CaixaEletronico) new CaixaEletronico(nome, cargo, login, senha);
+	        } else {
+	            throw new Exception("O Tipo de usuario informado é inválido");
+	        }
+	    } else {
+	        throw new Exception("Escolha inválida. Use 's' para sim ou 'n' para não.");
+	    }
 
-		}
-		usuariosDoSistema.add(novoUsuario);
-
+	    usuariosDoSistema.add(novoUsuario);
 	}
+	
 
 	public String getCargoUsuarioLogado(String login, String senha) {
 		for (Usuario usuario : usuariosDoSistema) {

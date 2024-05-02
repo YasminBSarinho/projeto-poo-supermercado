@@ -5,8 +5,8 @@ public class Gerente extends Funcionario  {
         super(nome, cargo, login, senha);
     }
 
-    public Gerente(String nome, String email, String cargo, String login, String senha, String matricula){
-        super(nome, email, cargo, login, senha, matricula);
+    public Gerente(String nome, String cargo, String login, String senha, String email, String matricula){
+    	super(nome, cargo, login, senha, email, matricula);
     }
 
     // todos os metodos estao sem retorno pois ainda serao feitos, entao quando for fazer, 
