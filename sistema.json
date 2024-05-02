@@ -1,0 +1,1 @@
+{"usuariosDoSistema":[{"cargo":"gerente","nome":"Yasmin","login":"yasmin","senha":"yasmin","email":"yasmiinsarinho@gmail.com","matricula":"267382"},{"cargo":"almafarife","nome":"lucas","login":"lucas","senha":"lucas"}],"produtosEmEstoque":[{"codigo":"00001","nome":"Farinha","unidade":10,"valorUnitarioDeCompra":4.0,"valorUnitarioDeVenda":6.0}]}

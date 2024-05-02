@@ -1,12 +1,25 @@
 package projeto.usuarios;
 
-public class Usuario {
-	private String cargo;
-	private String nome;
-	private String login;
-	private String senha;
-	private String email;
-	private String matricula;
+public class Usuario extends Pessoa{
+	protected String cargo;
+	protected String login;
+	protected String senha;
+	protected String matricula;
+
+	public Usuario(String nome, String cargo, String login, String senha){
+		super(nome);
+		this.cargo = cargo;
+		this.login = login;
+		this.senha = senha;
+	}
+
+	public Usuario(String nome, String email, String cargo, String login, String senha, String matricula){
+		super(nome, email);
+		this.cargo = cargo;
+		this.login = login;
+		this.senha = senha;
+		this.matricula = matricula;
+	}
 
 	public String getCargo() {
 		return cargo;
@@ -20,24 +33,8 @@ public class Usuario {
 		this.matricula = matricula;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getMatricula() {
 		return matricula;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public String getLogin() {
