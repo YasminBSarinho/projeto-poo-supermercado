@@ -8,7 +8,7 @@ public class SistemaMercado {
 
 	private ArrayList<Usuario> usuariosDoSistema = new ArrayList<Usuario>();
 	
-	private ArrayList<Produto> produtosEmEstoque = new ArrayList<Produto>();
+	private static ArrayList<Produto> produtosEmEstoque = new ArrayList<Produto>();
 
 	public ArrayList<Usuario> getUsuariosDoSistema() {
 		return usuariosDoSistema;
@@ -16,6 +16,14 @@ public class SistemaMercado {
 
 	public void setUsuariosDoSistema(ArrayList<Usuario> usuariosDoSistema) {
 		this.usuariosDoSistema = usuariosDoSistema;
+	}
+
+	public static ArrayList<Produto> getProdutosEmEstoque() {
+		return produtosEmEstoque;
+	}
+
+	public void setProdutosEmEstoque(ArrayList<Produto> produtosEmEstoque) {
+		this.produtosEmEstoque = produtosEmEstoque;
 	}
 
 	public boolean verificarExistenciaDeUsuarios() {

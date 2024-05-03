@@ -1,5 +1,9 @@
 package projeto.usuarios;
 
+import java.util.ArrayList;
+
+import projeto.produtos.Produto;
+
 public class Funcionario extends Usuario{
 
     public Funcionario(String nome, String cargo, String login, String senha){
@@ -13,12 +17,18 @@ public class Funcionario extends Usuario{
     // todos os metodos estao sem retorno pois ainda serao feitos, entao quando for fazer, 
     // reescreva o tipo de retorno e os parametros ou isso pode causar erros
 
-    public void cadastrarProduto(){
-
+    public void listarProdutos(){
+        ArrayList<Produto> listaDeProdutos = SistemaMercado.getProdutosEmEstoque();
+        System.out.println("--- Listar Produto ---");
+        System.out.println();
+        System.out.println("Código | Nome do Produto | Valor | Quantidade");
+        for (Produto produto : listaDeProdutos) {
+            System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
+        }
     }
 
-    public void listarProdutos(){
-
+    public void cadastrarProduto(){
+        // LUCAS
     }
 
     public void exibirDetalhesDeUmProduto(){
