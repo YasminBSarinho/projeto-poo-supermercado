@@ -15,6 +15,10 @@ public class Gerente extends Funcionario  {
     public void registrarValorUnitarioDeVendaDeProduto(){
 
     }
+    
+    public void gerarBalancoMensal(){
+        
+    }
 
     public void enviarEmailComCupomDeDesconto(){
 

@@ -88,10 +88,10 @@ public class SistemaMercado {
 	}
 	
 
-	public String getCargoUsuarioLogado(String login, String senha) {
+	public Usuario getUsuarioLogado(String login, String senha) {
 		for (Usuario usuario : usuariosDoSistema) {
 			if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
-				return usuario.getCargo();
+				return usuario;
 
 			}
 		}

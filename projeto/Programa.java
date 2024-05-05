@@ -1,6 +1,6 @@
 package projeto;
 
-import projeto.usuarios.SistemaMercado;
+import projeto.usuarios.*;
 import java.util.Scanner;
 import com.google.gson.Gson;
 import java.io.FileWriter;
@@ -49,9 +49,9 @@ public class Programa {
 					System.out.print("Digite o sua Senha: ");
 					String senha = scanner.next();
 
-					cargo = sistema.getCargoUsuarioLogado(login, senha);
+					Usuario usuario = sistema.getUsuarioLogado(login, senha);
 
-					if (cargo != null) {
+					if (usuario != null) {
 						System.out.println("Login efetuado");
 
 					} else {
@@ -62,28 +62,18 @@ public class Programa {
 					// Sistema
 
 					while (true) {
-						System.out.print("""
-
-									---Opções---
-								[1] - Cadastrar um usuário
-								[2] - Cadastrar um Produto
-								[4] - Trocar de conta
-								[5] - Sair
-								
-									""");
-						System.out.print("Sua escolha: ");
-						
-						int escolha = scanner.nextInt();
-						
-						if (escolha == 4) {
-							break;
+						switch (usuario.getCargo()) {
+							case "gerente":
+								Gerente usuarioGerente = (Gerente) usuario;
+								Menu.mostrarMenuGerente(usuarioGerente);
+								break;
+							case "almoxarife":
+								break;
+							case "caixa eletronico":
+								break;
+							default:
+								break;
 						}
-						else if(escolha == 5) {
-							on = false;
-							break;
-						}
-						
-						sistema.executarEscolha(escolha, cargo);
 						
 						escritor = new FileWriter("sistema.json");
 						String jsonSistema = json.toJson(sistema);

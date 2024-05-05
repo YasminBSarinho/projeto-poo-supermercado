@@ -25,6 +25,11 @@ public class Funcionario extends Usuario{
         for (Produto produto : listaDeProdutos) {
             System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
         }
+
+        System.out.println("[1] - Exibir detalhes de produto");
+        System.out.println("[2] - Voltar para o menu");
+
+        
     }
 
     public void cadastrarProduto(){
