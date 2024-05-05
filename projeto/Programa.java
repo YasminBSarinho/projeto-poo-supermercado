@@ -62,17 +62,12 @@ public class Programa {
 					// Sistema
 
 					while (true) {
-						switch (usuario.getCargo()) {
-							case "gerente":
-								Gerente usuarioGerente = (Gerente) usuario;
-								Menu.mostrarMenuGerente(usuarioGerente);
-								break;
-							case "almoxarife":
-								break;
-							case "caixa eletronico":
-								break;
-							default:
-								break;
+						if (usuario instanceof Gerente){
+							Gerente gerente = (Gerente) usuario;
+							Menu.mostrarMenuGerente(gerente);
+						}else if(usuario instanceof Almoxarife){
+							Almoxarife almoxarife = (Almoxarife) usuario;
+							Menu.mostrarMenuAlmoxarife(almoxarife);
 						}
 						
 						escritor = new FileWriter("sistema.json");
