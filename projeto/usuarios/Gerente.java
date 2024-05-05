@@ -19,4 +19,6 @@ public class Gerente extends Funcionario  {
     public void enviarEmailComCupomDeDesconto(){
 
     }
+
+    public void gerarRelatorioDeBalancoMensal(){}
 }

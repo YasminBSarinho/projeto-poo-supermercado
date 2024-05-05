@@ -25,6 +25,10 @@ public class Funcionario extends Usuario{
         for (Produto produto : listaDeProdutos) {
             System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
         }
+
+        System.out.println();
+        System.out.println("Digite menu para voltar ao menu ou " + 
+                            "Digite o codigo do produto para exibir os detalhes: ");
     }
 
     public void cadastrarProduto(){
@@ -32,7 +36,7 @@ public class Funcionario extends Usuario{
     }
 
     public void exibirDetalhesDeUmProduto(){
-
+         
     }
 
     public void editarProduto(){

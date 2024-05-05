@@ -32,5 +32,13 @@ public class Cliente extends Pessoa{
         this.endereco = endereco;
     }
 
+    public void realizarvenda(){
+
+    }
+
+    public void registrarDataEHora(){}
     
+    public void emitirNotaDeVenda(){}
+
+
 }

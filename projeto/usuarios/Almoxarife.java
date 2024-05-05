@@ -13,6 +13,6 @@ public class Almoxarife extends Funcionario {
     // reescreva o tipo de retorno e os parametros ou isso pode causar erros
 
     public void registarEntradaDeProduto(){
-
+        
     }
 }

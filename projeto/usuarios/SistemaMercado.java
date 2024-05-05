@@ -24,7 +24,7 @@ public class SistemaMercado {
 
 	public void setProdutosEmEstoque(ArrayList<Produto> produtosEmEstoque) {
 		this.produtosEmEstoque = produtosEmEstoque;
-	}
+	} 
 
 	public boolean verificarExistenciaDeUsuarios() {
 
@@ -135,7 +135,6 @@ public class SistemaMercado {
 				produto.setValorUnitarioDeVenda(scanner.nextFloat());
 				System.out.print("Produto cadastrado. Código do produto: " + produto.getCodigo());
 				produtosEmEstoque.add(produto);
-				
 			}
 		}
 	}
