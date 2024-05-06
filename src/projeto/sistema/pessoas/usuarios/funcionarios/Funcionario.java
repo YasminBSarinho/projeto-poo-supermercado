@@ -1,8 +1,10 @@
-package projeto.usuarios;
+package projeto.sistema.pessoas.usuarios.funcionarios;
 
 import java.util.ArrayList;
 
-import projeto.produtos.Produto;
+import projeto.sistema.SistemaMercado;
+import projeto.sistema.pessoas.usuarios.Usuario;
+import projeto.sistema.produtos.Produto;
 
 public class Funcionario extends Usuario{
 

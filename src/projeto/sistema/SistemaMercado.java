@@ -1,6 +1,11 @@
-package projeto.usuarios;
+package projeto.sistema;
 
-import projeto.produtos.*;
+import projeto.sistema.pessoas.usuarios.CaixaEletronico;
+import projeto.sistema.pessoas.usuarios.Usuario;
+import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
+import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
+import projeto.sistema.produtos.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,7 +15,6 @@ public class SistemaMercado {
 	private ArrayList<Almoxarife> almoxarifes = new ArrayList<>();
 	private ArrayList<CaixaEletronico> caixas = new ArrayList<>();
 	private static ArrayList<Produto> produtosEmEstoque = new ArrayList<Produto>();
-
 
 	public ArrayList<Gerente> getGerentes() {
 		return gerentes;
@@ -91,7 +95,7 @@ public class SistemaMercado {
 				break;
 				
 			default:
-				throw new Exception("O Tipo de usuário informado é inválido");
+				throw new Exception("O Tipo de usuário informado é inválido.");
 		}
 
 	}

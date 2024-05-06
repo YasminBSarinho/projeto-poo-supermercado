@@ -1,4 +1,4 @@
-package projeto.usuarios;
+package projeto.sistema.pessoas.usuarios;
 
 public class CaixaEletronico extends Usuario {
 

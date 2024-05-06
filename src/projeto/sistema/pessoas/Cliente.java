@@ -1,4 +1,4 @@
-package projeto.usuarios;
+package projeto.sistema.pessoas;
 
 public class Cliente extends Pessoa{
     protected String cpf;

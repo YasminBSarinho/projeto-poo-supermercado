@@ -1,4 +1,4 @@
-package projeto.produtos;
+package projeto.sistema.produtos;
 
 public class Produto {
 	private static int quantiaDeInstancias = 0;

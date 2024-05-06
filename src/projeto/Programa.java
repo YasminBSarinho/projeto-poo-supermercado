@@ -1,6 +1,11 @@
 package projeto;
 
-import projeto.usuarios.*;
+import projeto.sistema.Menu;
+import projeto.sistema.SistemaMercado;
+import projeto.sistema.pessoas.usuarios.*;
+import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
+import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
+
 import java.util.Scanner;
 import com.google.gson.Gson;
 import java.io.FileWriter;

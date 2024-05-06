@@ -1,8 +1,9 @@
-package projeto;
+package projeto.sistema;
 import java.util.Scanner;
-import projeto.usuarios.Almoxarife;
-import projeto.usuarios.CaixaEletronico;
-import projeto.usuarios.Gerente;
+
+import projeto.sistema.pessoas.usuarios.CaixaEletronico;
+import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
+import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
 
 public class Menu {
     public static void mostrarMenuInicial(){

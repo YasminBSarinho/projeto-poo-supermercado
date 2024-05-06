@@ -1,4 +1,6 @@
-package projeto.usuarios;
+package projeto.sistema.pessoas.usuarios;
+
+import projeto.sistema.pessoas.Pessoa;
 
 public class Usuario extends Pessoa{
 	protected String cargo;
