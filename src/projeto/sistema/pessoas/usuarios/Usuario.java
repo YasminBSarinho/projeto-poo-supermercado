@@ -8,13 +8,6 @@ public class Usuario extends Pessoa{
 	protected String senha;
 	protected String matricula;
 
-	public Usuario(String nome, String cargo, String login, String senha){
-		super(nome);
-		this.cargo = cargo;
-		this.login = login;
-		this.senha = senha;
-	}
-
 	public Usuario(String nome, String cargo, String login, String senha, String email, String matricula){
 		super(nome, email);
 		this.cargo = cargo;

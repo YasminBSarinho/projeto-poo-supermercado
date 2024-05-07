@@ -8,10 +8,6 @@ import projeto.sistema.produtos.Produto;
 
 public class Funcionario extends Usuario{
 
-    public Funcionario(String nome, String cargo, String login, String senha){
-        super(nome, cargo, login, senha);
-    }
-
     public Funcionario(String nome, String cargo, String login, String senha, String email, String matricula){
     	super(nome, cargo, login, senha, email, matricula);
     }

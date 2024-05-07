@@ -1,97 +1,45 @@
 package projeto.sistema;
-import java.util.Scanner;
 
 import projeto.sistema.pessoas.usuarios.CaixaEletronico;
 import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
 import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
 
 public class Menu {
-    public static void mostrarMenuInicial(){
-        System.out.println("--- Menu ---");
-        System.out.println("[1] - Cadastrar Cliente");
-        
-    }
-
-    public static void mostrarMenuFuncionario(){
-        System.out.println("[2] - Cadastrar Produto");
-        System.out.println("[3] - Listar Produto");
-    }
 
     public static void mostrarMenuCaixa(CaixaEletronico caixaEletronico){
-        mostrarMenuInicial();
-        System.out.println("[2] - Realizar venda");
-        System.out.print("Digite o numero equivalente a opção selecionada: ");
-
-        Scanner scanner = new Scanner(System.in);
-        int escolha = scanner.nextInt();
-        
-        switch(escolha){
-            case 1:
-                caixaEletronico.cadastrarCliente();
-                break;
-            case 2:
-                caixaEletronico.realizarVenda();
-                break;
-        }
-        
+        System.out.print("""
+                --- Menu ---
+            [1] - Cadastrar Cliente
+            [2] - Realizar venda 
+            [3] - trocar usuario
+            [4] - sair
+            "Digite o numero equivalente a opção selecionada: """);
     }
 
     public static void mostrarMenuAlmoxarife(Almoxarife almoxarife){
-        mostrarMenuInicial();
-        mostrarMenuFuncionario();
-        System.out.println("[4] - Registrar entrada de produto");
-        System.out.print("Digite o numero equivalente a opção selecionada: ");
-
-        Scanner scanner = new Scanner(System.in);
-        int escolha = scanner.nextInt();
-
-        switch(escolha){
-            case 1:
-                almoxarife.cadastrarCliente();
-                break;
-            case 2:
-                almoxarife.cadastrarProduto();
-                break;
-            case 3:
-                almoxarife.listarProdutos();
-                break;
-
-        }
+        System.out.println("""
+            --- Menu ---
+            [1] - Cadastrar Cliente
+            [2] - Cadastrar Produto
+            [3] - Listar Produto
+            [4] - Registrar entrada de produto
+            [5] - trocar usuario
+            [6] - sair
+            Digite o numero equivalente a opção selecionada: """);
     }
 
     public static void mostrarMenuGerente(Gerente gerente){
-        mostrarMenuInicial();
-        mostrarMenuFuncionario();
-        System.out.println("[4] - Registrar valor unitario de venda");
-        System.out.println("[5] - Enviar cupom de desconto por email");
-        System.out.println("[6] - Gerar relatório de balanço mensal");
-        System.out.print("Digite o numero equivalente a opção selecionada: ");
-        
-        Scanner scanner = new Scanner(System.in);
-        int escolha = scanner.nextInt();
-
-        switch(escolha){
-            case 1:
-                gerente.cadastrarCliente();
-                break;
-            case 2:
-                gerente.cadastrarProduto();
-                break;
-            case 3:
-                gerente.listarProdutos();
-                break;
-            case 4:
-                gerente.registrarValorUnitarioDeVendaDeProduto();
-                break;
-            case 5:
-                gerente.enviarEmailComCupomDeDesconto();
-                break;
-            case 6:
-                gerente.gerarBalancoMensal();
-                break;
-        }
-        
-        
+        System.out.print("""
+            --- Menu ---
+            [1] - Cadastrar Cliente
+            [2] - Cadastrar Produto
+            [3] - Cadastrar funcionario
+            [4] - Listar Produto
+            [5] - Registrar valor unitario de venda
+            [6] - Enviar cupom de desconto por email
+            [7] - Gerar relatório de balanço mensal
+            [8] - trocar usuario
+            [9] - sair
+            Digite o numero equivalente a opção selecionada: """);
     }
-
 }
