@@ -19,7 +19,6 @@ public class Programa {
 		Gson json = new Gson();
 		FileWriter escritor;
 		FileReader leitor;
-		String cargo;
 		Boolean on = true;
 		
 		while (on) {
@@ -41,7 +40,7 @@ public class Programa {
 
 				if (sistema.verificarExistenciaDeUsuarios() == false) {
 					System.out.println("Sistema iniciado pela primeira vez, requer o cadastro de gerente!");
-					sistema.cadastrarUsuario("gerente");
+					sistema.cadastrarFuncionario();
 					escritor = new FileWriter("sistema.json");
 					String jsonSistema = json.toJson(sistema);
 					escritor.write(jsonSistema);
@@ -83,10 +82,10 @@ public class Programa {
 
 				}
 			} catch (Exception e) {
-				System.out.println("Erro: " + e.getMessage());
+				System.out.println("Erro: " + e.getStackTrace());
 			}
-
 		}
-
+		scanner.close();
 	}
+
 }
