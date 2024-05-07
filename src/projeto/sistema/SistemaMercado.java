@@ -32,7 +32,7 @@ public class SistemaMercado {
 		switch (cargo) {
 			case "almoxarife":
 				Almoxarife almoxarife;
-				almoxarife = (Almoxarife) formulario.pedirDadosFuncionario("cargo");
+				almoxarife = (Almoxarife) formulario.pedirDadosFuncionario(cargo);
 				almoxarifes.add(almoxarife);
 				break;
 			case "caixa eletronico":
