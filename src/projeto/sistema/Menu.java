@@ -23,8 +23,8 @@ public class Menu {
             [2] - Cadastrar Produto
             [3] - Listar Produto
             [4] - Registrar entrada de produto
-            [5] - trocar usuario
-            [6] - sair
+            [5] - Trocar usuario
+            [6] - Sair
             Digite o numero equivalente a opção selecionada: """);
     }
 
@@ -38,8 +38,8 @@ public class Menu {
             [5] - Registrar valor unitario de venda
             [6] - Enviar cupom de desconto por email
             [7] - Gerar relatório de balanço mensal
-            [8] - trocar usuario
-            [9] - sair
+            [8] - Trocar usuario
+            [9] - Sair
             Digite o numero equivalente a opção selecionada: """);
     }
 }
