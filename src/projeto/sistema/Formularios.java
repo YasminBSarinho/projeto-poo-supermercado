@@ -4,6 +4,7 @@ import java.util.Scanner;
 import projeto.sistema.pessoas.usuarios.*;
 import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
 import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
+import projeto.sistema.produtos.Produto;
 
 public class Formularios {
 
@@ -42,6 +43,16 @@ public class Formularios {
 
     }
 
+    public Produto solicitarDadosDoProduto(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o nome do produto: ");
+        String  nome = scanner.nextLine();
+
+        Produto produto = new Produto();
+        produto.setNome(nome);
+        return produto;
+    }
     //public Cliente solicitarInformacaoCliente(){
 
    // }

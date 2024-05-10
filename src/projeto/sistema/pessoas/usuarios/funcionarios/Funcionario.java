@@ -3,6 +3,7 @@ package projeto.sistema.pessoas.usuarios.funcionarios;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import projeto.sistema.Formularios;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.produtos.Produto;
@@ -52,8 +53,10 @@ public class Funcionario extends Usuario{
 
     }
 
-    public void cadastrarProduto(){
-        
+    public void cadastrarProduto(SistemaMercado sistema){
+        Formularios formulario = new Formularios();
+        Produto produto = formulario.solicitarDadosDoProduto();
+        sistema.getProdutosEmEstoque().add(produto);
     }
     
     public void exibirDetalhesDeUmProduto(String codigoDoProduto, ArrayList<Produto> lista){
