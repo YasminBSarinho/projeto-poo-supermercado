@@ -5,6 +5,7 @@ import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.*;
 import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
 import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
+import projeto.sistema.produtos.Produto;
 
 import java.util.Scanner;
 import com.google.gson.Gson;
@@ -86,7 +87,7 @@ public class Programa {
 									sistema.cadastrarFuncionario(cargo);
 									break;
 								case 4:
-									gerente.listarProdutos();
+									gerente.listarProdutos(sistema);
 									break;
 								case 5:
 									gerente.registrarValorUnitarioDeVendaDeProduto();
@@ -120,7 +121,7 @@ public class Programa {
 									almoxarife.cadastrarProduto();
 									break;
 								case 3:
-									almoxarife.listarProdutos();
+									almoxarife.listarProdutos(sistema);
 									break;
 								case 4:
 									almoxarife.registarEntradaDeProduto();

@@ -10,7 +10,7 @@ public class SistemaMercado {
 	private Gerente gerente;
 	private ArrayList<Almoxarife> almoxarifes = new ArrayList<>();
 	private ArrayList<CaixaEletronico> caixas = new ArrayList<>();
-	private static ArrayList<Produto> produtosEmEstoque = new ArrayList<Produto>();
+	private ArrayList<Produto> produtosEmEstoque = new ArrayList<Produto>();
 
 	public boolean verificarExistenciaDeUsuarios() {
 		if (gerente == null) {
@@ -76,12 +76,12 @@ public class SistemaMercado {
 		this.caixas = caixas;
 	}
 
-	public static ArrayList<Produto> getProdutosEmEstoque() {
+	public ArrayList<Produto> getProdutosEmEstoque() {
 		return produtosEmEstoque;
 	}
 
-	public static void setProdutosEmEstoque(ArrayList<Produto> produtosEmEstoque) {
-		SistemaMercado.produtosEmEstoque = produtosEmEstoque;
+	public void setProdutosEmEstoque(ArrayList<Produto> produtosEmEstoque) {
+		this.produtosEmEstoque = produtosEmEstoque;
 	}
 
 	public Gerente getGerente() {

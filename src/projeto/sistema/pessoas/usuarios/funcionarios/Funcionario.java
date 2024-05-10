@@ -15,13 +15,13 @@ public class Funcionario extends Usuario{
 
     // todos os metodos estao sem retorno pois ainda serao feitos, entao quando for fazer, 
     // reescreva o tipo de retorno e os parametros ou isso pode causar erros
-    ArrayList<Produto> listaDeProdutos = SistemaMercado.getProdutosEmEstoque();
 
-    public void listarProdutos(){
+    public void listarProdutos(SistemaMercado sistema){
+        ArrayList <Produto> lista =  sistema.getProdutosEmEstoque();
         System.out.println("--- Listar Produto ---");
         System.out.println();
         System.out.println("Código | Nome do Produto | Valor | Quantidade");
-        for (Produto produto : listaDeProdutos) {
+        for (Produto produto : lista) {
             System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
         }
         Scanner scanner = new Scanner(System.in);
@@ -35,8 +35,8 @@ public class Funcionario extends Usuario{
         switch (escolha) {
             case 1:
                 System.out.print("Digite o codigo do produto para detalhar: ");
-                int codigoDoProduto = scanner.nextInt();
-                exibirDetalhesDeUmProduto(codigoDoProduto);
+                String codigoDoProduto = scanner.next();
+                exibirDetalhesDeUmProduto(codigoDoProduto, lista);
                 break;
             case 2:
                 break;
@@ -52,8 +52,9 @@ public class Funcionario extends Usuario{
         
     }
     
-    public void exibirDetalhesDeUmProduto(int codigoDoProduto){
-        for (Produto produto : listaDeProdutos) {
+    public void exibirDetalhesDeUmProduto(String codigoDoProduto, ArrayList<Produto> lista){
+        for (Produto produto : lista) {
+            
             if(produto.getCodigo().equals(codigoDoProduto)){
                 Scanner scanner = new Scanner(System.in);
                 System.out.printf("""
@@ -77,8 +78,7 @@ public class Funcionario extends Usuario{
                                 --- Editar Produto ---
                                 Digite o código do produto que você deseja editar: 
                                 """);
-                        String codigoDoProdutoEditar = scanner.next();
-                        editarProduto(produto);
+                        editarProduto(codigoDoProduto, lista);
                         break;
                     case 2:
                         break;
@@ -90,12 +90,12 @@ public class Funcionario extends Usuario{
         }
     }
 
-    public void editarProduto(Produto produtoEditar){
+    public void editarProduto(String codigo, ArrayList<Produto> lista){
 
         Scanner scanner = new Scanner(System.in);
 
-        for(Produto produto : SistemaMercado.getProdutosEmEstoque()){
-            if(produtoEditar.equals(produto.getCodigo())){
+        for(Produto produto : lista){
+            if(codigo.equals(produto.getCodigo())){
                 System.out.println("""
                     --- Editar Produto ---
 
