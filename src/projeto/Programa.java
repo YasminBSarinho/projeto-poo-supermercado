@@ -79,7 +79,7 @@ public class Programa {
 									gerente.cadastrarCliente();
 									break;
 								case 2:
-									gerente.cadastrarProduto();
+									gerente.cadastrarProduto(sistema);
 									break;
 								case 3:
 									System.out.print("almoxarife ou caixa eletronico? ");
@@ -118,7 +118,7 @@ public class Programa {
 									almoxarife.cadastrarCliente();
 									break;
 								case 2:
-									almoxarife.cadastrarProduto();
+									almoxarife.cadastrarProduto(sistema);
 									break;
 								case 3:
 									almoxarife.listarProdutos(sistema);
@@ -177,5 +177,4 @@ public class Programa {
 		}
 		scanner.close();
 	}
-
 }
