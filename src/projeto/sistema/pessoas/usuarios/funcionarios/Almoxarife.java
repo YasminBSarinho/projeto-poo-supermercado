@@ -1,10 +1,7 @@
-package projeto.usuarios;
+package projeto.sistema.pessoas.usuarios.funcionarios;
 
 public class Almoxarife extends Funcionario {
-    public Almoxarife(String nome, String cargo, String login, String senha){
-        super(nome, cargo, login, senha);
-    }
-
+    
     public Almoxarife(String nome, String email, String cargo, String login, String senha, String matricula){
         super(nome, email, cargo, login, senha, matricula);
     }

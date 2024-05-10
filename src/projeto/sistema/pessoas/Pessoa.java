@@ -1,4 +1,4 @@
-package projeto.usuarios;
+package projeto.sistema.pessoas;
 
 public class Pessoa {
     protected String nome;

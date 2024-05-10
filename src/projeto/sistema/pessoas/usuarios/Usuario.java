@@ -1,17 +1,12 @@
-package projeto.usuarios;
+package projeto.sistema.pessoas.usuarios;
+
+import projeto.sistema.pessoas.Pessoa;
 
 public class Usuario extends Pessoa{
 	protected String cargo;
 	protected String login;
 	protected String senha;
 	protected String matricula;
-
-	public Usuario(String nome, String cargo, String login, String senha){
-		super(nome);
-		this.cargo = cargo;
-		this.login = login;
-		this.senha = senha;
-	}
 
 	public Usuario(String nome, String cargo, String login, String senha, String email, String matricula){
 		super(nome, email);
@@ -52,5 +47,7 @@ public class Usuario extends Pessoa{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public void cadastrarCliente(){}
 
 }
