@@ -25,27 +25,31 @@ public class Funcionario extends Usuario{
             System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
         }
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("[1] - Exibir detalhes de produto");
-        System.out.println("[2] - Voltar para o menu");
-        System.out.print("Digite o numero equivalente a opção selecionada: ");
-        int escolha = scanner.nextInt();
-
-
-        switch (escolha) {
-            case 1:
-                System.out.print("Digite o codigo do produto para detalhar: ");
-                String codigoDoProduto = scanner.next();
-                exibirDetalhesDeUmProduto(codigoDoProduto, lista);
-                break;
-            case 2:
-                break;
-            default:
-                break;
+        int escolha = 0;
+        while(true){
+            System.out.println("[1] - Exibir detalhes de produto");
+            System.out.println("[2] - Voltar para o menu");
+            System.out.print("Digite o numero equivalente a opção selecionada: ");
+            escolha = scanner.nextInt();
+                            
+            switch (escolha) {
+                case 1:
+                    System.out.print("Digite o codigo do produto para detalhar: ");
+                    String codigoDoProduto = scanner.next();
+                    exibirDetalhesDeUmProduto(codigoDoProduto, lista);
+                    break;
+                case 2:
+                    break;
+                default:
+                    System.out.println("""
+                    ----------------------------------------------
+                    A opção escolhida é inválida, tente novamente!
+                    ----------------------------------------------""");
+                    continue;
+            }
+            break;
         }
-        
-        scanner.close();
-        
+
     }
 
     public void cadastrarProduto(){
@@ -85,7 +89,7 @@ public class Funcionario extends Usuario{
                     default:
                         break;
                 }
-                scanner.close();
+                
             }
         }
     }
