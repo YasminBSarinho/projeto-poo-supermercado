@@ -49,9 +49,9 @@ public class Funcionario extends Usuario{
     }
 
     public void cadastrarProduto(){
-        // LUCAS
+        
     }
-    //  código, nome, unidade, valor unitário de compra, valor unitário de venda;
+    
     public void exibirDetalhesDeUmProduto(int codigoDoProduto){
         for (Produto produto : listaDeProdutos) {
             if(produto.getCodigo().equals(codigoDoProduto)){
@@ -73,9 +73,61 @@ public class Funcionario extends Usuario{
 
                 switch (escolha) {
                     case 1:
-                       editarProduto(produto);
+                        System.out.println("""
+                                --- Editar Produto ---
+                                Digite o código do produto que você deseja editar: 
+                                """);
+                        String codigoDoProdutoEditar = scanner.next();
+                        editarProduto(produto);
                         break;
                     case 2:
+                        break;
+                    default:
+                        break;
+                }
+                scanner.close();
+            }
+        }
+    }
+
+    public void editarProduto(Produto produtoEditar){
+
+        Scanner scanner = new Scanner(System.in);
+
+        for(Produto produto : SistemaMercado.getProdutosEmEstoque()){
+            if(produtoEditar.equals(produto.getCodigo())){
+                System.out.println("""
+                    --- Editar Produto ---
+
+                    [1] - Nome
+                    [2] - Unidades
+                    [3] - Valor unitário de compra
+                    [4] - Valor unitário de venda
+
+                    Digite o número equivalente a informação que você deseja editar: 
+                """);
+                int escolha = scanner.nextInt();
+
+                switch (escolha) {
+                    case 1:
+                        System.out.println("Digite o novo nome do produto: ");   
+                        String nome = scanner.next();
+                        produto.setNome(nome);
+                        break;
+                    case 2:
+                        System.out.println("Digite as unidade do produto: ");   
+                        int unidade = scanner.nextInt();
+                        produto.setUnidade(unidade);
+                        break;
+                    case 3:
+                        System.out.println("Digite o valor unitário compra do produto: "); 
+                        int valorUnitarioDeCompra = scanner.nextInt();
+                        produto.setValorUnitarioDeCompra(valorUnitarioDeCompra);
+                        break;
+                    case 4:
+                        System.out.println("Digite o valor unitário venda do produto: "); 
+                        int valorUnitarioDeVenda = scanner.nextInt();
+                        produto.setValorUnitarioDeVenda(valorUnitarioDeVenda);
                         break;
                     default:
                         break;
@@ -83,9 +135,4 @@ public class Funcionario extends Usuario{
             }
         }
     }
-
-    public void editarProduto(Produto produto){
-
-    }
-
 }
