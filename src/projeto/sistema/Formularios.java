@@ -1,6 +1,7 @@
 package projeto.sistema;
 
 import java.util.Scanner;
+import projeto.sistema.pessoas.Cliente;
 import projeto.sistema.pessoas.usuarios.*;
 import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
 import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
@@ -53,7 +54,32 @@ public class Formularios {
         produto.setNome(nome);
         return produto;
     }
-    //public Cliente solicitarInformacaoCliente(){
 
-   // }
+    public Cliente solicitarInformacaoCliente(){
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Digite o nome: ");
+        String nome = scanner.next();
+        
+        System.out.print("Digite o email: ");
+        String email = scanner.next();
+
+        System.out.print("Digite o CPF: ");
+        String cpf = scanner.next();
+        
+        System.out.print("Deseja adicionar o endereço para receber promoções e cupons de desconto? sim(s) ou não(n): ");
+        String escolha = scanner.next();
+        String endereco = "";
+        if (escolha.equals("s")) {
+			System.out.print("Digite o endereço: ");
+			endereco = scanner.next();
+        }
+        System.out.println("""
+        -------------------------------
+        Cliente adicionado com sucesso!
+        -------------------------------""");
+        
+        Cliente clientes = new Cliente(nome, email, cpf, endereco);
+        return clientes;
+    }
 }

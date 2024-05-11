@@ -1,6 +1,9 @@
 package projeto.sistema.pessoas.usuarios;
 
 import projeto.sistema.pessoas.Pessoa;
+import projeto.sistema.Formularios;
+import projeto.sistema.SistemaMercado;
+import projeto.sistema.pessoas.Cliente;
 
 public class Usuario extends Pessoa{
 	protected String cargo;
@@ -48,6 +51,10 @@ public class Usuario extends Pessoa{
 		this.senha = senha;
 	}
 
-	public void cadastrarCliente(){}
+	public void cadastrarCliente(SistemaMercado sistema){
+        Formularios formulario = new Formularios();
+        Cliente clientes = formulario.solicitarInformacaoCliente();
+        sistema.getCliente().add(clientes);
+    }
 
 }

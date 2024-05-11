@@ -76,7 +76,7 @@ public class Programa {
 							escolha = scanner.nextInt();
 							switch (escolha) {
 								case 1:
-									gerente.cadastrarCliente();
+									gerente.cadastrarCliente(sistema);
 									break;
 								case 2:
 									gerente.cadastrarProduto(sistema);
@@ -115,7 +115,7 @@ public class Programa {
 							escolha = scanner.nextInt();
 							switch (escolha) {
 								case 1:
-									almoxarife.cadastrarCliente();
+									almoxarife.cadastrarCliente(sistema);
 									break;
 								case 2:
 									almoxarife.cadastrarProduto(sistema);
@@ -143,7 +143,7 @@ public class Programa {
 							escolha = scanner.nextInt();
 							switch (escolha) {
 								case 1:
-									caixa.cadastrarCliente();
+									caixa.cadastrarCliente(sistema);
 									break;
 								case 2:
 									caixa.realizarVenda();
