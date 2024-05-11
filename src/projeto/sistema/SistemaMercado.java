@@ -1,6 +1,7 @@
 package projeto.sistema;
 
 import projeto.sistema.pessoas.usuarios.funcionarios.*;
+import projeto.sistema.pessoas.Cliente;
 import projeto.sistema.pessoas.usuarios.*;
 import projeto.sistema.produtos.*;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class SistemaMercado {
 	private ArrayList<Almoxarife> almoxarifes = new ArrayList<>();
 	private ArrayList<CaixaEletronico> caixas = new ArrayList<>();
 	private ArrayList<Produto> produtosEmEstoque = new ArrayList<Produto>();
+	private ArrayList<Cliente> clientes = new ArrayList<>();
 
 	public boolean verificarExistenciaDeUsuarios() {
 		if (gerente == null) {
@@ -90,5 +92,13 @@ public class SistemaMercado {
 
 	public void setGerente(Gerente gerente) {
 		this.gerente = gerente;
+	}
+
+	public ArrayList<Cliente> getCliente(){
+		return clientes;
+	}
+	
+	public void setClientes(ArrayList<Cliente> clientes){
+		this.clientes = clientes;
 	}
 }
