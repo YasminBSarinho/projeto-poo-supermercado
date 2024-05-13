@@ -20,6 +20,7 @@ public class Almoxarife extends Funcionario {
 
         Formularios formulario = new Formularios();
         Scanner scanner = new Scanner(System.in);
+        mostrarListaDeProdutosCadastrados(sistema);
         System.out.print("Informe o código do produto: ");
         String codigo = scanner.next();
         for (Produto produto: sistema.getProdutosEmEstoque()){

@@ -88,7 +88,7 @@ public class Programa {
 									break;
 								case 4:
 									gerente.listarProdutos(sistema);
-			
+									
 									break;
 								case 5:
 									gerente.registrarValorUnitarioDeVendaDeProduto();

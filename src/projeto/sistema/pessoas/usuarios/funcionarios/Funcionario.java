@@ -14,10 +14,7 @@ public class Funcionario extends Usuario{
     	super(nome, cargo, login, senha, email, matricula);
     }
 
-    // todos os metodos estao sem retorno pois ainda serao feitos, entao quando for fazer, 
-    // reescreva o tipo de retorno e os parametros ou isso pode causar erros
-
-    public void listarProdutos(SistemaMercado sistema){
+    public static void mostrarListaDeProdutosCadastrados(SistemaMercado sistema){
         ArrayList <Produto> lista =  sistema.getProdutosEmEstoque();
         System.out.println("--- Listar Produto ---");
         System.out.println();
@@ -26,9 +23,14 @@ public class Funcionario extends Usuario{
             System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
         }
 
+    }
+
+    public void listarProdutos(SistemaMercado sistema){ //arrumar nome feio
+        ArrayList <Produto> lista =  sistema.getProdutosEmEstoque();
         Scanner scanner = new Scanner(System.in);
         int escolha = 0;
         while(true){
+            mostrarListaDeProdutosCadastrados(sistema);
             System.out.println("[1] - Exibir detalhes de produto");
             System.out.println("[2] - Voltar para o menu");
             System.out.print("Digite o numero equivalente a opção selecionada: ");
@@ -64,26 +66,24 @@ public class Funcionario extends Usuario{
             if(produto.getCodigo().equals(codigoDoProduto)){
                 Scanner scanner = new Scanner(System.in);
                 System.out.printf("""
+                    
                     ---- Detalhes ---
                     Codigo:  %s
                     Nome: %s
                     Unidades: %d
                     Valor unitário compra: %f
                     Valor unitário de venda: %f
-                    
                     [1] - Editar Produto
                     [2] - Voltar ao menu
 
-                    Digite o numero equivalente a opção selecionada: 
-                    """, produto.getCodigo(), produto.getNome(), produto.getUnidade(),produto.getValorUnitarioDeCompra(), produto.getValorUnitarioDeVenda());
+                    Digite o numero equivalente a opção selecionada: """, produto.getCodigo(), produto.getNome(), produto.getUnidade(),produto.getValorUnitarioDeCompra(), produto.getValorUnitarioDeVenda());
                 int escolha = scanner.nextInt();
 
                 switch (escolha) {
                     case 1:
                         System.out.println("""
                                 --- Editar Produto ---
-                                Digite o código do produto que você deseja editar: 
-                                """);
+                                Digite o código do produto que você deseja editar: """);
                         editarProduto(codigoDoProduto, lista);
                         break;
                     case 2:
@@ -108,8 +108,7 @@ public class Funcionario extends Usuario{
                     [3] - Valor unitário de compra
                     [4] - Valor unitário de venda
 
-                    Digite o número equivalente a informação que você deseja editar: 
-                """);
+                    Digite o número equivalente a informação que você deseja editar: """);
                 int escolha = scanner.nextInt();
 
                 switch (escolha) {
