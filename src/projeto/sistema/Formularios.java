@@ -79,7 +79,17 @@ public class Formularios {
         Cliente adicionado com sucesso!
         -------------------------------""");
         
-        Cliente clientes = new Cliente(nome, email, cpf, endereco);
-        return clientes;
+        Cliente cliente = new Cliente(nome, email, cpf, endereco);
+        return cliente;
+    }
+    
+    public Registro solicitarDadosDeCompra(String codigo){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Quantas unidade foram compradas: ");
+        int unidades = scanner.nextInt();
+        System.out.print("Valor unitário de compra: ");
+        float valorUnitario = scanner.nextFloat();
+        Registro registro = new Registro(codigo, unidades, valorUnitario, "");
+        return registro;
     }
 }

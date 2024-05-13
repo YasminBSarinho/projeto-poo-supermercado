@@ -88,6 +88,7 @@ public class Programa {
 									break;
 								case 4:
 									gerente.listarProdutos(sistema);
+			
 									break;
 								case 5:
 									gerente.registrarValorUnitarioDeVendaDeProduto();
@@ -124,7 +125,8 @@ public class Programa {
 									almoxarife.listarProdutos(sistema);
 									break;
 								case 4:
-									almoxarife.registarEntradaDeProduto();
+									almoxarife.registarEntradaDeProduto(sistema);
+									break;
 								case 5:
 									escolha = -1;
 									break;

@@ -53,8 +53,8 @@ public class Usuario extends Pessoa{
 
 	public void cadastrarCliente(SistemaMercado sistema){
         Formularios formulario = new Formularios();
-        Cliente clientes = formulario.solicitarInformacaoCliente();
-        sistema.getCliente().add(clientes);
+        Cliente cliente = formulario.solicitarInformacaoCliente();
+        sistema.getClientes().add(cliente);
     }
 
 }

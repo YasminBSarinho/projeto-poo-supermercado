@@ -13,6 +13,8 @@ public class SistemaMercado {
 	private ArrayList<CaixaEletronico> caixas = new ArrayList<>();
 	private ArrayList<Produto> produtosEmEstoque = new ArrayList<Produto>();
 	private ArrayList<Cliente> clientes = new ArrayList<>();
+	private ArrayList<Registro> registrosDeCompra = new ArrayList<>();
+	private ArrayList<Registro> registrosDeVenda = new ArrayList<>();
 
 	public boolean verificarExistenciaDeUsuarios() {
 		if (gerente == null) {
@@ -62,6 +64,15 @@ public class SistemaMercado {
 		return null;
 	}
 
+	public Produto buscarProduto(String codigo){
+		for (Produto produto : getProdutosEmEstoque()){
+			if(produto.getCodigo().equals(codigo)){
+				return produto;
+			}
+		}
+		return null;
+	}
+	
 	public ArrayList<Almoxarife> getAlmoxarifes() {
 		return almoxarifes;
 	}
@@ -94,11 +105,27 @@ public class SistemaMercado {
 		this.gerente = gerente;
 	}
 
-	public ArrayList<Cliente> getCliente(){
+	public ArrayList<Cliente> getClientes(){
 		return clientes;
 	}
 	
 	public void setClientes(ArrayList<Cliente> clientes){
 		this.clientes = clientes;
+	}
+
+	public ArrayList<Registro> getRegistrosDeVenda() {
+		return registrosDeVenda;
+	}
+
+	public void setRegistrosDeVenda(ArrayList<Registro> registrosDeVenda) {
+		this.registrosDeVenda = registrosDeVenda;
+	}
+
+	public ArrayList<Registro> getRegistrosDeCompra() {
+		return registrosDeCompra;
+	}
+
+	public void setRegistrosDeCompra(ArrayList<Registro> registrosDeCompra) {
+		this.registrosDeCompra = registrosDeCompra;
 	}
 }

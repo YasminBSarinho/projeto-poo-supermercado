@@ -25,6 +25,7 @@ public class Funcionario extends Usuario{
         for (Produto produto : lista) {
             System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
         }
+
         Scanner scanner = new Scanner(System.in);
         int escolha = 0;
         while(true){
@@ -50,9 +51,7 @@ public class Funcionario extends Usuario{
             }
             break;
         }
-
     }
-
     public void cadastrarProduto(SistemaMercado sistema){
         Formularios formulario = new Formularios();
         Produto produto = formulario.solicitarDadosDoProduto();
@@ -92,11 +91,9 @@ public class Funcionario extends Usuario{
                     default:
                         break;
                 }
-                
-            }
+            }         
         }
     }
-
     public void editarProduto(String codigo, ArrayList<Produto> lista){
 
         Scanner scanner = new Scanner(System.in);
