@@ -17,8 +17,8 @@ public class Menu {
     }
 
     public static void mostrarMenuAlmoxarife(Almoxarife almoxarife){
-        System.out.println("""
-            --- Menu ---
+        System.out.print("""
+                --- Menu ---
             [1] - Cadastrar Cliente
             [2] - Cadastrar Produto
             [3] - Listar Produto
@@ -30,7 +30,7 @@ public class Menu {
 
     public static void mostrarMenuGerente(Gerente gerente){
         System.out.print("""
-            --- Menu ---
+                --- Menu ---
             [1] - Cadastrar Cliente
             [2] - Cadastrar Produto
             [3] - Cadastrar funcionario

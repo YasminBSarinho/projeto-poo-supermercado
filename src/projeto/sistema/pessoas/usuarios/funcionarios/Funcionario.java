@@ -21,18 +21,20 @@ public class Funcionario extends Usuario{
         int escolha = 0;
 
         while(true){
-            System.out.println("--- Listar Produto ---");
-            System.out.println();
-            System.out.println("Código | Nome do Produto | Valor | Quantidade");
+            System.out.println("""
+                        --- Listar Produto ---
+            "Código | Nome do Produto | Valor | Quantidade""");
 
             for (Produto produto : lista) {
                 System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
                 }
 
             if(detalhes == true){
-                System.out.println("[1] - Exibir detalhes de produto");
-                System.out.println("[2] - Voltar para o menu");
+                System.out.println("""
+                    [1] - Exibir detalhes de produto
+                    [2] - Voltar para o menu """);
                 System.out.print("Digite o numero equivalente a opção selecionada: ");
+
                 escolha = scanner.nextInt();
                             
                 switch (escolha) {
@@ -64,26 +66,30 @@ public class Funcionario extends Usuario{
         for (Produto produto : lista) {
             
             if(produto.getCodigo().equals(codigoDoProduto)){
+
                 Scanner scanner = new Scanner(System.in);
+                
                 System.out.printf("""
-                    
                     ---- Detalhes ---
-                    Codigo:  %s
+                    Codigo: %s
                     Nome: %s
                     Unidades: %d
-                    Valor unitário compra: %f
-                    Valor unitário de venda: %f
+                    Valor unitário compra: %.2f
+                    Valor unitário de venda: %.2f
                     [1] - Editar Produto
                     [2] - Voltar ao menu
+                    """,
+                    produto.getCodigo(), 
+                    produto.getNome(),
+                    produto.getUnidade(),
+                    produto.getValorUnitarioDeCompra(), 
+                    produto.getValorUnitarioDeVenda());
 
-                    Digite o numero equivalente a opção selecionada: """, produto.getCodigo(), produto.getNome(), produto.getUnidade(),produto.getValorUnitarioDeCompra(), produto.getValorUnitarioDeVenda());
+                System.out.print("Digite o numero equivalente a opção selecionada: " );
                 int escolha = scanner.nextInt();
 
                 switch (escolha) {
                     case 1:
-                        System.out.println("""
-                                --- Editar Produto ---
-                                Digite o código do produto que você deseja editar: """);
                         editarProduto(codigoDoProduto, lista);
                         break;
                     case 2:
@@ -100,7 +106,7 @@ public class Funcionario extends Usuario{
 
         for(Produto produto : lista){
             if(codigo.equals(produto.getCodigo())){
-                System.out.println("""
+                System.out.print("""
                     --- Editar Produto ---
 
                     [1] - Nome
@@ -113,22 +119,22 @@ public class Funcionario extends Usuario{
 
                 switch (escolha) {
                     case 1:
-                        System.out.println("Digite o novo nome do produto: ");   
+                        System.out.print("Digite o novo nome do produto: ");   
                         String nome = scanner.next();
                         produto.setNome(nome);
                         break;
                     case 2:
-                        System.out.println("Digite as unidade do produto: ");   
+                        System.out.print("Digite as unidade do produto: ");   
                         int unidade = scanner.nextInt();
                         produto.setUnidade(unidade);
                         break;
                     case 3:
-                        System.out.println("Digite o valor unitário compra do produto: "); 
+                        System.out.print("Digite o valor unitário compra do produto: "); 
                         int valorUnitarioDeCompra = scanner.nextInt();
                         produto.setValorUnitarioDeCompra(valorUnitarioDeCompra);
                         break;
                     case 4:
-                        System.out.println("Digite o valor unitário venda do produto: "); 
+                        System.out.print("Digite o valor unitário venda do produto: "); 
                         int valorUnitarioDeVenda = scanner.nextInt();
                         produto.setValorUnitarioDeVenda(valorUnitarioDeVenda);
                         break;

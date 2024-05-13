@@ -173,7 +173,7 @@ public class Programa {
 					}
 				}
 			} catch (Exception e) {
-				System.out.println("pamonha: " + e.getMessage());
+				System.out.println("Error: " + e.getMessage());
 			}
 		}
 		scanner.close();
