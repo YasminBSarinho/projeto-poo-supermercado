@@ -38,7 +38,7 @@ public class Programa {
 			// Cadastro ou login inicial
 			try {
 
-				if (sistema.verificarExistenciaDeUsuarios() == false) {
+				if (!sistema.verificarExistenciaDeUsuarios()) {
 					System.out.println("Sistema iniciado pela primeira vez, requer o cadastro de gerente!");
 					sistema.cadastrarFuncionario();
 					escritor = new FileWriter("sistema.json");
