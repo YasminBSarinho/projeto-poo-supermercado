@@ -14,42 +14,42 @@ public class Funcionario extends Usuario{
     	super(nome, cargo, login, senha, email, matricula);
     }
 
-    public static void mostrarListaDeProdutosCadastrados(SistemaMercado sistema){
-        ArrayList <Produto> lista =  sistema.getProdutosEmEstoque();
-        System.out.println("--- Listar Produto ---");
-        System.out.println();
-        System.out.println("Código | Nome do Produto | Valor | Quantidade");
-        for (Produto produto : lista) {
-            System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
-        }
 
-    }
-
-    public void listarProdutos(SistemaMercado sistema){ //arrumar nome feio
+    public void listarProdutos(SistemaMercado sistema, Boolean detalhes){ 
         ArrayList <Produto> lista =  sistema.getProdutosEmEstoque();
         Scanner scanner = new Scanner(System.in);
         int escolha = 0;
+
         while(true){
-            mostrarListaDeProdutosCadastrados(sistema);
-            System.out.println("[1] - Exibir detalhes de produto");
-            System.out.println("[2] - Voltar para o menu");
-            System.out.print("Digite o numero equivalente a opção selecionada: ");
-            escolha = scanner.nextInt();
+            System.out.println("--- Listar Produto ---");
+            System.out.println();
+            System.out.println("Código | Nome do Produto | Valor | Quantidade");
+
+            for (Produto produto : lista) {
+                System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
+                }
+
+            if(opcoes == true){
+                System.out.println("[1] - Exibir detalhes de produto");
+                System.out.println("[2] - Voltar para o menu");
+                System.out.print("Digite o numero equivalente a opção selecionada: ");
+                escolha = scanner.nextInt();
                             
-            switch (escolha) {
-                case 1:
-                    System.out.print("Digite o codigo do produto para detalhar: ");
-                    String codigoDoProduto = scanner.next();
-                    exibirDetalhesDeUmProduto(codigoDoProduto, lista);
-                    break;
-                case 2:
-                    break;
-                default:
-                    System.out.println("""
-                    ----------------------------------------------
-                    A opção escolhida é inválida, tente novamente!
-                    ----------------------------------------------""");
-                    continue;
+                switch (escolha) {
+                    case 1:
+                        System.out.print("Digite o codigo do produto para detalhar: ");
+                        String codigoDoProduto = scanner.next();
+                        exibirDetalhesDeUmProduto(codigoDoProduto, lista);
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        System.out.println("""
+                        ----------------------------------------------
+                        A opção escolhida é inválida, tente novamente!
+                        ----------------------------------------------""");
+                        continue;
+                }
             }
             break;
         }
