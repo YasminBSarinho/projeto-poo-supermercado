@@ -29,7 +29,7 @@ public class Funcionario extends Usuario{
                 System.out.println(produto.getCodigo() + " | " + produto.getNome() + " | " + produto.getValorUnitarioDeVenda() + " | " + produto.getUnidade());
                 }
 
-            if(detalhes == true){
+            if(detalhes){
                 System.out.println("""
                     [1] - Exibir detalhes de produto
                     [2] - Voltar para o menu """);
