@@ -12,6 +12,13 @@ public class Registro {
         this.valor = valor;
         this.data = data;
     }
+
+    public Registro(String tipo, float valor, String data){
+        this.codigo = tipo;
+        this.valor = valor;
+        this.data = data;
+    }
+
     public String getCodigo() {
         return codigo;
     }

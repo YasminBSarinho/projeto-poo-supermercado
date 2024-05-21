@@ -90,7 +90,7 @@ public class Programa {
 									
 									break;
 								case 5:
-									gerente.registrarValorUnitarioDeVendaDeProduto();
+									gerente.registrarValorUnitarioDeVendaDeProduto(sistema);
 									break;
 								case 6:
 									gerente.enviarEmailComCupomDeDesconto();

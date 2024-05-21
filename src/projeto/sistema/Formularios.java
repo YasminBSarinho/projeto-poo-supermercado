@@ -94,4 +94,14 @@ public class Formularios {
         Registro registro = new Registro(codigo, unidades, valorUnitario, "");
         return registro;
     }
+
+    public Registro solicitarValorDeVenda(String codigo){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Valor unitario de venda: ");
+        float valorUnitarioDeVenda = scanner.nextFloat();
+
+        Registro registro = new Registro(codigo, valorUnitarioDeVenda, "");
+        return registro;
+    }
 }
