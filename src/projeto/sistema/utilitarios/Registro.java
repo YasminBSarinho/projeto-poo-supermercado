@@ -1,4 +1,4 @@
-package projeto.sistema;
+package projeto.sistema.utilitarios;
 
 public class Registro {
     private String codigo;

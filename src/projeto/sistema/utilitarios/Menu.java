@@ -1,4 +1,4 @@
-package projeto.sistema;
+package projeto.sistema.utilitarios;
 
 import projeto.sistema.pessoas.usuarios.CaixaEletronico;
 import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
