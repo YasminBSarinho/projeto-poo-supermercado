@@ -8,7 +8,7 @@ import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.produtos.Produto;
 
-public class Funcionario extends Usuario{
+public abstract class Funcionario extends Usuario{
     public Funcionario(){
 
     }
