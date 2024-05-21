@@ -7,56 +7,27 @@ import projeto.sistema.produtos.*;
 import java.util.ArrayList;
 
 public class SistemaMercado {
-
-	private Gerente gerente;
-	private ArrayList<Almoxarife> almoxarifes = new ArrayList<>();
-	private ArrayList<CaixaEletronico> caixas = new ArrayList<>();
-	private ArrayList<Produto> produtosEmEstoque = new ArrayList<Produto>();
+	private ArrayList<Usuario> listaDeUsuarios = new ArrayList<>();
+	private ArrayList<Produto> produtosEmEstoque = new ArrayList<>();
 	private ArrayList<Cliente> clientes = new ArrayList<>();
 	private ArrayList<Registro> registrosDeCompra = new ArrayList<>();
 	private ArrayList<Registro> registrosDeVenda = new ArrayList<>();
 
 	public boolean verificarExistenciaDeUsuarios() {
-		if (gerente == null) {
+		if (listaDeUsuarios.isEmpty()) {
 			return false;
 		}
 		return true;
 	}
 
-	public void cadastrarFuncionario() throws Exception {
-			Formularios formulario = new Formularios();
-			Gerente gerente;
-			gerente = (Gerente) formulario.pedirDadosFuncionario("gerente");
-			this.setGerente(gerente);
-		}
 
 	public void cadastrarFuncionario(String cargo) throws Exception {
-
 		Formularios formulario = new Formularios();
-		switch (cargo) {
-			case "almoxarife":
-				Almoxarife almoxarife;
-				almoxarife = (Almoxarife) formulario.pedirDadosFuncionario(cargo);
-				almoxarifes.add(almoxarife);
-				break;
-			case "caixa eletronico":
-				CaixaEletronico caixa;
-				caixa = (CaixaEletronico) formulario.pedirDadosFuncionario(cargo);
-				caixas.add(caixa);
-				break;
-			default:
-				throw new Exception("O Tipo de usuário informado é inválido.");
-		}
+		getListaDeUsuarios().add(formulario.pedirDadosFuncionario(cargo));
 	}
 
 	public Usuario getUsuarioLogado(String login, String senha) {
-
-		ArrayList<Usuario> todosUsuarios = new ArrayList<>();
-		todosUsuarios.add(gerente);
-		todosUsuarios.addAll(almoxarifes);
-		todosUsuarios.addAll(caixas);
-
-		for (Usuario usuario : todosUsuarios) {
+		for (Usuario usuario : this.getListaDeUsuarios()) {
 			if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
 				return usuario;
 			}
@@ -65,28 +36,20 @@ public class SistemaMercado {
 	}
 
 	public Produto buscarProduto(String codigo){
-		for (Produto produto : getProdutosEmEstoque()){
+		for (Produto produto : this.getProdutosEmEstoque()){
 			if(produto.getCodigo().equals(codigo)){
 				return produto;
 			}
 		}
 		return null;
 	}
-	
-	public ArrayList<Almoxarife> getAlmoxarifes() {
-		return almoxarifes;
+
+	public ArrayList<Usuario> getListaDeUsuarios() {
+		return listaDeUsuarios;
 	}
 
-	public void setAlmoxarifes(ArrayList<Almoxarife> almoxarifes) {
-		this.almoxarifes = almoxarifes;
-	}
-
-	public ArrayList<CaixaEletronico> getCaixas() {
-		return caixas;
-	}
-
-	public void setCaixas(ArrayList<CaixaEletronico> caixas) {
-		this.caixas = caixas;
+	public void setListaDeUsuarios(ArrayList<Usuario> listaDeUsuarios) {
+		this.listaDeUsuarios = listaDeUsuarios;
 	}
 
 	public ArrayList<Produto> getProdutosEmEstoque() {
@@ -96,15 +59,6 @@ public class SistemaMercado {
 	public void setProdutosEmEstoque(ArrayList<Produto> produtosEmEstoque) {
 		this.produtosEmEstoque = produtosEmEstoque;
 	}
-
-	public Gerente getGerente() {
-		return gerente;
-	}
-
-	public void setGerente(Gerente gerente) {
-		this.gerente = gerente;
-	}
-
 	public ArrayList<Cliente> getClientes(){
 		return clientes;
 	}
