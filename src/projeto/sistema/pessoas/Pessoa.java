@@ -1,6 +1,6 @@
 package projeto.sistema.pessoas;
 
-public class Pessoa {
+public abstract class Pessoa {
     protected String nome;
     protected String email;
 

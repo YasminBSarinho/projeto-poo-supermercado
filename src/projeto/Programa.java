@@ -84,7 +84,7 @@ public class Programa {
 									gerente.cadastrarProduto(sistema);
 									break;
 								case 3:
-									System.out.print("almoxarife ou caixa eletronico? ");
+									System.out.print("almoxarife ou caixa? ");
 									String cargo = scanner.next();
 									sistema.cadastrarFuncionario(cargo);
 									break;

@@ -5,7 +5,7 @@ import projeto.sistema.utilitarios.Formularios;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.Cliente;
 
-public class Usuario extends Pessoa{
+public abstract class Usuario extends Pessoa{
 	protected String cargo;
 	protected String login;
 	protected String senha;
