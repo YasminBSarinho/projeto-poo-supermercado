@@ -14,22 +14,20 @@ public class SistemaMercado {
 	private ArrayList<Registro> registrosDeVenda = new ArrayList<>();
 
 	public boolean verificarExistenciaDeUsuarios() {
-		if (listaDeUsuarios.isEmpty()) {
-			return false;
-		}
-		return true;
-	}
+        return listaDeUsuarios.isEmpty();
+    }
 
 
-	public void cadastrarFuncionario(String cargo) throws Exception {
+	public void cadastrarFuncionario(String cargo) {
 		Formularios formulario = new Formularios();
-		getListaDeUsuarios().add(formulario.pedirDadosFuncionario(cargo));
+		Usuario usuario = formulario.pedirDadosFuncionario(cargo);
+		getListaDeUsuarios().add(usuario);
 	}
 
 	public Usuario getUsuarioLogado(String login, String senha) {
 		for (Usuario usuario : this.getListaDeUsuarios()) {
 			if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
-				return usuario;
+				 return usuario;
 			}
 		}
 		return null;

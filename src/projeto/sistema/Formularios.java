@@ -17,7 +17,7 @@ public class Formularios {
 		String login = scanner.next();
 		System.out.print("Informe a nova senha: ");
 		String senha = scanner.next();
-		
+
 		System.out.print("Deseja informar o email e NIS/PIS? sim(s) ou não(n): ");
 		String escolha = scanner.next();
         String email = "";
@@ -30,18 +30,16 @@ public class Formularios {
 			matricula = scanner.next();
         }
 
+        Usuario usuario = null;
+
         if(cargo.equals("gerente")){
-            Gerente gerente = new Gerente(nome, cargo, login, senha, email, matricula);
-            return gerente;
+            return new Gerente(nome, cargo, login, senha, email, matricula);
         }else if(cargo.equals("almoxarife")){
-            Almoxarife almoxarife = new Almoxarife(nome, cargo, login, senha, email, matricula);
-            return almoxarife;
+            return new Almoxarife(nome, cargo, login, senha, email, matricula);
         }else if(cargo.equals("caixa eletronico")){
-            CaixaEletronico caixa = new CaixaEletronico(nome, cargo, login, senha, email, matricula);
-            return caixa;
+            return new CaixaEletronico(nome, cargo, login, senha, email, matricula);
         }
         return null;
-
     }
 
     public Produto solicitarDadosDoProduto(){

@@ -22,25 +22,25 @@ public class Programa {
 		Boolean on = true;
 		
 		while (on) {
-			
+
 			System.out.println("-----Bem-Vindo-----");
-			
+
 			// Verifica se existe arquivo json para ler
 			try {
 				leitor = new FileReader("sistema.json");
 				sistema = json.fromJson(leitor, SistemaMercado.class);
 				leitor.close();
-				
+
 			} catch (Exception e) {
-				// No caso de não haver um aquivo para ler ainda
+				System.out.println(e.getMessage());
 			}
 
 			// Cadastro ou login inicial
 			try {
 
-				if (!sistema.verificarExistenciaDeUsuarios()) {
+				if (sistema.verificarExistenciaDeUsuarios()) {
 					System.out.println("Sistema iniciado pela primeira vez, requer o cadastro de gerente!");
-					sistema.cadastrarFuncionario();
+					sistema.cadastrarFuncionario("gerente");
 					escritor = new FileWriter("sistema.json");
 					String jsonSistema = json.toJson(sistema);
 					escritor.write(jsonSistema);
@@ -68,8 +68,8 @@ public class Programa {
 					while (true) {
 
 						int escolha = 0;
-						if (usuario instanceof Gerente){
 
+						if (usuario instanceof Gerente){
 							Gerente gerente = (Gerente) usuario;
 							Menu.mostrarMenuGerente(gerente);
 							escolha = scanner.nextInt();
@@ -87,7 +87,7 @@ public class Programa {
 									break;
 								case 4:
 									gerente.listarProdutos(sistema, true);
-									
+
 									break;
 								case 5:
 									gerente.registrarValorUnitarioDeVendaDeProduto(sistema);
@@ -109,7 +109,6 @@ public class Programa {
 									break;
 							}
 						}else if(usuario instanceof Almoxarife){
-
 							Almoxarife almoxarife = (Almoxarife) usuario;
 							Menu.mostrarMenuAlmoxarife(almoxarife);
 							escolha = scanner.nextInt();
@@ -138,7 +137,6 @@ public class Programa {
 							}
 						}
 						else if(usuario instanceof CaixaEletronico){
-
 							CaixaEletronico caixa = (CaixaEletronico) usuario;
 							Menu.mostrarMenuCaixa(caixa);
 							escolha = scanner.nextInt();
@@ -153,7 +151,7 @@ public class Programa {
 									escolha = -1;
 									break;
 								case 4:
-									escolha = -1;	
+									escolha = -1;
 									on = false;
 									break;
 								default:
