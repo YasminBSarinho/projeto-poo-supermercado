@@ -1,6 +1,7 @@
-package projeto.sistema;
+package projeto.sistema.utilitarios;
 
 import java.util.Scanner;
+
 import projeto.sistema.pessoas.Cliente;
 import projeto.sistema.pessoas.usuarios.*;
 import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
@@ -30,16 +31,17 @@ public class Formularios {
 			matricula = scanner.next();
         }
 
-        Usuario usuario = null;
-
-        if(cargo.equals("gerente")){
-            return new Gerente(nome, cargo, login, senha, email, matricula);
-        }else if(cargo.equals("almoxarife")){
-            return new Almoxarife(nome, cargo, login, senha, email, matricula);
-        }else if(cargo.equals("caixa eletronico")){
-            return new CaixaEletronico(nome, cargo, login, senha, email, matricula);
+        cargo = cargo.toLowerCase();
+        switch (cargo) {
+            case "gerente":
+                return new Gerente(nome, cargo, login, senha, email, matricula);
+            case "almoxarife":
+                return new Almoxarife(nome, cargo, login, senha, email, matricula);
+            case "caixa":
+                return new CaixaEletronico(nome, cargo, login, senha, email, matricula);
+            default:
+                return null;
         }
-        return null;
     }
 
     public Produto solicitarDadosDoProduto(){

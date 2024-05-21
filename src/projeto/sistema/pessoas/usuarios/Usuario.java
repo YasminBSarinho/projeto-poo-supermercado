@@ -1,7 +1,7 @@
 package projeto.sistema.pessoas.usuarios;
 
 import projeto.sistema.pessoas.Pessoa;
-import projeto.sistema.Formularios;
+import projeto.sistema.utilitarios.Formularios;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.Cliente;
 
@@ -11,6 +11,9 @@ public class Usuario extends Pessoa{
 	protected String senha;
 	protected String matricula;
 
+	public Usuario(){
+
+	}
 	public Usuario(String nome, String cargo, String login, String senha, String email, String matricula){
 		super(nome, email);
 		this.cargo = cargo;

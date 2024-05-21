@@ -1,39 +1,47 @@
 package projeto;
 
-import projeto.sistema.Menu;
-import projeto.sistema.SistemaMercado;
-import projeto.sistema.pessoas.usuarios.*;
-import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
-import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
-
 import java.util.Scanner;
-import com.google.gson.Gson;
 import java.io.FileWriter;
 import java.io.FileReader;
+import projeto.sistema.utilitarios.*;
+import projeto.sistema.SistemaMercado;
+import projeto.sistema.pessoas.usuarios.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
+import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
+import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 
 public class Programa {
 	public static void main(String[] args) {
 
+		ObjectMapper conversor = new ObjectMapper();
 		SistemaMercado sistema = new SistemaMercado();
 		Scanner scanner = new Scanner(System.in);
-		Gson json = new Gson();
 		FileWriter escritor;
 		FileReader leitor;
-		Boolean on = true;
-		
+		boolean on = true;
+
+		//tratamento do polimorfismo do json
+		PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
+				.allowIfSubType("projeto.sistema")
+				.allowIfSubType("java.util.ArrayList")
+				.build();
+		conversor.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
+
 		while (on) {
 
-			System.out.println("-----Bem-Vindo-----");
-
-			// Verifica se existe arquivo json para ler
+			// Verifica se existe arquivo json
 			try {
 				leitor = new FileReader("sistema.json");
-				sistema = json.fromJson(leitor, SistemaMercado.class);
+				sistema = conversor.readValue(leitor, SistemaMercado.class);
 				leitor.close();
-
-			} catch (Exception e) {
+			}
+			catch(Exception e){
 				System.out.println(e.getMessage());
 			}
+
+			System.out.println("-----Bem-Vindo-----");
 
 			// Cadastro ou login inicial
 			try {
@@ -42,12 +50,11 @@ public class Programa {
 					System.out.println("Sistema iniciado pela primeira vez, requer o cadastro de gerente!");
 					sistema.cadastrarFuncionario("gerente");
 					escritor = new FileWriter("sistema.json");
-					String jsonSistema = json.toJson(sistema);
+					String jsonSistema = conversor.writeValueAsString(sistema);
 					escritor.write(jsonSistema);
 					escritor.close();
 
 				} else {
-
 					System.out.print("Digite o seu login: ");
 					String login = scanner.next();
 					System.out.print("Digite o sua Senha: ");
@@ -57,18 +64,14 @@ public class Programa {
 
 					if (usuario != null) {
 						System.out.println("Login efetuado");
-
 					} else {
 						System.out.println("Credenciais informadas são inválidas");
 						continue;
 					}
 
 					// Sistema
-
 					while (true) {
-
 						int escolha = 0;
-
 						if (usuario instanceof Gerente){
 							Gerente gerente = (Gerente) usuario;
 							Menu.mostrarMenuGerente(gerente);
@@ -87,7 +90,6 @@ public class Programa {
 									break;
 								case 4:
 									gerente.listarProdutos(sistema, true);
-
 									break;
 								case 5:
 									gerente.registrarValorUnitarioDeVendaDeProduto(sistema);
@@ -158,16 +160,14 @@ public class Programa {
 									break;
 							}
 						}
-
 						escritor = new FileWriter("sistema.json");
-						String jsonSistema = json.toJson(sistema);
+						String jsonSistema = conversor.writeValueAsString(sistema);
 						escritor.write(jsonSistema);
 						escritor.close();
 
 						if(escolha == -1){
 							break;
 						}
-
 					}
 				}
 			} catch (Exception e) {

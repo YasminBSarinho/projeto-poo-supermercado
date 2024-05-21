@@ -3,13 +3,15 @@ package projeto.sistema.pessoas.usuarios.funcionarios;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import projeto.sistema.Formularios;
+import projeto.sistema.utilitarios.Formularios;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.produtos.Produto;
 
 public class Funcionario extends Usuario{
+    public Funcionario(){
 
+    }
     public Funcionario(String nome, String cargo, String login, String senha, String email, String matricula){
     	super(nome, cargo, login, senha, email, matricula);
     }

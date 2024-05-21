@@ -2,13 +2,16 @@ package projeto.sistema.pessoas.usuarios.funcionarios;
 
 import java.util.Scanner;
 
-import projeto.sistema.Formularios;
-import projeto.sistema.Registro;
+import projeto.sistema.utilitarios.Formularios;
+import projeto.sistema.utilitarios.Registro;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.produtos.Produto;
 
 public class Gerente extends Funcionario  {
 
+    public Gerente(){
+
+    }
     public Gerente(String nome, String cargo, String login, String senha, String email, String matricula){
     	super(nome, cargo, login, senha, email, matricula);
     }

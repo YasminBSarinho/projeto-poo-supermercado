@@ -1,9 +1,11 @@
 package projeto.sistema;
 
-import projeto.sistema.pessoas.usuarios.funcionarios.*;
 import projeto.sistema.pessoas.Cliente;
 import projeto.sistema.pessoas.usuarios.*;
 import projeto.sistema.produtos.*;
+import projeto.sistema.utilitarios.Formularios;
+import projeto.sistema.utilitarios.Registro;
+
 import java.util.ArrayList;
 
 public class SistemaMercado {
@@ -18,7 +20,7 @@ public class SistemaMercado {
     }
 
 
-	public void cadastrarFuncionario(String cargo) {
+	public void cadastrarFuncionario(String cargo) throws Exception {
 		Formularios formulario = new Formularios();
 		Usuario usuario = formulario.pedirDadosFuncionario(cargo);
 		getListaDeUsuarios().add(usuario);
