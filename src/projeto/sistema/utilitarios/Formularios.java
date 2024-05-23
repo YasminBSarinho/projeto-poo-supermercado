@@ -79,8 +79,7 @@ public class Formularios {
         Cliente adicionado com sucesso!
         -------------------------------""");
         
-        Cliente cliente = new Cliente(nome, email, cpf, endereco);
-        return cliente;
+        return new Cliente(nome, email, cpf, endereco);
     }
     
     public Registro solicitarDadosDeCompra(String codigo){
@@ -91,8 +90,7 @@ public class Formularios {
         System.out.print("Valor unitário de compra: ");
         float valorUnitario = scanner.nextFloat();
 
-        Registro registro = new Registro(codigo, unidades, valorUnitario, "");
-        return registro;
+        return new Registro(codigo, unidades, valorUnitario, "");
     }
 
     public Registro solicitarValorDeVenda(String codigo){
@@ -101,7 +99,26 @@ public class Formularios {
         System.out.print("Valor unitario de venda: ");
         float valorUnitarioDeVenda = scanner.nextFloat();
 
-        Registro registro = new Registro(codigo, valorUnitarioDeVenda, "");
-        return registro;
+        return new Registro(codigo, valorUnitarioDeVenda, "");
+
     }
+
+    public static Cupom criarCupom(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o codigo do cupom com 5 caracteres: ");
+        String codigo = scanner.next();
+        System.out.print("Digite o valor de desconto do cupom: ");
+        float desconto = scanner.nextFloat()/100;
+        System.out.println("""
+                ------------------------------
+                Codigo adicionado com sucesso!
+                ------------------------------""");
+
+        return new Cupom(codigo, desconto);
+    }
+
+    //public CaixaEletronico realizarVenda(){
+        
+    //}
 }

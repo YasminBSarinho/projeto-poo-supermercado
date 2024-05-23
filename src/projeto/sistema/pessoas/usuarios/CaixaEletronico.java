@@ -1,6 +1,5 @@
 package projeto.sistema.pessoas.usuarios;
 
-import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
 
 public class CaixaEletronico extends Usuario {
     public CaixaEletronico(){
@@ -14,6 +13,6 @@ public class CaixaEletronico extends Usuario {
     // reescreva o tipo de retorno e os parametros ou isso pode causar erros
 
     public void realizarVenda(){
-        // lucas vai fazer
+        
     }
 }

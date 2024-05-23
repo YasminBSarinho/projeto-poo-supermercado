@@ -95,7 +95,7 @@ public class Programa {
 									gerente.registrarValorUnitarioDeVendaDeProduto(sistema);
 									break;
 								case 6:
-									gerente.enviarEmailComCupomDeDesconto();
+									gerente.criarCupomDeDesconto(sistema);
 									break;
 								case 7:
 									gerente.gerarBalancoMensal();

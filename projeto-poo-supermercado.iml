@@ -7,7 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="gson-2.10.1" level="project" />
     <orderEntry type="library" name="jackson-annotations-2.17.1" level="project" />
     <orderEntry type="library" name="jackson-core-2.17.1" level="project" />
     <orderEntry type="library" name="jackson-databind-2.17.1" level="project" />
