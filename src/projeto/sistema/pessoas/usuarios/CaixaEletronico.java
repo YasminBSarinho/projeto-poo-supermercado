@@ -1,5 +1,11 @@
 package projeto.sistema.pessoas.usuarios;
 
+import java.util.Scanner;
+
+import projeto.sistema.SistemaMercado;
+import projeto.sistema.produtos.Produto;
+import projeto.sistema.utilitarios.Cupom;
+import projeto.sistema.utilitarios.Registro;
 
 public class CaixaEletronico extends Usuario {
     public CaixaEletronico(){
@@ -12,7 +18,46 @@ public class CaixaEletronico extends Usuario {
     // todos os metodos estao sem retorno pois ainda serao feitos, entao quando for fazer, 
     // reescreva o tipo de retorno e os parametros ou isso pode causar erros
 
-    public void realizarVenda(){
+    public void realizarVenda(SistemaMercado sistema){
         
+        Scanner scanner = new Scanner(System.in);
+        int escolha = 0;
+        float total = 0;
+       
+        while(escolha != -1){
+            System.out.print("Digite o codigo do produto que pegou: ");
+            String codigo = scanner.next();
+            Produto produto = sistema.buscarProduto(codigo);
+            System.out.print("Digite a quantidade comprada do produto: ");
+            int quantidade = scanner.nextInt();
+            produto.setUnidade(produto.getUnidade() - quantidade);
+            total += produto.getValorUnitarioDeVenda() * quantidade;
+            System.out.print("Se terminou de comprar digite -1: ");
+            escolha = scanner.nextInt();
+            
+        }
+        
+        System.out.print("Deseja adicionar cupom de desconto, (s)/(n): ");
+        String resposta = scanner.next();
+        
+        if(resposta.toLowerCase().equals("s")){
+            while (true) {
+                System.out.println("Digite o codigo do cupom ou -1 para sair: ");
+                String codigo = scanner.next();
+                Cupom cupom = sistema.validarCupom(codigo);
+                if(cupom == null){
+                    System.out.print("Codigo não é valido! Tente novamente!");
+                }
+                else if(codigo.equals("-1")){
+                    break;
+                }else{
+                    total -= total * cupom.getDesconto();
+                    break;
+                }
+            }
+        }
+        System.out.printf("A sua compra deu R$ %.2f ", total);
+        Registro registroDeVenda = new Registro(total, "");
+        sistema.getRegistrosDeVenda().add(registroDeVenda);
     }
 }

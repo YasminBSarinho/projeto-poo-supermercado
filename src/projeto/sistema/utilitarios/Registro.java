@@ -23,6 +23,11 @@ public class Registro {
         this.data = data;
     }
 
+    public Registro(float valor, String data){
+        this.valor = valor;
+        this.data = data;
+    }
+
     public String getCodigo() {
         return codigo;
     }

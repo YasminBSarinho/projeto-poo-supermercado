@@ -147,7 +147,7 @@ public class Programa {
 									caixa.cadastrarCliente(sistema);
 									break;
 								case 2:
-									caixa.realizarVenda();
+									caixa.realizarVenda(sistema);
 									break;
 								case 3:
 									escolha = -1;

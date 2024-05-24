@@ -43,6 +43,15 @@ public class SistemaMercado {
 		return null;
 	}
 
+	public Cupom validarCupom(String codigo){
+		for(Cupom cupom : this.getCupons()){
+			if(cupom.getCodigo().equals(codigo)){
+				return cupom;
+			}
+		}
+		return null;
+	}
+
 	public ArrayList<Usuario> getListaDeUsuarios() {
 		return listaDeUsuarios;
 	}

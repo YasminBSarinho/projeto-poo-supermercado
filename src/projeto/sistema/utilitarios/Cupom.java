@@ -3,7 +3,7 @@ package projeto.sistema.utilitarios;
 public class Cupom {
     private String codigo;
     private float desconto;
-
+    
     public Cupom(){
         
     }
