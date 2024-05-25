@@ -3,7 +3,6 @@ package projeto.sistema.pessoas.usuarios.funcionarios;
 import java.util.Scanner;
 
 import projeto.sistema.utilitarios.Formularios;
-import projeto.sistema.utilitarios.Registro;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.produtos.Produto;
 
@@ -18,24 +17,32 @@ public class Gerente extends Funcionario  {
     }
 
     public void registrarValorUnitarioDeVendaDeProduto(SistemaMercado sistema){
+        
         Formularios formulario = new Formularios();
         Scanner scanner = new Scanner(System.in);
+        Produto produto;
 
         listarProdutos(sistema, false);
-        System.out.print("Codigo do produto que deseja colocar o valor: ");
-        String codigo = scanner.next();
 
-        for (Produto produto: sistema.getProdutosEmEstoque()){
+        while(true){
+            System.out.print("Codigo do produto que deseja colocar o valor, ou digite sair para finalizar: ");
             
-            if(produto.getCodigo().equals(codigo)){
-                Registro registro = formulario.solicitarValorDeVenda(codigo);
-                float valorUnitarioDeVenda = registro.getValor();
+            String codigo = scanner.next();
+            if(codigo.equals("sair")){
+                break;
+            }
 
-                produto.setValorUnitarioDeVenda(valorUnitarioDeVenda);
-                sistema.getRegistrosDeCompra().add(registro);
+            produto = sistema.buscarProduto(codigo);
+            if(produto == null){
+                System.out.print("Produto não encontrado, tente novamente!");
+                continue;
+            }else{
+                System.out.print("Valor unitario de venda: ");
+                float valor = scanner.nextFloat();
+                produto.setValorUnitarioDeVenda(valor);
+                break;
             }
         }
-
     }
     
     public void gerarBalancoMensal(){

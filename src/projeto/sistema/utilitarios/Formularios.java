@@ -93,16 +93,6 @@ public class Formularios {
         return new Registro(codigo, unidades, valorUnitario, "");
     }
 
-    public Registro solicitarValorDeVenda(String codigo){
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Valor unitario de venda: ");
-        float valorUnitarioDeVenda = scanner.nextFloat();
-
-        return new Registro(codigo, valorUnitarioDeVenda, "");
-
-    }
-
     public static Cupom criarCupom(){
         Scanner scanner = new Scanner(System.in);
 
