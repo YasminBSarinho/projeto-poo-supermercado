@@ -23,6 +23,13 @@ public class CaixaEletronico extends Usuario {
         Scanner scanner = new Scanner(System.in);
         String escolha = "";
         float total = 0;
+        
+        System.out.print("CPF: ");
+        String cpf = scanner.next();
+        if (sistema.buscarCliente(cpf) == null) {
+            System.out.print("Cliente não cadastrado, prosseguindo com cadastro.");
+            this.cadastrarCliente(sistema);
+        }
 
         while(!escolha.toLowerCase().equals("sair")){
             

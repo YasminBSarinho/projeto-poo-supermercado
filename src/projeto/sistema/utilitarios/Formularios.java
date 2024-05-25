@@ -57,22 +57,28 @@ public class Formularios {
 
     public Cliente solicitarInformacaoCliente(){
         Scanner scanner = new Scanner(System.in);
+        String email = "";
+        String endereco = "";
         
-        System.out.print("Digite o nome: ");
+         System.out.print("Digite o nome: ");
         String nome = scanner.next();
         
-        System.out.print("Digite o email: ");
-        String email = scanner.next();
-
         System.out.print("Digite o CPF: ");
         String cpf = scanner.next();
         
-        System.out.print("Deseja adicionar o endereço para receber promoções e cupons de desconto? sim(s) ou não(n): ");
+        System.out.print("Adicionar o endereço opcionalmente? sim(s) ou não(n): ");
         String escolha = scanner.next();
-        String endereco = "";
+       
         if (escolha.equals("s")) {
 			System.out.print("Digite o endereço: ");
 			endereco = scanner.next();
+            escolha = null;
+        }
+        System.out.print("Adicionar email para receber cupons de desconto? sim(s) ou não(n): ");
+        escolha = scanner.next();
+        if(escolha.equals("s")){
+            System.out.print("Digite o email: ");
+            email = scanner.next();
         }
         System.out.println("""
         -------------------------------

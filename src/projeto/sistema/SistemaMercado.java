@@ -34,6 +34,15 @@ public class SistemaMercado {
 		return null;
 	}
 
+	public Cliente buscarCliente(String cpf){
+		for(Cliente cliente : this.getClientes()){
+			if(cliente.getCpf().equals(cpf)){
+				return cliente;
+			}
+		}
+		return null;
+	}
+
 	public Produto buscarProduto(String codigo){
 		for (Produto produto : this.getProdutosEmEstoque()){
 			if(produto.getCodigo().equals(codigo)){
