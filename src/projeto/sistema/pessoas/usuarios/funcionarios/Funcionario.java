@@ -16,7 +16,6 @@ public abstract class Funcionario extends Usuario{
     	super(nome, cargo, login, senha, email, matricula);
     }
 
-
     public void listarProdutos(SistemaMercado sistema, Boolean detalhes){ 
         ArrayList <Produto> lista =  sistema.getProdutosEmEstoque();
         Scanner scanner = new Scanner(System.in);

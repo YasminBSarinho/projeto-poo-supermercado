@@ -57,30 +57,35 @@ public class Formularios {
 
     public Cliente solicitarInformacaoCliente(){
         Scanner scanner = new Scanner(System.in);
+        String email = "";
+        String endereco = "";
         
-        System.out.print("Digite o nome: ");
+         System.out.print("Digite o nome: ");
         String nome = scanner.next();
         
-        System.out.print("Digite o email: ");
-        String email = scanner.next();
-
         System.out.print("Digite o CPF: ");
         String cpf = scanner.next();
         
-        System.out.print("Deseja adicionar o endereço para receber promoções e cupons de desconto? sim(s) ou não(n): ");
+        System.out.print("Adicionar o endereço opcionalmente? sim(s) ou não(n): ");
         String escolha = scanner.next();
-        String endereco = "";
+       
         if (escolha.equals("s")) {
 			System.out.print("Digite o endereço: ");
 			endereco = scanner.next();
+            escolha = null;
+        }
+        System.out.print("Adicionar email para receber cupons de desconto? sim(s) ou não(n): ");
+        escolha = scanner.next();
+        if(escolha.equals("s")){
+            System.out.print("Digite o email: ");
+            email = scanner.next();
         }
         System.out.println("""
         -------------------------------
         Cliente adicionado com sucesso!
         -------------------------------""");
         
-        Cliente cliente = new Cliente(nome, email, cpf, endereco);
-        return cliente;
+        return new Cliente(nome, email, cpf, endereco);
     }
     
     public Registro solicitarDadosDeCompra(String codigo){
@@ -91,17 +96,25 @@ public class Formularios {
         System.out.print("Valor unitário de compra: ");
         float valorUnitario = scanner.nextFloat();
 
-        Registro registro = new Registro(codigo, unidades, valorUnitario, "");
-        return registro;
+        return new Registro(codigo, unidades, valorUnitario, "");
     }
 
-    public Registro solicitarValorDeVenda(String codigo){
+    public static Cupom criarCupom(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Valor unitario de venda: ");
-        float valorUnitarioDeVenda = scanner.nextFloat();
+        System.out.print("Digite o codigo do cupom com 5 caracteres: ");
+        String codigo = scanner.next();
+        System.out.print("Digite o valor de desconto do cupom: ");
+        float desconto = scanner.nextFloat()/100;
+        System.out.println("""
+                ------------------------------
+                Codigo adicionado com sucesso!
+                ------------------------------""");
 
-        Registro registro = new Registro(codigo, valorUnitarioDeVenda, "");
-        return registro;
+        return new Cupom(codigo, desconto);
     }
+
+    //public CaixaEletronico realizarVenda(){
+        
+    //}
 }

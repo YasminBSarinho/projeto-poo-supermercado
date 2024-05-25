@@ -3,9 +3,7 @@ package projeto.sistema;
 import projeto.sistema.pessoas.Cliente;
 import projeto.sistema.pessoas.usuarios.*;
 import projeto.sistema.produtos.*;
-import projeto.sistema.utilitarios.Formularios;
-import projeto.sistema.utilitarios.Registro;
-
+import projeto.sistema.utilitarios.*;
 import java.util.ArrayList;
 
 public class SistemaMercado {
@@ -14,6 +12,7 @@ public class SistemaMercado {
 	private ArrayList<Cliente> clientes = new ArrayList<>();
 	private ArrayList<Registro> registrosDeCompra = new ArrayList<>();
 	private ArrayList<Registro> registrosDeVenda = new ArrayList<>();
+	private ArrayList<Cupom> cupons = new ArrayList<>();
 
 	public boolean verificarExistenciaDeUsuarios() {
         return listaDeUsuarios.isEmpty();
@@ -35,10 +34,28 @@ public class SistemaMercado {
 		return null;
 	}
 
+	public Cliente buscarCliente(String cpf){
+		for(Cliente cliente : this.getClientes()){
+			if(cliente.getCpf().equals(cpf)){
+				return cliente;
+			}
+		}
+		return null;
+	}
+
 	public Produto buscarProduto(String codigo){
 		for (Produto produto : this.getProdutosEmEstoque()){
 			if(produto.getCodigo().equals(codigo)){
 				return produto;
+			}
+		}
+		return null;
+	}
+
+	public Cupom validarCupom(String codigo){
+		for(Cupom cupom : this.getCupons()){
+			if(cupom.getCodigo().equals(codigo)){
+				return cupom;
 			}
 		}
 		return null;
@@ -81,5 +98,13 @@ public class SistemaMercado {
 
 	public void setRegistrosDeCompra(ArrayList<Registro> registrosDeCompra) {
 		this.registrosDeCompra = registrosDeCompra;
+	}
+
+	public ArrayList<Cupom> getCupons(){
+		return cupons;
+	}
+
+	public void setCupons(ArrayList<Cupom> cupons){
+		this.cupons = cupons;
 	}
 }

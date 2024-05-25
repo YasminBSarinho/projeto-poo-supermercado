@@ -6,6 +6,10 @@ public class Registro {
     private float valor;
     private String data;
 
+    public Registro(){
+        
+    }
+    
     public Registro(String tipo, int unidades, float valor, String data){
         this.codigo = tipo;
         this.unidades = unidades;
@@ -13,8 +17,7 @@ public class Registro {
         this.data = data;
     }
 
-    public Registro(String tipo, float valor, String data){
-        this.codigo = tipo;
+    public Registro(float valor, String data){
         this.valor = valor;
         this.data = data;
     }

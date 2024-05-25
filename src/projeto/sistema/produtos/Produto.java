@@ -55,7 +55,7 @@ public class Produto {
 	public int getUnidade() {
 		return unidade;
 	}
-
+		
 	public void setUnidade(int unidade) {
 		this.unidade = unidade;
 	}

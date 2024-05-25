@@ -4,6 +4,10 @@ public class Cliente extends Pessoa{
     protected String cpf;
     protected String endereco;
 
+    public Cliente(){
+        
+    }
+
     public Cliente(String nome, String cpf, String endereco){
         super(nome);
         this.cpf = cpf;
@@ -31,14 +35,4 @@ public class Cliente extends Pessoa{
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-
-    public void realizarvenda(){
-
-    }
-
-    public void registrarDataEHora(){}
-    
-    public void emitirNotaDeVenda(){}
-
-
 }

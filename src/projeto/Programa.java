@@ -95,7 +95,7 @@ public class Programa {
 									gerente.registrarValorUnitarioDeVendaDeProduto(sistema);
 									break;
 								case 6:
-									gerente.enviarEmailComCupomDeDesconto();
+									gerente.criarCupomDeDesconto(sistema);
 									break;
 								case 7:
 									gerente.gerarBalancoMensal();
@@ -147,7 +147,7 @@ public class Programa {
 									caixa.cadastrarCliente(sistema);
 									break;
 								case 2:
-									caixa.realizarVenda();
+									caixa.realizarVenda(sistema);
 									break;
 								case 3:
 									escolha = -1;
