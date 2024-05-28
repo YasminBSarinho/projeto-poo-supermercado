@@ -56,10 +56,10 @@ public class OuvinteCadastro implements ActionListener {
     }
     
     public void Cadastrar(String cargo, ArrayList<Usuario> listaDeUsuarios){
-        String nome = janela.getCampoDonome().getText();
+        String nome = janela.getCampoDoNome().getText();
         String login = janela.getCampoDoLogin().getText();
-        String senha = new String(janela.getCampoDasenha().getPassword());
-        String confirmacao = new String(janela.getCampoDeconfirmacao().getPassword());
+        String senha = new String(janela.getCampoDaSenha().getPassword());
+        String confirmacao = new String(janela.getCampoDeConfirmacao().getPassword());
         String email = janela.getCampoDoEmail().getText();
         String matricula = janela.getCampoDaMatricula().getText();
         boolean cadastrado = true;

@@ -11,10 +11,10 @@ import projeto.sistema.ouvintes.OuvinteCadastro;
 public class JanelaDeCadastro extends JanelaPadrao{ 
     private JButton botaoCadastrar;
     private JButton botaoCancelar;
-    private JTextField campoDonome;
+    private JTextField campoDoNome;
     private JTextField campoDoLogin;
-    private JPasswordField campoDasenha;
-    private JPasswordField campoDeconfirmacao;
+    private JPasswordField campoDaSenha;
+    private JPasswordField campoDeConfirmacao;
     private JTextField campoDoEmail;
     private JTextField campoDaMatricula;
     private JCheckBox checkAlmoxarife;
@@ -26,7 +26,7 @@ public class JanelaDeCadastro extends JanelaPadrao{
         int[] boundsNome = {60, 100, 120, 30};
         int[] boundsLogin = {60, 145, 120, 30};
         int[] boundsSenha = {60, 185, 120, 30};
-        int[] boundsConfirmacao = {60, 225, 120, 30};
+        int[] boundsConfirmacao = {60, 225, 125, 30};
         int[] boundsEmail= {60, 265, 120, 30};
         int[] boundsMatricula = {60, 305, 120, 30};
         int[] boundsBotaoCadastrar = {180, 370, 140, 50};
@@ -37,13 +37,12 @@ public class JanelaDeCadastro extends JanelaPadrao{
         
         setCampoDonome((JTextField) adicionarCampo("Nome:", getFonteDoCampo(), boundsNome, false));
         setCampoDoLogin((JTextField) adicionarCampo("Novo Login:", getFonteDoCampo() , boundsLogin , false));
-        setCampoDasenha((JPasswordField) adicionarCampo("Nova Senha:", getFonteDoCampo(), boundsSenha, true));
-        setCampoDeconfirmacao((JPasswordField) adicionarCampo("Confirmação:", getFonteDoCampo(), boundsConfirmacao, true));
+        setCampoDaSenha((JPasswordField) adicionarCampo("Nova Senha:", getFonteDoCampo(), boundsSenha, true));
+        setCampoDeConfirmacao((JPasswordField) adicionarCampo("Confirmação:", getFonteDoCampo(), boundsConfirmacao, true));
         setCampoDoEmail((JTextField) adicionarCampo("Email:", getFonteDoCampo(), boundsEmail, false));
         setCampoDaMatricula((JTextField) adicionarCampo("Matricula:", getFonteDoCampo(), boundsMatricula, false));
         setBotaoCadastrar(adicionarBotao("Cadastrar", boundsBotaoCadastrar));
         setBotaoCancelar(adicionarBotao("Cancelar", boundsBotaoCancelar));
-
         setCheckAlmoxarife(adicionarCheckBox("Almoxarife", boundsCheckAlmoxarife));
         setCheckCaixa(adicionarCheckBox("Caixa Eletronico", boundsCheckcaixa));
 
@@ -80,12 +79,12 @@ public class JanelaDeCadastro extends JanelaPadrao{
         this.botaoCancelar = botaoCancelar;
     }
 
-    public JTextField getCampoDonome() {
-        return campoDonome;
+    public JTextField getCampoDoNome() {
+        return campoDoNome;
     }
 
     public void setCampoDonome(JTextField campoDonome) {
-        this.campoDonome = campoDonome;
+        this.campoDoNome = campoDonome;
     }
 
     public JTextField getCampoDoLogin() {
@@ -96,20 +95,20 @@ public class JanelaDeCadastro extends JanelaPadrao{
         this.campoDoLogin = campoDoLogin;
     }
 
-    public JPasswordField getCampoDasenha() {
-        return campoDasenha;
+    public JPasswordField getCampoDaSenha() {
+        return campoDaSenha;
     }
 
-    public void setCampoDasenha(JPasswordField campoDasenha) {
-        this.campoDasenha = campoDasenha;
+    public void setCampoDaSenha(JPasswordField campoDaSenha) {
+        this.campoDaSenha = campoDaSenha;
     }
 
-    public JPasswordField getCampoDeconfirmacao() {
-        return campoDeconfirmacao;
+    public JPasswordField getCampoDeConfirmacao() {
+        return campoDeConfirmacao;
     }
 
-    public void setCampoDeconfirmacao(JPasswordField campoDeconfirmacao) {
-        this.campoDeconfirmacao = campoDeconfirmacao;
+    public void setCampoDeConfirmacao(JPasswordField campoDeconfirmacao) {
+        this.campoDeConfirmacao = campoDeconfirmacao;
     }
 
     public JTextField getCampoDoEmail() {

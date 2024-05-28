@@ -37,7 +37,7 @@ public class JanelaPadrao extends JFrame{
     public JTextComponent adicionarCampo(String texto, Font fonte, int[] bounds, Boolean secreto){
         JLabel textoDoCampo = new JLabel(texto);
         textoDoCampo.setFont(fonte);
-        textoDoCampo.setHorizontalAlignment(JLabel.LEFT);
+        textoDoCampo.setHorizontalAlignment(JLabel.RIGHT);
         textoDoCampo.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
         JTextComponent campo;
 
