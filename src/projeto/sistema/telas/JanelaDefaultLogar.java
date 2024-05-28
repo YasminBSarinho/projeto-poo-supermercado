@@ -6,17 +6,16 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
-
 import projeto.sistema.SistemaMercado;
 import java.awt.*;
 
-public class JanelaPadrao extends JFrame{
+public class JanelaDefaultLogar extends JFrame{
     SistemaMercado sistema;
     private final Font fonteDoCabecalho = new Font("arial", Font.BOLD, 30);
     private final Font fonteDoCampo = new Font("arial", Font.PLAIN, 20);
     private final Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
 
-    public JanelaPadrao(SistemaMercado sistema){
+    public JanelaDefaultLogar(SistemaMercado sistema){
         setSistema(sistema);
         setSize(560,500);
         setLocationRelativeTo(null);
@@ -47,7 +46,7 @@ public class JanelaPadrao extends JFrame{
             campo = new JTextField();
         }
 
-        int xDoCampo = bounds[0] + bounds[2] + 10;
+        int xDoCampo = 195;
         int yDoCampo = bounds[1]; 
         int alturaDoCampo = bounds[3];
 

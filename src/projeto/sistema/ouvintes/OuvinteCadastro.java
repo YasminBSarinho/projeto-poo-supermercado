@@ -14,6 +14,7 @@ import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
 import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
 import projeto.sistema.telas.JanelaDeCadastro;
+import projeto.sistema.telas.JanelaDeLogin;
 import projeto.sistema.utilitarios.Json;
 
 public class OuvinteCadastro implements ActionListener {
@@ -41,6 +42,7 @@ public class OuvinteCadastro implements ActionListener {
         else if(checkCaixa.isSelected()){
             checkAlmoxarife.setEnabled(false);
             cargo = "Caixa Eletronico";
+
         }else{
             checkAlmoxarife.setEnabled(true);
             checkCaixa.setEnabled(true);
@@ -49,7 +51,6 @@ public class OuvinteCadastro implements ActionListener {
         if(e.getSource().equals(botaoCadastrar)){
             this.Cadastrar(cargo, usuarios);
             
-
         } else if (e.getSource().equals(botaoCancelar)) {
             janela.dispose();
         }
@@ -67,14 +68,14 @@ public class OuvinteCadastro implements ActionListener {
         if(sistema.isSemGerente()){
             cargo = "Gerente";
         }
-        switch (cargo) {
-            case "Almoxarife":
+        switch (cargo.toLowerCase()) {
+            case "almoxarife":
                 listaDeUsuarios.add(new Almoxarife(nome, cargo, login, senha, email, matricula));
                 break;
-            case "Caixa Eletronico":
+            case "caixa eletronico":
                 listaDeUsuarios.add(new CaixaEletronico(nome, cargo, login, senha, email, matricula));;
                 break;
-            case "Gerente":
+            case "gerente":
                 listaDeUsuarios.add(new Gerente(nome, cargo, login, senha, email, matricula));
                 break;
             default:
@@ -84,8 +85,10 @@ public class OuvinteCadastro implements ActionListener {
                 break;
         }if (cadastrado){
             Json json = new Json();
-            janela.setVisible(false);
+            janela.dispose();
+            JOptionPane.showMessageDialog(janela, "Cadastro concluido!");
             json.escreverJson(sistema);
+            JanelaDeLogin janelaDeLogin = new JanelaDeLogin(sistema);
         }
     }
 

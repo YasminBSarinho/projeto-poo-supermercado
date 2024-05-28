@@ -4,8 +4,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.ouvintes.OuvinteLogin;
 
-public class JanelaDeLogin extends JanelaPadrao{
+public class JanelaDeLogin extends JanelaDefaultLogar{
     private JTextField campoDoLogin;
     private JPasswordField campoDaSenha;
     private JButton botaoLogin;
@@ -15,15 +16,19 @@ public class JanelaDeLogin extends JanelaPadrao{
         super(sistema);
         setSize(560, 300); 
         adicionarCabecalho("Login");
-        int[] boundsLogin = {90, 100, 65, 30};
-        int[] boundsSenha = {90, 145, 65, 30};
-        int[] boundsBotaoLogin = {100, 200, 140, 50};
-        int[] boundsBotaoCancelar = {305, 200, 140, 50};
+        int[] boundsLogin = {30, 100, 120, 30};
+        int[] boundsSenha = {30, 145, 120, 30};
+        int[] boundsBotaoLogin = {180, 200, 140, 50};
+        int[] boundsBotaoCancelar = {350, 200, 140, 50};
 
-        setCampoDoLogin((JTextField) adicionarCampo("Login:", getFonteDoCampo(), boundsLogin,false));
-        setCampoDasenha((JPasswordField) adicionarCampo("Senha:", getFonteDoCampo(), boundsSenha, true));
+        setCampoDoLogin((JTextField) adicionarCampo("Login",getFonteDoCampo(), boundsLogin, false));
+        setCampoDasenha((JPasswordField) adicionarCampo("Senha",getFonteDoCampo(), boundsSenha, true));
         setBotaoLogin(adicionarBotao("Confirmar", boundsBotaoLogin));
         setBotaoCancelar(adicionarBotao("Cancelar", boundsBotaoCancelar));
+
+        OuvinteLogin login = new OuvinteLogin(this, sistema);
+        getBotaoLogin().addActionListener(login);
+        getBotaoCancelar().addActionListener(login);
         setVisible(true);
     }
 

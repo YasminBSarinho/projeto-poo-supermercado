@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteCadastro;
 
-public class JanelaDeCadastro extends JanelaPadrao{ 
+public class JanelaDeCadastro extends JanelaDefaultLogar{ 
     private JButton botaoCadastrar;
     private JButton botaoCancelar;
     private JTextField campoDoNome;
@@ -26,7 +26,7 @@ public class JanelaDeCadastro extends JanelaPadrao{
         int[] boundsNome = {60, 100, 120, 30};
         int[] boundsLogin = {60, 145, 120, 30};
         int[] boundsSenha = {60, 185, 120, 30};
-        int[] boundsConfirmacao = {60, 225, 125, 30};
+        int[] boundsConfirmacao = {60, 225, 120, 30};
         int[] boundsEmail= {60, 265, 120, 30};
         int[] boundsMatricula = {60, 305, 120, 30};
         int[] boundsBotaoCadastrar = {180, 370, 140, 50};
