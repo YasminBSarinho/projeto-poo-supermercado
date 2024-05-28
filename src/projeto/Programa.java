@@ -5,9 +5,11 @@ import projeto.sistema.utilitarios.Json;
 
 public class Programa {
 	public static void main(String[] args) {
-		SistemaMercado sistema = new SistemaMercado();
+		
 		Json json  = new Json();
-		json.lerJson(sistema);
+		SistemaMercado sistema = json.lerJson();
+		System.out.println(sistema.getListaDeUsuarios().size());
 		JanelaDeCadastro janela = new JanelaDeCadastro(sistema);
+
 	}
 }

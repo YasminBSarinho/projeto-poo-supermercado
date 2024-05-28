@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 
 import projeto.sistema.SistemaMercado;
-import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
 
 public class Json {
     private ObjectMapper conversor;
@@ -16,22 +15,24 @@ public class Json {
         setConversor(conversor);
 
         PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
-        .allowIfSubType("projeto.sistema")
-        .allowIfSubType("java.util.ArrayList")
-        .build();
-    getConversor().activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
+            .allowIfSubType("projeto.sistema")
+            .allowIfSubType("java.util.ArrayList")
+            .build();
+        getConversor().activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
     }
 
-    public void lerJson(SistemaMercado sistema){
+    public SistemaMercado lerJson(){
+        SistemaMercado sistema;
         try {
 			FileReader leitor = new FileReader("sistema.json");
-			sistema = conversor.readValue(leitor, SistemaMercado.class);
-			leitor.close();
+            sistema = conversor.readValue(leitor, SistemaMercado.class);
+            leitor.close();
 		}
 		catch(Exception e){
+            sistema = new SistemaMercado();
 			System.out.println(e.getMessage());
 		}
-
+        return sistema;
     }
     public void escreverJson(SistemaMercado sistema){
         try{
@@ -39,8 +40,8 @@ public class Json {
             String jsonSistema = conversor.writeValueAsString(sistema);
             escritor.write(jsonSistema);
             escritor.close();
-        }catch(Exception error){
-            System.out.println(error.getMessage());
+        }catch(Exception e){
+            System.out.print(e.getMessage());
         }
             
     }

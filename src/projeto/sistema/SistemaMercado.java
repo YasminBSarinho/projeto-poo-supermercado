@@ -6,6 +6,8 @@ import projeto.sistema.produtos.*;
 import projeto.sistema.utilitarios.*;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class SistemaMercado {
 	private ArrayList<Usuario> listaDeUsuarios = new ArrayList<>();
 	private ArrayList<Produto> produtosEmEstoque = new ArrayList<>();
@@ -14,7 +16,8 @@ public class SistemaMercado {
 	private ArrayList<Registro> registrosDeVenda = new ArrayList<>();
 	private ArrayList<Cupom> cupons = new ArrayList<>();
 
-	public boolean verificarExistenciaDeUsuarios() {
+	@JsonIgnore
+	public boolean isSemGerente() {
         return listaDeUsuarios.isEmpty();
     }
 

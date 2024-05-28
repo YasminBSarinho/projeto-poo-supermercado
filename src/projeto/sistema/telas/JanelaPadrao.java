@@ -17,6 +17,7 @@ public class JanelaPadrao extends JFrame{
     private final Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
 
     public JanelaPadrao(SistemaMercado sistema){
+        setSistema(sistema);
         setSize(560,500);
         setLocationRelativeTo(null);
         setLayout(null);
