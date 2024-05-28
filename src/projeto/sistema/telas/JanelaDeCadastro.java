@@ -40,6 +40,7 @@ public class JanelaDeCadastro extends JanelaPadrao{
 
         OuvinteCadastro ouvinteCadastro = new OuvinteCadastro(this, sistema);
         getBotaoCadastrar().addActionListener(ouvinteCadastro);
+        getBotaoCancelar().addActionListener(ouvinteCadastro);
         setVisible(true);
     }
 

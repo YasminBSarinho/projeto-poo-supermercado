@@ -33,6 +33,8 @@ public class OuvinteCadastro implements ActionListener {
                 janela.setVisible(false);
                 json.escreverJson(sistema);
             }
+        }else if (e.getSource().equals(janela.getBotaoCancelar())){
+            janela.dispose();
         }
     }
     
