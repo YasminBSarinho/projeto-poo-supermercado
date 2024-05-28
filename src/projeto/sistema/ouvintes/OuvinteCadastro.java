@@ -1,15 +1,11 @@
 package projeto.sistema.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileWriter;
-
 import javax.swing.JButton;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
 import projeto.sistema.telas.JanelaDeCadastro;
+import projeto.sistema.utilitarios.Json;
 
 public class OuvinteCadastro implements ActionListener {
     private JanelaDeCadastro janela;
@@ -23,26 +19,19 @@ public class OuvinteCadastro implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton botaoCadastrar = janela.getBotaoCadastrar();
-        	ObjectMapper conversor = new ObjectMapper();
+        Json json = new Json();
         if(e.getSource().equals(botaoCadastrar)){
             String nome = janela.getCampoDonome().getText();
             String login = janela.getCampoDoLogin().getText();
             String senha = new String(janela.getCampoDasenha().getPassword());
             String confirmacao = new String(janela.getCampoDeconfirmacao().getPassword());
-            String email = janela.getCampoDoLogin().getText();
+            String email = janela.getCampoDoEmail().getText();
             String matricula = janela.getCampoDaMatricula().getText();
             if(sistema.verificarExistenciaDeUsuarios()){
-                try{
-                    Gerente gerente = new Gerente(nome,"gerente",login, senha, email, matricula);
-                    sistema.getListaDeUsuarios().add(gerente);
-                	FileWriter escritor = new FileWriter("sistema.json");
-					String jsonSistema = conversor.writeValueAsString(sistema);
-					escritor.write(jsonSistema);
-					escritor.close();
-                    janela.setVisible(false);
-                }catch(Exception error){
-                    System.out.println(error.getMessage());
-                }
+                Gerente gerente = new Gerente(nome,"gerente",login, senha, email, matricula);
+                sistema.getListaDeUsuarios().add(gerente);
+                janela.setVisible(false);
+                json.escreverJson(sistema);
             }
         }
     }
