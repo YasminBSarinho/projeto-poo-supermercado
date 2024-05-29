@@ -33,11 +33,7 @@ public class JanelaDefaultLogar extends JFrame{
             add(cabecalho);
     }
 
-    public JTextComponent adicionarCampo(String texto, Font fonte, int[] bounds, Boolean secreto){
-        JLabel textoDoCampo = new JLabel(texto);
-        textoDoCampo.setFont(fonte);
-        textoDoCampo.setHorizontalAlignment(JLabel.RIGHT);
-        textoDoCampo.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
+    public JTextComponent adicionarCampo(Font fonte, int[] bounds, Boolean secreto){
         JTextComponent campo;
 
         if(secreto){
@@ -46,13 +42,8 @@ public class JanelaDefaultLogar extends JFrame{
             campo = new JTextField();
         }
 
-        int xDoCampo = 195;
-        int yDoCampo = bounds[1]; 
-        int alturaDoCampo = bounds[3];
-
         campo.setFont(getFonteDoCampo());
-        campo.setBounds(xDoCampo, yDoCampo, 280, alturaDoCampo);
-        add(textoDoCampo);
+        campo.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
         add(campo);
 
         if(campo instanceof JPasswordField){
@@ -60,6 +51,14 @@ public class JanelaDefaultLogar extends JFrame{
         }else{
             return (JTextField) campo;
         }
+    }
+
+    public void adicionarTexto(String texto, Font fonte, int[] bounds){
+        JLabel textoDoCampo = new JLabel(texto);
+        textoDoCampo.setFont(fonte);
+        textoDoCampo.setHorizontalAlignment(JLabel.RIGHT);
+        textoDoCampo.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
+        add(textoDoCampo);
     }
 
     public JButton adicionarBotao(String texto, int[] bounds){

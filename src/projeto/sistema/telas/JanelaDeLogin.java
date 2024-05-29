@@ -18,11 +18,17 @@ public class JanelaDeLogin extends JanelaDefaultLogar{
         adicionarCabecalho("Login");
         int[] boundsLogin = {30, 100, 120, 30};
         int[] boundsSenha = {30, 145, 120, 30};
-        int[] boundsBotaoLogin = {180, 200, 140, 50};
-        int[] boundsBotaoCancelar = {350, 200, 140, 50};
+        int[] boundsBotaoLogin = {120, 200, 140, 50};
+        int[] boundsBotaoCancelar = {290, 200, 140, 50};
 
-        setCampoDoLogin((JTextField) adicionarCampo("Login",getFonteDoCampo(), boundsLogin, false));
-        setCampoDasenha((JPasswordField) adicionarCampo("Senha",getFonteDoCampo(), boundsSenha, true));
+        int[] boundsLoginCampo = {boundsLogin[0] + boundsLogin[2] + 10, 100, 280, 30};
+        int[] boundsSenhaCampo = {boundsSenha[0] + boundsSenha[2] + 10, 145, 280, 30};
+
+       
+        adicionarTexto("Login:", getFonteDoCampo(), boundsLogin);
+        setCampoDoLogin((JTextField) adicionarCampo(getFonteDoCampo(), boundsLoginCampo, false));
+        adicionarTexto("Senha:", getFonteDoCampo(), boundsSenha);
+        setCampoDasenha((JPasswordField) adicionarCampo(getFonteDoCampo(), boundsSenhaCampo, true));
         setBotaoLogin(adicionarBotao("Confirmar", boundsBotaoLogin));
         setBotaoCancelar(adicionarBotao("Cancelar", boundsBotaoCancelar));
 

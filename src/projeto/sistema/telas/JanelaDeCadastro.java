@@ -14,7 +14,7 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
     private JTextField campoDoNome;
     private JTextField campoDoLogin;
     private JPasswordField campoDaSenha;
-    private JPasswordField campoDeConfirmacao;
+    private JPasswordField campoConfirmar;
     private JTextField campoDoEmail;
     private JTextField campoDaMatricula;
     private JCheckBox checkAlmoxarife;
@@ -23,10 +23,12 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
     public JanelaDeCadastro(SistemaMercado sistema){
         super(sistema);
         adicionarCabecalho("Cadastro");
+
+        // Textos
         int[] boundsNome = {60, 100, 120, 30};
         int[] boundsLogin = {60, 145, 120, 30};
         int[] boundsSenha = {60, 185, 120, 30};
-        int[] boundsConfirmacao = {60, 225, 120, 30};
+        int[] boundsConfirmar = {60, 225, 120, 30};
         int[] boundsEmail= {60, 265, 120, 30};
         int[] boundsMatricula = {60, 305, 120, 30};
         int[] boundsBotaoCadastrar = {180, 370, 140, 50};
@@ -34,13 +36,27 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
         int[] boundsCheckAlmoxarife = {220, 70, 100, 30};
         int[] boundsCheckcaixa = {320, 70, 120, 30};
         
+        //Campos
+        int[] boundsNomeCampo = {boundsNome[0] + boundsNome[2] + 10, 100, 280, 30};
+        int[] boundsLoginCampo = {boundsLogin[0] + boundsLogin[2] + 10, 145, 280, 30};
+        int[] boundsSenhaCampo = {boundsSenha[0] + boundsSenha[2] + 10, 185, 280, 30};
+        int[] boundsConfirmarCampo = {boundsConfirmar[0] + boundsConfirmar[2] + 10, 225, 280, 30};
+        int[] boundsEmailCampo= {boundsEmail[0] + boundsEmail[2] + 10, 265, 280, 30};
+        int[] boundsMatriculaCampo = {boundsMatricula[0] + boundsMatricula[2] + 10, 305, 280, 30};
         
-        setCampoDonome((JTextField) adicionarCampo("Nome:", getFonteDoCampo(), boundsNome, false));
-        setCampoDoLogin((JTextField) adicionarCampo("Novo Login:", getFonteDoCampo() , boundsLogin , false));
-        setCampoDaSenha((JPasswordField) adicionarCampo("Nova Senha:", getFonteDoCampo(), boundsSenha, true));
-        setCampoDeConfirmacao((JPasswordField) adicionarCampo("Confirmação:", getFonteDoCampo(), boundsConfirmacao, true));
-        setCampoDoEmail((JTextField) adicionarCampo("Email:", getFonteDoCampo(), boundsEmail, false));
-        setCampoDaMatricula((JTextField) adicionarCampo("Matricula:", getFonteDoCampo(), boundsMatricula, false));
+        adicionarTexto("Nome:", getFonteDoBotao(), boundsNome);
+
+        setCampoDonome((JTextField) adicionarCampo(getFonteDoCampo(), boundsNomeCampo, false));
+        adicionarTexto("Login:", getFonteDoBotao(), boundsLogin);
+        setCampoDoLogin((JTextField) adicionarCampo(getFonteDoCampo() , boundsLoginCampo , false));
+        adicionarTexto("Senha:", getFonteDoBotao(), boundsSenha);
+        setCampoDaSenha((JPasswordField) adicionarCampo(getFonteDoCampo(), boundsSenhaCampo, true));
+        adicionarTexto("Confirmar:", getFonteDoBotao(), boundsConfirmar);
+        setCampoConfirmar((JPasswordField) adicionarCampo(getFonteDoCampo(), boundsConfirmarCampo, true));
+        adicionarTexto("Email:", getFonteDoBotao(), boundsEmail);
+        setCampoDoEmail((JTextField) adicionarCampo(getFonteDoCampo(), boundsEmailCampo, false));
+        adicionarTexto("NIS/PIS:", getFonteDoBotao(), boundsMatricula);
+        setCampoDaMatricula((JTextField) adicionarCampo(getFonteDoCampo(), boundsMatriculaCampo, false));
         setBotaoCadastrar(adicionarBotao("Cadastrar", boundsBotaoCadastrar));
         setBotaoCancelar(adicionarBotao("Cancelar", boundsBotaoCancelar));
         setCheckAlmoxarife(adicionarCheckBox("Almoxarife", boundsCheckAlmoxarife));
@@ -103,12 +119,12 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
         this.campoDaSenha = campoDaSenha;
     }
 
-    public JPasswordField getCampoDeConfirmacao() {
-        return campoDeConfirmacao;
+    public void setCampoConfirmar(JPasswordField campoConfirmar){
+        this.campoConfirmar = campoConfirmar;
     }
 
-    public void setCampoDeConfirmacao(JPasswordField campoDeconfirmacao) {
-        this.campoDeConfirmacao = campoDeconfirmacao;
+    public JPasswordField getCampoConfirmar(){
+        return campoConfirmar;
     }
 
     public JTextField getCampoDoEmail() {
