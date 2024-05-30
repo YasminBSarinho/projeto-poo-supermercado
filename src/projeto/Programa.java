@@ -1,5 +1,4 @@
 package projeto;
-import java.util.Scanner;
 
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.telas.JanelaDeCadastro;
