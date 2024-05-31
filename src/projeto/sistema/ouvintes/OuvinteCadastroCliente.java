@@ -17,8 +17,6 @@ import projeto.sistema.utilitarios.Json;
 public class OuvinteCadastroCliente implements ActionListener {
     private JanelaDeCadastroCliente janela;
     private SistemaMercado sistema;
-    private JTextField campoDoEmail;
-    private JTextField campoDoEndereco;
 
     public OuvinteCadastroCliente(JanelaDeCadastroCliente janela, SistemaMercado sistema){
         this.setJanela(janela);
@@ -32,6 +30,8 @@ public class OuvinteCadastroCliente implements ActionListener {
         JCheckBox checkEmail = janela.getCheckEmail();
         JCheckBox checkEndereco = janela.getCheckEndereco();
         ArrayList<Cliente> clientes = sistema.getClientes();
+        JTextField email = janela.getCampoDoEmail();
+        JTextField endereco = janela.getCampoDoEndereco();
 
         if(e.getSource().equals(botaoCadastrar)){
             this.CadastrarCliente(clientes);
@@ -41,10 +41,17 @@ public class OuvinteCadastroCliente implements ActionListener {
         }
 
         if(checkEmail.isSelected()){
-            campoDoEmail.setEnabled(true);
+            email.setEnabled(true);
         }
-        else if (checkEndereco.isSelected()){
-            campoDoEndereco.setEnabled(true);
+        else if(!checkEmail.isSelected()){
+            email.setEnabled(false);
+        }
+        
+        if (checkEndereco.isSelected()){
+            endereco.setEnabled(true);
+        }
+        else if(!checkEndereco.isSelected()){
+            endereco.setEnabled(false);
         }
     }
 

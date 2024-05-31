@@ -1,5 +1,7 @@
 package projeto.sistema.telas;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
@@ -30,8 +32,8 @@ public class JanelaDeCadastroCliente extends JanelaDefaultLogar{
         int[] boundsEndereco = {60, 225, 120, 30};
         int[] boundsBotaoCadastrar = {180, 280, 140, 50};
         int[] boundsBotaoCancelar = {350, 280, 140, 50};
-        int[] boundsCheckEmail = {60, 185, 60, 30};
-        int[] boundsCheckEndereco = {60, 225, 50, 30};
+        int[] boundsCheckEmail = {100, 185, 20, 30};
+        int[] boundsCheckEndereco = {60, 225, 20, 30};
         
         int[] boundsNomeCampo = {boundsNome[0] + boundsNome[2] + 10, 100, 280, 30};
         int[] boundsCPFCampo = {boundsCPF[0] + boundsCPF[2] + 10, 145, 280, 30};
@@ -39,23 +41,29 @@ public class JanelaDeCadastroCliente extends JanelaDefaultLogar{
         int[] boundsEnderecoCampo = {boundsEndereco[0] + boundsEndereco[2] + 10, 225, 280, 30};
         
         adicionarTexto("Nome:", getFonteDoBotao(), boundsNome);
-        setCampoDoNome((JTextField) adicionarCampo(getFonteDoBotao(), boundsNomeCampo, false));
+        setCampoDoNome((JTextField) adicionarCampo(getFonteDoCampo(), boundsNomeCampo, false));
         
         adicionarTexto("CPF:", getFonteDoBotao(), boundsCPF);
-        setCampoDoCPF((JTextField) adicionarCampo(getFonteDoBotao(), boundsCPFCampo, false));
+        setCampoDoCPF((JTextField) adicionarCampo(getFonteDoCampo(), boundsCPFCampo, false));
         
         adicionarTexto("Email:", getFonteDoBotao(), boundsEmail);
-        setCampoDoEmail((JTextField) adicionarCampo(getFonteDoBotao(), boundsEmailCampo, false));
+        setCampoDoEmail((JTextField) adicionarCampo(getFonteDoCampo(), boundsEmailCampo, false));
+        campoDoEmail.setEnabled(false);
 
         adicionarTexto("Endereço:", getFonteDoBotao(), boundsEndereco);
-        setCampoDoEndereco((JTextField) adicionarCampo(getFonteDoBotao(), boundsEnderecoCampo, false));
+        setCampoDoEndereco((JTextField) adicionarCampo(getFonteDoCampo(), boundsEnderecoCampo, false));
+        campoDoEndereco.setEnabled(false);
         
         setBotaoCadastrar(adicionarBotao("Cadastrar", boundsBotaoCadastrar));
         setBotaoCancelar(adicionarBotao("Cancelar", boundsBotaoCancelar));
         
         setCheckEmail(adicionarCheckBox("", boundsCheckEmail));
         setCheckEndereco(adicionarCheckBox("", boundsCheckEndereco));
-        
+        checkEmail.setBackground(Color.GRAY);
+        checkEndereco.setBackground(Color.GRAY);
+        checkEmail.setOpaque(true);
+        checkEndereco.setOpaque(true);
+
         OuvinteCadastroCliente ouvinteCadastroCliente = new OuvinteCadastroCliente(this, sistema);
         getBotaoCadastrar().addActionListener(ouvinteCadastroCliente);
         getBotaoCancelar().addActionListener(ouvinteCadastroCliente);
