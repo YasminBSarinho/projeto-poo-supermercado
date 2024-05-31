@@ -1,14 +1,16 @@
 package projeto.sistema.telas;
 import javax.swing.JTextField;
 
-import com.fasterxml.jackson.databind.cfg.PackageVersion;
-
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteLogin;
+
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 public class JanelaDeLogin extends JanelaDefaultLogar{
     private JTextField campoDoLogin;
@@ -18,7 +20,7 @@ public class JanelaDeLogin extends JanelaDefaultLogar{
 
     public JanelaDeLogin(SistemaMercado sistema){
         super(sistema);
-        setSize(500, 350); 
+        setSize(500, 300); 
         setLayout(null);
         setResizable(false);
         adicionarCabecalho("Login");
@@ -27,26 +29,37 @@ public class JanelaDeLogin extends JanelaDefaultLogar{
         JPanel painelCampos = new JPanel();
         JPanel painelBotoes = new JPanel();
         
-        painelTextos.setLayout(new GridLayout(6, 1, 0, 20));
-        painelCampos.setLayout(new GridLayout(6, 1, 0, 20));
-        painelBotoes.setLayout(new GridLayout(1, 2, 50, 10));
+        painelTextos.setLayout(new GridLayout(2, 1, 0, 10));
+        painelCampos.setLayout(new GridLayout(2, 1, 0, 10));
+        painelBotoes.setLayout(new GridLayout(1, 2, 10, 10));
 
-        painelBotoes.setBounds(100, 230, 300, 50);
-       
-        painelTextos.setBounds(50, 100,400, 120);
+        painelTextos.setBounds(90, 100, 80, 70);
+        painelCampos.setBounds(170, 100, 220,70);
+        painelBotoes.setBounds(170, 190, 220, 50);
 
         JLabel login = new  JLabel("Login:");
         JLabel senha = new  JLabel("Senha:");
+
         campoDoLogin = new JTextField(15);
         campoDaSenha = new JPasswordField(15);
-        senha.setFont(getFonteDoCampo());
-        login.setFont(getFonteDoCampo());
 
         botaoLogin = new JButton("Login");
-        botaoLogin.setFont(getFonteDoBotao());
         botaoCancelar = new JButton("Cancelar");
-        botaoCancelar.setFont(getFonteDoBotao());
 
+        JComponent[] componentesTextos = {login, senha};
+        JComponent [] componentesCampos = {campoDoLogin, campoDaSenha};
+        JComponent [] componentesBotoes = {botaoLogin, botaoCancelar};
+
+        adicionarAoPainel(componentesTextos, painelTextos);
+        adicionarAoPainel(componentesCampos, painelCampos);
+        adicionarAoPainel(componentesBotoes, painelBotoes);
+        adicionarFontes(componentesTextos);
+        adicionarFontes(componentesCampos);
+        setFonteDoBotao(new Font("arial",Font.BOLD, 15));
+        adicionarFontes(componentesBotoes);
+        add(painelTextos);
+        add(painelCampos);
+        add(painelBotoes);
 
         OuvinteLogin loginO = new OuvinteLogin(this, sistema);
         getBotaoLogin().addActionListener(loginO);

@@ -13,7 +13,11 @@ public class Programa {
 		SistemaMercado sistema = json.lerJson();
 		System.out.println(sistema.getListaDeUsuarios().size());
 
-
-		JanelaDeLogin  janelaDeLogin = new JanelaDeLogin(sistema);
+		if(sistema.isSemGerente()){
+			JanelaDeCadastro janelaCadastro =  new JanelaDeCadastro(sistema);
+		}else{
+			JanelaDeLogin  janelaDeLogin = new JanelaDeLogin(sistema);
+		}
 	}
+
 }

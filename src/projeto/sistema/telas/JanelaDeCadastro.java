@@ -41,11 +41,12 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
 
         painelTextos.setLayout(new GridLayout(6, 1, 0, 20));
         painelCampos.setLayout(new GridLayout(6, 1, 0, 20));
-        painelBotoes.setLayout(new GridLayout(1, 2, 30, 0));
+        painelBotoes.setLayout(new GridLayout(1, 2, 100, 0));
         painelCheckers.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        
         painelTextos.setBounds(50, 100, 100, 300);
         painelCampos.setBounds(150, 100, 400, 300);
-        painelBotoes.setBounds(250, 420, 300, 50);
+        painelBotoes.setBounds(150, 420, 400, 30);
         painelCheckers.setBounds(300, 70, 250, 30);
 
         JLabel textoNome = new JLabel("Nome:");
@@ -67,31 +68,23 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
         botaoCadastrar = new JButton("Cadastrar");
         botaoCancelar  = new JButton("Cancelar");
 
-        JComponent[] componentes = {textoNome, textoLogin, textoSenha,
-                                    textoConfirmar, textoEmail, textoMatricula,
-                                    campoDoNome,campoDoLogin, campoDaSenha, campoConfirmar,
-                                    campoDoEmail,campoDaMatricula, botaoCadastrar, botaoCancelar };
-        adicionarFontes(componentes);
+        JComponent[] componentesCampos = {campoDoNome,campoDoLogin, campoDaSenha, campoConfirmar,
+                                        campoDoEmail,campoDaMatricula};
 
-        painelTextos.add(textoNome);
-        painelTextos.add(textoLogin);
-        painelTextos.add(textoSenha);
-        painelTextos.add(textoConfirmar);
-        painelTextos.add(textoEmail);
-        painelTextos.add(textoMatricula);
+        JComponent[] componentesTextos = {textoNome, textoLogin, textoSenha,
+                                        textoConfirmar, textoEmail, textoMatricula};
 
-        painelCampos.add(campoDoNome);
-        painelCampos.add(campoDoLogin);
-        painelCampos.add(campoDaSenha);
-        painelCampos.add(campoConfirmar);
-        painelCampos.add(campoDoEmail);
-        painelCampos.add(campoDaMatricula);
-
-        painelBotoes.add(botaoCadastrar);
-        painelBotoes.add(botaoCancelar);
-        painelCheckers.add(checkAlmoxarife);
-        painelCheckers.add(checkCaixa);
+        JComponent[] componentesBotoes = {botaoCadastrar, botaoCancelar};  
         
+        JComponent[] componentesCheckers = {checkAlmoxarife, checkCaixa};
+
+        adicionarFontes(componentesTextos);
+        adicionarFontes(componentesCampos);
+        adicionarFontes(componentesBotoes);
+        adicionarAoPainel(componentesBotoes, painelBotoes);
+        adicionarAoPainel(componentesCampos, painelCampos);
+        adicionarAoPainel(componentesTextos, painelTextos);
+        adicionarAoPainel(componentesCheckers, painelCheckers);
     
         add(painelTextos);
         add(painelCampos);
@@ -106,15 +99,6 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
         setVisible(true);
     }
 
-    public JCheckBox adicionarCheckBox(String texto,int [] bounds){
-        JCheckBox checkBox = new JCheckBox(texto);
-        checkBox.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
-        add(checkBox);
-        if(sistema.isSemGerente()){
-            checkBox.setVisible(false);
-        }
-        return checkBox;
-    }
     public JButton getBotaoCadastrar() {
         return botaoCadastrar;
     }

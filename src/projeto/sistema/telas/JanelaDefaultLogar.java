@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -13,9 +14,9 @@ import java.awt.*;
 
 public class JanelaDefaultLogar extends JFrame{
     SistemaMercado sistema;
-    private final Font fonteDoCabecalho = new Font("arial", Font.BOLD, 30);
-    private final Font fonteDoCampo = new Font("arial", Font.PLAIN, 20);
-    private final Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
+    private Font fonteDoCabecalho = new Font("arial", Font.BOLD, 30);
+    private Font fonteDoCampo = new Font("arial", Font.PLAIN, 20);
+    private Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
 
     public JanelaDefaultLogar(SistemaMercado sistema){
         setSistema(sistema);
@@ -42,6 +43,11 @@ public class JanelaDefaultLogar extends JFrame{
             else if(componente instanceof JButton){
                 componente.setFont(getFonteDoBotao());
             }
+        }
+    }
+    public void adicionarAoPainel(JComponent[] componentes, JPanel painel){
+        for(JComponent componente : componentes){
+            painel.add(componente);
         }
     }
 
@@ -96,8 +102,22 @@ public class JanelaDefaultLogar extends JFrame{
     public Font getFonteDoBotao() {
         return fonteDoBotao;
     }
+    
+
+    public void setFonteDoCabecalho(Font fonteDoCabecalho) {
+        this.fonteDoCabecalho = fonteDoCabecalho;
+    }
+
+    public void setFonteDoCampo(Font fonteDoCampo) {
+        this.fonteDoCampo = fonteDoCampo;
+    }
+
+    public void setFonteDoBotao(Font fonteDoBotao) {
+        this.fonteDoBotao = fonteDoBotao;
+    }
 
     public Font getFonteDoCabecalho() {
         return fonteDoCabecalho;
     }
+
 }
