@@ -13,15 +13,15 @@ import projeto.sistema.pessoas.usuarios.CaixaEletronico;
 import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
 import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
-import projeto.sistema.telas.JanelaDeCadastro;
-import projeto.sistema.telas.JanelaDeLogin;
+import projeto.sistema.telas.JanelaCadastroFuncionario;
+import projeto.sistema.telas.JanelaLogin;
 import projeto.sistema.utilitarios.Json;
 
 public class OuvinteCadastro implements ActionListener {
-    private JanelaDeCadastro janela;
+    private JanelaCadastroFuncionario janela;
     private SistemaMercado sistema;
 
-    public OuvinteCadastro(JanelaDeCadastro janela, SistemaMercado sistema){
+    public OuvinteCadastro(JanelaCadastroFuncionario janela, SistemaMercado sistema){
         this.setJanela(janela);
         this.setSistema(sistema);
     }
@@ -88,15 +88,15 @@ public class OuvinteCadastro implements ActionListener {
             janela.dispose();
             JOptionPane.showMessageDialog(janela, "Cadastro concluido!");
             json.escreverJson(sistema);
-            JanelaDeLogin janelaDeLogin = new JanelaDeLogin(sistema);
+            JanelaLogin janelaDeLogin = new JanelaLogin(sistema);
         }
     }
 
-    public JanelaDeCadastro getJanela() {
+    public JanelaCadastroFuncionario getJanela() {
         return janela;
     }
 
-    public void setJanela(JanelaDeCadastro janela) {
+    public void setJanela(JanelaCadastroFuncionario janela) {
         this.janela = janela;
     }
 

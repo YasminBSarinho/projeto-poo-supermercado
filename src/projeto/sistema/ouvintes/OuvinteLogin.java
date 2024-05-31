@@ -8,13 +8,13 @@ import javax.swing.JTextField;
 
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.Usuario;
-import projeto.sistema.telas.JanelaDeLogin;
+import projeto.sistema.telas.JanelaLogin;
 
 public class OuvinteLogin implements ActionListener{
-    private JanelaDeLogin janela;
+    private JanelaLogin janela;
     private SistemaMercado sistema;
     
-    public OuvinteLogin(JanelaDeLogin janela, SistemaMercado sistema){
+    public OuvinteLogin(JanelaLogin janela, SistemaMercado sistema){
         setJanela(janela);
         setSistema(sistema);
     }
@@ -63,11 +63,11 @@ public class OuvinteLogin implements ActionListener{
         this.sistema = sistema;
     }
 
-    public JanelaDeLogin getJanela() {
+    public JanelaLogin getJanela() {
         return janela;
     }
 
-    public void setJanela(JanelaDeLogin janela) {
+    public void setJanela(JanelaLogin janela) {
         this.janela = janela;
     }
 

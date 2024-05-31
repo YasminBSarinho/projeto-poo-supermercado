@@ -11,14 +11,14 @@ import javax.swing.JTextField;
 
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.Cliente;
-import projeto.sistema.telas.JanelaDeCadastroCliente;
+import projeto.sistema.telas.JanelaCadastroCliente;
 import projeto.sistema.utilitarios.Json;
 
 public class OuvinteCadastroCliente implements ActionListener {
-    private JanelaDeCadastroCliente janela;
+    private JanelaCadastroCliente janela;
     private SistemaMercado sistema;
 
-    public OuvinteCadastroCliente(JanelaDeCadastroCliente janela, SistemaMercado sistema){
+    public OuvinteCadastroCliente(JanelaCadastroCliente janela, SistemaMercado sistema){
         this.setJanela(janela);
         this.setSistema(sistema);
     }
@@ -69,11 +69,11 @@ public class OuvinteCadastroCliente implements ActionListener {
 
     }
     
-    public JanelaDeCadastroCliente getJanela() {
+    public JanelaCadastroCliente getJanela() {
         return janela;
     }
     
-    public void setJanela(JanelaDeCadastroCliente janela) {
+    public void setJanela(JanelaCadastroCliente janela) {
         this.janela = janela;
     }
     

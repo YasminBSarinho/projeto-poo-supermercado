@@ -8,23 +8,21 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteLogin;
-
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-public class JanelaDeLogin extends JanelaDefaultLogar{
+public class JanelaLogin extends JanelaBaseFormularios{
     private JTextField campoDoLogin;
     private JPasswordField campoDaSenha;
     private JButton botaoLogin;
     private JButton botaoCancelar;
 
-    public JanelaDeLogin(SistemaMercado sistema){
+    public JanelaLogin(SistemaMercado sistema){
         super(sistema);
         setSize(500, 300); 
         setLayout(null);
-        setResizable(false);
-        adicionarCabecalho("Login");
+        setLocationRelativeTo(null);
 
+        adicionarCabecalho("Login");
         JPanel painelTextos = new JPanel();
         JPanel painelCampos = new JPanel();
         JPanel painelBotoes = new JPanel();
@@ -57,6 +55,7 @@ public class JanelaDeLogin extends JanelaDefaultLogar{
         adicionarFontes(componentesCampos);
         setFonteDoBotao(new Font("arial",Font.BOLD, 15));
         adicionarFontes(componentesBotoes);
+        
         add(painelTextos);
         add(painelCampos);
         add(painelBotoes);

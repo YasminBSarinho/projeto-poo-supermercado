@@ -1,10 +1,6 @@
 package projeto.sistema.telas;
-
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -12,11 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteCadastro;
 
-public class JanelaDeCadastro extends JanelaDefaultLogar{ 
+public class JanelaCadastroFuncionario extends JanelaBaseFormularios{ 
     private JButton botaoCadastrar;
     private JButton botaoCancelar;
     private JTextField campoDoNome;
@@ -28,11 +23,11 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
     private JCheckBox checkAlmoxarife;
     private JCheckBox checkCaixa;
     
-    public JanelaDeCadastro(SistemaMercado sistema){
+    public JanelaCadastroFuncionario(SistemaMercado sistema){
         super(sistema);
         setSize(600, 540); 
-        adicionarCabecalho("Cadastro");
         setLayout(null);
+        setLocationRelativeTo(null);
 
         JPanel painelTextos = new JPanel();
         JPanel painelCampos = new JPanel();
@@ -46,7 +41,7 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
         
         painelTextos.setBounds(50, 100, 100, 300);
         painelCampos.setBounds(150, 100, 400, 300);
-        painelBotoes.setBounds(150, 420, 400, 30);
+        painelBotoes.setBounds(150, 420, 400, 50);
         painelCheckers.setBounds(300, 70, 250, 30);
 
         JLabel textoNome = new JLabel("Nome:");
@@ -91,6 +86,14 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
         add(painelCheckers);
         add(painelBotoes);
         
+        if(sistema.isSemGerente()){
+            adicionarCabecalho("Cadastrar Gerente");
+            checkAlmoxarife.setVisible(false);
+            checkCaixa.setVisible(false);
+        }else{
+            adicionarCabecalho("Cadastrar Funcionários");
+        }
+
         OuvinteCadastro ouvinteCadastro = new OuvinteCadastro(this, sistema);
         getCheckAlmoxarife().addActionListener(ouvinteCadastro);
         getCheckCaixa().addActionListener(ouvinteCadastro);

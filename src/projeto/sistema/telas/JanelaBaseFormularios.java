@@ -6,22 +6,21 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 import projeto.sistema.SistemaMercado;
 import java.awt.*;
 
-public class JanelaDefaultLogar extends JFrame{
+public class JanelaBaseFormularios extends JFrame{
     SistemaMercado sistema;
     private Font fonteDoCabecalho = new Font("arial", Font.BOLD, 30);
     private Font fonteDoCampo = new Font("arial", Font.PLAIN, 20);
     private Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
 
-    public JanelaDefaultLogar(SistemaMercado sistema){
+    public JanelaBaseFormularios(SistemaMercado sistema){
         setSistema(sistema);
-        setSize(560,500);
-        setLocationRelativeTo(null);
+        setResizable(false);
+        setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -69,22 +68,6 @@ public class JanelaDefaultLogar extends JFrame{
         }else{
             return (JTextField) campo;
         }
-    }
-
-    public void adicionarTexto(String texto, Font fonte, int[] bounds){
-        JLabel textoDoCampo = new JLabel(texto);
-        textoDoCampo.setFont(fonte);
-        textoDoCampo.setHorizontalAlignment(JLabel.RIGHT);
-        textoDoCampo.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
-        add(textoDoCampo);
-    }
-
-    public JButton adicionarBotao(String texto, int[] bounds){
-        JButton botao = new JButton(texto);
-        botao.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
-        botao.setFont(getFonteDoBotao());
-        add(botao);
-        return botao;
     }
 
     public SistemaMercado getSistema() {
