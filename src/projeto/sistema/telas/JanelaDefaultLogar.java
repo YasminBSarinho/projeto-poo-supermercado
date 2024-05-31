@@ -1,9 +1,11 @@
 package projeto.sistema.telas;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 import projeto.sistema.SistemaMercado;
@@ -19,18 +21,28 @@ public class JanelaDefaultLogar extends JFrame{
         setSistema(sistema);
         setSize(560,500);
         setLocationRelativeTo(null);
-        setLayout(null);
-        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public void adicionarCabecalho(String texto){
+            int largura = getWidth();
             JLabel cabecalho = new JLabel(texto, JLabel.CENTER);
             cabecalho.setFont(getFonteDoCabecalho());
-            cabecalho.setBounds(0, 0, 560, 60);
+            cabecalho.setBounds(0, 0, largura, largura/10);
             cabecalho.setBackground(Color.LIGHT_GRAY);
             cabecalho.setOpaque(true);
             add(cabecalho);
+    }
+
+    public void adicionarFontes(JComponent[]  componentes){
+        for(JComponent componente : componentes){
+            if(componente instanceof JTextField || componente instanceof JLabel || componente instanceof JPasswordField){
+                componente.setFont(getFonteDoCampo());
+            }
+            else if(componente instanceof JButton){
+                componente.setFont(getFonteDoBotao());
+            }
+        }
     }
 
     public JTextComponent adicionarCampo(Font fonte, int[] bounds, Boolean secreto){

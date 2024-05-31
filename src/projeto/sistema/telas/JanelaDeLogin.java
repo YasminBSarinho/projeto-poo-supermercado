@@ -1,11 +1,15 @@
 package projeto.sistema.telas;
 import javax.swing.JTextField;
+
+import com.fasterxml.jackson.databind.cfg.PackageVersion;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteLogin;
-
+import java.awt.GridLayout;
 public class JanelaDeLogin extends JanelaDefaultLogar{
     private JTextField campoDoLogin;
     private JPasswordField campoDaSenha;
@@ -14,27 +18,39 @@ public class JanelaDeLogin extends JanelaDefaultLogar{
 
     public JanelaDeLogin(SistemaMercado sistema){
         super(sistema);
-        setSize(560, 300); 
+        setSize(500, 350); 
+        setLayout(null);
+        setResizable(false);
         adicionarCabecalho("Login");
-        int[] boundsLogin = {30, 100, 120, 30};
-        int[] boundsSenha = {30, 145, 120, 30};
-        int[] boundsBotaoLogin = {120, 200, 140, 50};
-        int[] boundsBotaoCancelar = {290, 200, 140, 50};
 
-        int[] boundsLoginCampo = {boundsLogin[0] + boundsLogin[2] + 10, 100, 280, 30};
-        int[] boundsSenhaCampo = {boundsSenha[0] + boundsSenha[2] + 10, 145, 280, 30};
+        JPanel painelTextos = new JPanel();
+        JPanel painelCampos = new JPanel();
+        JPanel painelBotoes = new JPanel();
+        
+        painelTextos.setLayout(new GridLayout(6, 1, 0, 20));
+        painelCampos.setLayout(new GridLayout(6, 1, 0, 20));
+        painelBotoes.setLayout(new GridLayout(1, 2, 50, 10));
 
+        painelBotoes.setBounds(100, 230, 300, 50);
        
-        adicionarTexto("Login:", getFonteDoCampo(), boundsLogin);
-        setCampoDoLogin((JTextField) adicionarCampo(getFonteDoCampo(), boundsLoginCampo, false));
-        adicionarTexto("Senha:", getFonteDoCampo(), boundsSenha);
-        setCampoDasenha((JPasswordField) adicionarCampo(getFonteDoCampo(), boundsSenhaCampo, true));
-        setBotaoLogin(adicionarBotao("Confirmar", boundsBotaoLogin));
-        setBotaoCancelar(adicionarBotao("Cancelar", boundsBotaoCancelar));
+        painelTextos.setBounds(50, 100,400, 120);
 
-        OuvinteLogin login = new OuvinteLogin(this, sistema);
-        getBotaoLogin().addActionListener(login);
-        getBotaoCancelar().addActionListener(login);
+        JLabel login = new  JLabel("Login:");
+        JLabel senha = new  JLabel("Senha:");
+        campoDoLogin = new JTextField(15);
+        campoDaSenha = new JPasswordField(15);
+        senha.setFont(getFonteDoCampo());
+        login.setFont(getFonteDoCampo());
+
+        botaoLogin = new JButton("Login");
+        botaoLogin.setFont(getFonteDoBotao());
+        botaoCancelar = new JButton("Cancelar");
+        botaoCancelar.setFont(getFonteDoBotao());
+
+
+        OuvinteLogin loginO = new OuvinteLogin(this, sistema);
+        getBotaoLogin().addActionListener(loginO);
+        getBotaoCancelar().addActionListener(loginO);
         setVisible(true);
     }
 

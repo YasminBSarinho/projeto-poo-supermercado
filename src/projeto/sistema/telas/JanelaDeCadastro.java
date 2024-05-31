@@ -1,7 +1,15 @@
 package projeto.sistema.telas;
 
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -22,46 +30,74 @@ public class JanelaDeCadastro extends JanelaDefaultLogar{
     
     public JanelaDeCadastro(SistemaMercado sistema){
         super(sistema);
+        setSize(600, 540); 
         adicionarCabecalho("Cadastro");
+        setLayout(null);
 
-        // Textos
-        int[] boundsNome = {60, 100, 120, 30};
-        int[] boundsLogin = {60, 145, 120, 30};
-        int[] boundsSenha = {60, 185, 120, 30};
-        int[] boundsConfirmar = {60, 225, 120, 30};
-        int[] boundsEmail= {60, 265, 120, 30};
-        int[] boundsMatricula = {60, 305, 120, 30};
-        int[] boundsBotaoCadastrar = {180, 370, 140, 50};
-        int[] boundsBotaoCancelar = {350, 370, 140, 50};
-        int[] boundsCheckAlmoxarife = {220, 70, 100, 30};
-        int[] boundsCheckcaixa = {320, 70, 120, 30};
+        JPanel painelTextos = new JPanel();
+        JPanel painelCampos = new JPanel();
+        JPanel painelBotoes = new JPanel();
+        JPanel painelCheckers = new JPanel();
+
+        painelTextos.setLayout(new GridLayout(6, 1, 0, 20));
+        painelCampos.setLayout(new GridLayout(6, 1, 0, 20));
+        painelBotoes.setLayout(new GridLayout(1, 2, 30, 0));
+        painelCheckers.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        painelTextos.setBounds(50, 100, 100, 300);
+        painelCampos.setBounds(150, 100, 400, 300);
+        painelBotoes.setBounds(250, 420, 300, 50);
+        painelCheckers.setBounds(300, 70, 250, 30);
+
+        JLabel textoNome = new JLabel("Nome:");
+        JLabel textoLogin = new JLabel("Login:");
+        JLabel textoSenha = new JLabel("Senha:");
+        JLabel textoConfirmar = new JLabel("Confirmar:");
+        JLabel textoEmail = new JLabel("E-mail:");
+        JLabel textoMatricula = new JLabel("Pis/NIS: ");
+
+        campoDoNome = new JTextField(30);
+        campoDoLogin = new JTextField(15);
+        campoDaSenha = new JPasswordField(15);
+        campoConfirmar = new JPasswordField(15);
+        campoDoEmail = new JTextField(30);
+        campoDaMatricula = new JTextField(15);
+
+        checkAlmoxarife = new JCheckBox("Almoxarife");
+        checkCaixa = new JCheckBox("Caixa Eletronico");
+        botaoCadastrar = new JButton("Cadastrar");
+        botaoCancelar  = new JButton("Cancelar");
+
+        JComponent[] componentes = {textoNome, textoLogin, textoSenha,
+                                    textoConfirmar, textoEmail, textoMatricula,
+                                    campoDoNome,campoDoLogin, campoDaSenha, campoConfirmar,
+                                    campoDoEmail,campoDaMatricula, botaoCadastrar, botaoCancelar };
+        adicionarFontes(componentes);
+
+        painelTextos.add(textoNome);
+        painelTextos.add(textoLogin);
+        painelTextos.add(textoSenha);
+        painelTextos.add(textoConfirmar);
+        painelTextos.add(textoEmail);
+        painelTextos.add(textoMatricula);
+
+        painelCampos.add(campoDoNome);
+        painelCampos.add(campoDoLogin);
+        painelCampos.add(campoDaSenha);
+        painelCampos.add(campoConfirmar);
+        painelCampos.add(campoDoEmail);
+        painelCampos.add(campoDaMatricula);
+
+        painelBotoes.add(botaoCadastrar);
+        painelBotoes.add(botaoCancelar);
+        painelCheckers.add(checkAlmoxarife);
+        painelCheckers.add(checkCaixa);
         
-        //Campos
-        int[] boundsNomeCampo = {boundsNome[0] + boundsNome[2] + 10, 100, 280, 30};
-        int[] boundsLoginCampo = {boundsLogin[0] + boundsLogin[2] + 10, 145, 280, 30};
-        int[] boundsSenhaCampo = {boundsSenha[0] + boundsSenha[2] + 10, 185, 280, 30};
-        int[] boundsConfirmarCampo = {boundsConfirmar[0] + boundsConfirmar[2] + 10, 225, 280, 30};
-        int[] boundsEmailCampo= {boundsEmail[0] + boundsEmail[2] + 10, 265, 280, 30};
-        int[] boundsMatriculaCampo = {boundsMatricula[0] + boundsMatricula[2] + 10, 305, 280, 30};
+    
+        add(painelTextos);
+        add(painelCampos);
+        add(painelCheckers);
+        add(painelBotoes);
         
-        adicionarTexto("Nome:", getFonteDoBotao(), boundsNome);
-
-        setCampoDonome((JTextField) adicionarCampo(getFonteDoCampo(), boundsNomeCampo, false));
-        adicionarTexto("Login:", getFonteDoBotao(), boundsLogin);
-        setCampoDoLogin((JTextField) adicionarCampo(getFonteDoCampo() , boundsLoginCampo , false));
-        adicionarTexto("Senha:", getFonteDoBotao(), boundsSenha);
-        setCampoDaSenha((JPasswordField) adicionarCampo(getFonteDoCampo(), boundsSenhaCampo, true));
-        adicionarTexto("Confirmar:", getFonteDoBotao(), boundsConfirmar);
-        setCampoConfirmar((JPasswordField) adicionarCampo(getFonteDoCampo(), boundsConfirmarCampo, true));
-        adicionarTexto("Email:", getFonteDoBotao(), boundsEmail);
-        setCampoDoEmail((JTextField) adicionarCampo(getFonteDoCampo(), boundsEmailCampo, false));
-        adicionarTexto("NIS/PIS:", getFonteDoBotao(), boundsMatricula);
-        setCampoDaMatricula((JTextField) adicionarCampo(getFonteDoCampo(), boundsMatriculaCampo, false));
-        setBotaoCadastrar(adicionarBotao("Cadastrar", boundsBotaoCadastrar));
-        setBotaoCancelar(adicionarBotao("Cancelar", boundsBotaoCancelar));
-        setCheckAlmoxarife(adicionarCheckBox("Almoxarife", boundsCheckAlmoxarife));
-        setCheckCaixa(adicionarCheckBox("Caixa Eletronico", boundsCheckcaixa));
-
         OuvinteCadastro ouvinteCadastro = new OuvinteCadastro(this, sistema);
         getCheckAlmoxarife().addActionListener(ouvinteCadastro);
         getCheckCaixa().addActionListener(ouvinteCadastro);
