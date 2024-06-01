@@ -22,6 +22,8 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
     private JTextField campoDaMatricula;
     private JCheckBox checkAlmoxarife;
     private JCheckBox checkCaixa;
+    private JCheckBox checkEmail;
+    private JCheckBox checkNisPis;
     
     public JanelaCadastroFuncionario(SistemaMercado sistema){
         super(sistema);
@@ -33,16 +35,19 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
         JPanel painelCampos = new JPanel();
         JPanel painelBotoes = new JPanel();
         JPanel painelCheckers = new JPanel();
+        JPanel painelCheckersCampo = new JPanel();
 
         painelTextos.setLayout(new GridLayout(6, 1, 0, 20));
         painelCampos.setLayout(new GridLayout(6, 1, 0, 20));
         painelBotoes.setLayout(new GridLayout(1, 2, 100, 0));
         painelCheckers.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        painelCheckersCampo.setLayout(new GridLayout(2, 1, 0, 0));
         
         painelTextos.setBounds(50, 100, 100, 300);
         painelCampos.setBounds(150, 100, 400, 300);
         painelBotoes.setBounds(150, 420, 400, 50);
         painelCheckers.setBounds(300, 70, 250, 30);
+        painelCheckersCampo.setBounds(20, 300, 20, 110);
 
         JLabel textoNome = new JLabel("Nome:");
         JLabel textoLogin = new JLabel("Login:");
@@ -57,9 +62,13 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
         campoConfirmar = new JPasswordField(15);
         campoDoEmail = new JTextField(30);
         campoDaMatricula = new JTextField(15);
-
+        campoDoEmail.setEnabled(false);
+        campoDaMatricula.setEnabled(false);
         checkAlmoxarife = new JCheckBox("Almoxarife");
         checkCaixa = new JCheckBox("Caixa Eletronico");
+        checkEmail = new JCheckBox();
+        checkNisPis = new JCheckBox();
+
         botaoCadastrar = new JButton("Cadastrar");
         botaoCancelar  = new JButton("Cancelar");
 
@@ -70,8 +79,10 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
                                         textoConfirmar, textoEmail, textoMatricula};
 
         JComponent[] componentesBotoes = {botaoCadastrar, botaoCancelar};  
-        
+
         JComponent[] componentesCheckers = {checkAlmoxarife, checkCaixa};
+
+        JComponent [] componentesCheckersCampo = {checkEmail, checkNisPis};
 
         adicionarFontes(componentesTextos);
         adicionarFontes(componentesCampos);
@@ -80,11 +91,13 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
         adicionarAoPainel(componentesCampos, painelCampos);
         adicionarAoPainel(componentesTextos, painelTextos);
         adicionarAoPainel(componentesCheckers, painelCheckers);
-    
+        adicionarAoPainel(componentesCheckersCampo, painelCheckersCampo);
         add(painelTextos);
         add(painelCampos);
         add(painelCheckers);
+        add(painelCheckersCampo);
         add(painelBotoes);
+     
         
         if(sistema.isSemGerente()){
             adicionarCabecalho("Cadastrar Gerente");
@@ -95,8 +108,11 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
         }
 
         OuvinteCadastro ouvinteCadastro = new OuvinteCadastro(this, sistema);
+
         getCheckAlmoxarife().addActionListener(ouvinteCadastro);
         getCheckCaixa().addActionListener(ouvinteCadastro);
+        getCheckEmail().addActionListener(ouvinteCadastro);
+        getCheckNisPis().addActionListener(ouvinteCadastro);
         getBotaoCadastrar().addActionListener(ouvinteCadastro);
         getBotaoCancelar().addActionListener(ouvinteCadastro);
         setVisible(true);
@@ -180,6 +196,26 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
 
     public void setCheckCaixa(JCheckBox checkCaixa) {
         this.checkCaixa = checkCaixa;
+    }
+
+    public void setCampoDoNome(JTextField campoDoNome) {
+        this.campoDoNome = campoDoNome;
+    }
+
+    public JCheckBox getCheckEmail() {
+        return checkEmail;
+    }
+
+    public void setCheckEmail(JCheckBox checkEmail) {
+        this.checkEmail = checkEmail;
+    }
+
+    public JCheckBox getCheckNisPis() {
+        return checkNisPis;
+    }
+
+    public void setCheckNisPis(JCheckBox checkNisPis) {
+        this.checkNisPis = checkNisPis;
     }
 
     

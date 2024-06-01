@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
+import com.fasterxml.jackson.core.JsonpCharacterEscapes;
+
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.CaixaEletronico;
 import projeto.sistema.pessoas.usuarios.Usuario;
@@ -20,19 +22,30 @@ import projeto.sistema.utilitarios.Json;
 public class OuvinteCadastro implements ActionListener {
     private JanelaCadastroFuncionario janela;
     private SistemaMercado sistema;
+    private JButton botaoCancelar;
+    private JButton botaoCadastrar;
+    private JCheckBox checkAlmoxarife;
+    private JCheckBox checkCaixa;
+    private JCheckBox checkEmail;
+    private JCheckBox checkNisPis;
+    private ArrayList<Usuario> usuarios;
 
     public OuvinteCadastro(JanelaCadastroFuncionario janela, SistemaMercado sistema){
-        this.setJanela(janela);
-        this.setSistema(sistema);
+        this.janela = janela;
+        this.sistema = sistema;
+        this.botaoCancelar = janela.getBotaoCancelar();
+        this.botaoCadastrar = janela.getBotaoCadastrar();
+        this.checkAlmoxarife = janela.getCheckAlmoxarife();
+        this.checkCaixa = janela.getCheckCaixa();
+        this.checkEmail = janela.getCheckEmail();
+        this.checkNisPis = janela.getCheckNisPis();
+        this.usuarios = sistema.getListaDeUsuarios();
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton botaoCancelar = janela.getBotaoCancelar();
-        JButton botaoCadastrar = janela.getBotaoCadastrar();
-        JCheckBox checkAlmoxarife = janela.getCheckAlmoxarife();
-        JCheckBox checkCaixa = janela.getCheckCaixa();
-        ArrayList<Usuario> usuarios = sistema.getListaDeUsuarios();
+
         String cargo = "";
 
         if(checkAlmoxarife.isSelected()){
@@ -54,6 +67,19 @@ public class OuvinteCadastro implements ActionListener {
         } else if (e.getSource().equals(botaoCancelar)) {
             janela.dispose();
         }
+        
+        if(checkEmail.isSelected()){
+            janela.getCampoDoEmail().setEnabled(true);
+        }else{
+            janela.getCampoDoEmail().setEnabled(false);
+        }
+        
+        if (checkNisPis.isSelected()){
+            janela.getCampoDaMatricula().setEnabled(true);;
+        }else{
+            janela.getCampoDaMatricula().setEnabled(false);;
+        }
+
     }
     
     public void Cadastrar(String cargo, ArrayList<Usuario> listaDeUsuarios){
@@ -63,35 +89,55 @@ public class OuvinteCadastro implements ActionListener {
         String confirmacao = new String(janela.getCampoConfirmar().getPassword());
         String email = janela.getCampoDoEmail().getText();
         String matricula = janela.getCampoDaMatricula().getText();
+
         boolean cadastrado = true;
+        boolean valido = verificarCampos(nome, login, senha, confirmacao, email, matricula);
 
         if(sistema.isSemGerente()){
             cargo = "Gerente";
         }
-        switch (cargo.toLowerCase()) {
-            case "almoxarife":
-                listaDeUsuarios.add(new Almoxarife(nome, cargo, login, senha, email, matricula));
-                break;
-            case "caixa eletronico":
-                listaDeUsuarios.add(new CaixaEletronico(nome, cargo, login, senha, email, matricula));;
-                break;
-            case "gerente":
-                listaDeUsuarios.add(new Gerente(nome, cargo, login, senha, email, matricula));
-                break;
-            default:
-                JOptionPane.showMessageDialog(janela, "Selecione um cargo", 
-                "aviso", JOptionPane.ERROR_MESSAGE);
-                cadastrado = false;
-                break;
-        }if (cadastrado){
-            Json json = new Json();
-            janela.dispose();
-            JOptionPane.showMessageDialog(janela, "Cadastro concluido!");
-            json.escreverJson(sistema);
-            JanelaLogin janelaDeLogin = new JanelaLogin(sistema);
+       
+        if(valido){
+            switch (cargo.toLowerCase()) {
+                case "almoxarife":
+                    listaDeUsuarios.add(new Almoxarife(nome, cargo, login, senha, email, matricula));
+                    break;
+                case "caixa eletronico":
+                    listaDeUsuarios.add(new CaixaEletronico(nome, cargo, login, senha, email, matricula));;
+                    break;
+                case "gerente":
+                    listaDeUsuarios.add(new Gerente(nome, cargo, login, senha, email, matricula));
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(janela, "Selecione um cargo", 
+                    "aviso", JOptionPane.ERROR_MESSAGE);
+                    cadastrado = false;
+                    break;
+
+            }if (cadastrado){
+                Json json = new Json();
+                janela.dispose();
+                JOptionPane.showMessageDialog(janela, "Cadastro concluido!");
+                json.escreverJson(sistema);
+                JanelaLogin janelaDeLogin = new JanelaLogin(sistema);
+            }
         }
+
     }
 
+
+    public boolean verificarCampos(String nome, String login, String senha, String confirmacao, String email, String matricula){
+        if(nome.isEmpty() || login.isEmpty() || senha.isEmpty() || confirmacao.isEmpty()){
+            JOptionPane.showMessageDialog(janela, "Preencha todos os campos obrigatórios",
+                                     "Campo Vazio", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }if((checkEmail.isSelected() && email.isEmpty())  || (checkNisPis.isSelected() && matricula.isEmpty())){
+            JOptionPane.showMessageDialog(janela, "Preencha todos os campos obrigatórios",
+            "Campo Vazio", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
     public JanelaCadastroFuncionario getJanela() {
         return janela;
     }
