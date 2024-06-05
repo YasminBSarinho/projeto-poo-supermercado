@@ -10,6 +10,7 @@ import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteLogin;
 import java.awt.Font;
 import java.awt.GridLayout;
+
 public class JanelaLogin extends JanelaBaseFormularios{
     private JTextField campoDoLogin;
     private JPasswordField campoDaSenha;
