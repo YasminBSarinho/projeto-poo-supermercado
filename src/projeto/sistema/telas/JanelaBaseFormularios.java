@@ -1,6 +1,7 @@
 package projeto.sistema.telas;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +14,12 @@ import java.awt.*;
 
 public class JanelaBaseFormularios extends JFrame{
     SistemaMercado sistema;
+    private JButton BotaoConfirmatorio;
+    private JButton botaoCancelatorio;
+    private JTextField[] campos;
+    private JLabel[] textos;
+    private JButton[] botoes;
+    private JCheckBox[] checkboxers;
     private Font fonteDoCabecalho = new Font("arial", Font.BOLD, 30);
     private Font fonteDoCampo = new Font("arial", Font.PLAIN, 20);
     private Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
@@ -103,4 +110,53 @@ public class JanelaBaseFormularios extends JFrame{
         return fonteDoCabecalho;
     }
 
+    public JButton getBotaoConfirmatorio() {
+        return BotaoConfirmatorio;
+    }
+
+    public void setBotaoConfirmatorio(JButton botaoConfirmatorio) {
+        BotaoConfirmatorio = botaoConfirmatorio;
+    }
+
+    public JButton getBotaoCancelatorio() {
+        return botaoCancelatorio;
+    }
+
+    public void setBotaoCancelatorio(JButton botaoCancelatorio) {
+        this.botaoCancelatorio = botaoCancelatorio;
+    }
+
+    public JTextField[] getCampos() {
+        return campos;
+    }
+
+    public void setCampos(JTextField[] campos) {
+        this.campos = campos;
+    }
+
+    public JLabel[] getTextos() {
+        return textos;
+    }
+
+    public void setTextos(JLabel[] textos) {
+        this.textos = textos;
+    }
+
+    public JButton[] getBotoes() {
+        return botoes;
+    }
+
+    public void setBotoes(JButton[] botoes) {
+        this.botoes = botoes;
+    }
+
+    public JCheckBox[] getCheckboxers() {
+        return checkboxers;
+    }
+
+    public void setCheckboxers(JCheckBox[] checkboxers) {
+        this.checkboxers = checkboxers;
+    }
+
+    
 }

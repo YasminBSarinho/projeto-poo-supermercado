@@ -39,20 +39,6 @@ public class OuvinteCadastroCliente implements ActionListener {
         } else if (e.getSource().equals(botaoCancelar)) {
             janela.dispose();
         }
-
-        if(checkEmail.isSelected()){
-            email.setEnabled(true);
-        }
-        else if(!checkEmail.isSelected()){
-            email.setEnabled(false);
-        }
-        
-        if (checkEndereco.isSelected()){
-            endereco.setEnabled(true);
-        }
-        else if(!checkEndereco.isSelected()){
-            endereco.setEnabled(false);
-        }
     }
 
     public void CadastrarCliente(ArrayList<Cliente> clientes){

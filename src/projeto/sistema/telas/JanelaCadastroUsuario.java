@@ -8,12 +8,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import projeto.sistema.SistemaMercado;
-import projeto.sistema.ouvintes.OuvinteCadastro;
+import javax.swing.text.JTextComponent;
 
-public class JanelaCadastroFuncionario extends JanelaBaseFormularios{ 
-    private JButton botaoCadastrar;
-    private JButton botaoCancelar;
+import projeto.sistema.SistemaMercado;
+import projeto.sistema.ouvintes.OuvinteCadastroUsuario;
+import projeto.sistema.ouvintes.OuvinteCampos;
+import projeto.sistema.ouvintes.OuvinteFormularios;
+
+public class JanelaCadastroUsuario extends JanelaBaseFormularios{ 
     private JTextField campoDoNome;
     private JTextField campoDoLogin;
     private JPasswordField campoDaSenha;
@@ -25,7 +27,7 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
     private JCheckBox checkEmail;
     private JCheckBox checkNisPis;
     
-    public JanelaCadastroFuncionario(SistemaMercado sistema){
+    public JanelaCadastroUsuario(SistemaMercado sistema){
         super(sistema);
         setSize(600, 540); 
         setLayout(null);
@@ -69,21 +71,22 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
         checkEmail = new JCheckBox();
         checkNisPis = new JCheckBox();
 
-        botaoCadastrar = new JButton("Cadastrar");
-        botaoCancelar  = new JButton("Cancelar");
+        setBotaoConfirmatorio(new JButton("Cadastrar"));
+        setBotaoCancelatorio(new JButton("Cancelar"));
 
-        JComponent[] componentesCampos = {campoDoNome,campoDoLogin, campoDaSenha, campoConfirmar,
+        JTextField[] componentesCampos = {campoDoNome,campoDoLogin, campoDaSenha, campoConfirmar,
                                         campoDoEmail,campoDaMatricula};
 
         JComponent[] componentesTextos = {textoNome, textoLogin, textoSenha,
                                         textoConfirmar, textoEmail, textoMatricula};
 
-        JComponent[] componentesBotoes = {botaoCadastrar, botaoCancelar};  
+        JComponent[] componentesBotoes = {getBotaoConfirmatorio(), getBotaoCancelatorio()};  
 
         JComponent[] componentesCheckers = {checkAlmoxarife, checkCaixa};
 
         JComponent [] componentesCheckersCampo = {checkEmail, checkNisPis};
 
+        setCampos(componentesCampos);
         adicionarFontes(componentesTextos);
         adicionarFontes(componentesCampos);
         adicionarFontes(componentesBotoes);
@@ -99,6 +102,7 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
         add(painelBotoes);
      
         
+
         if(sistema.isSemGerente()){
             adicionarCabecalho("Cadastrar Gerente");
             checkAlmoxarife.setVisible(false);
@@ -107,32 +111,18 @@ public class JanelaCadastroFuncionario extends JanelaBaseFormularios{
             adicionarCabecalho("Cadastrar Funcionários");
         }
 
-        OuvinteCadastro ouvinteCadastro = new OuvinteCadastro(this, sistema);
+        OuvinteCadastroUsuario ouvinteCadastro = new OuvinteCadastroUsuario(this, sistema);
 
         getCheckAlmoxarife().addActionListener(ouvinteCadastro);
         getCheckCaixa().addActionListener(ouvinteCadastro);
         getCheckEmail().addActionListener(ouvinteCadastro);
         getCheckNisPis().addActionListener(ouvinteCadastro);
-        getBotaoCadastrar().addActionListener(ouvinteCadastro);
-        getBotaoCancelar().addActionListener(ouvinteCadastro);
+        getBotaoConfirmatorio().addActionListener(ouvinteCadastro);
+        getBotaoCancelatorio().addActionListener(ouvinteCadastro);
+
         setVisible(true);
     }
 
-    public JButton getBotaoCadastrar() {
-        return botaoCadastrar;
-    }
-
-    public void setBotaoCadastrar(JButton botaoCadastrar) {
-        this.botaoCadastrar = botaoCadastrar;
-    }
-
-    public JButton getBotaoCancelar() {
-        return botaoCancelar;
-    }
-
-    public void setBotaoCancelar(JButton botaoCancelar) {
-        this.botaoCancelar = botaoCancelar;
-    }
 
     public JTextField getCampoDoNome() {
         return campoDoNome;
