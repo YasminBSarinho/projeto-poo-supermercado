@@ -1,14 +1,12 @@
 package projeto.sistema.telas;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
 import projeto.sistema.SistemaMercado;
 import java.awt.*;
 
@@ -51,26 +49,6 @@ public class JanelaBaseFormularios extends JFrame{
     public void adicionarAoPainel(JComponent[] componentes, JPanel painel){
         for(JComponent componente : componentes){
             painel.add(componente);
-        }
-    }
-
-    public JTextComponent adicionarCampo(Font fonte, int[] bounds, Boolean secreto){
-        JTextComponent campo;
-
-        if(secreto){
-            campo = new JPasswordField();
-        }else{
-            campo = new JTextField();
-        }
-
-        campo.setFont(getFonteDoCampo());
-        campo.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
-        add(campo);
-
-        if(campo instanceof JPasswordField){
-            return (JPasswordField) campo;
-        }else{
-            return (JTextField) campo;
         }
     }
 

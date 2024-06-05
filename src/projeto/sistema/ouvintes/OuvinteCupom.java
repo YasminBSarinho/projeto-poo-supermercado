@@ -1,0 +1,76 @@
+package projeto.sistema.ouvintes;
+
+import java.awt.event.KeyEvent;
+
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionEvent;
+
+import projeto.sistema.SistemaMercado;
+import projeto.sistema.telas.JanelaCupom;
+import projeto.sistema.utilitarios.Cupom;
+import projeto.sistema.utilitarios.Json;
+
+public class OuvinteCupom extends OuvinteDeFormularios{
+    
+    private JanelaCupom janela;
+    private SistemaMercado sistema;
+    
+    public OuvinteCupom(JanelaCupom janela, SistemaMercado sistema){
+        super(janela, sistema);
+        setJanela(janela);
+        setSistema(sistema);  
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        super.actionPerformed(e);
+    }
+
+    @Override
+    protected void confirmar(){
+        String codigo = janela.getCampoCodigo().getText();
+        String descontoTexto = janela.getCampoDesconto().getText();
+        float desconto = Float.parseFloat(descontoTexto)/100;
+        Cupom cupom = new Cupom(codigo, desconto);
+
+        if(sistema.validarCupom(codigo) == null){
+            sistema.getCupons().add(cupom);
+            Json json = new Json();
+            janela.dispose();
+            JOptionPane.showMessageDialog(janela, "Cupom cadastrado!");
+            json.escreverJson(sistema);
+        }else{
+            JOptionPane.showMessageDialog(janela, "O Cupom já está cadastrado!");
+        }
+
+    }    
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+    
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+    
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+    
+
+    public JanelaCupom getJanela() {
+        return janela;
+    }
+    
+    public void setJanela(JanelaCupom janela) {
+        this.janela = janela;
+    }
+    
+    public SistemaMercado getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(SistemaMercado sistema) {
+        this.sistema = sistema;
+    }
+}

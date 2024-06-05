@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.ouvintes.OuvinteCupom;
 
 public class JanelaCupom extends JanelaBaseFormularios{
     private JTextField campoCodigo;
@@ -38,15 +39,20 @@ public class JanelaCupom extends JanelaBaseFormularios{
         setBotaoCancelatorio(new JButton("Cancelar"));
 
         JComponent[] componentesTexto = {textoCodigo, textoDesconto};
-        JComponent[] componentesCampo = {campoCodigo, campoDesconto};
+        JTextField[] componentesCampo = {campoCodigo, campoDesconto};
         JComponent[] componentesBotao = {getBotaoConfirmatorio(), getBotaoCancelatorio()};
         
+        setCampos(componentesCampo);
         adicionarFontes(componentesTexto);
         adicionarFontes(componentesCampo);
         adicionarFontes(componentesBotao);
         adicionarAoPainel(componentesTexto, painelTextos);
         adicionarAoPainel(componentesCampo, painelCampos);
         adicionarAoPainel(componentesBotao, painelBotoes);
+        
+        OuvinteCupom ouvinteCupom = new OuvinteCupom(this, sistema);
+        getBotaoConfirmatorio().addActionListener(ouvinteCupom);
+        getBotaoCancelatorio().addActionListener(ouvinteCupom);
 
         add(painelTextos);
         add(painelCampos);

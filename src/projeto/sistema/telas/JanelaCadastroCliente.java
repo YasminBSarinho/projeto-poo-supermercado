@@ -93,12 +93,6 @@ public class JanelaCadastroCliente extends JanelaBaseFormularios{
         
     }
     
-    public JCheckBox adicionarCheckBox(String texto,int [] bounds){
-        JCheckBox checkBox = new JCheckBox(texto);
-        checkBox.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
-        add(checkBox);
-        return checkBox;
-    }
     public JTextField getCampoDoNome() {
         return campoDoNome;
     }
