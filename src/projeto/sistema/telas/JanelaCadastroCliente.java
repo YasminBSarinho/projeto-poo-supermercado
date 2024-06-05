@@ -1,7 +1,6 @@
 package projeto.sistema.telas;
 
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -9,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteCadastroCliente;
 
@@ -57,8 +55,9 @@ public class JanelaCadastroCliente extends JanelaBaseFormularios{
 
         checkEmail= new JCheckBox();
         checkEndereco = new JCheckBox();
-        botaoCadastrar = new JButton("Cadastrar");
-        botaoCancelar  = new JButton("Cancelar");
+
+        setBotaoConfirmatorio( new JButton("Cadastrar"));
+        setBotaoCancelatorio(new JButton("Cancelar"));
 
         JComponent[] componentesTextos = {textoNome, textoEmail, textoCPF, textoEmail, textoEndereco};
 
@@ -83,11 +82,13 @@ public class JanelaCadastroCliente extends JanelaBaseFormularios{
         add(painelBotoes);
    
         OuvinteCadastroCliente ouvinteCadastroCliente = new OuvinteCadastroCliente(this, sistema);
-        getBotaoCadastrar().addActionListener(ouvinteCadastroCliente);
-        getBotaoCancelar().addActionListener(ouvinteCadastroCliente);
+        
+        getBotaoConfirmatorio().addActionListener(ouvinteCadastroCliente);
+        getBotaoCancelatorio().addActionListener(ouvinteCadastroCliente);
         getCheckEmail().addActionListener(ouvinteCadastroCliente);
         getCheckEndereco().addActionListener(ouvinteCadastroCliente);
         setVisible(true);
+        
     }
     
     public JCheckBox adicionarCheckBox(String texto,int [] bounds){

@@ -5,16 +5,13 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import java.awt.GridLayout;
-
 import projeto.sistema.SistemaMercado;
 
 public class JanelaCupom extends JanelaBaseFormularios{
     private JTextField campoCodigo;
     private JTextField campoDesconto;
-    private JButton botaoCriar;
-    private JButton botaoCancelar;
+
     public JanelaCupom(SistemaMercado sistema){
         super(sistema);
         setSize(500, 350);
@@ -37,12 +34,12 @@ public class JanelaCupom extends JanelaBaseFormularios{
         campoCodigo = new JTextField(5);
         campoDesconto = new JTextField(3);
 
-        botaoCriar = new JButton("Criar");
-        botaoCancelar = new JButton("Cancelar");
+        setBotaoConfirmatorio(new JButton("Criar"));
+        setBotaoCancelatorio(new JButton("Cancelar"));
 
         JComponent[] componentesTexto = {textoCodigo, textoDesconto};
         JComponent[] componentesCampo = {campoCodigo, campoDesconto};
-        JComponent[] componentesBotao = {botaoCriar, botaoCancelar};
+        JComponent[] componentesBotao = {getBotaoConfirmatorio(), getBotaoCancelatorio()};
         
         adicionarFontes(componentesTexto);
         adicionarFontes(componentesCampo);
@@ -55,5 +52,21 @@ public class JanelaCupom extends JanelaBaseFormularios{
         add(painelCampos);
         add(painelBotoes);
         setVisible(true);
+    }
+
+    public JTextField getCampoCodigo() {
+        return campoCodigo;
+    }
+
+    public void setCampoCodigo(JTextField campoCodigo) {
+        this.campoCodigo = campoCodigo;
+    }
+
+    public JTextField getCampoDesconto() {
+        return campoDesconto;
+    }
+
+    public void setCampoDesconto(JTextField campoDesconto) {
+        this.campoDesconto = campoDesconto;
     }
 }

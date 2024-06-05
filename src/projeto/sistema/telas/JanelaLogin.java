@@ -1,6 +1,6 @@
 package projeto.sistema.telas;
-import javax.swing.JTextField;
 
+import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -14,8 +14,6 @@ import java.awt.GridLayout;
 public class JanelaLogin extends JanelaBaseFormularios{
     private JTextField campoDoLogin;
     private JPasswordField campoDaSenha;
-    private JButton botaoLogin;
-    private JButton botaoCancelar;
 
     public JanelaLogin(SistemaMercado sistema){
         super(sistema);
@@ -42,28 +40,30 @@ public class JanelaLogin extends JanelaBaseFormularios{
         campoDoLogin = new JTextField(15);
         campoDaSenha = new JPasswordField(15);
 
-        botaoLogin = new JButton("Login");
-        botaoCancelar = new JButton("Cancelar");
+        setBotaoConfirmatorio(new JButton("Login"));
+        setBotaoCancelatorio(new JButton("Cancelar"));
 
         JComponent[] componentesTextos = {login, senha};
-        JComponent [] componentesCampos = {campoDoLogin, campoDaSenha};
-        JComponent [] componentesBotoes = {botaoLogin, botaoCancelar};
-
+        JTextField [] componentesCampos = {campoDoLogin, campoDaSenha};
+        JComponent [] componentesBotoes = {getBotaoConfirmatorio(), getBotaoCancelatorio()};
+        
+        setFonteDoBotao(new Font("arial",Font.BOLD, 15));
+        adicionarFontes(componentesBotoes);
         adicionarAoPainel(componentesTextos, painelTextos);
         adicionarAoPainel(componentesCampos, painelCampos);
         adicionarAoPainel(componentesBotoes, painelBotoes);
         adicionarFontes(componentesTextos);
         adicionarFontes(componentesCampos);
-        setFonteDoBotao(new Font("arial",Font.BOLD, 15));
-        adicionarFontes(componentesBotoes);
-        
+
+
+        setCampos(componentesCampos);
         add(painelTextos);
         add(painelCampos);
         add(painelBotoes);
 
-        OuvinteLogin loginO = new OuvinteLogin(this, sistema);
-        getBotaoLogin().addActionListener(loginO);
-        getBotaoCancelar().addActionListener(loginO);
+        OuvinteLogin ouvinteLogin = new OuvinteLogin(this, sistema);
+        getBotaoConfirmatorio().addActionListener(ouvinteLogin);
+        getBotaoCancelatorio().addActionListener(ouvinteLogin);
         setVisible(true);
     }
 
@@ -75,29 +75,12 @@ public class JanelaLogin extends JanelaBaseFormularios{
         this.campoDoLogin = campoDoLogin;
     }
 
-    public JPasswordField getCampoDasenha() {
+    public JPasswordField getCampoDaSenha() {
         return campoDaSenha;
     }
 
-    public void setCampoDasenha(JPasswordField campoDasenha) {
+    public void setCampoDaSenha(JPasswordField campoDasenha) {
         this.campoDaSenha = campoDasenha;
     }
-
-    public JButton getBotaoLogin() {
-        return botaoLogin;
-    }
-
-    public void setBotaoLogin(JButton botaoLogin) {
-        this.botaoLogin = botaoLogin;
-    }
-
-    public JButton getBotaoCancelar() {
-        return botaoCancelar;
-    }
-
-    public void setBotaoCancelar(JButton botaoCancelar) {
-        this.botaoCancelar = botaoCancelar;
-    }
-
     
 }

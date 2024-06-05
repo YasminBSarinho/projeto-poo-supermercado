@@ -9,33 +9,35 @@ import javax.swing.JTextField;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.telas.JanelaBaseFormularios;
 
-public class OuvinteCampos implements KeyListener {
+public class OuvinteDeCampos implements KeyListener {
     private JanelaBaseFormularios janela;
     private SistemaMercado sistema;
     
-    public OuvinteCampos(SistemaMercado sistema, JanelaBaseFormularios janela){
+    public OuvinteDeCampos(SistemaMercado sistema, JanelaBaseFormularios janela){
         this.setJanela(janela);
         this.setSistema(sistema);
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
-        
-    }
-    @Override
-    public void keyReleased(KeyEvent e) {
-        
-    }
-    @Override
     public void keyTyped(KeyEvent e) {
         if(!(Character.isLetter(e.getKeyChar()))){
             e.consume();
         }
+    }
+    
+    @Override
+    public void keyPressed(KeyEvent e) {
         
     }
-    public boolean validarCampo(){
-        String texto;
 
+    @Override
+    public void keyReleased(KeyEvent e) {
+        
+    }
+
+    public boolean validarCampo(){
+
+        String texto;
         for(JTextField campo : janela.getCampos()){
             if (campo instanceof JPasswordField){
                 JPasswordField campoSenha = (JPasswordField) campo;
@@ -54,6 +56,7 @@ public class OuvinteCampos implements KeyListener {
         }
         return true;
     }
+
     public JanelaBaseFormularios getJanela() {
         return janela;
     }
@@ -66,6 +69,4 @@ public class OuvinteCampos implements KeyListener {
     public void setSistema(SistemaMercado sistema) {
         this.sistema = sistema;
     }
-
-    
 }

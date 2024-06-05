@@ -12,7 +12,7 @@ import projeto.sistema.telas.JanelaCadastroUsuario;
 import projeto.sistema.telas.JanelaLogin;
 import projeto.sistema.utilitarios.Json;
 
-public class OuvinteCadastroUsuario extends OuvinteFormularios{
+public class OuvinteCadastroUsuario extends OuvinteDeFormularios{
     private JanelaCadastroUsuario janela;
     private SistemaMercado sistema;
     private JCheckBox checkAlmoxarife;
@@ -57,7 +57,7 @@ public class OuvinteCadastroUsuario extends OuvinteFormularios{
                 checkCaixa.setEnabled(false);
                 return "Almoxarife";
             }
-            else if(checkCaixa.equals(checkAlmoxarife)){
+            else if(checkCaixa.isSelected()){
                 checkAlmoxarife.setEnabled(false);
                 return "Caixa Eletronico";
 
@@ -126,7 +126,7 @@ public class OuvinteCadastroUsuario extends OuvinteFormularios{
     }
 
 
-    
+
     //Getters e Setters
 
     public JanelaCadastroUsuario getJanela() {

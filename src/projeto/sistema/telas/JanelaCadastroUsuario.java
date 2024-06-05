@@ -8,12 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
 
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteCadastroUsuario;
-import projeto.sistema.ouvintes.OuvinteCampos;
-import projeto.sistema.ouvintes.OuvinteFormularios;
 
 public class JanelaCadastroUsuario extends JanelaBaseFormularios{ 
     private JTextField campoDoNome;
@@ -112,13 +109,14 @@ public class JanelaCadastroUsuario extends JanelaBaseFormularios{
         }
 
         OuvinteCadastroUsuario ouvinteCadastro = new OuvinteCadastroUsuario(this, sistema);
-
+        
+        getBotaoConfirmatorio().addActionListener(ouvinteCadastro);
+        getBotaoCancelatorio().addActionListener(ouvinteCadastro);
         getCheckAlmoxarife().addActionListener(ouvinteCadastro);
         getCheckCaixa().addActionListener(ouvinteCadastro);
         getCheckEmail().addActionListener(ouvinteCadastro);
         getCheckNisPis().addActionListener(ouvinteCadastro);
-        getBotaoConfirmatorio().addActionListener(ouvinteCadastro);
-        getBotaoCancelatorio().addActionListener(ouvinteCadastro);
+
 
         setVisible(true);
     }
@@ -207,7 +205,4 @@ public class JanelaCadastroUsuario extends JanelaBaseFormularios{
     public void setCheckNisPis(JCheckBox checkNisPis) {
         this.checkNisPis = checkNisPis;
     }
-
-    
-    
 }

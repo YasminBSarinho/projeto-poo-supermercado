@@ -46,5 +46,4 @@ public class Registro {
     public void setData(String data) {
         this.data = data;
     }
-
 }
