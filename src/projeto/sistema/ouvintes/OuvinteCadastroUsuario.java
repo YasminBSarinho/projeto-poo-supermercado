@@ -1,5 +1,6 @@
 package projeto.sistema.ouvintes;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -21,9 +22,9 @@ public class OuvinteCadastroUsuario extends OuvinteDeFormularios{
     private JCheckBox checkNisPis;
 
     public OuvinteCadastroUsuario(JanelaCadastroUsuario janela, SistemaMercado sistema){
-        super(sistema, janela);
-        this.janela = janela;
-        this.sistema = sistema;
+        super(janela, sistema);
+        setJanela(janela);
+        setSistema(sistema);
         checkAlmoxarife = janela.getCheckAlmoxarife();
         checkCaixa = janela.getCheckCaixa();
         checkEmail = janela.getCheckEmail();
@@ -37,7 +38,7 @@ public class OuvinteCadastroUsuario extends OuvinteDeFormularios{
     }
 
     @Override
-    protected void acaoAoConfirmar(){
+    protected void confirmar(){
         try{
             this.cadastrar(sistema.getListaDeUsuarios());
         }
@@ -128,6 +129,23 @@ public class OuvinteCadastroUsuario extends OuvinteDeFormularios{
 
 
     //Getters e Setters
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
 
     public JanelaCadastroUsuario getJanela() {
         return janela;

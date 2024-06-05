@@ -14,7 +14,7 @@ public class Programa {
 		if(sistema.isSemGerente()){
 			JanelaCadastroUsuario janelaCadastro =  new JanelaCadastroUsuario(sistema);
 		}else{
-			JanelaLogin  janelaDeLogin = new JanelaLogin(sistema);
+			JanelaLogin janelaLogin = new JanelaLogin(sistema);
 		}
 
 	}

@@ -12,9 +12,7 @@ import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteCadastroCliente;
 
 public class JanelaCadastroCliente extends JanelaBaseFormularios{
-    
-    private JButton botaoCadastrar;
-    private JButton botaoCancelar;
+
     private JTextField campoDoNome;
     private JTextField campoDoCPF;
     private JTextField campoDoEmail;
@@ -53,7 +51,10 @@ public class JanelaCadastroCliente extends JanelaBaseFormularios{
         campoDoEmail = new JPasswordField(15);
         campoDoEndereco = new JPasswordField(15);
 
-        checkEmail= new JCheckBox();
+        campoDoEmail.setEnabled(false);
+        campoDoEndereco.setEnabled(false);
+        
+        checkEmail = new JCheckBox();
         checkEndereco = new JCheckBox();
 
         setBotaoConfirmatorio( new JButton("Cadastrar"));
@@ -61,12 +62,13 @@ public class JanelaCadastroCliente extends JanelaBaseFormularios{
 
         JComponent[] componentesTextos = {textoNome, textoEmail, textoCPF, textoEmail, textoEndereco};
 
-        JComponent[] componentesCampos = {campoDoNome, campoDoCPF, campoDoEmail, campoDoEndereco};
+        JTextField[] componentesCampos = {campoDoNome, campoDoCPF, campoDoEmail, campoDoEndereco};
 
-        JComponent[] componentesBotoes = {botaoCadastrar, botaoCancelar};
+        JComponent[] componentesBotoes = {getBotaoConfirmatorio(), getBotaoCancelatorio()};
 
         JComponent[] componentesCheckers = {checkEmail, checkEndereco}; 
 
+        setCampos(componentesCampos);
         adicionarFontes(componentesTextos);
         adicionarFontes(componentesCampos);
         adicionarFontes(componentesBotoes);
@@ -97,23 +99,6 @@ public class JanelaCadastroCliente extends JanelaBaseFormularios{
         add(checkBox);
         return checkBox;
     }
-    
-    public JButton getBotaoCadastrar() {
-        return botaoCadastrar;
-    }
-    
-    public void setBotaoCadastrar(JButton botaoCadastrar) {
-        this.botaoCadastrar = botaoCadastrar;
-    }
-    
-    public JButton getBotaoCancelar() {
-        return botaoCancelar;
-    }
-    
-    public void setBotaoCancelar(JButton botaoCancelar) {
-        this.botaoCancelar = botaoCancelar;
-    }
-    
     public JTextField getCampoDoNome() {
         return campoDoNome;
     }

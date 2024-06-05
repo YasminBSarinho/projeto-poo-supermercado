@@ -2,38 +2,64 @@ package projeto.sistema.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.telas.JanelaBaseFormularios;
 
-public abstract class  OuvinteDeFormularios implements ActionListener {
+public abstract class  OuvinteDeFormularios implements ActionListener, KeyListener {
     SistemaMercado sistema;
     JanelaBaseFormularios janela;
 
-    public OuvinteDeFormularios(SistemaMercado sistema, JanelaBaseFormularios janela){
-        setSistema(sistema);
+    public OuvinteDeFormularios(JanelaBaseFormularios janela, SistemaMercado sistema){
         setJanela(janela);
+        setSistema(sistema);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        OuvinteDeCampos ouvinteCampos = new OuvinteDeCampos(sistema, janela);
         for(JTextComponent campo : janela.getCampos()){
-            campo.addKeyListener(ouvinteCampos);
+            campo.addKeyListener(this);
 
         }
         Object source = e.getSource();
         if(source.equals(janela.getBotaoConfirmatorio())){
-            boolean cadastroValido = ouvinteCampos.validarCampo();
+            boolean cadastroValido = this.validarCampo();
             if(cadastroValido){
-                acaoAoConfirmar();
+                confirmar();
             }
         }else if(source.equals(janela.getBotaoCancelatorio())){
             janela.dispose();
         }
     }
 
-    protected abstract void acaoAoConfirmar();
+    protected abstract void confirmar();
+
+    public boolean validarCampo(){
+
+        String texto;
+        for(JTextField campo : janela.getCampos()){
+            if (campo instanceof JPasswordField){
+                JPasswordField campoSenha = (JPasswordField) campo;
+                texto = new String(campoSenha.getPassword());
+
+            }else{
+                texto = campo.getText();
+            }
+
+            if(texto.trim().isEmpty() && campo.isEnabled()){
+
+                JOptionPane.showMessageDialog(janela, "Preencha todos os campos obrigatórios",
+                                            "Campo Vazio", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
 
 
     public SistemaMercado getSistema() {
