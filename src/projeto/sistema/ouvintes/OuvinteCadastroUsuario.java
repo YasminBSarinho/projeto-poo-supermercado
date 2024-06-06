@@ -113,7 +113,7 @@ public class OuvinteCadastroUsuario extends OuvinteDeFormularios{
                 break;
             default:
                 JOptionPane.showMessageDialog(janela, "Selecione um cargo", 
-                "aviso", JOptionPane.ERROR_MESSAGE);
+                "Aviso", JOptionPane.ERROR_MESSAGE);
                 cadastrado = false;
                 break;
 
@@ -127,25 +127,16 @@ public class OuvinteCadastroUsuario extends OuvinteDeFormularios{
     }
 
 
-
-    //Getters e Setters
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
     @Override
     public void keyTyped(KeyEvent e) {
         // TODO Auto-generated method stub
         
     }
+
+    
+    //Getters e Setters
+
+
 
     public JanelaCadastroUsuario getJanela() {
         return janela;

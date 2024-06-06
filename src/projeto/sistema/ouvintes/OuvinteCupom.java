@@ -3,6 +3,7 @@ package projeto.sistema.ouvintes;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import java.awt.event.ActionEvent;
 
@@ -47,22 +48,24 @@ public class OuvinteCupom extends OuvinteDeFormularios{
 
     @Override
     public void keyTyped(KeyEvent e) {
+
+        JTextField campo = (JTextField) e.getSource();
+        JTextField campoCodigo = janela.getCampoCodigo();
         String codigo = janela.getCampoCodigo().getText();
+        String desconto = janela.getCampoDesconto().getText();
         char letra = e.getKeyChar();
-        if((codigo.length() > 5) || !(Character.isLetterOrDigit(letra))){
-            e.consume();
+        
+        if(campo.equals(campoCodigo)) {
+            if(codigo.length() > 4 || !Character.isLetterOrDigit(letra)){
+                e.consume();
+            }
+        }else{
+            if(desconto.length() > 1 || !Character.isDigit(letra)){
+                e.consume();
+            }
         }
     }
     
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-    
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
-    
-
     public JanelaCupom getJanela() {
         return janela;
     }
