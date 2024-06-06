@@ -47,6 +47,11 @@ public class OuvinteCupom extends OuvinteDeFormularios{
 
     @Override
     public void keyTyped(KeyEvent e) {
+        String codigo = janela.getCampoCodigo().getText();
+        char letra = e.getKeyChar();
+        if((codigo.length() > 5) || !(Character.isLetterOrDigit(letra))){
+            e.consume();
+        }
     }
     
     @Override

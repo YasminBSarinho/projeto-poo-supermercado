@@ -53,7 +53,9 @@ public class JanelaCupom extends JanelaBaseFormularios{
         OuvinteCupom ouvinteCupom = new OuvinteCupom(this, sistema);
         getBotaoConfirmatorio().addActionListener(ouvinteCupom);
         getBotaoCancelatorio().addActionListener(ouvinteCupom);
-
+        getCampoCodigo().addKeyListener(ouvinteCupom);
+        getCampoDesconto().addKeyListener(ouvinteCupom);
+        
         add(painelTextos);
         add(painelCampos);
         add(painelBotoes);

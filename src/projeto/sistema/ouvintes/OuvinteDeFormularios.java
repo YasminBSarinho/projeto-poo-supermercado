@@ -22,10 +22,6 @@ public abstract class  OuvinteDeFormularios implements ActionListener, KeyListen
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for(JTextComponent campo : janela.getCampos()){
-            campo.addKeyListener(this);
-
-        }
         Object source = e.getSource();
         if(source.equals(janela.getBotaoConfirmatorio())){
             boolean cadastroValido = this.validarCampo();
@@ -60,7 +56,6 @@ public abstract class  OuvinteDeFormularios implements ActionListener, KeyListen
         }
         return true;
     }
-
 
     public SistemaMercado getSistema() {
         return sistema;
