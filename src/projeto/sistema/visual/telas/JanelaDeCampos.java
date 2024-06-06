@@ -1,5 +1,5 @@
-package projeto.sistema.visual.telas;
 
+package projeto.sistema.visual.telas;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -23,7 +23,7 @@ public class JanelaDeCampos extends JFrame{
         setSistema(sistema);
         setResizable(false);
         setLayout(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     public void adicionarCabecalho(String texto){

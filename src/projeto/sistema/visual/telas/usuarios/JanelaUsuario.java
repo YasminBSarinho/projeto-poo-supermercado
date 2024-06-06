@@ -1,4 +1,4 @@
-package projeto.sistema.visual.telas;
+package projeto.sistema.visual.telas.usuarios;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,7 +9,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import projeto.sistema.SistemaMercado;
-import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.visual.ouvintes.OuvinteUsuario;
 
 import java.awt.Color;
@@ -27,7 +26,7 @@ public class JanelaUsuario extends JFrame{
     private SistemaMercado sistema;
     
     public JanelaUsuario(SistemaMercado sistema){
-        
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(600, 600);
         setLayout(null);
         setResizable(false);

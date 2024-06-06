@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.visual.telas.JanelaCadastroCliente;
 import projeto.sistema.visual.telas.JanelaLogin;
-import projeto.sistema.visual.telas.JanelaUsuario;
+import projeto.sistema.visual.telas.usuarios.JanelaUsuario;
 
 public class OuvinteUsuario implements ActionListener{
     private JanelaUsuario janela;
