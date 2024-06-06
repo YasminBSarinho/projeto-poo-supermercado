@@ -1,4 +1,4 @@
-package projeto.sistema.ouvintes;
+package projeto.sistema.visual.ouvintes;
 
 import java.awt.event.KeyEvent;
 
@@ -8,9 +8,9 @@ import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 
 import projeto.sistema.SistemaMercado;
-import projeto.sistema.telas.JanelaCupom;
 import projeto.sistema.utilitarios.Cupom;
 import projeto.sistema.utilitarios.Json;
+import projeto.sistema.visual.telas.JanelaCupom;
 
 public class OuvinteCupom extends OuvinteDeCampos{
     

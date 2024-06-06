@@ -1,4 +1,4 @@
-package projeto.sistema.ouvintes;
+package projeto.sistema.visual.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import projeto.sistema.pessoas.usuarios.CaixaEletronico;
 import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
 import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
-import projeto.sistema.telas.JanelaCadastroUsuario;
-import projeto.sistema.telas.JanelaLogin;
 import projeto.sistema.utilitarios.Json;
+import projeto.sistema.visual.telas.JanelaCadastroUsuario;
+import projeto.sistema.visual.telas.JanelaLogin;
 
 public class OuvinteCadastroUsuario extends OuvinteDeCampos{
     private JanelaCadastroUsuario janela;

@@ -1,4 +1,4 @@
-package projeto.sistema.ouvintes;
+package projeto.sistema.visual.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 import projeto.sistema.SistemaMercado;
-import projeto.sistema.telas.JanelaDeCampos;
+import projeto.sistema.visual.telas.JanelaDeCampos;
 
 public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
     SistemaMercado sistema;

@@ -1,12 +1,12 @@
-package projeto.sistema.ouvintes;
+package projeto.sistema.visual.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import projeto.sistema.SistemaMercado;
-import projeto.sistema.telas.JanelaCadastroCliente;
-import projeto.sistema.telas.JanelaLogin;
-import projeto.sistema.telas.JanelaUsuario;
+import projeto.sistema.visual.telas.JanelaCadastroCliente;
+import projeto.sistema.visual.telas.JanelaLogin;
+import projeto.sistema.visual.telas.JanelaUsuario;
 
 public class OuvinteUsuario implements ActionListener{
     private JanelaUsuario janela;

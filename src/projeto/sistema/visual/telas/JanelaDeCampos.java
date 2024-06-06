@@ -1,4 +1,4 @@
-package projeto.sistema.telas;
+package projeto.sistema.visual.telas;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;

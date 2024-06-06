@@ -1,4 +1,4 @@
-package projeto.sistema.telas;
+package projeto.sistema.visual.telas;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,8 +9,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import projeto.sistema.SistemaMercado;
-import projeto.sistema.ouvintes.OuvinteUsuario;
 import projeto.sistema.pessoas.usuarios.Usuario;
+import projeto.sistema.visual.ouvintes.OuvinteUsuario;
 
 import java.awt.Color;
 import java.awt.GridLayout;

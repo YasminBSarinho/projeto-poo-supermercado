@@ -1,4 +1,4 @@
-package projeto.sistema.telas;
+package projeto.sistema.visual.telas;
 
 import java.awt.event.ActionEvent;
 

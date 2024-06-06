@@ -1,4 +1,4 @@
-package projeto.sistema.telas;
+package projeto.sistema.visual.telas;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -7,7 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import projeto.sistema.SistemaMercado;
-import projeto.sistema.ouvintes.OuvinteLogin;
+import projeto.sistema.visual.ouvintes.OuvinteLogin;
+
 import java.awt.Font;
 import java.awt.GridLayout;
 

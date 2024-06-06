@@ -1,4 +1,4 @@
-package projeto.sistema.telas;
+package projeto.sistema.visual.telas;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
 import projeto.sistema.SistemaMercado;
-import projeto.sistema.ouvintes.OuvinteCupom;
+import projeto.sistema.visual.ouvintes.OuvinteCupom;
 
 public class JanelaCupom extends JanelaDeCampos{
     private JTextField campoCodigo;

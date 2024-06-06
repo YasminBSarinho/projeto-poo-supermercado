@@ -1,4 +1,4 @@
-package projeto.sistema.ouvintes;
+package projeto.sistema.visual.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -6,8 +6,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.Cliente;
-import projeto.sistema.telas.JanelaCadastroCliente;
 import projeto.sistema.utilitarios.Json;
+import projeto.sistema.visual.telas.JanelaCadastroCliente;
 
 public class OuvinteCadastroCliente extends OuvinteDeCampos {
     private JanelaCadastroCliente janela;

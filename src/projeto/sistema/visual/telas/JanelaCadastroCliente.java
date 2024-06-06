@@ -1,4 +1,4 @@
-package projeto.sistema.telas;
+package projeto.sistema.visual.telas;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import projeto.sistema.SistemaMercado;
-import projeto.sistema.ouvintes.OuvinteCadastroCliente;
+import projeto.sistema.visual.ouvintes.OuvinteCadastroCliente;
 
 public class JanelaCadastroCliente extends JanelaDeCampos{
 
