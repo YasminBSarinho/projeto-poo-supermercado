@@ -12,7 +12,7 @@ import projeto.sistema.telas.JanelaCupom;
 import projeto.sistema.utilitarios.Cupom;
 import projeto.sistema.utilitarios.Json;
 
-public class OuvinteCupom extends OuvinteDeFormularios{
+public class OuvinteCupom extends OuvinteDeCampos{
     
     private JanelaCupom janela;
     private SistemaMercado sistema;

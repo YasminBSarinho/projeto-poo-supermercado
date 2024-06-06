@@ -10,13 +10,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 import projeto.sistema.SistemaMercado;
-import projeto.sistema.telas.JanelaBaseFormularios;
+import projeto.sistema.telas.JanelaDeCampos;
 
-public abstract class  OuvinteDeFormularios implements ActionListener, KeyListener {
+public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
     SistemaMercado sistema;
-    JanelaBaseFormularios janela;
+    JanelaDeCampos janela;
 
-    public OuvinteDeFormularios(JanelaBaseFormularios janela, SistemaMercado sistema){
+    public OuvinteDeCampos(JanelaDeCampos janela, SistemaMercado sistema){
         setJanela(janela);
         setSistema(sistema);
     }
@@ -71,10 +71,10 @@ public abstract class  OuvinteDeFormularios implements ActionListener, KeyListen
     public void setSistema(SistemaMercado sistema) {
         this.sistema = sistema;
     }
-    public JanelaBaseFormularios getJanela() {
+    public JanelaDeCampos getJanela() {
         return janela;
     }
-    public void setJanela(JanelaBaseFormularios janela) {
+    public void setJanela(JanelaDeCampos janela) {
         this.janela = janela;
     }
 

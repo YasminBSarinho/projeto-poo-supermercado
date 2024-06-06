@@ -9,7 +9,7 @@ import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.telas.JanelaLogin;
 
-public class OuvinteLogin extends OuvinteDeFormularios{
+public class OuvinteLogin extends OuvinteDeCampos{
     JanelaLogin janela;
     SistemaMercado sistema;
 

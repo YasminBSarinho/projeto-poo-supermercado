@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteCadastroUsuario;
 
-public class JanelaCadastroUsuario extends JanelaBaseFormularios{ 
+public class JanelaCadastroUsuario extends JanelaDeCampos{ 
     private JTextField campoDoNome;
     private JTextField campoDoLogin;
     private JPasswordField campoDaSenha;

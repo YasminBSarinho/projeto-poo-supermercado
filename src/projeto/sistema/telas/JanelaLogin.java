@@ -11,7 +11,7 @@ import projeto.sistema.ouvintes.OuvinteLogin;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-public class JanelaLogin extends JanelaBaseFormularios{
+public class JanelaLogin extends JanelaDeCampos{
     private JTextField campoDoLogin;
     private JPasswordField campoDaSenha;
 

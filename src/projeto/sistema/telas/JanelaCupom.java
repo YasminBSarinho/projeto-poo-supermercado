@@ -9,7 +9,7 @@ import java.awt.GridLayout;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteCupom;
 
-public class JanelaCupom extends JanelaBaseFormularios{
+public class JanelaCupom extends JanelaDeCampos{
     private JTextField campoCodigo;
     private JTextField campoDesconto;
 

@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.ouvintes.OuvinteCadastroCliente;
 
-public class JanelaCadastroCliente extends JanelaBaseFormularios{
+public class JanelaCadastroCliente extends JanelaDeCampos{
 
     private JTextField campoDoNome;
     private JTextField campoDoCPF;

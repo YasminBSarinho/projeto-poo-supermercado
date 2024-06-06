@@ -13,7 +13,7 @@ import projeto.sistema.telas.JanelaCadastroUsuario;
 import projeto.sistema.telas.JanelaLogin;
 import projeto.sistema.utilitarios.Json;
 
-public class OuvinteCadastroUsuario extends OuvinteDeFormularios{
+public class OuvinteCadastroUsuario extends OuvinteDeCampos{
     private JanelaCadastroUsuario janela;
     private SistemaMercado sistema;
     private JCheckBox checkAlmoxarife;

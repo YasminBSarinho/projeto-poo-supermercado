@@ -7,27 +7,32 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.ouvintes.OuvinteUsuario;
 import projeto.sistema.pessoas.usuarios.Usuario;
+
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Font;
 
+
 public class JanelaUsuario extends JFrame{
-    
     private Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
     private Font fonteCabecalho = new Font("arial", Font.BOLD, 25);
     private JPanel painelBotoes;
     private JButton cadastrarCliente;
+    private JMenuItem trocarUsuario;
+    private JMenuItem sair;
+    private SistemaMercado sistema;
     
-
-    public JanelaUsuario(SistemaMercado sistema, Usuario usuario){
+    public JanelaUsuario(SistemaMercado sistema){
         
         setSize(600, 600);
         setLayout(null);
         setResizable(false);
         
-        JLabel cabecalho = new JLabel("Bem-vindo(a), " + usuario.getNome() , JLabel.CENTER);
+        JLabel cabecalho = new JLabel("Bem-vindo(a), " , JLabel.CENTER);
         cabecalho.setOpaque(true);
         cabecalho.setForeground(Color.WHITE);
         cabecalho.setFont(fonteCabecalho);
@@ -36,14 +41,18 @@ public class JanelaUsuario extends JFrame{
         
         painelBotoes = new JPanel(new GridLayout(3, 1, 20, 20));
         painelBotoes.setBounds(calcularX(200), 120, 200, calcularAltura(90));
+        adicionarMenu();
         
         cadastrarCliente = adicionarBotao("Cadastrar Cliente", getFonteDoBotao(), painelBotoes);
+        OuvinteUsuario ouvinteUsuario = new OuvinteUsuario(this, sistema);
         
-        adicionarMenu();
+        getCadastrarCliente().addActionListener(ouvinteUsuario);
+        getTrocarUsuario().addActionListener(ouvinteUsuario);
+        getSair().addActionListener(ouvinteUsuario);
         add(painelBotoes);
         add(cabecalho);
         setVisible(true);
-    }   
+    }
 
     public JButton adicionarBotao(String texto, Font fonte, JPanel painel){
         JButton botao = new JButton(texto);
@@ -55,8 +64,8 @@ public class JanelaUsuario extends JFrame{
     public JMenuBar adicionarMenu(){
         JMenuBar barraDoMenu = new JMenuBar();
         JMenu opcoes = new JMenu("Opcões");
-        JMenuItem sair = new JMenuItem("Sair");
-        JMenuItem trocarUsuario = new JMenuItem("Trocar Usuario");
+        trocarUsuario = new JMenuItem("Trocar Usuario");
+        sair = new JMenuItem("Sair");
         opcoes.add(trocarUsuario);
         opcoes.add(sair);
         barraDoMenu.add(opcoes);
@@ -88,7 +97,47 @@ public class JanelaUsuario extends JFrame{
     }
     
     public void setFonteDoBotao(Font fonteDoBotao) {
-        this.fonteDoBotao = fonteDoBotao;
+        this.fonteDoBotao = fonteDoBotao;}
+    
+
+    public Font getFonteCabecalho() {
+        return fonteCabecalho;
+    }
+
+    public void setFonteCabecalho(Font fonteCabecalho) {
+        this.fonteCabecalho = fonteCabecalho;
+    }
+
+    public JPanel getPainelBotoes() {
+        return painelBotoes;
+    }
+
+    public void setPainelBotoes(JPanel painelBotoes) {
+        this.painelBotoes = painelBotoes;
+    }
+
+    public SistemaMercado getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(SistemaMercado sistema) {
+        this.sistema = sistema;
+    }
+
+    public JMenuItem getTrocarUsuario() {
+        return trocarUsuario;
+    }
+    
+    public void setTrocarUsuario(JMenuItem trocarUsuario) {
+        this.trocarUsuario = trocarUsuario;
+    }
+    
+    public JMenuItem getSair() {
+        return sair;
+    }
+    
+    public void setSair(JMenuItem sair) {
+        this.sair = sair;
     }
     
 }

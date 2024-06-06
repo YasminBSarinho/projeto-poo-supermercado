@@ -9,7 +9,7 @@ import projeto.sistema.pessoas.Cliente;
 import projeto.sistema.telas.JanelaCadastroCliente;
 import projeto.sistema.utilitarios.Json;
 
-public class OuvinteCadastroCliente extends OuvinteDeFormularios {
+public class OuvinteCadastroCliente extends OuvinteDeCampos {
     private JanelaCadastroCliente janela;
     private SistemaMercado sistema;
     private JCheckBox checkEmail;

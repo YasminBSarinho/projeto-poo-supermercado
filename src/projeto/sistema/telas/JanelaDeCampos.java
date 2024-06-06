@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import projeto.sistema.SistemaMercado;
 import java.awt.*;
 
-public class JanelaBaseFormularios extends JFrame{
+public class JanelaDeCampos extends JFrame{
     SistemaMercado sistema;
     private JButton BotaoConfirmatorio;
     private JButton botaoCancelatorio;
@@ -19,7 +19,7 @@ public class JanelaBaseFormularios extends JFrame{
     private Font fonteDoCampo = new Font("arial", Font.PLAIN, 20);
     private Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
 
-    public JanelaBaseFormularios(SistemaMercado sistema){
+    public JanelaDeCampos(SistemaMercado sistema){
         setSistema(sistema);
         setResizable(false);
         setLayout(null);
