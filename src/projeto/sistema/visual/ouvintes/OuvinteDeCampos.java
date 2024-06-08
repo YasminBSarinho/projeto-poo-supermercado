@@ -34,7 +34,7 @@ public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
         }
     }
 
-    protected abstract void confirmar();
+    protected abstract void confirmar(); 
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -43,7 +43,7 @@ public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
     }
-
+    
     public boolean validarCampo(){
         String texto;
         for(JTextField campo : janela.getCampos()){
@@ -54,7 +54,7 @@ public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
             }else{
                 texto = campo.getText();
             }
-
+            
             if(texto.trim().isEmpty() && campo.isEnabled()){
 
                 JOptionPane.showMessageDialog(janela, "Preencha todos os campos obrigatórios",
@@ -68,12 +68,15 @@ public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
     public SistemaMercado getSistema() {
         return sistema;
     }
+
     public void setSistema(SistemaMercado sistema) {
         this.sistema = sistema;
     }
+
     public JanelaDeCampos getJanela() {
         return janela;
     }
+    
     public void setJanela(JanelaDeCampos janela) {
         this.janela = janela;
     }

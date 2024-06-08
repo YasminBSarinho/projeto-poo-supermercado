@@ -11,8 +11,8 @@ import projeto.sistema.SistemaMercado;
 import java.awt.*;
 
 public class JanelaDeCampos extends JFrame{
-    SistemaMercado sistema;
-    private JButton BotaoConfirmatorio;
+    private SistemaMercado sistema;
+    private JButton botaoConfirmatorio;
     private JButton botaoCancelatorio;
     private JTextField[] campos;
     private Font fonteDoCabecalho = new Font("arial", Font.BOLD, 30);
@@ -46,6 +46,7 @@ public class JanelaDeCampos extends JFrame{
             }
         }
     }
+    
     public void adicionarAoPainel(JComponent[] componentes, JPanel painel){
         for(JComponent componente : componentes){
             painel.add(componente);
@@ -86,11 +87,11 @@ public class JanelaDeCampos extends JFrame{
     }
 
     public JButton getBotaoConfirmatorio() {
-        return BotaoConfirmatorio;
+        return botaoConfirmatorio;
     }
 
     public void setBotaoConfirmatorio(JButton botaoConfirmatorio) {
-        BotaoConfirmatorio = botaoConfirmatorio;
+        this.botaoConfirmatorio = botaoConfirmatorio;
     }
 
     public JButton getBotaoCancelatorio() {

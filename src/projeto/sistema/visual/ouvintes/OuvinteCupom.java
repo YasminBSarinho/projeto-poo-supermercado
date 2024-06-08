@@ -59,7 +59,7 @@ public class OuvinteCupom extends OuvinteDeCampos{
             if(codigo.length() > 4 || !Character.isLetterOrDigit(letra)){
                 e.consume();
             }
-        }else{
+        } else {
             if(desconto.length() > 1 || !Character.isDigit(letra)){
                 e.consume();
             }
