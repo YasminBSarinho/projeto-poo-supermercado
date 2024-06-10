@@ -32,7 +32,7 @@ public class Gerente extends Funcionario  {
                 break;
             }
 
-            produto = sistema.buscarProduto(codigo);
+            produto = sistema.buscarProdutoPorCodigo(codigo);
             if(produto == null){
                 System.out.print("Produto não encontrado, tente novamente!");
                 continue;

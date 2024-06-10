@@ -3,9 +3,12 @@ package projeto.sistema.visual.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.produtos.Produto;
+import projeto.sistema.utilitarios.Json;
 import projeto.sistema.visual.telas.JanelaCadastroProduto;
 
 public class OuvinteCadastroProduto extends OuvinteDeCampos{
@@ -31,7 +34,14 @@ public class OuvinteCadastroProduto extends OuvinteDeCampos{
         JTextField campo = (JTextField) e.getSource();
         
         String nome = campoNome.getText();
-        int unidade = Integer.parseInt(campoUnidade.getText());
+        int unidade = -1;
+
+        try{
+            unidade = Integer.parseInt(campoUnidade.getText());
+        }catch(NumberFormatException error){
+            System.out.println(error.getMessage());
+        }
+
         char letra = e.getKeyChar(); 
 
         if(campo.equals(campoUnidade)){
@@ -44,7 +54,20 @@ public class OuvinteCadastroProduto extends OuvinteDeCampos{
 
     @Override
     protected void confirmar() {
+        String nome = janela.getCampoDoNome().getText();
+        int unidade = Integer.parseInt(janela.getCampoDaUnidade().getText());
+        if(sistema.buscarProdutoPorNome(nome) != null){
+            JOptionPane.showMessageDialog(janela, "Já existe um produto com este nome cadastrado", "Aviso", JOptionPane.ERROR_MESSAGE);
         
+        }else{
+            Produto produto = new Produto(nome, unidade);
+            sistema.getProdutosEmEstoque().add(produto);
+            Json json = new Json();
+            janela.dispose();
+
+            JOptionPane.showMessageDialog(janela, "Produto cadastrado!\n\nCodigo: " + produto.getCodigo() + "\nNome: " + produto.getNome() + "\nUnidades: " + produto.getUnidade());
+            json.escreverJson(sistema);
+        }
     }
     
     public SistemaMercado getSistema() {

@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.produtos.Produto;
 import projeto.sistema.visual.ouvintes.OuvinteCadastroProduto;
 
 
@@ -29,23 +30,23 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
         JPanel painelCampos = new JPanel();
         JPanel painelBotoes = new JPanel();
 
-        painelTextos.setLayout(new GridLayout(6, 1, 0, 20));
-        painelCampos.setLayout(new GridLayout(6, 1, 0, 20));
+        painelTextos.setLayout(new GridLayout(3, 1, 0, 20));
+        painelCampos.setLayout(new GridLayout(3, 1, 0, 20));
         painelBotoes.setLayout(new GridLayout(1, 2, 100, 0));
 
-        painelTextos.setBounds(40, 100, 160, 300);
-        painelCampos.setBounds(210, 100, 300, 300);
+        painelTextos.setBounds(40, 100, 160, 140);
+        painelCampos.setBounds(210, 100, 300, 140);
         painelBotoes.setBounds(150, 280, 400, 50);
-        painelCampos.setBackground(Color.GRAY);
-        painelCampos.setOpaque(true);
+
         JLabel textoCodigo = new JLabel("Codigo:");
         JLabel textoNome = new JLabel("Nome:");
         JLabel textoUnidades = new JLabel("Unidades:");
 
         campoDoCodigo = new JTextField(30);
+        campoDoCodigo.setEnabled(false); 
         campoDoNome = new JTextField(15);
         campoDaUnidade = new JTextField(30);
-
+    
         setBotaoConfirmatorio(new JButton("Cadastrar"));
         setBotaoCancelatorio(new JButton("Cancelar"));
 

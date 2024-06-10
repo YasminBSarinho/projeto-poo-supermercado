@@ -1,16 +1,25 @@
 package projeto.sistema.produtos;
 
 public class Produto {
-	private static int quantiaDeInstancias = 0;
+	private static Integer quantiaDeInstancias = 0; 
 	private String codigo;
 	private String nome;
 	private int unidade;
 	private float valorUnitarioDeCompra;
 	private float valorUnitarioDeVenda;
 
-	public Produto() {
+	public Produto(){
+	}
+
+	public Produto(String nome, int unidade) {
+		this.nome = nome;
+		this.unidade = unidade;
 		quantiaDeInstancias += 1;
 		this.setCodigo();
+	}
+
+	public static Integer getQuantiaDeInstancias(){
+		return quantiaDeInstancias;
 	}
 
 	public String getCodigo() {

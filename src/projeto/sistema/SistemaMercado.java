@@ -46,7 +46,16 @@ public class SistemaMercado {
 		return null;
 	}
 
-	public Produto buscarProduto(String codigo){
+	public Produto buscarProdutoPorNome(String nome){
+		for (Produto produto : this.getProdutosEmEstoque()){
+			if(produto.getNome().equalsIgnoreCase(nome)){
+				return produto;
+			}
+		}
+		return null;
+	}
+
+	public Produto buscarProdutoPorCodigo(String codigo){
 		for (Produto produto : this.getProdutosEmEstoque()){
 			if(produto.getCodigo().equals(codigo)){
 				return produto;

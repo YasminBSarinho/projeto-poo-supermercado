@@ -35,7 +35,7 @@ public class CaixaEletronico extends Usuario {
             
             System.out.print("Digite o codigo do produto que pegou: ");
             String codigo = scanner.next();
-            Produto produto = sistema.buscarProduto(codigo);
+            Produto produto = sistema.buscarProdutoPorCodigo(codigo);
             if(produto == null){
                 continue;
             }

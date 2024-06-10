@@ -1,6 +1,7 @@
 package projeto;
 
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.visual.telas.JanelaCadastroProduto;
 import projeto.sistema.visual.telas.JanelaCadastroUsuario;
 import projeto.sistema.visual.telas.JanelaLogin;
 import projeto.sistema.utilitarios.Json;
@@ -11,10 +12,8 @@ public class Programa {
 		SistemaMercado sistema = json.lerJson();
 		System.out.println(sistema.getListaDeUsuarios().size());
 
-		if(sistema.isSemGerente()){
-			JanelaCadastroUsuario janelaCadastro =  new JanelaCadastroUsuario(sistema);
-		}else{
-			JanelaLogin janelaLogin = new JanelaLogin(sistema);
-		}
+	
+		JanelaCadastroProduto janela = new JanelaCadastroProduto(sistema);
+
 	}
 }

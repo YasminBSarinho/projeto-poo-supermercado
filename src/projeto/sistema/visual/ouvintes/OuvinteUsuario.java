@@ -37,7 +37,7 @@ public class OuvinteUsuario implements ActionListener{
     
     public void setJanela(JanelaUsuario janela) {
         this.janela = janela;
-        }
+    }
         
     public SistemaMercado getSistema() {
         return sistema;
