@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.CaixaEletronico;
 import projeto.sistema.pessoas.usuarios.Usuario;
@@ -15,16 +17,14 @@ import projeto.sistema.visual.telas.JanelaLogin;
 
 public class OuvinteCadastroUsuario extends OuvinteDeCampos{
     private JanelaCadastroUsuario janela;
-    private SistemaMercado sistema;
-    private JCheckBox checkAlmoxarife;
-    private JCheckBox checkCaixa;
+    private JRadioButton checkAlmoxarife;
+    private JRadioButton checkCaixa;
     private JCheckBox checkEmail;
     private JCheckBox checkNisPis;
 
     public OuvinteCadastroUsuario(JanelaCadastroUsuario janela, SistemaMercado sistema){
         super(janela, sistema);
         setJanela(janela);
-        setSistema(sistema);
         checkAlmoxarife = janela.getCheckAlmoxarife();
         checkCaixa = janela.getCheckCaixa();
         checkEmail = janela.getCheckEmail();
@@ -55,16 +55,11 @@ public class OuvinteCadastroUsuario extends OuvinteDeCampos{
             }
 
             else if(checkAlmoxarife.isSelected()){
-                checkCaixa.setEnabled(false);
                 return "Almoxarife";
             }
             else if(checkCaixa.isSelected()){
-                checkAlmoxarife.setEnabled(false);
                 return "Caixa Eletronico";
 
-            }else{
-                checkAlmoxarife.setEnabled(true);
-                checkCaixa.setEnabled(true);
             }
         return "";
     }
@@ -130,13 +125,9 @@ public class OuvinteCadastroUsuario extends OuvinteDeCampos{
     @Override
     public void keyTyped(KeyEvent e) {
         
-        
     }
 
-    
     //Getters e Setters
-
-
 
     public JanelaCadastroUsuario getJanela() {
         return janela;
@@ -145,28 +136,20 @@ public class OuvinteCadastroUsuario extends OuvinteDeCampos{
     public void setJanela(JanelaCadastroUsuario janela) {
         this.janela = janela;
     }
-
-    public SistemaMercado getSistema() {
-        return sistema;
-    }
-
-    public void setSistema(SistemaMercado sistema) {
-        this.sistema = sistema;
-    }
-
-    public JCheckBox getCheckAlmoxarife() {
+    
+    public JRadioButton getCheckAlmoxarife() {
         return checkAlmoxarife;
     }
 
-    public void setCheckAlmoxarife(JCheckBox checkAlmoxarife) {
+    public void setCheckAlmoxarife(JRadioButton checkAlmoxarife) {
         this.checkAlmoxarife = checkAlmoxarife;
     }
 
-    public JCheckBox getCheckCaixa() {
+    public JRadioButton getCheckCaixa() {
         return checkCaixa;
     }
 
-    public void setCheckCaixa(JCheckBox checkCaixa) {
+    public void setCheckCaixa(JRadioButton checkCaixa) {
         this.checkCaixa = checkCaixa;
     }
 

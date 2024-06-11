@@ -1,12 +1,15 @@
 package projeto.sistema.visual.telas;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import projeto.sistema.SistemaMercado;
@@ -19,8 +22,8 @@ public class JanelaCadastroUsuario extends JanelaDeCampos{
     private JPasswordField campoConfirmar;
     private JTextField campoDoEmail;
     private JTextField campoDaMatricula;
-    private JCheckBox checkAlmoxarife;
-    private JCheckBox checkCaixa;
+    private JRadioButton checkAlmoxarife;
+    private JRadioButton checkCaixa;
     private JCheckBox checkEmail;
     private JCheckBox checkNisPis;
     
@@ -63,11 +66,15 @@ public class JanelaCadastroUsuario extends JanelaDeCampos{
         campoDaMatricula = new JTextField(15);
         campoDoEmail.setEnabled(false);
         campoDaMatricula.setEnabled(false);
-        checkAlmoxarife = new JCheckBox("Almoxarife");
-        checkCaixa = new JCheckBox("Caixa Eletronico");
+        checkAlmoxarife = new JRadioButton("Almoxarife", false);
+        checkCaixa = new JRadioButton("Caixa Eletronico", false);
         checkEmail = new JCheckBox();
         checkNisPis = new JCheckBox();
 
+        ButtonGroup grupoCheckers = new ButtonGroup();
+        grupoCheckers.add(checkAlmoxarife);
+        grupoCheckers.add(checkCaixa);
+        
         setBotaoConfirmatorio(new JButton("Cadastrar"));
         setBotaoCancelatorio(new JButton("Cancelar"));
 
@@ -107,6 +114,7 @@ public class JanelaCadastroUsuario extends JanelaDeCampos{
         }else{
             adicionarCabecalho("Cadastrar Funcionários");
         }
+
 
         OuvinteCadastroUsuario ouvinteCadastro = new OuvinteCadastroUsuario(this, sistema);
         
@@ -170,21 +178,25 @@ public class JanelaCadastroUsuario extends JanelaDeCampos{
         this.campoDaMatricula = campoDaMatricula;
     }
 
-    public JCheckBox getCheckAlmoxarife() {
+    public JRadioButton getCheckAlmoxarife() {
         return checkAlmoxarife;
     }
 
-    public void setCheckAlmoxarife(JCheckBox checkAlmoxarife) {
+
+    public void setCheckAlmoxarife(JRadioButton checkAlmoxarife) {
         this.checkAlmoxarife = checkAlmoxarife;
     }
 
-    public JCheckBox getCheckCaixa() {
+
+    public JRadioButton getCheckCaixa() {
         return checkCaixa;
     }
 
-    public void setCheckCaixa(JCheckBox checkCaixa) {
+
+    public void setCheckCaixa(JRadioButton checkCaixa) {
         this.checkCaixa = checkCaixa;
     }
+
 
     public void setCampoDoNome(JTextField campoDoNome) {
         this.campoDoNome = campoDoNome;

@@ -8,7 +8,6 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.visual.telas.JanelaDeCampos;
 

@@ -11,12 +11,10 @@ import projeto.sistema.visual.telas.JanelaLogin;
 
 public class OuvinteLogin extends OuvinteDeCampos{
     JanelaLogin janela;
-    SistemaMercado sistema;
 
     public OuvinteLogin(JanelaLogin janela, SistemaMercado sistema){
         super(janela, sistema);
         setJanela(janela);
-        setSistema(sistema);
     }
 
     @Override

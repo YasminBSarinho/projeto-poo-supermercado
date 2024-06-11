@@ -13,14 +13,12 @@ import projeto.sistema.utilitarios.Json;
 import projeto.sistema.visual.telas.JanelaCupom;
 
 public class OuvinteCupom extends OuvinteDeCampos{
-    
+
     private JanelaCupom janela;
-    private SistemaMercado sistema;
     
     public OuvinteCupom(JanelaCupom janela, SistemaMercado sistema){
         super(janela, sistema);
         setJanela(janela);
-        setSistema(sistema);  
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -74,11 +72,4 @@ public class OuvinteCupom extends OuvinteDeCampos{
         this.janela = janela;
     }
     
-    public SistemaMercado getSistema() {
-        return sistema;
-    }
-
-    public void setSistema(SistemaMercado sistema) {
-        this.sistema = sistema;
-    }
 }

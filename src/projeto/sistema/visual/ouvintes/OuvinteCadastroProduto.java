@@ -13,12 +13,10 @@ import projeto.sistema.visual.telas.JanelaCadastroProduto;
 
 public class OuvinteCadastroProduto extends OuvinteDeCampos{
     private JanelaCadastroProduto janela;
-    private SistemaMercado sistema;
 
     public OuvinteCadastroProduto(JanelaCadastroProduto janela, SistemaMercado sistema) {
         super(janela, sistema);
         setJanela(janela);
-        setSistema(sistema);
     }
 
     @Override 

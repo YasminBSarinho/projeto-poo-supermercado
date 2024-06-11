@@ -18,7 +18,7 @@ public class Produto {
 		this.setCodigo();
 	}
 
-	public static Integer getQuantiaDeInstancias(){
+	public int getQuantiaDeInstancias(){
 		return quantiaDeInstancias;
 	}
 

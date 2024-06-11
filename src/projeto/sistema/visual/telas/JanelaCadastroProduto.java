@@ -32,11 +32,11 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
 
         painelTextos.setLayout(new GridLayout(3, 1, 0, 20));
         painelCampos.setLayout(new GridLayout(3, 1, 0, 20));
-        painelBotoes.setLayout(new GridLayout(1, 2, 100, 0));
+        painelBotoes.setLayout(new GridLayout(1, 2, 30, 0));
 
         painelTextos.setBounds(40, 100, 160, 140);
         painelCampos.setBounds(210, 100, 300, 140);
-        painelBotoes.setBounds(150, 280, 400, 50);
+        painelBotoes.setBounds(210, 280, 300, 50);
 
         JLabel textoCodigo = new JLabel("Codigo:");
         JLabel textoNome = new JLabel("Nome:");

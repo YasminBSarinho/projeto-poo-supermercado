@@ -11,14 +11,12 @@ import projeto.sistema.visual.telas.JanelaCadastroCliente;
 
 public class OuvinteCadastroCliente extends OuvinteDeCampos {
     private JanelaCadastroCliente janela;
-    private SistemaMercado sistema;
     private JCheckBox checkEmail;
     private JCheckBox checkEndereco;
 
     public OuvinteCadastroCliente(JanelaCadastroCliente janela, SistemaMercado sistema){
         super(janela, sistema);
         this.setJanela(janela);
-        this.setSistema(sistema);
         checkEmail = janela.getCheckEmail();
         checkEndereco = janela.getCheckEndereco();
     }
