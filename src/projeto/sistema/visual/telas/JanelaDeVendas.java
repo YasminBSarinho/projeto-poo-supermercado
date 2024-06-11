@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import projeto.sistema.SistemaMercado;
 
@@ -14,23 +15,21 @@ public class JanelaDeVendas extends JanelaDeCampos{
     private JTextField campoCPF;
     private JTextField campoProduto;
     private JTextField campoQTD;
+    private JButton botaoVender;
 
     public JanelaDeVendas(SistemaMercado sistema) {
         super(sistema);
-        setSize(600, 400);
+        setSize(650, 400);
 
         JPanel painelTextos = new JPanel();
         JPanel painelCampos = new JPanel();
-        JPanel painelBotoes = new JPanel();
 
         adicionarCabecalho("Vendas");
 
         painelTextos.setLayout(new GridLayout(3, 1, 0, 20));
         painelCampos.setLayout(new GridLayout(3, 1, 0, 20));
-        painelBotoes.setLayout(new GridLayout(1, 2, 50, 0));
         painelTextos.setBounds(40, 100, 200, 140);
-        painelCampos.setBounds(240, 100, 300, 140);
-        painelBotoes.setBounds(240, 280, 300, 50);
+        painelCampos.setBounds(240, 100, 370, 140);
         campoCPF = new JTextField();
         campoProduto = new JTextField();
         campoQTD = new JTextField();
@@ -39,25 +38,28 @@ public class JanelaDeVendas extends JanelaDeCampos{
         JLabel textoProduto = new JLabel("Código do Produto: ");
         JLabel textoQTD = new JLabel("Unidades: ");
 
-        setBotaoConfirmatorio(new JButton("Vender"));
-        setBotaoCancelatorio(new JButton("Cancelar"));
+        setBotaoConfirmatorio(new JButton("Adicionar ao Carrinho"));
+        botaoVender = new JButton("Finalizar");
+        getBotaoConfirmatorio().setBounds(240, 280, 200, 50);
+        botaoVender.setBounds(490, 280, 120, 50);
 
         JTextField[] componentesCampos = {campoCPF, campoProduto, campoQTD};
 
         JComponent[] componentesTextos = { textoCPF, textoProduto, textoQTD};
 
-        JComponent[] componentesBotoes = {getBotaoConfirmatorio(), getBotaoCancelatorio()};
+        JComponent[] componentesBotoes = {getBotaoConfirmatorio(), getBotaoVender()};
         
         setCampos(componentesCampos);
         adicionarFontes(componentesTextos);
         adicionarFontes(componentesCampos);
+        setFonteDoBotao(new Font("arial", Font.BOLD, 15));
         adicionarFontes(componentesBotoes);
         adicionarAoPainel(componentesTextos, painelTextos);
         adicionarAoPainel(componentesCampos, painelCampos);
-        adicionarAoPainel(componentesBotoes, painelBotoes);
+        add(getBotaoConfirmatorio());
+        add(botaoVender);
         add(painelTextos);
         add(painelCampos);
-        add(painelBotoes);
         setVisible(true);
         
     }
@@ -85,5 +87,13 @@ public class JanelaDeVendas extends JanelaDeCampos{
     public void setCampoQTD(JTextField campoQTD) {
         this.campoQTD = campoQTD;
     }
-    
+
+    public JButton getBotaoVender() {
+        return botaoVender;
+    }
+
+    public void setBotaoVender(JButton botaoVender) {
+        this.botaoVender = botaoVender;
+    }
+
 }

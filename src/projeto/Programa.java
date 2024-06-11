@@ -15,7 +15,7 @@ public class Programa {
 		System.out.println(sistema.getListaDeUsuarios().size());
 
 	
-		JanelaCadastroProduto janela = new JanelaCadastroProduto(sistema);
+		JanelaDeVendas janela = new JanelaDeVendas(sistema);
 
 	}
 }
