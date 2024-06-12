@@ -8,7 +8,11 @@ import javax.swing.JTextField;
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.produtos.Produto;
+import projeto.sistema.visual.ouvintes.OuvinteVendas;
 
 public class JanelaDeVendas extends JanelaDeCampos{
 
@@ -16,6 +20,8 @@ public class JanelaDeVendas extends JanelaDeCampos{
     private JTextField campoProduto;
     private JTextField campoQTD;
     private JButton botaoVender;
+    private ArrayList<Produto> carrinho = new ArrayList<>();
+    private float totalDeVendas;
 
     public JanelaDeVendas(SistemaMercado sistema) {
         super(sistema);
@@ -56,6 +62,14 @@ public class JanelaDeVendas extends JanelaDeCampos{
         adicionarFontes(componentesBotoes);
         adicionarAoPainel(componentesTextos, painelTextos);
         adicionarAoPainel(componentesCampos, painelCampos);
+
+        OuvinteVendas ouvinteVendas = new OuvinteVendas(this,sistema);
+        getCampoCPF().addKeyListener(ouvinteVendas);
+        getCampoProduto().addKeyListener(ouvinteVendas);
+        getCampoQTD().addKeyListener(ouvinteVendas);
+        getBotaoConfirmatorio().addActionListener(ouvinteVendas);
+        getBotaoVender().addActionListener(ouvinteVendas);
+        
         add(getBotaoConfirmatorio());
         add(botaoVender);
         add(painelTextos);
@@ -94,6 +108,22 @@ public class JanelaDeVendas extends JanelaDeCampos{
 
     public void setBotaoVender(JButton botaoVender) {
         this.botaoVender = botaoVender;
+    }
+
+    public ArrayList<Produto> getCarrinho() {
+        return carrinho;
+    }
+
+    public void setCarrinho(ArrayList<Produto> carrinho) {
+        this.carrinho = carrinho;
+    }
+
+    public float getTotalDeVendas() {
+        return totalDeVendas;
+    }
+
+    public void setTotalDeVendas(float totalDeVendas) {
+        this.totalDeVendas = totalDeVendas;
     }
 
 }

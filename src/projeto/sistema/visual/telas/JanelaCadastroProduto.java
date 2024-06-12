@@ -43,7 +43,7 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
         JLabel textoUnidades = new JLabel("Unidades:");
 
         campoDoCodigo = new JTextField(30);
-        campoDoCodigo.setEnabled(false); 
+        campoDoCodigo.setEnabled(false);
         campoDoNome = new JTextField(15);
         campoDaUnidade = new JTextField(30);
     

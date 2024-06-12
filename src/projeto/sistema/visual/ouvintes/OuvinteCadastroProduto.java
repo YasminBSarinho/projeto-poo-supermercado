@@ -37,7 +37,7 @@ public class OuvinteCadastroProduto extends OuvinteDeCampos{
         try{
             unidade = Integer.parseInt(campoUnidade.getText());
         }catch(NumberFormatException error){
-            System.out.println(error.getMessage());
+            
         }
 
         char letra = e.getKeyChar(); 
