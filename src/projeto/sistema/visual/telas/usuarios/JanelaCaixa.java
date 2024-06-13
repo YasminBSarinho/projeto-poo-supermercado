@@ -3,6 +3,7 @@ package projeto.sistema.visual.telas.usuarios;
 import javax.swing.JButton;
 
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.visual.ouvintes.OuvinteCaixa;
 
 public class JanelaCaixa extends JanelaUsuario{
@@ -10,8 +11,8 @@ public class JanelaCaixa extends JanelaUsuario{
     private SistemaMercado sistema;
     private JButton realizarVenda;
     
-    public JanelaCaixa(SistemaMercado sistema){
-        super(sistema);
+    public JanelaCaixa(SistemaMercado sistema, Usuario usuario){
+        super(sistema, usuario);
         realizarVenda = adicionarBotao("Realizar venda", getFonteDoBotao(), getPainelBotoes());
         OuvinteCaixa ouvinteCaixa = new OuvinteCaixa(this,sistema);
         getRealizarVenda().addActionListener(ouvinteCaixa);

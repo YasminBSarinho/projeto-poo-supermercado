@@ -39,21 +39,21 @@ public class OuvinteLogin extends OuvinteDeCampos{
         }
 
         else{
+            janela.dispose();
+            JOptionPane.showMessageDialog(janela, "O Login foi efetuado!!");
             switch (usuario.getCargo().toLowerCase()){
                 case "gerente":
-                    JanelaGerente janelaGerente = new JanelaGerente(getSistema());
+                    JanelaGerente janelaGerente = new JanelaGerente(getSistema(), usuario); 
                     break;
                 case "almoxarife":
-                    JanelaAlmoxarife janelaAlmoxarife = new JanelaAlmoxarife(getSistema());
+                    JanelaAlmoxarife janelaAlmoxarife = new JanelaAlmoxarife(getSistema(), usuario);
                     break;
                 case "caixa eletronico":
-                    JanelaCaixa janelaCaixa = new JanelaCaixa(getSistema());
+                    JanelaCaixa janelaCaixa = new JanelaCaixa(getSistema(), usuario);
                     break;
-                default:
-                    break;
-            }
+                }
+            }  
         }
-    }
 
 
     @Override

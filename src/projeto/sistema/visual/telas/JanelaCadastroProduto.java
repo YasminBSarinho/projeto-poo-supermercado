@@ -18,6 +18,7 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
     private JTextField campoDoNome;
     private JTextField campoDoCodigo;
     private JTextField campoDaUnidade;
+    
     public JanelaCadastroProduto(SistemaMercado sistema) {
         super(sistema);
         setSize(600, 400);

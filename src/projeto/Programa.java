@@ -1,5 +1,7 @@
 package projeto;
 
+import javax.swing.JOptionPane;
+
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.visual.telas.JanelaCadastroUsuario;
 import projeto.sistema.visual.telas.JanelaLogin;

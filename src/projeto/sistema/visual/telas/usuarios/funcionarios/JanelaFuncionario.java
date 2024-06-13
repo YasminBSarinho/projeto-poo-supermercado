@@ -10,8 +10,8 @@ public class JanelaFuncionario extends JanelaUsuario {
     private JButton listarProdutos;
     private JButton cadastrarProduto;
 
-    public JanelaFuncionario(SistemaMercado sistema){
-        super(sistema);
+    public JanelaFuncionario(SistemaMercado sistema, Usuario usuario){
+        super(sistema, usuario);
         listarProdutos = adicionarBotao("Listar Produtos", getFonteDoBotao(), getPainelBotoes());
         cadastrarProduto = adicionarBotao("Cadastrar Produto", getFonteDoBotao(), getPainelBotoes());
 

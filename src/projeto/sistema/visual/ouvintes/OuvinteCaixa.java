@@ -3,6 +3,7 @@ package projeto.sistema.visual.ouvintes;
 import java.awt.event.ActionEvent;
 
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.visual.telas.JanelaDeVendas;
 import projeto.sistema.visual.telas.usuarios.JanelaCaixa;
 
 public class OuvinteCaixa extends OuvinteUsuario{
@@ -16,7 +17,7 @@ public class OuvinteCaixa extends OuvinteUsuario{
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource().equals(janela.getRealizarVenda())){
-            
+            JanelaDeVendas janelaDeVendas = new JanelaDeVendas(getSistema());
         }
     }
     

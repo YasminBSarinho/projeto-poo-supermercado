@@ -75,7 +75,6 @@ public class JanelaDeVendas extends JanelaDeCampos{
         add(painelTextos);
         add(painelCampos);
         setVisible(true);
-        
     }
 
     public JTextField getCampoCPF() {

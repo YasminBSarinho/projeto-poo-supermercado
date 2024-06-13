@@ -26,14 +26,14 @@ public class JanelaUsuario extends JFrame{
     private JMenuItem sair;
     private SistemaMercado sistema;
     
-    public JanelaUsuario(SistemaMercado sistema){
+    public JanelaUsuario(SistemaMercado sistema, Usuario usuario){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(600, 600);
         setLayout(null);
         setResizable(false);
         setLocationRelativeTo(null);
         
-        JLabel cabecalho = new JLabel("Bem-vindo(a), ", JLabel.CENTER);
+        JLabel cabecalho = new JLabel("Bem-vindo(a), " + usuario.getNome(), JLabel.CENTER);
         cabecalho.setOpaque(true);
         cabecalho.setForeground(Color.WHITE);
         cabecalho.setFont(fonteCabecalho);
@@ -78,7 +78,7 @@ public class JanelaUsuario extends JFrame{
         int x = (getWidth() - larguraPainel)/2;
         return x;
     }
-    
+
     public int calcularAltura(int alturaDoBotao){
         int altura = (3 * (alturaDoBotao));
         return altura;
