@@ -9,6 +9,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.visual.ouvintes.OuvinteUsuario;
 
 import java.awt.Color;
@@ -30,8 +31,9 @@ public class JanelaUsuario extends JFrame{
         setSize(600, 600);
         setLayout(null);
         setResizable(false);
+        setLocationRelativeTo(null);
         
-        JLabel cabecalho = new JLabel("Bem-vindo(a), " , JLabel.CENTER);
+        JLabel cabecalho = new JLabel("Bem-vindo(a), ", JLabel.CENTER);
         cabecalho.setOpaque(true);
         cabecalho.setForeground(Color.WHITE);
         cabecalho.setFont(fonteCabecalho);
@@ -39,7 +41,7 @@ public class JanelaUsuario extends JFrame{
         cabecalho.setBackground(Color.GRAY);
         
         painelBotoes = new JPanel(new GridLayout(3, 1, 20, 20));
-        painelBotoes.setBounds(calcularX(200), 120, 200, calcularAltura(90));
+        painelBotoes.setBounds(calcularX(250), 120, 250, calcularAltura(90));
         adicionarMenu();
         
         cadastrarCliente = adicionarBotao("Cadastrar Cliente", getFonteDoBotao(), painelBotoes);
@@ -50,7 +52,6 @@ public class JanelaUsuario extends JFrame{
         getSair().addActionListener(ouvinteUsuario);
         add(painelBotoes);
         add(cabecalho);
-        setVisible(true);
     }
 
     public JButton adicionarBotao(String texto, Font fonte, JPanel painel){

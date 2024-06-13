@@ -15,9 +15,6 @@ public class Almoxarife extends Funcionario {
         super(nome, email, cargo, login, senha, matricula);
     }
 
-    // todos os metodos estao sem retorno pois ainda serao feitos, entao quando for fazer, 
-    // reescreva o tipo de retorno e os parametros ou isso pode causar erros
-
     public void registarEntradaDeProduto(SistemaMercado sistema){
 
         Formularios formulario = new Formularios();
