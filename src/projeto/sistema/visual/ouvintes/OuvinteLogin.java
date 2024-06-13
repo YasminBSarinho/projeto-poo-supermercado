@@ -8,6 +8,9 @@ import javax.swing.JOptionPane;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.visual.telas.JanelaLogin;
+import projeto.sistema.visual.telas.usuarios.JanelaCaixa;
+import projeto.sistema.visual.telas.usuarios.funcionarios.JanelaAlmoxarife;
+import projeto.sistema.visual.telas.usuarios.funcionarios.JanelaGerente;
 
 public class OuvinteLogin extends OuvinteDeCampos{
     JanelaLogin janela;
@@ -38,13 +41,13 @@ public class OuvinteLogin extends OuvinteDeCampos{
         else{
             switch (usuario.getCargo().toLowerCase()){
                 case "gerente":
-                    // Tela do Gerente.
+                    JanelaGerente janelaGerente = new JanelaGerente(getSistema());
                     break;
                 case "almoxarife":
-                    // Tela almoxarife
+                    JanelaAlmoxarife janelaAlmoxarife = new JanelaAlmoxarife(getSistema());
                     break;
                 case "caixa eletronico":
-                    // Tela caixa eletronico
+                    JanelaCaixa janelaCaixa = new JanelaCaixa(getSistema());
                     break;
                 default:
                     break;
@@ -52,24 +55,10 @@ public class OuvinteLogin extends OuvinteDeCampos{
         }
     }
 
-    
-    @Override
-    public void keyPressed(KeyEvent e) {
-        
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {
     
-    }
-
-    public void verificarCargo(String cargo){
-
     }
 
     public SistemaMercado getSistema() {

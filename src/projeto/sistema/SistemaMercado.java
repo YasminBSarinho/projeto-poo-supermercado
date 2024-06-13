@@ -22,12 +22,6 @@ public class SistemaMercado {
     }
 
 
-	public void cadastrarFuncionario(String cargo) throws Exception {
-		Formularios formulario = new Formularios();
-		Usuario usuario = formulario.pedirDadosFuncionario(cargo);
-		getListaDeUsuarios().add(usuario);
-	}
-
 	public Usuario getUsuarioLogado(String login, String senha) {
 		for (Usuario usuario : this.getListaDeUsuarios()) {
 			if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {

@@ -12,7 +12,6 @@ public class JanelaCaixa extends JanelaUsuario{
     
     public JanelaCaixa(SistemaMercado sistema){
         super(sistema);
-
         realizarVenda = adicionarBotao("Realizar venda", getFonteDoBotao(), getPainelBotoes());
         OuvinteCaixa ouvinteCaixa = new OuvinteCaixa(this,sistema);
         getRealizarVenda().addActionListener(ouvinteCaixa);

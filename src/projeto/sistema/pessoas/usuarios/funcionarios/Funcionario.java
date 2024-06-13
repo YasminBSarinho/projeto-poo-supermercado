@@ -2,8 +2,6 @@ package projeto.sistema.pessoas.usuarios.funcionarios;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import projeto.sistema.utilitarios.Formularios;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.produtos.Produto;
@@ -15,12 +13,12 @@ public abstract class Funcionario extends Usuario{
     public Funcionario(String nome, String cargo, String login, String senha, String email, String matricula){
     	super(nome, cargo, login, senha, email, matricula);
     }
-
+    
+    /*
     public void listarProdutos(SistemaMercado sistema, Boolean detalhes){ 
         ArrayList <Produto> lista =  sistema.getProdutosEmEstoque();
         Scanner scanner = new Scanner(System.in);
         int escolha = 0;
-
         while(true){
             System.out.println("""
                         --- Listar Produto ---
@@ -56,12 +54,8 @@ public abstract class Funcionario extends Usuario{
             }
             break;
         }
-    }
-    public void cadastrarProduto(SistemaMercado sistema){
-        Formularios formulario = new Formularios();
-        Produto produto = formulario.solicitarDadosDoProduto();
-        sistema.getProdutosEmEstoque().add(produto);
-    }
+    } 
+
     
     public void exibirDetalhesDeUmProduto(String codigoDoProduto, ArrayList<Produto> lista){
         for (Produto produto : lista) {
@@ -101,6 +95,7 @@ public abstract class Funcionario extends Usuario{
             }         
         }
     }
+
     public void editarProduto(String codigo, ArrayList<Produto> lista){
 
         Scanner scanner = new Scanner(System.in);
@@ -144,5 +139,5 @@ public abstract class Funcionario extends Usuario{
                 }
             }
         }
-    }
+    } */
 }

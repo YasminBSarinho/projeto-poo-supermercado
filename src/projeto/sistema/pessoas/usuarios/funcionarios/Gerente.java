@@ -1,8 +1,6 @@
 package projeto.sistema.pessoas.usuarios.funcionarios;
 
 import java.util.Scanner;
-
-import projeto.sistema.utilitarios.Formularios;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.produtos.Produto;
 
@@ -15,7 +13,7 @@ public class Gerente extends Funcionario  {
     public Gerente(String nome, String cargo, String login, String senha, String email, String matricula){
     	super(nome, cargo, login, senha, email, matricula);
     }
-
+    /*
     public void registrarValorUnitarioDeVendaDeProduto(SistemaMercado sistema){
         
         Formularios formulario = new Formularios();
@@ -44,13 +42,5 @@ public class Gerente extends Funcionario  {
             }
         }
     }
-    
-    public void gerarBalancoMensal(){
-        
-    }
-
-    public void criarCupomDeDesconto(SistemaMercado sistema){
-        sistema.getCupons().add(Formularios.criarCupom());
-    }
-
+    */
 }

@@ -2,7 +2,6 @@ package projeto.sistema.pessoas.usuarios.funcionarios;
 
 import java.util.Scanner;
 
-import projeto.sistema.utilitarios.Formularios;
 import projeto.sistema.utilitarios.Registro;
 import projeto.sistema.SistemaMercado;
 import projeto.sistema.produtos.Produto;
@@ -14,7 +13,7 @@ public class Almoxarife extends Funcionario {
     public Almoxarife(String nome, String email, String cargo, String login, String senha, String matricula){
         super(nome, email, cargo, login, senha, matricula);
     }
-
+    /*
     public void registarEntradaDeProduto(SistemaMercado sistema){
 
         Formularios formulario = new Formularios();
@@ -36,5 +35,5 @@ public class Almoxarife extends Funcionario {
             }
         }
 
-    }
+    }*/
 }

@@ -5,7 +5,6 @@ public class Cliente extends Pessoa{
     protected String endereco;
 
     public Cliente(){
-        
     }
 
     public Cliente(String nome, String cpf, String endereco){
