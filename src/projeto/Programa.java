@@ -3,6 +3,7 @@ package projeto;
 import javax.swing.JOptionPane;
 
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.produtos.Produto;
 import projeto.sistema.visual.telas.JanelaCadastroUsuario;
 import projeto.sistema.visual.telas.JanelaListarProdutos;
@@ -14,11 +15,6 @@ public class Programa {
 		Json json  = new Json();
 		SistemaMercado sistema = json.lerJson();
 		System.out.println(sistema.getListaDeUsuarios().size());
-
-		if(sistema.isSemGerente()){	
-			JanelaCadastroUsuario janelaCadastro =  new JanelaCadastroUsuario(sistema);	
-		}else{	
-			JanelaLogin  janelaDeLogin = new JanelaLogin(sistema);	
-		}
+		JanelaListarProdutos janela = new JanelaListarProdutos(sistema, sistema.getUsuarioLogado("a", "a"));
 	}
 }
