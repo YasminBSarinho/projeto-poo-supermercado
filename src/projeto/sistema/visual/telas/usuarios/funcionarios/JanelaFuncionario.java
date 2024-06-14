@@ -15,7 +15,7 @@ public class JanelaFuncionario extends JanelaUsuario {
         listarProdutos = adicionarBotao("Listar Produtos", getFonteDoBotao(), getPainelBotoes());
         cadastrarProduto = adicionarBotao("Cadastrar Produto", getFonteDoBotao(), getPainelBotoes());
 
-        OuvinteFuncionario ouvinteFuncionario = new OuvinteFuncionario(this, sistema);
+        OuvinteFuncionario ouvinteFuncionario = new OuvinteFuncionario(this, sistema, usuario);
         listarProdutos.addActionListener(ouvinteFuncionario);
         cadastrarProduto.addActionListener(ouvinteFuncionario);
         setVisible(true);

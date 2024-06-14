@@ -16,25 +16,28 @@ import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.pessoas.usuarios.funcionarios.Almoxarife;
 import projeto.sistema.pessoas.usuarios.funcionarios.Gerente;
 import projeto.sistema.produtos.Produto;
+import projeto.sistema.visual.ouvintes.OuvinteListarProdutos;
 
 public class JanelaListarProdutos extends JFrame {
-    
+    private JTable tabela;
+    private SistemaMercado sistema;
     private Font fonteDoCabecalho = new Font("arial", Font.BOLD, 30);
     private Font fonteDoCampo = new Font("arial", Font.PLAIN, 20);
     private Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
 
     public JanelaListarProdutos(SistemaMercado sistema, Usuario usuario){
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(650, 500);
         setLayout(null);
         setResizable(false);
         setLocationRelativeTo(null);
-        adicionarTabela(sistema);
+        setSistema(sistema);
+        adicionarTabela();
         String[] botoes = {"Detalhar", "Editar", "Excluir"};
         adicionarBotoes(botoes, usuario);
     }
 
-    public void adicionarTabela(SistemaMercado sistema){
+    public void adicionarTabela(){
                 
         JLabel cabecalho = new JLabel("Lista de Produtos", JLabel.CENTER);
         cabecalho.setBounds(0, 0, getWidth(), 60);
@@ -46,7 +49,7 @@ public class JanelaListarProdutos extends JFrame {
         modelo.addColumn("Valor de Compra");
         modelo.addColumn("Valor de Venda");
 
-        ArrayList<Produto> listaDeProdutos = sistema.getProdutosEmEstoque();
+        ArrayList<Produto> listaDeProdutos = getSistema().getProdutosEmEstoque();
 
         for (Produto produto : listaDeProdutos){
             Object[] linha = new Object[5];
@@ -58,7 +61,7 @@ public class JanelaListarProdutos extends JFrame {
             modelo.addRow(linha);  
         }
         
-        JTable tabela = new JTable(modelo);
+        tabela = new JTable(modelo);
         JScrollPane painel = new JScrollPane(tabela);
         painel.setBounds(40, 80, 570, 270);
         add(painel);
@@ -69,18 +72,24 @@ public class JanelaListarProdutos extends JFrame {
         setVisible(true);
     }
     public void adicionarBotoes(String[] rotulos, Usuario usuario){
+        OuvinteListarProdutos ouvinte = new OuvinteListarProdutos(this, sistema);
 
         JPanel painel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
         painel.setBounds(getBounds());
         for(String rotulo : rotulos){
             JButton botao = new JButton(rotulo);
+            botao.addActionListener(ouvinte);
             painel.add(botao);
         }
         if(usuario instanceof Gerente){
-            painel.add(new JButton("Valor unitário de venda"));
+            JButton botao = new JButton("Valor unitário de venda");
+            botao.addActionListener(ouvinte);
+            painel.add(botao);
 
         }else if(usuario instanceof Almoxarife){
-            painel.add(new JButton("Registrar Entrada"));
+            JButton botao = new JButton("Registrar Entrada");
+            botao.addActionListener(ouvinte);
+            painel.add(botao);
         }
         painel.setBounds(0, 380, getWidth(), 100);
         add(painel);
@@ -108,6 +117,22 @@ public class JanelaListarProdutos extends JFrame {
 
     public void setFonteDoBotao(Font fonteDoBotao) {
         this.fonteDoBotao = fonteDoBotao;
+    }
+
+    public SistemaMercado getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(SistemaMercado sistema) {
+        this.sistema = sistema;
+    }
+
+    public JTable getTabela() {
+        return tabela;
+    }
+
+    public void setTabela(JTable tabela) {
+        this.tabela = tabela;
     }
 
     

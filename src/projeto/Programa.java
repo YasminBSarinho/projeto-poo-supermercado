@@ -15,6 +15,11 @@ public class Programa {
 		Json json  = new Json();
 		SistemaMercado sistema = json.lerJson();
 		System.out.println(sistema.getListaDeUsuarios().size());
-		JanelaListarProdutos janela = new JanelaListarProdutos(sistema, sistema.getUsuarioLogado("a", "a"));
+		
+		if(sistema.isSemGerente()){
+			JanelaCadastroUsuario janelaCadastro =  new JanelaCadastroUsuario(sistema);
+		}else{
+			JanelaLogin  janelaDeLogin = new JanelaLogin(sistema);
+		}
 	}
 }

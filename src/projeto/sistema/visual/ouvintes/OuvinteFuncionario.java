@@ -3,17 +3,19 @@ package projeto.sistema.visual.ouvintes;
 import java.awt.event.ActionEvent;
 
 import projeto.sistema.SistemaMercado;
+import projeto.sistema.pessoas.usuarios.Usuario;
 import projeto.sistema.visual.telas.JanelaCadastroCliente;
 import projeto.sistema.visual.telas.JanelaCadastroProduto;
+import projeto.sistema.visual.telas.JanelaListarProdutos;
 import projeto.sistema.visual.telas.usuarios.funcionarios.JanelaFuncionario;
 
 public class OuvinteFuncionario extends OuvinteUsuario {
     private JanelaFuncionario janela;
-
-    public OuvinteFuncionario(JanelaFuncionario janela, SistemaMercado sistema){
+    private Usuario usuario;
+    public OuvinteFuncionario(JanelaFuncionario janela, SistemaMercado sistema, Usuario usuario){
         super(janela, sistema);
         setJanela(janela);
-
+        setUsuario(usuario);
     }
     
     @Override
@@ -21,7 +23,7 @@ public class OuvinteFuncionario extends OuvinteUsuario {
         super.actionPerformed(e);
 
         if(e.getSource().equals(janela.getListarProdutos())){
-            //JanelaListarProdutos janelaListarProduto = new JanelaListarProdutos(getSistema());
+            JanelaListarProdutos janelaListarProduto = new JanelaListarProdutos(getSistema(),getUsuario());
         }
         else if(e.getSource().equals(janela.getCadastrarProduto())){
             JanelaCadastroProduto janelaCadastrarProduto = new JanelaCadastroProduto(getSistema());
@@ -34,6 +36,14 @@ public class OuvinteFuncionario extends OuvinteUsuario {
 
     public void setJanela(JanelaFuncionario janela) {
         this.janela = janela;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
 }
