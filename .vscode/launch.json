@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Programa",
+            "request": "launch",
+            "mainClass": "Programa",
+            "projectName": "projeto-poo-supermercado"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
