@@ -25,7 +25,6 @@ public class JanelaListarProdutos extends JFrame {
     private Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
 
     public JanelaListarProdutos(SistemaMercado sistema, Usuario usuario){
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(650, 500);
         setLayout(null);
         setResizable(false);

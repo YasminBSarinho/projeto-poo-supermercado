@@ -22,6 +22,7 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
         setSize(600, 400);
         setLayout(null);
         setResizable(false);
+        setLocationRelativeTo(null);
 
         adicionarCabecalho("Cadastrar Produto");
 

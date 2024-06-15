@@ -76,24 +76,20 @@ public class JanelaUsuario extends JFrame{
 
     public int calcularX(int larguraPainel){
         int x = (getWidth() - larguraPainel)/2;
-        System.out.println(x);
         return x;
     }
 
     public int calcularY(JLabel cabecalho){
         int y = cabecalho.getHeight() + 50;
-        System.out.println(y);
         return y;
     }
 
     public int calcularAltura(int ladoDoBotao, int gapV, int QTDlinhas){
         int altura = (QTDlinhas * ladoDoBotao) + (QTDlinhas - 1) * gapV;
-        System.out.println(altura);
         return altura;
     }
     public int calcularLargura(int ladoDoBotao, int gapH, int QTDcolunas){
         int largura = (QTDcolunas * ladoDoBotao) + (QTDcolunas - 1) * gapH;
-        System.out.println(largura);
         return largura;
     }
 
