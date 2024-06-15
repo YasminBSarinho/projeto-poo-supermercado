@@ -117,7 +117,10 @@ public class OuvinteCadastroUsuario extends OuvinteDeCampos{
             janela.dispose();
             JOptionPane.showMessageDialog(janela, "Cadastro concluido!");
             json.escreverJson(sistema);
-            JanelaLogin janelaDeLogin = new JanelaLogin(sistema);
+            if(cargo.equalsIgnoreCase("gerente")){
+                JanelaLogin janelaDeLogin = new JanelaLogin(sistema);
+            }
+            
         }
     }
 

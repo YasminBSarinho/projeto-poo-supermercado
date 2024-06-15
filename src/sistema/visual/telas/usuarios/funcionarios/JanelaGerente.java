@@ -9,10 +9,7 @@ import javax.swing.*;
 import sistema.SistemaMercado;
 import sistema.pessoas.usuarios.Usuario;
 import sistema.visual.ouvintes.OuvinteFuncionario;
-import sistema.visual.ouvintes.OuvinteUsuario;
 import sistema.visual.telas.JanelaCadastroUsuario;
-import sistema.visual.telas.JanelaDeVendas;
-import sistema.visual.telas.usuarios.JanelaCaixa;
 
 public class JanelaGerente extends JanelaFuncionario {
 
