@@ -82,6 +82,7 @@ public class JanelaUsuario extends JFrame{
 
     public int calcularY(JLabel cabecalho){
         int y = cabecalho.getHeight() + 50;
+        System.out.println(y);
         return y;
     }
 

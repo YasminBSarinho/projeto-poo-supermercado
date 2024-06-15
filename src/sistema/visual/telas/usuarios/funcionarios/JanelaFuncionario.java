@@ -12,7 +12,7 @@ public class JanelaFuncionario extends JanelaUsuario {
 
     public JanelaFuncionario(SistemaMercado sistema, Usuario usuario){
         super(sistema, usuario);
-        add(adicionarCabecalho("Bem-vindo(a), " + usuario.getNome()));
+        add(adicionarCabecalho("Bem-vindo(a), " + usuario.getNome() + "."));
         ImageIcon iconeLista = new ImageIcon(getClass().getResource("/imagens/listarProdutos.png"));
         ImageIcon iconeCadastroProduto = new ImageIcon(getClass().getResource("/imagens/CadastrarProduto.png"));
 
