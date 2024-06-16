@@ -48,8 +48,8 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
 
         campoDoNome = new JTextField(30);
         campoDoCPF = new JTextField(15);
-        campoDoEmail = new JPasswordField(15);
-        campoDoEndereco = new JPasswordField(15);
+        campoDoEmail = new JTextField(15);
+        campoDoEndereco = new JTextField(15);
 
         campoDoEmail.setEnabled(false);
         campoDoEndereco.setEnabled(false);
