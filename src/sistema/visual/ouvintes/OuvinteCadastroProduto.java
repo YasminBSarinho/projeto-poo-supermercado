@@ -58,7 +58,7 @@ public class OuvinteCadastroProduto extends OuvinteDeCampos{
             JOptionPane.showMessageDialog(janela, "Já existe um produto com este nome cadastrado", "Aviso", JOptionPane.ERROR_MESSAGE);
         
         }else{
-            Produto produto = new Produto(nome, unidade);
+            Produto produto = new Produto(nome, unidade, sistema);
             sistema.getProdutosEmEstoque().add(produto);
             Json json = new Json();
             janela.dispose();

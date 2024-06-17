@@ -1,7 +1,8 @@
 package sistema.produtos;
+import sistema.SistemaMercado;
 
 public class Produto {
-	private static Integer quantiaDeInstancias = 0; 
+	private int identificador;
 	private String codigo;
 	private String nome;
 	private int unidade;
@@ -11,15 +12,11 @@ public class Produto {
 	public Produto(){
 	}
 
-	public Produto(String nome, int unidade) {
+	public Produto(String nome, int unidade, SistemaMercado sistema) {
 		this.nome = nome;
 		this.unidade = unidade;
-		quantiaDeInstancias += 1;
+		this.identificador = sistema.getProdutosEmEstoque().size() + 1;
 		this.setCodigo();
-	}
-
-	public int getQuantiaDeInstancias(){
-		return quantiaDeInstancias;
 	}
 
 	public String getCodigo() {
@@ -32,23 +29,23 @@ public class Produto {
 
 	public void setCodigo() {
 
-		String idProduto = String.valueOf(Produto.quantiaDeInstancias);
+		String idProduto = String.valueOf(identificador);
 
 		switch (idProduto.length()) {
 		case 1:
-			this.codigo = "0000" + Produto.quantiaDeInstancias;
+			this.codigo = "0000" + identificador;
 			break;
 		case 2:
-			this.codigo = "000" + Produto.quantiaDeInstancias;
+			this.codigo = "000" + identificador;
 			break;
 		case 3:
-			this.codigo = "00" + Produto.quantiaDeInstancias;
+			this.codigo = "00" + identificador;
 			break;
 		case 4:
-			this.codigo = "0" + Produto.quantiaDeInstancias;
+			this.codigo = "0" + identificador;
 			break;
 		default:
-			this.codigo = "" + Produto.quantiaDeInstancias;
+			this.codigo = "" + identificador;
 			break;
 		}
 	}
@@ -85,4 +82,11 @@ public class Produto {
 		this.valorUnitarioDeVenda = valorUnitarioDeVenda;
 	}
 
+	public int getIdentificador() {
+		return identificador;
+	}
+
+	public void setIdentificador(int identificador) {
+		this.identificador = identificador;
+	}
 }

@@ -15,7 +15,7 @@ public class Json {
         setConversor(conversor);
 
         PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
-            .allowIfSubType("projeto.sistema")
+            .allowIfSubType("sistema")
             .allowIfSubType("java.util.ArrayList")
             .build();
         getConversor().activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
