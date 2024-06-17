@@ -31,7 +31,10 @@ public class OuvinteListarProdutos implements ActionListener{
             Produto produto = listaProdutos.get(linhaSelecionada);
             switch (e.getActionCommand()) {
                 case "Detalhar":
-                    JOptionPane.showMessageDialog(janela, "Produto cadastrado!\n\nCodigo: " + produto.getCodigo() + "\nNome: " + produto.getNome() + "\nUnidades: " + produto.getUnidade());
+                    JOptionPane.showMessageDialog(janela, "Detalhes:\n\nCodigo: " + produto.getCodigo() + "\nNome: " 
+                                                    + produto.getNome() + "\nUnidades: " + produto.getUnidade() 
+                                                    + "\nValor de compra: " + produto.getValorUnitarioDeCompra() 
+                                                    + "\nValor de venda: " + produto.getValorUnitarioDeVenda());
                     break;
                 case "Editar":
                     break;
@@ -52,8 +55,10 @@ public class OuvinteListarProdutos implements ActionListener{
                             JOptionPane.showMessageDialog(janela, "Digite um valor válido");
                         }else{
                             produto.setValorUnitarioDeVenda(valor);
-                            janela.getTabela().repaint();
                             json.escreverJson(sistema);
+                            DefaultTableModel modelo = (DefaultTableModel) janela.getTabela().getModel();
+                            modelo.setValueAt(valor, linhaSelecionada, 4);
+                            janela.getTabela().repaint();
                         }
                     }
                     catch(Exception error){

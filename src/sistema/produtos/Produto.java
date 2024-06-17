@@ -12,9 +12,11 @@ public class Produto {
 	public Produto(){
 	}
 
-	public Produto(String nome, int unidade, SistemaMercado sistema) {
+	public Produto(String nome, int unidade, float valorUnitarioDeCompra, float valorUnitarioDeVenda, SistemaMercado sistema) {
 		this.nome = nome;
 		this.unidade = unidade;
+		this.valorUnitarioDeCompra = valorUnitarioDeCompra;
+		this.valorUnitarioDeVenda = valorUnitarioDeVenda;
 		this.identificador = sistema.getProdutosEmEstoque().size() + 1;
 		this.setCodigo();
 	}

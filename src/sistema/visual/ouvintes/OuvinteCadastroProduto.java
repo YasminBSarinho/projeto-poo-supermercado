@@ -29,9 +29,13 @@ public class OuvinteCadastroProduto extends OuvinteDeCampos{
         JTextField campoDoCodigo = janela.getCampoDoCodigo();
         JTextField campoNome = janela.getCampoDoNome();
         JTextField campoUnidade = janela.getCampoDaUnidade();
+        JTextField campoValorDeCompra = janela.getCampoValorDeCompra();
+        JTextField campoValorDeVenda = janela.getCampoValorDeVenda();
         JTextField campo = (JTextField) e.getSource();
         
         String nome = campoNome.getText();
+        String campoVendaTexto = campoValorDeVenda.getText();
+        String campoCompraTexto = campoValorDeCompra.getText();
         int unidade = -1;
 
         try{
@@ -45,8 +49,16 @@ public class OuvinteCadastroProduto extends OuvinteDeCampos{
         if(campo.equals(campoUnidade)){
             if (!Character.isDigit(letra) || unidade == 0) {
                 e.consume();
-            }
         }
+        /*} else if(campo.equals(campoValorDeCompra)){
+            if(!Character.isDigit(letra) && letra != '.'){
+                e.consume();
+            }
+        } else if (campo.equals(campoValorDeVenda)) {
+            if((!Character.isDigit(letra) && letra != '.') || (campoVendaTexto.length() > 0 && campoVendaTexto.contains("."))){
+                e.consume();
+            }*/
+        } 
 
     }
 
@@ -54,16 +66,19 @@ public class OuvinteCadastroProduto extends OuvinteDeCampos{
     protected void confirmar() {
         String nome = janela.getCampoDoNome().getText();
         int unidade = Integer.parseInt(janela.getCampoDaUnidade().getText());
+        float compra = Float.parseFloat(janela.getCampoValorDeCompra().getText());
+        float venda = Float.parseFloat(janela.getCampoValorDeVenda().getText());
+
         if(sistema.buscarProdutoPorNome(nome) != null){
             JOptionPane.showMessageDialog(janela, "Já existe um produto com este nome cadastrado", "Aviso", JOptionPane.ERROR_MESSAGE);
         
         }else{
-            Produto produto = new Produto(nome, unidade, sistema);
+            Produto produto = new Produto(nome, unidade, compra, venda, sistema);
             sistema.getProdutosEmEstoque().add(produto);
             Json json = new Json();
             janela.dispose();
 
-            JOptionPane.showMessageDialog(janela, "Produto cadastrado!\n\nCodigo: " + produto.getCodigo() + "\nNome: " + produto.getNome() + "\nUnidades: " + produto.getUnidade());
+            JOptionPane.showMessageDialog(janela, "Produto cadastrado!\n\nCodigo: " + produto.getCodigo() + "\nNome: " + produto.getNome() + "\nUnidades: " + produto.getUnidade() + "\nValor de Compra: " + produto.getValorUnitarioDeCompra() + "\nValor de  Venda: " + produto.getValorUnitarioDeVenda());
             json.escreverJson(sistema);
         }
     }

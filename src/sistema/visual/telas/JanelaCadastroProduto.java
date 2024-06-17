@@ -16,10 +16,12 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
     private JTextField campoDoNome;
     private JTextField campoDoCodigo;
     private JTextField campoDaUnidade;
+    private JTextField campoValorDeCompra;
+    private JTextField campoValorDeVenda;
     
     public JanelaCadastroProduto(SistemaMercado sistema) {
         super(sistema);
-        setSize(600, 400);
+        setSize(600, 480);
         setLayout(null);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -30,29 +32,35 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
         JPanel painelCampos = new JPanel();
         JPanel painelBotoes = new JPanel();
 
-        painelTextos.setLayout(new GridLayout(3, 1, 0, 20));
-        painelCampos.setLayout(new GridLayout(3, 1, 0, 20));
+        painelTextos.setLayout(new GridLayout(5, 1, 0, 20));
+        painelCampos.setLayout(new GridLayout(5, 1, 0, 20));
         painelBotoes.setLayout(new GridLayout(1, 2, 30, 0));
 
-        painelTextos.setBounds(40, 100, 160, 140);
-        painelCampos.setBounds(210, 100, 300, 140);
-        painelBotoes.setBounds(210, 280, 300, 50);
+        painelTextos.setBounds(40, 100, 160, 240);
+        painelCampos.setBounds(210, 100, 300, 240);
+        painelBotoes.setBounds(210, 365, 300, 50);
 
         JLabel textoCodigo = new JLabel("Codigo:");
         JLabel textoNome = new JLabel("Nome:");
         JLabel textoUnidades = new JLabel("Unidades:");
+        JLabel textoValorCompra = new JLabel("Valor de Compra: ");
+        JLabel textoValorVenda = new JLabel("Valor de Venda: ");
 
-        campoDoCodigo = new JTextField(30);
+        campoDoCodigo = new JTextField();
         campoDoCodigo.setEnabled(false);
-        campoDoNome = new JTextField(15);
-        campoDaUnidade = new JTextField(30);
+        String novoCodigo = String.valueOf(sistema.getProdutosEmEstoque().size() + 1);
+        campoDoCodigo.setText(novoCodigo);
+        campoDoNome = new JTextField();
+        campoDaUnidade = new JTextField();
+        campoValorDeCompra = new JTextField();
+        campoValorDeVenda = new JTextField();
     
         setBotaoConfirmatorio(new JButton("Cadastrar"));
         setBotaoCancelatorio(new JButton("Cancelar"));
 
-        JTextField[] componentesCampos = {campoDoCodigo, campoDoNome, campoDaUnidade};
+        JTextField[] componentesCampos = {campoDoCodigo, campoDoNome, campoDaUnidade, campoValorDeCompra, campoValorDeVenda};
 
-        JComponent[] componentesTextos = { textoCodigo, textoNome, textoUnidades};
+        JComponent[] componentesTextos = { textoCodigo, textoNome, textoUnidades, textoValorCompra, textoValorVenda};
 
         JComponent[] componentesBotoes = {getBotaoConfirmatorio(), getBotaoCancelatorio()};
 
@@ -64,12 +72,14 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
         adicionarAoPainel(componentesCampos, painelCampos);
         adicionarAoPainel(componentesTextos, painelTextos);
 
-        OuvinteCadastroProduto OuvinteCadastroProduto = new OuvinteCadastroProduto(this, sistema);
-        getBotaoConfirmatorio().addActionListener(OuvinteCadastroProduto);
-        getBotaoCancelatorio().addActionListener(OuvinteCadastroProduto);
-        campoDoCodigo.addKeyListener(OuvinteCadastroProduto);
-        campoDoNome.addKeyListener(OuvinteCadastroProduto);
-        campoDaUnidade.addKeyListener(OuvinteCadastroProduto);
+        OuvinteCadastroProduto ouvinteCadastroProduto = new OuvinteCadastroProduto(this, sistema);
+        getBotaoConfirmatorio().addActionListener(ouvinteCadastroProduto);
+        getBotaoCancelatorio().addActionListener(ouvinteCadastroProduto);
+        campoDoCodigo.addKeyListener(ouvinteCadastroProduto);
+        campoDoNome.addKeyListener(ouvinteCadastroProduto);
+        campoDaUnidade.addKeyListener(ouvinteCadastroProduto);
+        campoValorDeCompra.addKeyListener(ouvinteCadastroProduto);
+        campoValorDeVenda.addKeyListener(ouvinteCadastroProduto);
     
         add(painelTextos);
         add(painelCampos);
@@ -99,6 +109,30 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
 
     public void setCampoDaUniade(JTextField campoDaUnidade) {
         this.campoDaUnidade = campoDaUnidade;
+    }
+
+    public void setCampoDoNome(JTextField campoDoNome) {
+        this.campoDoNome = campoDoNome;
+    }
+
+    public void setCampoDaUnidade(JTextField campoDaUnidade) {
+        this.campoDaUnidade = campoDaUnidade;
+    }
+
+    public JTextField getCampoValorDeCompra() {
+        return campoValorDeCompra;
+    }
+
+    public void setCampoValorDeCompra(JTextField campoValorDeCompra) {
+        this.campoValorDeCompra = campoValorDeCompra;
+    }
+
+    public JTextField getCampoValorDeVenda() {
+        return campoValorDeVenda;
+    }
+
+    public void setCampoValorDeVenda(JTextField campoValorDeVenda) {
+        this.campoValorDeVenda = campoValorDeVenda;
     }
 
     
