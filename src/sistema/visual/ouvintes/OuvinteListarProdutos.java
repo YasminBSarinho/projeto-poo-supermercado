@@ -24,11 +24,13 @@ public class OuvinteListarProdutos implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         int linhaSelecionada = janela.getTabela().getSelectedRow();
         Json json = new Json();
+        
         if(linhaSelecionada == -1){
             JOptionPane.showMessageDialog(janela, "Nenhuma linha selecionada", "Erro", JOptionPane.ERROR_MESSAGE);
         }else{
             ArrayList<Produto> listaProdutos = sistema.getProdutosEmEstoque();
             Produto produto = listaProdutos.get(linhaSelecionada);
+
             switch (e.getActionCommand()) {
                 case "Detalhar":
                     JOptionPane.showMessageDialog(janela, "Detalhes:\n\nCodigo: " + produto.getCodigo() + "\nNome: " 
@@ -36,44 +38,59 @@ public class OuvinteListarProdutos implements ActionListener{
                                                     + "\nValor de compra: " + produto.getValorUnitarioDeCompra() 
                                                     + "\nValor de venda: " + produto.getValorUnitarioDeVenda());
                     break;
+                    
                 case "Editar":
                     break;
+
                 case "Excluir":
-                    int resposta = JOptionPane.showConfirmDialog(janela, "Você deseja excluir " + produto.getNome() + "?");
-                    if(resposta == JOptionPane.YES_OPTION){
-                        DefaultTableModel modelo = (DefaultTableModel) janela.getTabela().getModel();
-                        modelo.removeRow(linhaSelecionada);
-                        janela.getTabela().repaint();
-                        listaProdutos.remove(linhaSelecionada);
-                        json.escreverJson(sistema);
-                    }
+                    excluirProduto(produto, listaProdutos, linhaSelecionada);
                     break;
+
                 case "Valor unitário de venda":
-                    try{
-                        float valor = Float.parseFloat(JOptionPane.showInputDialog(janela, "Digite o valor:"));
-                        if(valor <= 0){
-                            JOptionPane.showMessageDialog(janela, "Digite um valor válido");
-                        }else{
-                            produto.setValorUnitarioDeVenda(valor);
-                            json.escreverJson(sistema);
-                            DefaultTableModel modelo = (DefaultTableModel) janela.getTabela().getModel();
-                            modelo.setValueAt(valor, linhaSelecionada, 4);
-                            janela.getTabela().repaint();
-                        }
-                    }
-                    catch(Exception error){
-                        JOptionPane.showMessageDialog(janela, "Digite um valor válido");
-                    }
+                    mudarValorDeVenda(produto, linhaSelecionada, 4);
+                    
                     break;
                 case "Registrar Entrada":
+                    registrarEntrada(produto, listaProdutos);
                     break;
+
                 default:
                     break;
             }
+            json.escreverJson(sistema);
         }
         
     }
 
+    public void excluirProduto(Produto produto, ArrayList<Produto> listaProdutos, int linha){
+        int resposta = JOptionPane.showConfirmDialog(janela, "Você deseja excluir " + produto.getNome() + "?");
+        if(resposta == JOptionPane.YES_OPTION){
+            DefaultTableModel modelo = (DefaultTableModel) janela.getTabela().getModel();
+            modelo.removeRow(linha);
+            janela.getTabela().repaint();
+            listaProdutos.remove(linha);
+        }
+    }
+
+    public void mudarValorDeVenda(Produto produto, int linha, int coluna){
+        try{
+            float valor = Float.parseFloat(JOptionPane.showInputDialog(janela, "Digite o valor:"));
+            if(valor <= 0){
+                JOptionPane.showMessageDialog(janela, "Digite um valor acima de zero");
+            }else{
+                produto.setValorUnitarioDeCompra(valor);
+                DefaultTableModel modelo = (DefaultTableModel) janela.getTabela().getModel();
+                modelo.setValueAt(valor, linha, 4);
+                janela.getTabela().repaint();
+            }
+        }catch(Exception error){
+            JOptionPane.showMessageDialog(janela, "Você precisa digitar um valor numérico!");
+        }
+        
+    }
+    public void registrarEntrada(Produto produto, ArrayList<Produto> listaProdutos){
+
+    }
     public SistemaMercado getSistema() {
         return sistema;
     }
