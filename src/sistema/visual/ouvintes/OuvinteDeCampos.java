@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import sistema.SistemaMercado;
+import sistema.utilitarios.Json;
 import sistema.visual.telas.JanelaDeCampos;
 
 public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
@@ -23,6 +24,7 @@ public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
+        Json json = new Json();
         if(source.equals(janela.getBotaoConfirmatorio())){
             boolean cadastroValido = this.validarCampo();
             if(cadastroValido){
@@ -31,6 +33,7 @@ public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
         }else if(source.equals(janela.getBotaoCancelatorio())){
             janela.dispose();
         }
+        json.escreverJson(sistema);
     }
 
     protected abstract void confirmar(); 
