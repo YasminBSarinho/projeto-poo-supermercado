@@ -38,19 +38,13 @@ public class OuvinteCadastroProduto extends OuvinteDeCampos{
         String campoCompraTexto = campoValorDeCompra.getText();
         int unidade = -1;
 
-        try{
-            unidade = Integer.parseInt(campoUnidade.getText());
-        }catch(NumberFormatException error){
-            
-        }
-
         char letra = e.getKeyChar(); 
 
         if(campo.equals(campoUnidade)){
             if (!Character.isDigit(letra) || unidade == 0) {
                 e.consume();
         }
-        /*} else if(campo.equals(campoValorDeCompra)){
+        /* else if(campo.equals(campoValorDeCompra)){
             if(!Character.isDigit(letra) && letra != '.'){
                 e.consume();
             }

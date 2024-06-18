@@ -2,11 +2,18 @@ package sistema.visual.telas;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
 
 import java.awt.GridLayout;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 import sistema.SistemaMercado;
 import sistema.visual.ouvintes.OuvinteCadastroProduto;

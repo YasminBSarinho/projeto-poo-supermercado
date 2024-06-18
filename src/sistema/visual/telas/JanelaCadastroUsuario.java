@@ -1,16 +1,19 @@
 package sistema.visual.telas;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.text.ParseException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 import sistema.SistemaMercado;
 import sistema.visual.ouvintes.OuvinteCadastroUsuario;
@@ -63,7 +66,14 @@ public class JanelaCadastroUsuario extends JanelaDeCampos{
         campoDaSenha = new JPasswordField(15);
         campoConfirmar = new JPasswordField(15);
         campoDoEmail = new JTextField(30);
-        campoDaMatricula = new JTextField(15);
+        try {
+            MaskFormatter maskMatricula = new MaskFormatter("###.#####.##-#");
+            maskMatricula.setPlaceholderCharacter('_');
+            campoDaMatricula = new JFormattedTextField(maskMatricula);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            campoDaMatricula = new JTextField();
+        }
         campoDoEmail.setEnabled(false);
         campoDaMatricula.setEnabled(false);
         checkAlmoxarife = new JRadioButton("Almoxarife", false);

@@ -1,12 +1,17 @@
 package sistema.visual.telas;
 
 import java.awt.GridLayout;
+import java.text.ParseException;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
+
 import sistema.SistemaMercado;
 import sistema.visual.ouvintes.OuvinteCadastroCliente;
 
@@ -24,6 +29,15 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
         setSize(600, 450);
         adicionarCabecalho("Cadastro do Cliente");
         setLocationRelativeTo(null);
+
+        try {
+            MaskFormatter maskCPF = new MaskFormatter("###.###.###-##");
+            maskCPF.setPlaceholderCharacter('_');
+            campoDoCPF = new JFormattedTextField(maskCPF);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            campoDoCPF = new JTextField();
+        }
      
         JPanel painelTextos = new JPanel();
         JPanel painelCampos = new JPanel();
@@ -46,7 +60,14 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
         JLabel textoEndereco = new JLabel("Endereço:");
 
         campoDoNome = new JTextField(30);
-        campoDoCPF = new JTextField(15);
+        try {
+            MaskFormatter maskCPF = new MaskFormatter("###.###.###-##");
+            maskCPF.setPlaceholderCharacter('_');
+            campoDoCPF = new JFormattedTextField(maskCPF);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            campoDoCPF = new JTextField();
+        }
         campoDoEmail = new JTextField(15);
         campoDoEndereco = new JTextField(15);
 
