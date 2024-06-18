@@ -1,6 +1,8 @@
 package sistema.visual.telas;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -8,15 +10,17 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import sistema.SistemaMercado;
-import sistema.visual.ouvintes.OuvinteCadastroCliente;
+import sistema.pessoas.Cliente;
+import sistema.visual.ouvintes.OuvinteDeCampos;
 
 public class JanelaCadastroCliente extends JanelaDeCampos{
-
+    private SistemaMercado sistema;
     private JTextField campoDoNome;
     private JTextField campoDoCPF;
     private JTextField campoDoEmail;
@@ -26,6 +30,7 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
     
     public JanelaCadastroCliente(SistemaMercado sistema){
         super(sistema);
+        setSistema(sistema);
         setSize(600, 450);
         adicionarCabecalho("Cadastro do Cliente");
         setLocationRelativeTo(null);
@@ -112,6 +117,69 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
         setVisible(true);
         
     }
+    public class OuvinteCadastroCliente extends OuvinteDeCampos {
+        private JanelaCadastroCliente janela;
+        private JCheckBox checkEmail;
+        private JCheckBox checkEndereco;
+
+        public OuvinteCadastroCliente(JanelaCadastroCliente janela, SistemaMercado sistema){
+            super(janela, sistema);
+            this.setJanela(janela);
+            checkEmail = janela.getCheckEmail();
+            checkEndereco = janela.getCheckEndereco();
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            monitorarCampos(e);
+            super.actionPerformed(e);
+        }
+
+        @Override
+        public void confirmar(){
+            String nome = janela.getCampoDoNome().getText();
+            String email = janela.getCampoDoEmail().getText();
+            String cpf = janela.getCampoDoCPF().getText();
+            String endereco = janela.getCampoDoEndereco().getText();
+
+            if (sistema.buscarCliente(cpf) != null){
+                JOptionPane.showMessageDialog(janela,"Este cliente já está cadastrado!",
+                                        "Aviso", JOptionPane.ERROR_MESSAGE);
+            }else{
+                sistema.getClientes().add(new Cliente(nome,email,cpf,endereco));
+                janela.dispose();
+                JOptionPane.showMessageDialog(janela, "Cliente cadastrado!");
+            }
+        }
+        
+        public void monitorarCampos(ActionEvent e){
+            if(e.getSource() instanceof JCheckBox){
+                JCheckBox checkbox = (JCheckBox) e.getSource();
+                boolean isMarcado = checkbox.isSelected();
+
+                if (e.getSource().equals(checkEmail)) {
+                    janela.getCampoDoEmail().setEnabled(isMarcado);
+                }
+                if (e.getSource().equals(checkEndereco)) {
+                    janela.getCampoDoEndereco().setEnabled(isMarcado);
+                }
+            }
+        }
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+            
+            
+        }
+
+        public JanelaCadastroCliente getJanela() {
+            return janela;
+        }
+        
+        public void setJanela(JanelaCadastroCliente janela) {
+            this.janela = janela;
+        }
+    }
     
     public JTextField getCampoDoNome() {
         return campoDoNome;
@@ -159,4 +227,13 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
     public void setCheckEndereco(JCheckBox checkEndereco) {
         this.checkEndereco = checkEndereco;
     }
+
+    public SistemaMercado getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(SistemaMercado sistema) {
+        this.sistema = sistema;
+    }
+    
 }

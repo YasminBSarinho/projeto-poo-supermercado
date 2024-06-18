@@ -3,11 +3,15 @@ package sistema.visual.telas;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import sistema.SistemaMercado;
-import sistema.visual.ouvintes.OuvinteCupom;
+import sistema.utilitarios.Cupom;
+import sistema.visual.ouvintes.OuvinteDeCampos;
 
 public class JanelaCupom extends JanelaDeCampos{
     private JTextField campoCodigo;
@@ -60,6 +64,66 @@ public class JanelaCupom extends JanelaDeCampos{
         add(painelCampos);
         add(painelBotoes);
         setVisible(true);
+    }
+
+    public class OuvinteCupom extends OuvinteDeCampos{
+
+        private JanelaCupom janela;
+        
+        public OuvinteCupom(JanelaCupom janela, SistemaMercado sistema){
+            super(janela, sistema);
+            setJanela(janela);
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            super.actionPerformed(e);
+        }
+
+        @Override
+        protected void confirmar(){
+            String codigo = janela.getCampoCodigo().getText();
+            String descontoTexto = janela.getCampoDesconto().getText();
+            float desconto = Float.parseFloat(descontoTexto)/100;
+            Cupom cupom = new Cupom(codigo, desconto);
+
+            if(getSistema().validarCupom(codigo) == null){
+                getSistema().getCupons().add(cupom);
+                janela.dispose();
+                JOptionPane.showMessageDialog(janela, "Cupom cadastrado!");
+            }else{
+                JOptionPane.showMessageDialog(janela, "O Cupom já está cadastrado!");
+            }
+
+        }    
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+            JTextField campo = (JTextField) e.getSource();
+            JTextField campoCodigo = janela.getCampoCodigo();
+            String codigo = janela.getCampoCodigo().getText();
+            String desconto = janela.getCampoDesconto().getText();
+            char letra = e.getKeyChar();
+            
+            if(campo.equals(campoCodigo)) {
+                if(codigo.length() > 4 || !Character.isLetterOrDigit(letra)){
+                    e.consume();
+                }
+            } else {
+                if(desconto.length() > 1 || !Character.isDigit(letra)){
+                    e.consume();
+                }
+            }
+        }
+    
+        public JanelaCupom getJanela() {
+            return janela;
+        }
+        
+        public void setJanela(JanelaCupom janela) {
+            this.janela = janela;
+        }
+    
     }
 
     public JTextField getCampoCodigo() {

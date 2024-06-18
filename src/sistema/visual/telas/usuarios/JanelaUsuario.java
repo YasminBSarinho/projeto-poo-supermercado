@@ -7,7 +7,6 @@ import sistema.pessoas.usuarios.Usuario;
 import sistema.visual.ouvintes.OuvinteUsuario;
 
 import java.awt.*;
-import java.util.Objects;
 
 
 public class JanelaUsuario extends JFrame{
