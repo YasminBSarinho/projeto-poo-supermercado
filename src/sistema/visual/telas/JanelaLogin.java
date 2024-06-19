@@ -22,11 +22,9 @@ import java.awt.event.KeyEvent;
 public class JanelaLogin extends JanelaDeCampos{
     private JTextField campoDoLogin;
     private JPasswordField campoDaSenha;
-    private SistemaMercado sistema;
 
     public JanelaLogin(SistemaMercado sistema){
         super(sistema);
-        setSistema(sistema);
         setSize(500, 300); 
         setLayout(null);
         setLocationRelativeTo(null);
@@ -96,7 +94,7 @@ public class JanelaLogin extends JanelaDeCampos{
             String login = janela.getCampoDoLogin().getText();
             String senha = new String(janela.getCampoDaSenha().getPassword());
 
-            Usuario usuario = sistema.getUsuarioLogado(login, senha);
+            Usuario usuario = getSistema().getUsuarioLogado(login, senha);
             
             if(usuario == null){
                 JOptionPane.showMessageDialog(janela, "O Login informado não é válido",
@@ -149,14 +147,5 @@ public class JanelaLogin extends JanelaDeCampos{
     public void setCampoDaSenha(JPasswordField campoDasenha) {
         this.campoDaSenha = campoDasenha;
     }
-
-    public SistemaMercado getSistema() {
-        return sistema;
-    }
-
-    public void setSistema(SistemaMercado sistema) {
-        this.sistema = sistema;
-    }
-    
     
 }

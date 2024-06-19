@@ -20,6 +20,7 @@ import sistema.visual.ouvintes.OuvinteListarProdutos;
 public class JanelaListarProdutos extends JFrame {
     private JTable tabela;
     private SistemaMercado sistema;
+    private int linhaSelecionada;
     private Font fonteDoCabecalho = new Font("arial", Font.BOLD, 30);
     private Font fonteDoCampo = new Font("arial", Font.PLAIN, 20);
     private Font fonteDoBotao = new Font("arial", Font.BOLD, 20);
@@ -131,6 +132,14 @@ public class JanelaListarProdutos extends JFrame {
 
     public void setTabela(JTable tabela) {
         this.tabela = tabela;
+    }
+
+    public int getLinhaSelecionada() {
+        return linhaSelecionada;
+    }
+
+    public void setLinhaSelecionada(int linhaSelecionada) {
+        this.linhaSelecionada = linhaSelecionada;
     }
 
     

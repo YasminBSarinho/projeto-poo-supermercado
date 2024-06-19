@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class JanelaAlmoxarife extends JanelaFuncionario{
     public JanelaAlmoxarife(SistemaMercado sistema, Usuario usuario){
-
         super(sistema, usuario);
         setSize(720, 400);
         setLocationRelativeTo(null);

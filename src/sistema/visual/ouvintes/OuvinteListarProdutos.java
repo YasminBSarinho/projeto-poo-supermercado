@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import sistema.SistemaMercado;
 import sistema.produtos.Produto;
 import sistema.utilitarios.Json;
+import sistema.visual.telas.JanelaEntradaEstoque;
 import sistema.visual.telas.JanelaListarProdutos;
 
 public class OuvinteListarProdutos implements ActionListener{
@@ -51,7 +53,10 @@ public class OuvinteListarProdutos implements ActionListener{
                     
                     break;
                 case "Registrar Entrada":
-                    registrarEntrada(produto, listaProdutos);
+                    JanelaEntradaEstoque janelaEstoque = new JanelaEntradaEstoque(sistema);
+                    janelaEstoque.receberProduto(produto);
+                    janelaEstoque.setJanelaTabela(this.janela);
+                    janelaEstoque.setLinha(linhaSelecionada);
                     break;
 
                 default:
@@ -78,7 +83,7 @@ public class OuvinteListarProdutos implements ActionListener{
             if(valor <= 0){
                 JOptionPane.showMessageDialog(janela, "Digite um valor acima de zero");
             }else{
-                produto.setValorUnitarioDeCompra(valor);
+                produto.setValorUnitarioDeVenda(valor);
                 DefaultTableModel modelo = (DefaultTableModel) janela.getTabela().getModel();
                 modelo.setValueAt(valor, linha, 4);
                 janela.getTabela().repaint();
@@ -88,9 +93,7 @@ public class OuvinteListarProdutos implements ActionListener{
         }
         
     }
-    public void registrarEntrada(Produto produto, ArrayList<Produto> listaProdutos){
 
-    }
     public SistemaMercado getSistema() {
         return sistema;
     }
@@ -106,5 +109,5 @@ public class OuvinteListarProdutos implements ActionListener{
     public void setJanela(JanelaListarProdutos janela) {
         this.janela = janela;
     }
-    
+
 }

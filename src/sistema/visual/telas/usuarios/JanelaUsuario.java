@@ -20,8 +20,8 @@ public class JanelaUsuario extends JFrame{
     private JLabel cabecalho;
 
     public JanelaUsuario(SistemaMercado sistema, Usuario usuario){
-
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSistema(sistema);
         setLayout(null);
         setResizable(false);
         setLocationRelativeTo(null);

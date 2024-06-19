@@ -20,7 +20,6 @@ import sistema.pessoas.Cliente;
 import sistema.visual.ouvintes.OuvinteDeCampos;
 
 public class JanelaCadastroCliente extends JanelaDeCampos{
-    private SistemaMercado sistema;
     private JTextField campoDoNome;
     private JTextField campoDoCPF;
     private JTextField campoDoEmail;
@@ -30,7 +29,6 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
     
     public JanelaCadastroCliente(SistemaMercado sistema){
         super(sistema);
-        setSistema(sistema);
         setSize(600, 450);
         adicionarCabecalho("Cadastro do Cliente");
         setLocationRelativeTo(null);
@@ -142,11 +140,11 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
             String cpf = janela.getCampoDoCPF().getText();
             String endereco = janela.getCampoDoEndereco().getText();
 
-            if (sistema.buscarCliente(cpf) != null){
+            if (getSistema().buscarCliente(cpf) != null){
                 JOptionPane.showMessageDialog(janela,"Este cliente já está cadastrado!",
                                         "Aviso", JOptionPane.ERROR_MESSAGE);
             }else{
-                sistema.getClientes().add(new Cliente(nome,email,cpf,endereco));
+                getSistema().getClientes().add(new Cliente(nome,email,cpf,endereco));
                 janela.dispose();
                 JOptionPane.showMessageDialog(janela, "Cliente cadastrado!");
             }
@@ -228,12 +226,4 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
         this.checkEndereco = checkEndereco;
     }
 
-    public SistemaMercado getSistema() {
-        return sistema;
-    }
-
-    public void setSistema(SistemaMercado sistema) {
-        this.sistema = sistema;
-    }
-    
 }
