@@ -85,11 +85,12 @@ public class JanelaListarProdutos extends JFrame {
             botao.addActionListener(ouvinte);
             painel.add(botao);
 
-        }else if(usuario instanceof Almoxarife){
+        }else if (usuario instanceof Almoxarife){
             JButton botao = new JButton("Registrar Entrada");
             botao.addActionListener(ouvinte);
             painel.add(botao);
         }
+        
         painel.setBounds(0, 380, getWidth(), 100);
         add(painel);
     }

@@ -18,7 +18,7 @@ public class Produto {
 		this.valorUnitarioDeCompra = 0;
 		this.valorUnitarioDeVenda = 0;
 		this.identificador = sistema.getProdutosEmEstoque().size() + 1;
-		this.setCodigo();
+		this.setCodigo(this.identificador);
 	}
 
 	public String getCodigo() {
@@ -29,27 +29,31 @@ public class Produto {
 		this.codigo = codigo;
 	}
 
-	public void setCodigo() {
+	public void setCodigo(int identificador) {
+		this.codigo = gerarCodigo(identificador);
+	}
 
-		String idProduto = String.valueOf(identificador);
-
-		switch (idProduto.length()) {
-		case 1:
-			this.codigo = "0000" + identificador;
-			break;
-		case 2:
-			this.codigo = "000" + identificador;
-			break;
-		case 3:
-			this.codigo = "00" + identificador;
-			break;
-		case 4:
-			this.codigo = "0" + identificador;
-			break;
-		default:
-			this.codigo = "" + identificador;
-			break;
+	public static String gerarCodigo(int identificador){
+		String ID = String.valueOf(identificador);
+		String codigo;
+		switch (ID.length()) {
+			case 1:
+				codigo =  "0000" + identificador;
+				break;
+			case 2:
+				codigo = "000" + identificador;
+				break;
+			case 3:
+				codigo = "00" + identificador;
+				break;
+			case 4:
+				codigo = "0" + identificador;
+				break;
+			default:
+				codigo = "" + identificador;
+				break;
 		}
+		return codigo;
 	}
 
 	public String getNome() {

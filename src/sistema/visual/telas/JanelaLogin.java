@@ -38,9 +38,9 @@ public class JanelaLogin extends JanelaDeCampos{
         painelCampos.setLayout(new GridLayout(2, 1, 0, 10));
         painelBotoes.setLayout(new GridLayout(1, 2, 10, 10));
 
-        painelTextos.setBounds(90, 100, 80, 70);
-        painelCampos.setBounds(170, 100, 220,70);
-        painelBotoes.setBounds(170, 190, 220, 50);
+        painelTextos.setBounds(90, 85, 80, 70);
+        painelCampos.setBounds(170, 85, 220,70);
+        painelBotoes.setBounds(170, 175, 220, 50);
 
         JLabel login = new  JLabel("Login:");
         JLabel senha = new  JLabel("Senha:");

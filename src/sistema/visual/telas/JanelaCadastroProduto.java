@@ -2,21 +2,14 @@ package sistema.visual.telas;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
-import javax.swing.text.NumberFormatter;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.Locale;
-import java.util.concurrent.ExecutionException;
 
 import sistema.SistemaMercado;
 import sistema.produtos.Produto;
@@ -29,7 +22,7 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
     
     public JanelaCadastroProduto(SistemaMercado sistema) {
         super(sistema);
-        setSize(600, 400);
+        setSize(480, 330);
         setLayout(null);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -44,21 +37,23 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
         painelCampos.setLayout(new GridLayout(2, 1, 0, 20));
         painelBotoes.setLayout(new GridLayout(1, 2, 30, 0));
 
-        painelTextos.setBounds(40, 100, 160, 140);
-        painelCampos.setBounds(210, 100, 300, 140);
-        painelBotoes.setBounds(210, 280, 300, 50);
+        painelTextos.setBounds(40, 90, 100, 90);
+        painelCampos.setBounds(140, 90, 300, 90);
+        painelBotoes.setBounds(140, 210, 300, 50);
 
         JLabel textoCodigo = new JLabel("Codigo:");
         JLabel textoNome = new JLabel("Nome:");
 
         campoDoCodigo = new JTextField();
         campoDoCodigo.setEnabled(false);
-        String novoCodigo = String.valueOf(sistema.getProdutosEmEstoque().size() + 1);
+        int identificador = sistema.getProdutosEmEstoque().size() + 1;
+        String novoCodigo = Produto.gerarCodigo(identificador);
         campoDoCodigo.setText(novoCodigo);
         campoDoNome = new JTextField();
     
         setBotaoConfirmatorio(new JButton("Cadastrar"));
         setBotaoCancelatorio(new JButton("Cancelar"));
+
 
         JTextField[] componentesCampos = {campoDoCodigo, campoDoNome};
 

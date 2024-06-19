@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import sistema.SistemaMercado;
 import sistema.produtos.Produto;
 import sistema.utilitarios.Json;
+import sistema.visual.telas.JanelaEditar;
 import sistema.visual.telas.JanelaEntradaEstoque;
 import sistema.visual.telas.JanelaListarProdutos;
 
@@ -42,6 +43,10 @@ public class OuvinteListarProdutos implements ActionListener{
                     break;
                     
                 case "Editar":
+                    JanelaEditar janelaEditar = new JanelaEditar(sistema);
+                    janelaEditar.receberProduto(produto);
+                    janelaEditar.setJanelaTabela(this.janela);
+                    janelaEditar.setLinha(linhaSelecionada);
                     break;
 
                 case "Excluir":
