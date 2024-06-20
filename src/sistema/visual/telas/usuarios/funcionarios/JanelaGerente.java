@@ -10,6 +10,7 @@ import sistema.SistemaMercado;
 import sistema.pessoas.usuarios.Usuario;
 import sistema.visual.ouvintes.OuvinteFuncionario;
 import sistema.visual.telas.JanelaCadastroUsuario;
+import sistema.visual.telas.JanelaCupom;
 
 public class JanelaGerente extends JanelaFuncionario {
 
@@ -59,7 +60,7 @@ public class JanelaGerente extends JanelaFuncionario {
             if(botao.equals(cadastrarUsuario)){
                 JanelaCadastroUsuario janelaDeVendas = new JanelaCadastroUsuario(getSistema());
             }else if (botao.equals(enviarCupons)){
-                //Envio de cupons por email
+                JanelaCupom janelaCupom = new JanelaCupom(getSistema());
             }else{
                 //gerar pdf do balanco mensal.
             }

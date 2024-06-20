@@ -25,6 +25,7 @@ public class JanelaDeVendas extends JanelaDeCampos{
 
     public JanelaDeVendas(SistemaMercado sistema) {
         super(sistema);
+        setSize(650, 350);
         setLocationRelativeTo(null);
         
         JPanel painelTextos = new JPanel();

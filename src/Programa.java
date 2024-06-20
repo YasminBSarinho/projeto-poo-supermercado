@@ -12,6 +12,7 @@ public class Programa {
 			JanelaCadastroUsuario janelaCadastro =  new JanelaCadastroUsuario(sistema);
 		}else{
 			JanelaLogin  janelaDeLogin = new JanelaLogin(sistema);
-		}
+		}   
+		
 	}
 }
