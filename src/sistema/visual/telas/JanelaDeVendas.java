@@ -17,42 +17,47 @@ import sistema.visual.ouvintes.OuvinteVendas;
 public class JanelaDeVendas extends JanelaDeCampos{
 
     private JTextField campoCPF;
-    private JTextField campoProduto;
+    private JTextField campoCodigo;
     private JTextField campoQTD;
+    private JTextField campoCupom;
     private JButton botaoVender;
     private ArrayList<Produto> carrinho = new ArrayList<>();
     private float totalDeVendas;
 
     public JanelaDeVendas(SistemaMercado sistema) {
         super(sistema);
-        setSize(650, 350);
+        setSize(650, 440);
         setLocationRelativeTo(null);
-        
+        setTotalDeVendas(0);
         JPanel painelTextos = new JPanel();
         JPanel painelCampos = new JPanel();
 
         adicionarCabecalho("Vendas");
 
-        painelTextos.setLayout(new GridLayout(3, 1, 0, 20));
-        painelCampos.setLayout(new GridLayout(3, 1, 0, 20));
-        painelTextos.setBounds(40, 100, 200, 140);
-        painelCampos.setBounds(240, 100, 370, 140);
-        campoCPF = new JTextField();
-        campoProduto = new JTextField();
-        campoQTD = new JTextField();
+        painelTextos.setLayout(new GridLayout(4, 1, 0, 20));
+        painelCampos.setLayout(new GridLayout(4, 1, 0, 20));
+        painelTextos.setBounds(40, 100, 200, 180);
+        painelCampos.setBounds(240, 100, 370, 180);
 
+        campoCPF = criarCampoFormatado("###.###.###-##", '_');
+        campoCodigo = criarCampoFormatado("#####", '_');
+        campoQTD = new JTextField();
+        campoCupom = criarCampoFormatado("AAAAA", '_');
+        
         JLabel textoCPF = new JLabel("CPF do Cliente");
         JLabel textoProduto = new JLabel("Código do Produto: ");
         JLabel textoQTD = new JLabel("Unidades: ");
+        JLabel textoCupom = new JLabel("Cupom: ");
 
         setBotaoConfirmatorio(new JButton("Adicionar ao Carrinho"));
         botaoVender = new JButton("Finalizar");
-        getBotaoConfirmatorio().setBounds(240, 280, 200, 50);
-        botaoVender.setBounds(490, 280, 120, 50);
+        botaoVender.setEnabled(false);
+        getBotaoConfirmatorio().setBounds(240, 320, 200, 50);
+        botaoVender.setBounds(490, 320, 120, 50);
 
-        JTextField[] componentesCampos = {campoCPF, campoProduto, campoQTD};
+        JTextField[] componentesCampos = {campoCPF, campoCodigo, campoQTD, campoCupom};
 
-        JComponent[] componentesTextos = { textoCPF, textoProduto, textoQTD};
+        JComponent[] componentesTextos = { textoCPF, textoProduto, textoQTD, textoCupom};
 
         JComponent[] componentesBotoes = {getBotaoConfirmatorio(), getBotaoVender()};
         
@@ -66,8 +71,9 @@ public class JanelaDeVendas extends JanelaDeCampos{
 
         OuvinteVendas ouvinteVendas = new OuvinteVendas(this,sistema);
         getCampoCPF().addKeyListener(ouvinteVendas);
-        getCampoProduto().addKeyListener(ouvinteVendas);
+        getCampoCodigo().addKeyListener(ouvinteVendas);
         getCampoQTD().addKeyListener(ouvinteVendas);
+        getCampoCupom().addKeyListener(ouvinteVendas);
         getBotaoConfirmatorio().addActionListener(ouvinteVendas);
         getBotaoVender().addActionListener(ouvinteVendas);
         
@@ -78,20 +84,20 @@ public class JanelaDeVendas extends JanelaDeCampos{
         setVisible(true);
     }
 
+    public JTextField getCampoCupom() {
+        return campoCupom;
+    }
+
+    public void setCampoCupom(JTextField campoCupom) {
+        this.campoCupom = campoCupom;
+    }
+
     public JTextField getCampoCPF() {
         return campoCPF;
     }
 
     public void setCampoCPF(JTextField campoCPF) {
         this.campoCPF = campoCPF;
-    }
-
-    public JTextField getCampoProduto() {
-        return campoProduto;
-    }
-
-    public void setCampoProduto(JTextField campoProduto) {
-        this.campoProduto = campoProduto;
     }
 
     public JTextField getCampoQTD() {
@@ -124,6 +130,14 @@ public class JanelaDeVendas extends JanelaDeCampos{
 
     public void setTotalDeVendas(float totalDeVendas) {
         this.totalDeVendas = totalDeVendas;
+    }
+
+    public JTextField getCampoCodigo() {
+        return campoCodigo;
+    }
+
+    public void setCampoCodigo(JTextField campoCodigo) {
+        this.campoCodigo = campoCodigo;
     }
 
 }

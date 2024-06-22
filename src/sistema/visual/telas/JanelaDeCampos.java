@@ -7,6 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
+import javax.swing.JFormattedTextField;
+import java.text.ParseException;
+
 import sistema.SistemaMercado;
 import java.awt.*;
 
@@ -24,6 +28,20 @@ public class JanelaDeCampos extends JFrame{
         setResizable(false);
         setLayout(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }
+
+    public JFormattedTextField criarCampoFormatado(String formatoMask, char placeHolder){
+        try {
+            MaskFormatter mask = new MaskFormatter(formatoMask);
+            if(placeHolder != ' '){
+                mask.setPlaceholderCharacter(placeHolder);
+            }
+
+            return new JFormattedTextField(mask);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void adicionarCabecalho(String texto){
