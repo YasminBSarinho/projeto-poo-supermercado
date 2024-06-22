@@ -13,6 +13,5 @@ public class Programa {
 		}else{
 			JanelaLogin  janelaDeLogin = new JanelaLogin(sistema);
 		}   
-		
 	}
 }
