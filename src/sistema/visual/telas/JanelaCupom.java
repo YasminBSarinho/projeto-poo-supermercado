@@ -25,8 +25,8 @@ public class JanelaCupom extends JanelaDeCampos{
 
     public JanelaCupom(SistemaMercado sistema){
         super(sistema);
-        setLocationRelativeTo(null);
         setSize(500, 500);
+        setLocationRelativeTo(null);
         adicionarCabecalho("Criar Cupom");
 
         JPanel painelTextos = new JPanel();

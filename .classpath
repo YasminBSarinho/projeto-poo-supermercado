@@ -4,6 +4,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/jackson-databind-2.17.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations-2.17.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-core-2.17.1.jar"/>
+	<classpathentry kind="lib" path="lib/itextpdf-5.5.13.4.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>

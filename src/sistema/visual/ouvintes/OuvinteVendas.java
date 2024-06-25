@@ -11,22 +11,20 @@ import sistema.SistemaMercado;
 import sistema.pessoas.Cliente;
 import sistema.produtos.Produto;
 import sistema.utilitarios.Cupom;
+import sistema.utilitarios.Registro;
 import sistema.visual.telas.JanelaCadastroCliente;
 import sistema.visual.telas.JanelaDeVendas;
 
 public class OuvinteVendas extends OuvinteDeCampos{
     private JanelaDeVendas janela;
     
-    
     public OuvinteVendas(JanelaDeVendas janela, SistemaMercado sistema) {
         super(janela, sistema);
         setJanela(janela);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e){
-        super.actionPerformed(e);
         JButton vender = janela.getBotaoVender();
         if(e.getSource().equals(vender)){
             JTextField campoCupom  = janela.getCampoCupom();
@@ -43,7 +41,15 @@ public class OuvinteVendas extends OuvinteDeCampos{
             JOptionPane.showMessageDialog(janela, "total: " + total);
             janela.dispose();
             validarCPF();
+
+            for(Produto produto : janela.getCarrinho()){
+                Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), produto.getUnidade(), 
+                                                produto.getValorUnitarioDeVenda(), "");
+                sistema.getRegistrosDeVenda().add(registro);
+            }
         }
+        super.actionPerformed(e);
+
     }
 
     @Override
@@ -74,9 +80,17 @@ public class OuvinteVendas extends OuvinteDeCampos{
             float valorUnitario = produto.getValorUnitarioDeVenda();
             float total = janela.getTotalDeVendas();
             janela.setTotalDeVendas(total + (quantidade * valorUnitario));
+            Produto produtoComprado = new Produto();
+
+            produtoComprado.setCodigo(produto.getCodigo());
+            produtoComprado.setNome(produto.getNome());
+            produtoComprado.setUnidade(quantidade);
+            produtoComprado.setValorUnitarioDeVenda(produto.getValorUnitarioDeVenda());
+            produtoComprado.setValorUnitarioDeCompra(produto.getValorUnitarioDeCompra());
+
+            janela.getCarrinho().add(produtoComprado);
             janela.getBotaoVender().setEnabled(true);
             JOptionPane.showMessageDialog(janela, "O produto foi adicionado ao carrinho!");
-            
         }
         janela.getCampoCodigo().setText("");
         janela.getCampoQTD().setText("");
