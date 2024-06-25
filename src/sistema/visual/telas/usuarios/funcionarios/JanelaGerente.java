@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import sistema.SistemaMercado;
 import sistema.pessoas.usuarios.Usuario;
+import sistema.utilitarios.Pdf;
 import sistema.visual.ouvintes.OuvinteFuncionario;
 import sistema.visual.telas.JanelaCadastroUsuario;
 import sistema.visual.telas.JanelaCupom;
@@ -48,7 +49,6 @@ public class JanelaGerente extends JanelaFuncionario {
         add(getCabecalho());
     }
     public class OuvinteGerente extends OuvinteFuncionario {
-
         public OuvinteGerente(JanelaFuncionario janela, SistemaMercado sistema, Usuario usuario) {
             super(janela, sistema, usuario);
         }
@@ -62,7 +62,9 @@ public class JanelaGerente extends JanelaFuncionario {
             }else if (botao.equals(enviarCupons)){
                 JanelaCupom janelaCupom = new JanelaCupom(getSistema());
             }else{
-                //gerar pdf do balanco mensal.
+                Pdf pdf = new Pdf();
+                pdf.gerarBalancoMensal(getSistema());
+                JOptionPane.showMessageDialog(getJanela(), "O PDF do balanço mensal foi gerado!");
             }
         }
     }

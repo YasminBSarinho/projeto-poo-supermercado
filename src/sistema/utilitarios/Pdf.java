@@ -1,11 +1,7 @@
 package sistema.utilitarios;
-
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
@@ -14,13 +10,11 @@ import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-
 import sistema.SistemaMercado;
-import sistema.produtos.Produto;
 
 public class Pdf {
     
-    public void gerarPdf(SistemaMercado sistema){
+    public void gerarBalancoMensal(SistemaMercado sistema){
         try {
 			Document doc = new Document(PageSize.A4, 72, 72, 72, 72);
 			PdfWriter.getInstance(doc, new FileOutputStream("Balanco.pdf"));
@@ -30,31 +24,38 @@ public class Pdf {
             Paragraph titulo = new Paragraph("Balanço Mensal", fonte); 
             titulo.setAlignment(Element.ALIGN_CENTER);
             titulo.setSpacingAfter(40);
-            
+
+            //Criando tabelas
             PdfPTable tabelaVendas = criarTabela(5, "Vendas");
             PdfPTable tabelaCompras  = criarTabela(5, "Compras");
             PdfPTable tabelaBalanco = criarTabela(3, "Balanço Mensal");
             String[] tituloProdutos = {"Códgio", "Unidade", "Nome", "Valor Unit.", "Total"};
             String[] titulosBalanco = {"Total Comprado", "Total vendido","Total apurado"};
 
-            try{
-                addTitulosColunas(tituloProdutos, tabelaVendas);
-                addTitulosColunas(tituloProdutos, tabelaCompras);
-                addTitulosColunas(titulosBalanco, tabelaBalanco);
-                addLinha(sistema.getRegistrosDeVenda(), tabelaVendas);
-                addLinha(sistema.getRegistrosDeCompra(), tabelaCompras);
-                
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
+            float totalComprado = sistema.calcularTotalDeCompras();
+            float totalVendido = sistema.calcularTotalDeVendas();
+            float totalApurado = sistema.calcularTotalApurado();
+            
+            // Adicionando titulos e valores das colunas
+            addTitulosColunas(tituloProdutos, tabelaVendas);
+            addTitulosColunas(tituloProdutos, tabelaCompras);
+            addTitulosColunas(titulosBalanco, tabelaBalanco);
+            addLinha(sistema.getRegistrosDeVenda(), tabelaVendas);
+            addLinha(sistema.getRegistrosDeCompra(), tabelaCompras);
 
+            //tabela dos totais
+            tabelaBalanco.addCell(String.valueOf(totalComprado));
+            tabelaBalanco.addCell(String.valueOf(totalVendido));
+            tabelaBalanco.addCell(String.valueOf(totalApurado));
+            
+            //Adicionando tabelas ao documento
             doc.add(titulo);
             doc.add(tabelaCompras);
             doc.add(tabelaVendas);
             doc.add(tabelaBalanco);
             doc.close();
             
-		} catch (FileNotFoundException | DocumentException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
         }
 	}

@@ -65,6 +65,26 @@ public class SistemaMercado {
 		}
 		return null;
 	}
+	
+	public float calcularTotalDeCompras(){
+		float total = 0;
+		for (Registro registro : registrosDeCompra){
+			total += registro.getValor() * registro.getUnidades();
+		}
+		return total;
+	}
+
+	public float calcularTotalDeVendas(){
+		float total = 0;
+		for (Registro registro : registrosDeVenda){
+			total += registro.getValor() * registro.getUnidades();
+		}
+		return total;
+	}
+
+	public float calcularTotalApurado(){
+		return calcularTotalDeVendas() - calcularTotalDeCompras();
+	}
 
 	public ArrayList<Usuario> getListaDeUsuarios() {
 		return listaDeUsuarios;

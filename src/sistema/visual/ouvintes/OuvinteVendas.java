@@ -28,30 +28,35 @@ public class OuvinteVendas extends OuvinteDeCampos{
     @Override
     public void actionPerformed(ActionEvent e){
         JButton vender = janela.getBotaoVender();
-        
         if(e.getSource().equals(vender)){
             JTextField campoCupom  = janela.getCampoCupom();
             String CodigoCupom = campoCupom.getText();
             Cupom cupom = sistema.validarCupom(CodigoCupom);
             float total = janela.getTotalDeVendas();
+            float totalComDesconto = 0;
 
             if(!CodigoCupom.equals("_____") && cupom != null){
                 float desconto = cupom.getDesconto();
-                float totalComDesconto = total - (total * desconto);
+                totalComDesconto = total - (total * desconto);
                 janela.setTotalDeVendas(totalComDesconto);
-                JOptionPane.showMessageDialog(janela, "Total com desconto: " + totalComDesconto + "total:" + total);
+                JOptionPane.showMessageDialog(janela, "total:" + total + "\nTotal com desconto: " + totalComDesconto );
             }
+
             JOptionPane.showMessageDialog(janela, "total: " + total);
             janela.dispose();
             validarCPF();
-        
-        
+
             for(Produto produto : janela.getCarrinho()){
+                // Caso tenha havido desconto
+                if (totalComDesconto != 0){
+                    total = totalComDesconto;}
+
                 Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), produto.getUnidade(), 
                                                 produto.getValorUnitarioDeVenda(), "");
                 sistema.getRegistrosDeVenda().add(registro);
             }
-        }     
+        } 
+        //Adicionando ao carrinho;
         super.actionPerformed(e);
     }
 

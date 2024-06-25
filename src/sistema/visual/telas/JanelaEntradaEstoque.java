@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 import sistema.SistemaMercado;
 import sistema.produtos.Produto;
+import sistema.utilitarios.Registro;
 import sistema.visual.ouvintes.OuvinteDeCampos;
 
 public class JanelaEntradaEstoque extends JanelaDeCampos{
@@ -94,7 +95,7 @@ public class JanelaEntradaEstoque extends JanelaDeCampos{
     public class OuvinteDoEstoque extends OuvinteDeCampos{
         private JanelaEntradaEstoque janela;
 
-        public OuvinteDoEstoque(JanelaEntradaEstoque janela,SistemaMercado sistema){
+        public OuvinteDoEstoque(JanelaEntradaEstoque janela, SistemaMercado sistema){
             super(janela,sistema);
             this.setJanela(janela);
         }
@@ -114,15 +115,19 @@ public class JanelaEntradaEstoque extends JanelaDeCampos{
                 int unidades = Integer.parseInt(campoDaUnidade.getText());
                 float valor = Float.parseFloat(campoDoValorCompra.getText());
 
-                produto.setUnidade(unidades);
+                produto.setUnidade(produto.getUnidade() + unidades);
                 produto.setValorUnitarioDeCompra(valor);
          
                 DefaultTableModel modelo = (DefaultTableModel) getJanelaTabela().getTabela().getModel();
-                modelo.setValueAt(unidades, getLinha(), 2);
+                modelo.setValueAt(produto.getUnidade(), getLinha(), 2);
                 modelo.setValueAt(valor, getLinha(), 3);
-                
                 janelaTabela.getTabela().repaint();
                 JOptionPane.showMessageDialog(janela,"Unidade e valor cadastrado!");
+
+                //Registrando Compra
+                float valorTotal = unidades * valor;
+                Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), produto.getUnidade(),valorTotal, "");
+                getSistema().getRegistrosDeCompra().add(registro);
                 janela.dispose();
 
             }catch(Exception error){
