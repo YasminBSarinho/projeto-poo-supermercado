@@ -110,7 +110,7 @@ public class OuvinteCadastroUsuario extends OuvinteDeCampos{
                 "Aviso", JOptionPane.ERROR_MESSAGE);
                 cadastrado = false;
                 break;
-
+            
         }if (cadastrado){
             Json json = new Json();
             janela.dispose();
@@ -122,7 +122,6 @@ public class OuvinteCadastroUsuario extends OuvinteDeCampos{
             
         }
     }
-
 
     @Override
     public void keyTyped(KeyEvent e) {

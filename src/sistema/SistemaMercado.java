@@ -65,7 +65,7 @@ public class SistemaMercado {
 		}
 		return null;
 	}
-	
+
 	public float calcularTotalDeCompras(){
 		float total = 0;
 		for (Registro registro : registrosDeCompra){

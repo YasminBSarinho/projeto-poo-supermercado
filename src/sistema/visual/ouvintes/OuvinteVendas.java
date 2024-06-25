@@ -11,6 +11,7 @@ import sistema.SistemaMercado;
 import sistema.pessoas.Cliente;
 import sistema.produtos.Produto;
 import sistema.utilitarios.Cupom;
+import sistema.utilitarios.Pdf;
 import sistema.utilitarios.Registro;
 import sistema.visual.telas.JanelaCadastroCliente;
 import sistema.visual.telas.JanelaDeVendas;
@@ -24,10 +25,11 @@ public class OuvinteVendas extends OuvinteDeCampos{
         setJanela(janela);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e){
         JButton vender = janela.getBotaoVender();
+        Pdf pdf = new Pdf();
+
         if(e.getSource().equals(vender)){
             JTextField campoCupom  = janela.getCampoCupom();
             String CodigoCupom = campoCupom.getText();
@@ -55,6 +57,9 @@ public class OuvinteVendas extends OuvinteDeCampos{
                                                 produto.getValorUnitarioDeVenda(), "");
                 sistema.getRegistrosDeVenda().add(registro);
             }
+            String CPF = janela.getCampoCPF().getText();
+            Cliente cliente = sistema.buscarCliente(CPF);
+            pdf.emitirNotaFiscal(getSistema(), cliente, CPF, janela.getCarrinho());
         } 
         //Adicionando ao carrinho;
         super.actionPerformed(e);
@@ -99,7 +104,6 @@ public class OuvinteVendas extends OuvinteDeCampos{
             janela.getCarrinho().add(produtoComprado);
             janela.getBotaoVender().setEnabled(true);
             JOptionPane.showMessageDialog(janela, "O produto foi adicionado ao carrinho!");
-            
         }
         janela.getCampoCodigo().setText("");
         janela.getCampoQTD().setText("");
