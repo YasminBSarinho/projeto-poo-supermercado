@@ -42,6 +42,7 @@ public class Pdf {
                 addTitulosColunas(tituloProdutos, tabelaCompras);
                 addTitulosColunas(titulosBalanco, tabelaBalanco);
                 addLinha(sistema.getRegistrosDeVenda(), tabelaVendas);
+                addLinha(sistema.getRegistrosDeCompra(), tabelaCompras);
                 
             }catch(Exception e){
                 System.out.println(e.getMessage());

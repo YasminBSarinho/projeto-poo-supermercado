@@ -68,6 +68,10 @@ public class OuvinteListarProdutos implements ActionListener{
                     janelaEstoque.receberProduto(produto);
                     janelaEstoque.setJanelaTabela(this.janela);
                     janelaEstoque.setLinha(linhaSelecionada);
+                    Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), produto.getUnidade(), 
+                            produto.getValorUnitarioDeVenda(), "");
+                    sistema.getRegistrosDeCompra().add(registro);
+                    
                     break;
 
                 default:
