@@ -29,7 +29,7 @@ public class Pdf {
             PdfPTable tabelaVendas = criarTabela(5, "Vendas");
             PdfPTable tabelaCompras  = criarTabela(5, "Compras");
             PdfPTable tabelaBalanco = criarTabela(3, "Balanço Mensal");
-            String[] tituloProdutos = {"Códgio", "Unidade", "Nome", "Valor Unit.", "Total"};
+            String[] tituloProdutos = {"Códgio", "Unidades", "Nome", "Valor Unit.", "Total"};
             String[] titulosBalanco = {"Total Comprado", "Total vendido","Total apurado"};
 
             float totalComprado = sistema.calcularTotalDeCompras();

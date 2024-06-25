@@ -125,8 +125,7 @@ public class JanelaEntradaEstoque extends JanelaDeCampos{
                 JOptionPane.showMessageDialog(janela,"Unidade e valor cadastrado!");
 
                 //Registrando Compra
-                float valorTotal = unidades * valor;
-                Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), produto.getUnidade(),valorTotal, "");
+                Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), unidades, valor, "");
                 getSistema().getRegistrosDeCompra().add(registro);
                 janela.dispose();
 
