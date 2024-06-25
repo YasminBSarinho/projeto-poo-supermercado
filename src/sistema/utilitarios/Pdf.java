@@ -86,11 +86,12 @@ public class Pdf {
             }else{
                 nomeCliente = cliente.getNome();
             }
-
+            //Criação das tabelas
             PdfPTable tabelaInfo = criarTabela(2, "Informações usuário");
             PdfPTable tabelaNotaFiscal = criarTabela(5, "Nota Fiscal");
             String[] titulosNota = {"Códgio", "Nome", "Unidades","Valor Unit.", "Total em Item"};
-
+            
+            // Setando cédulas da tabela info de forma alternada
             tabelaInfo.addCell("Nome");
             tabelaInfo.addCell(nomeCliente);
             tabelaInfo.addCell("CPF");
@@ -113,7 +114,6 @@ public class Pdf {
             //Cédula da tabela para valor total da compra
             Paragraph p = new Paragraph("Total: ");
 		    PdfPCell tituloTotal = new PdfPCell(p);
-            tituloTotal.setHorizontalAlignment(Element.ALIGN_RIGHT);
             tituloTotal.setColspan(4);
             tabelaNotaFiscal.addCell(tituloTotal);
             tabelaNotaFiscal.addCell(String.valueOf(totalDeCompras));
