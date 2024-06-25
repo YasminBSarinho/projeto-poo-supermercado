@@ -91,8 +91,7 @@ public class OuvinteCadastroUsuario extends OuvinteDeCampos{
         boolean senhaConfirmada = senha.equals(confirmacao);
 
         if(!senhaConfirmada){
-            JOptionPane.showMessageDialog(janela, "Senhas não coincidem", 
-            "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(janela, "Senhas não coincidem");
             throw new Exception("Senhas não conhecidem");
         }
 
@@ -115,10 +114,10 @@ public class OuvinteCadastroUsuario extends OuvinteDeCampos{
         }if (cadastrado){
             Json json = new Json();
             janela.dispose();
-            JOptionPane.showMessageDialog(janela, "Cadastro concluido!");
             json.escreverJson(sistema);
             if(cargo.equalsIgnoreCase("gerente")){
                 JanelaLogin janelaDeLogin = new JanelaLogin(sistema);
+                JOptionPane.showMessageDialog(janela, "Cadastro concluido!");
             }
             
         }

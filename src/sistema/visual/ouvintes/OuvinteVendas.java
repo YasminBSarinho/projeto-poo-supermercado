@@ -18,14 +18,17 @@ import sistema.visual.telas.JanelaDeVendas;
 public class OuvinteVendas extends OuvinteDeCampos{
     private JanelaDeVendas janela;
     
+    
     public OuvinteVendas(JanelaDeVendas janela, SistemaMercado sistema) {
         super(janela, sistema);
         setJanela(janela);
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e){
         JButton vender = janela.getBotaoVender();
+        
         if(e.getSource().equals(vender)){
             JTextField campoCupom  = janela.getCampoCupom();
             String CodigoCupom = campoCupom.getText();
@@ -41,15 +44,15 @@ public class OuvinteVendas extends OuvinteDeCampos{
             JOptionPane.showMessageDialog(janela, "total: " + total);
             janela.dispose();
             validarCPF();
-
+        
+        
             for(Produto produto : janela.getCarrinho()){
                 Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), produto.getUnidade(), 
                                                 produto.getValorUnitarioDeVenda(), "");
                 sistema.getRegistrosDeVenda().add(registro);
             }
-        }
+        }     
         super.actionPerformed(e);
-
     }
 
     @Override
@@ -91,6 +94,7 @@ public class OuvinteVendas extends OuvinteDeCampos{
             janela.getCarrinho().add(produtoComprado);
             janela.getBotaoVender().setEnabled(true);
             JOptionPane.showMessageDialog(janela, "O produto foi adicionado ao carrinho!");
+            
         }
         janela.getCampoCodigo().setText("");
         janela.getCampoQTD().setText("");

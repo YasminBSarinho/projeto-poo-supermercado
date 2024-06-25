@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import sistema.SistemaMercado;
 import sistema.produtos.Produto;
 import sistema.utilitarios.Json;
+import sistema.utilitarios.Registro;
 import sistema.visual.telas.JanelaEditar;
 import sistema.visual.telas.JanelaEntradaEstoque;
 import sistema.visual.telas.JanelaListarProdutos;
@@ -50,7 +51,12 @@ public class OuvinteListarProdutos implements ActionListener{
                     break;
 
                 case "Excluir":
-                    excluirProduto(produto, listaProdutos, linhaSelecionada);
+                    if (verificarVendaProduto(produto, sistema.getRegistrosDeVenda())) {
+                        excluirProduto(produto, listaProdutos, linhaSelecionada); 
+                    } else{
+                        JOptionPane.showMessageDialog(janela, "Produto não pode ser excluido pois já foi vendido");
+                    }
+                    
                     break;
 
                 case "Valor unitário de venda":
@@ -80,6 +86,15 @@ public class OuvinteListarProdutos implements ActionListener{
             janela.getTabela().repaint();
             listaProdutos.remove(linha);
         }
+    }
+
+    public boolean verificarVendaProduto(Produto produto, ArrayList<Registro> registrosDeVenda){
+        for (Registro registro : registrosDeVenda) {
+            if(produto.getNome().equals(registro.getNome())){
+                return false;
+            }
+        }
+        return true;
     }
 
     public void mudarValorDeVenda(Produto produto, int linha, int coluna){

@@ -70,6 +70,7 @@ public class JanelaListarProdutos extends JFrame {
         add(cabecalho);
         setVisible(true);
     }
+    
     public void adicionarBotoes(String[] rotulos, Usuario usuario){
         OuvinteListarProdutos ouvinte = new OuvinteListarProdutos(this, sistema);
 

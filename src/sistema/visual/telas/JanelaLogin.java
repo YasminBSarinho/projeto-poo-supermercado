@@ -102,7 +102,6 @@ public class JanelaLogin extends JanelaDeCampos{
             }
             else{
                 janela.dispose();
-                JOptionPane.showMessageDialog(janela, "O Login foi efetuado!!");
                 switch (usuario.getCargo().toLowerCase()){
                     case "gerente":
                         JanelaGerente janelaGerente = new JanelaGerente(getSistema(), usuario); 
@@ -113,9 +112,10 @@ public class JanelaLogin extends JanelaDeCampos{
                     case "caixa eletronico":
                         JanelaCaixa janelaCaixa = new JanelaCaixa(getSistema(), usuario);
                         break;
-                    }
-                }  
-            }
+                }
+                JOptionPane.showMessageDialog(janela, "O Login foi efetuado!!");
+            }  
+        }
 
         @Override
         public void keyTyped(KeyEvent e) {
