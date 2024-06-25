@@ -156,7 +156,7 @@ public class JanelaCupom extends JanelaDeCampos{
 		try {
             email.setDebug(true);  
             email.setHostName("smtp.gmail.com");  
-            email.setAuthentication("poosupermercado@gmail.com","senha");  
+            email.setAuthentication("poosupermercado@gmail.com","emracwewirwrbaow");  
             email.setSSLOnConnect(true);
             email.setFrom("poosupermercado@gmail.com");
             email.setSubject("Cupom de desconto do mercadinho java");  
