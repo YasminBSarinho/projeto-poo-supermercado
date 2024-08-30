@@ -69,7 +69,7 @@ public class Pdf {
     public void emitirNotaFiscal(SistemaMercado sistema, Cliente cliente, String CPF, ArrayList<Produto> carrinho){
         try {
             Document notaFiscal = new Document();
-            String caminhoNota = "src/notasFiscais/"+ CPF +"NotaFiscal.pdf";
+            String caminhoNota = CPF + "NotaFiscal.pdf";
             PdfWriter.getInstance(notaFiscal, new FileOutputStream(caminhoNota));
             notaFiscal.open();
 
