@@ -36,6 +36,7 @@ public class OuvinteVendas extends OuvinteDeCampos{
             Cupom cupom = sistema.validarCupom(CodigoCupom);
             float total = janela.getTotalDeVendas();
             float totalComDesconto = 0;
+            float desconto = cupom.getDesconto();
 
             //Finalização da venda (mostra o total)
             JOptionPane.showMessageDialog(janela, "total: " + total);
@@ -45,19 +46,20 @@ public class OuvinteVendas extends OuvinteDeCampos{
 
 
             if(!CodigoCupom.equals("_____") && cupom != null){
-                float desconto = cupom.getDesconto();
                 totalComDesconto = total - (total * desconto);
                 janela.setTotalDeVendas(totalComDesconto);
-                JOptionPane.showMessageDialog(janela, "total:" + total + "\nTotal com desconto: " + totalComDesconto );
+                JOptionPane.showMessageDialog(janela, "Total: " + total + "\nCom desconto: " + totalComDesconto);
             }
 
 
             for(Produto produto : janela.getCarrinho()){
+                float totalProduto = produto.getUnidade() * produto.getValorUnitarioDeVenda();
                 // Caso tenha havido desconto
                 if (totalComDesconto != 0){
+                    totalProduto -= totalProduto * desconto;
                     total = totalComDesconto;
                 }
-                float totalProduto = produto.getUnidade() * produto.getValorUnitarioDeVenda();
+
                 //Registra a venda de um dos produtos
                 Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), produto.getUnidade(), 
                                                 produto.getValorUnitarioDeVenda(), "", totalProduto);

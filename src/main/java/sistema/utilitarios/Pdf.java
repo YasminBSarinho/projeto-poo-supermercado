@@ -35,7 +35,7 @@ public class Pdf {
             PdfPTable tabelaVendas = criarTabela(5, "Vendas");
             PdfPTable tabelaCompras  = criarTabela(5, "Compras");
             PdfPTable tabelaBalanco = criarTabela(3, "Balanço Mensal");
-            String[] tituloProdutos = {"Códgio", "Unidades", "Nome", "Valor Unit.", "Total"};
+            String[] tituloProdutos = {"Código", "Unidades", "Nome", "Valor Unit.", "Valor Pago"};
             String[] titulosBalanco = {"Total Comprado", "Total vendido","Total apurado"};
 
             float totalComprado = sistema.calcularTotalDeCompras();
@@ -62,7 +62,7 @@ public class Pdf {
             doc.close();
             
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.print(e.getMessage());
         }
 	}
 
@@ -161,7 +161,7 @@ public class Pdf {
             tabela.addCell(String.valueOf(registro.getUnidades()));
             tabela.addCell(registro.getNome());
             tabela.addCell(String.valueOf(registro.getValor()));
-            tabela.addCell(String.valueOf(registro.getUnidades() * registro.getValor()));
+            tabela.addCell(String.valueOf(registro.getTotal()));
         }
     }
 

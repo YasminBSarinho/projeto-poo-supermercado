@@ -22,6 +22,7 @@ public class Registro {
     }
 
 
+
     public String getCodigo() {
         return codigo;
     }

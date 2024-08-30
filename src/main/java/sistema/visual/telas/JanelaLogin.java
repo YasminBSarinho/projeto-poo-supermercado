@@ -113,7 +113,6 @@ public class JanelaLogin extends JanelaDeCampos{
                         JanelaCaixa janelaCaixa = new JanelaCaixa(getSistema(), usuario);
                         break;
                 }
-                JOptionPane.showMessageDialog(janela, "O Login foi efetuado!!");
             }  
         }
 

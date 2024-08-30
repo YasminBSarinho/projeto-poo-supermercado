@@ -2,23 +2,14 @@ package sistema.utilitarios;
 import java.io.FileReader;
 import java.io.FileWriter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
-import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 
 import sistema.SistemaMercado;
 
 public class Json {
-    private ObjectMapper conversor;
+    private ObjectMapper conversor = new ObjectMapper();
 
     public Json(){
-        conversor = new ObjectMapper();
         setConversor(conversor);
-
-        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
-            .allowIfSubType("sistema")
-            .allowIfSubType("java.util.ArrayList")
-            .build();
-        getConversor().activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
     }
 
     public SistemaMercado lerJson(){
