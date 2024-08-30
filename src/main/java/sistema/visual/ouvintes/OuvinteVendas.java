@@ -37,6 +37,13 @@ public class OuvinteVendas extends OuvinteDeCampos{
             float total = janela.getTotalDeVendas();
             float totalComDesconto = 0;
 
+            //Finalização da venda (mostra o total)
+            JOptionPane.showMessageDialog(janela, "total: " + total);
+            validarCPF();
+            janela.dispose();
+
+
+
             if(!CodigoCupom.equals("_____") && cupom != null){
                 float desconto = cupom.getDesconto();
                 totalComDesconto = total - (total * desconto);
@@ -44,9 +51,6 @@ public class OuvinteVendas extends OuvinteDeCampos{
                 JOptionPane.showMessageDialog(janela, "total:" + total + "\nTotal com desconto: " + totalComDesconto );
             }
 
-            JOptionPane.showMessageDialog(janela, "total: " + total);
-            janela.dispose();
-            validarCPF();
 
             for(Produto produto : janela.getCarrinho()){
                 // Caso tenha havido desconto
@@ -60,6 +64,7 @@ public class OuvinteVendas extends OuvinteDeCampos{
             String CPF = janela.getCampoCPF().getText();
             Cliente cliente = sistema.buscarCliente(CPF);
             pdf.emitirNotaFiscal(getSistema(), cliente, CPF, janela.getCarrinho());
+
         } 
         //Adicionando ao carrinho;
         super.actionPerformed(e);
@@ -79,7 +84,6 @@ public class OuvinteVendas extends OuvinteDeCampos{
         Produto produto = sistema.buscarProdutoPorCodigo(codigo);
         
         int quantidade = Integer.parseInt(janela.getCampoQTD().getText());
-        validarCPF();
 
         if(produto == null){
             JOptionPane.showMessageDialog(janela, "Produto não encontrado", "Aviso", JOptionPane.ERROR_MESSAGE); 
@@ -114,7 +118,7 @@ public class OuvinteVendas extends OuvinteDeCampos{
     public void validarCPF(){
         JTextField campoDoCPF = janela.getCampoCPF();
         String CPF = campoDoCPF.getText();
-        
+
         Cliente cliente = sistema.buscarCliente(CPF);
 
         if(cliente == null){
