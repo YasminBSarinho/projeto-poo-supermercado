@@ -66,7 +66,8 @@ public class Pdf {
         }
 	}
 
-    public void emitirNotaFiscal(SistemaMercado sistema, Cliente cliente, String CPF, ArrayList<Produto> carrinho){
+    public void emitirNotaFiscal(SistemaMercado sistema, Cliente cliente, String CPF,
+                                 ArrayList<Produto> carrinho, float totalDesconto){
         try {
             Document notaFiscal = new Document();
             String caminhoNota = CPF + "NotaFiscal.pdf";
@@ -89,7 +90,7 @@ public class Pdf {
             //Criação das tabelas
             PdfPTable tabelaInfo = criarTabela(2, "Informações usuário");
             PdfPTable tabelaNotaFiscal = criarTabela(5, "Nota Fiscal");
-            String[] titulosNota = {"Códgio", "Nome", "Unidades","Valor Unit.", "Total em Item"};
+            String[] titulosNota = {"Código", "Nome", "Unidades","Valor Unit.", "Total em Item"};
             
             // Setando cédulas da tabela info de forma alternada
             tabelaInfo.addCell("Nome");
@@ -113,10 +114,15 @@ public class Pdf {
             }
             //Cédula da tabela para valor total da compra
             Paragraph p = new Paragraph("Total: ");
+            Paragraph p2 = new Paragraph("Total com desconto: ");
 		    PdfPCell tituloTotal = new PdfPCell(p);
+            PdfPCell tituloDesconto = new PdfPCell(p2);
             tituloTotal.setColspan(4);
+            tituloDesconto.setColspan(4);
             tabelaNotaFiscal.addCell(tituloTotal);
             tabelaNotaFiscal.addCell(String.valueOf(totalDeCompras));
+            tabelaNotaFiscal.addCell(tituloDesconto);
+            tabelaNotaFiscal.addCell(String.valueOf(totalDesconto));
 
             //Adicionando elementos ao documento
             notaFiscal.add(titulo);

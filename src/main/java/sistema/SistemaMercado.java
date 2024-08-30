@@ -69,7 +69,7 @@ public class SistemaMercado {
 	public float calcularTotalDeCompras(){
 		float total = 0;
 		for (Registro registro : registrosDeCompra){
-			total += registro.getValor() * registro.getUnidades();
+			total += registro.getTotal();
 		}
 		return total;
 	}
@@ -77,7 +77,7 @@ public class SistemaMercado {
 	public float calcularTotalDeVendas(){
 		float total = 0;
 		for (Registro registro : registrosDeVenda){
-			total += registro.getValor() * registro.getUnidades();
+			total += registro.getTotal();
 		}
 		return total;
 	}

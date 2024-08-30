@@ -114,7 +114,7 @@ public class JanelaEntradaEstoque extends JanelaDeCampos{
             try{
                 int unidades = Integer.parseInt(campoDaUnidade.getText());
                 float valor = Float.parseFloat(campoDoValorCompra.getText());
-
+                float total = unidades * valor;
                 produto.setUnidade(produto.getUnidade() + unidades);
                 produto.setValorUnitarioDeCompra(valor);
          
@@ -125,7 +125,7 @@ public class JanelaEntradaEstoque extends JanelaDeCampos{
                 JOptionPane.showMessageDialog(janela,"Unidade e valor cadastrado!");
 
                 //Registrando Compra
-                Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), unidades, valor, "");
+                Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), unidades, valor, "", total);
                 getSistema().getRegistrosDeCompra().add(registro);
                 janela.dispose();
 

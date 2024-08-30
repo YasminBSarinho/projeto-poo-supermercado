@@ -6,23 +6,21 @@ public class Registro {
     private String nome;
     private float valor;
     private String data;
+    private float total;
 
     public Registro(){
         
     }
     
-    public Registro(String codigo, String nome, int unidades, float valor, String data){
+    public Registro(String codigo, String nome, int unidades, float valor, String data, float total){
         this.codigo = codigo;
         this.nome = nome;
         this.unidades = unidades;
         this.valor = valor;
         this.data = data;
+        this.total = total;
     }
 
-    public Registro(float valor, String data){
-        this.valor = valor;
-        this.data = data;
-    }
 
     public String getCodigo() {
         return codigo;
@@ -56,5 +54,12 @@ public class Registro {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
 }

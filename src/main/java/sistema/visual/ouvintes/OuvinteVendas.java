@@ -55,15 +55,17 @@ public class OuvinteVendas extends OuvinteDeCampos{
             for(Produto produto : janela.getCarrinho()){
                 // Caso tenha havido desconto
                 if (totalComDesconto != 0){
-                    total = totalComDesconto;}
-
+                    total = totalComDesconto;
+                }
+                float totalProduto = produto.getUnidade() * produto.getValorUnitarioDeVenda();
+                //Registra a venda de um dos produtos
                 Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), produto.getUnidade(), 
-                                                produto.getValorUnitarioDeVenda(), "");
+                                                produto.getValorUnitarioDeVenda(), "", totalProduto);
                 sistema.getRegistrosDeVenda().add(registro);
             }
             String CPF = janela.getCampoCPF().getText();
             Cliente cliente = sistema.buscarCliente(CPF);
-            pdf.emitirNotaFiscal(getSistema(), cliente, CPF, janela.getCarrinho());
+            pdf.emitirNotaFiscal(getSistema(), cliente, CPF, janela.getCarrinho(), total);
 
         } 
         //Adicionando ao carrinho;
@@ -82,7 +84,7 @@ public class OuvinteVendas extends OuvinteDeCampos{
         JTextField campoDoCodigo = janela.getCampoCodigo();
         String codigo = campoDoCodigo.getText();
         Produto produto = sistema.buscarProdutoPorCodigo(codigo);
-        
+
         int quantidade = Integer.parseInt(janela.getCampoQTD().getText());
 
         if(produto == null){
@@ -92,29 +94,30 @@ public class OuvinteVendas extends OuvinteDeCampos{
             JOptionPane.showMessageDialog(janela, "Existem apenas" + produto.getUnidade() + "em estoque", "Aviso", JOptionPane.ERROR_MESSAGE);
 
         }else{
-            produto.setUnidade(produto.getUnidade() - quantidade);
-
-            float valorUnitario = produto.getValorUnitarioDeVenda();
-            float total = janela.getTotalDeVendas();
-            janela.setTotalDeVendas(total + (quantidade * valorUnitario));
-            Produto produtoComprado = new Produto();
-
-            produtoComprado.setCodigo(produto.getCodigo());
-            produtoComprado.setNome(produto.getNome());
-            produtoComprado.setUnidade(quantidade);
-            produtoComprado.setValorUnitarioDeVenda(produto.getValorUnitarioDeVenda());
-            produtoComprado.setValorUnitarioDeCompra(produto.getValorUnitarioDeCompra());
-
-            janela.getCarrinho().add(produtoComprado);
-            janela.getBotaoVender().setEnabled(true);
-            JOptionPane.showMessageDialog(janela, "O produto foi adicionado ao carrinho!");
+            AdicionarAoCarrinho(produto, quantidade);
         }
         janela.getCampoCodigo().setText("");
         janela.getCampoQTD().setText("");
         janela.getCampoCPF().setEnabled(false);
         janela.repaint();
     }
+    public void AdicionarAoCarrinho(Produto produto,int quantidade){
+        produto.setUnidade(produto.getUnidade() - quantidade);
+        float valorUnitario = produto.getValorUnitarioDeVenda();
+        float total = janela.getTotalDeVendas();
+        janela.setTotalDeVendas(total + (quantidade * valorUnitario));
+        Produto produtoComprado = new Produto();
 
+        produtoComprado.setCodigo(produto.getCodigo());
+        produtoComprado.setNome(produto.getNome());
+        produtoComprado.setUnidade(quantidade);
+        produtoComprado.setValorUnitarioDeVenda(valorUnitario);
+        produtoComprado.setValorUnitarioDeCompra(produto.getValorUnitarioDeCompra());
+
+        janela.getCarrinho().add(produtoComprado);
+        janela.getBotaoVender().setEnabled(true);
+        JOptionPane.showMessageDialog(janela, "O produto foi adicionado ao carrinho!");
+    }
     public void validarCPF(){
         JTextField campoDoCPF = janela.getCampoCPF();
         String CPF = campoDoCPF.getText();
@@ -124,7 +127,6 @@ public class OuvinteVendas extends OuvinteDeCampos{
         if(cliente == null){
             int resposta = JOptionPane.showConfirmDialog(janela, "Deseja cadastrar o cliente?", "Cliente não possui cadastro", JOptionPane.YES_NO_OPTION);
             if(resposta == JOptionPane.YES_OPTION){
-                @SuppressWarnings("unused")
                 JanelaCadastroCliente janelaCadastroCliente = new JanelaCadastroCliente(sistema);
             }
         }
