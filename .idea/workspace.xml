@@ -4,41 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40083144-29bc-4103-bd8e-f146a1d056f9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/sistema/visual/telas/JanelaCupom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema/visual/telas/JanelaCupom.java" afterDir="false" />
-    </list>
+    <list default="true" id="9a0a0f31-5803-4fa5-8505-721aa9ff75a9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
-  <component name="ProjectId" id="2iINTE3wjjNb3QWzGcoYU2IAzqJ" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2lNZjTuoCykVyA4L7jQjN11zkZw" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Programa.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.projeto-poo-supermercado [org.apache.maven.plugins:maven-shade-plugin:3.2.4:shade].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "interface",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Projetos/projeto-exemplo"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\untitled\src\main\resources" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="40083144-29bc-4103-bd8e-f146a1d056f9" name="Changes" comment="" />
-      <created>1719174150057</created>
+      <changelist id="9a0a0f31-5803-4fa5-8505-721aa9ff75a9" name="Changes" comment="" />
+      <created>1725022631381</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1719174150057</updated>
+      <updated>1725022631381</updated>
     </task>
     <servers />
   </component>

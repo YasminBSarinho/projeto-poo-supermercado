@@ -26,7 +26,7 @@ public class JanelaUsuario extends JFrame{
         setResizable(false);
         setLocationRelativeTo(null);
 
-        ImageIcon iconeCadastroCliente = new ImageIcon(getClass().getResource("/imagens/cliente.png"));
+        ImageIcon iconeCadastroCliente = new ImageIcon(getClass().getResource("/cliente.png"));
         painelBotoes = new JPanel();
         cadastrarCliente = adicionarBotao("Cadastrar Cliente", getFonteDoBotao(), painelBotoes, iconeCadastroCliente);
         adicionarMenu();

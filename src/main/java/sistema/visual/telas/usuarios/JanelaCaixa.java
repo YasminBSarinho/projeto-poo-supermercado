@@ -28,7 +28,7 @@ public class JanelaCaixa extends JanelaUsuario{
         int x = calcularX(larguraPainel);
         int y = calcularY(getCabecalho());
 
-        ImageIcon iconeVendas = new ImageIcon(getClass().getResource("/imagens/vendas.png"));
+        ImageIcon iconeVendas = new ImageIcon(getClass().getResource("/vendas.png"));
         realizarVenda = adicionarBotao("Realizar venda", getFonteDoBotao(), getPainelBotoes(), iconeVendas);
 
         getPainelBotoes().setLayout(new GridLayout(1,3, 20, 20));

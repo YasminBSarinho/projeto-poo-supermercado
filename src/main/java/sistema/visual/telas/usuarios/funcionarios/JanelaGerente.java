@@ -31,9 +31,9 @@ public class JanelaGerente extends JanelaFuncionario {
         int x = calcularX(larguraPainel);
         int y = calcularY(getCabecalho());
 
-        ImageIcon iconeCadastroUsuario = new ImageIcon(getClass().getResource("/imagens/cadastrarUsuario.png"));
-        ImageIcon iconeDeCupom = new ImageIcon(getClass().getResource("/imagens/cupom.png"));
-        ImageIcon iconeDoBalanco = new ImageIcon(getClass().getResource("/imagens/balanco.png"));
+        ImageIcon iconeCadastroUsuario = new ImageIcon(getClass().getResource("/cadastrarUsuario.png"));
+        ImageIcon iconeDeCupom = new ImageIcon(getClass().getResource("/cupom.png"));
+        ImageIcon iconeDoBalanco = new ImageIcon(getClass().getResource("/balanco.png"));
 
         cadastrarUsuario = adicionarBotao("Cadastrar Usuário", getFonteDoBotao(), getPainelBotoes(), iconeCadastroUsuario);
         enviarCupons = adicionarBotao("Enviar Cupons", getFonteDoBotao(), getPainelBotoes(), iconeDeCupom);

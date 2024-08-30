@@ -37,7 +37,7 @@ public class Json {
     public void escreverJson(SistemaMercado sistema){
         try{
             FileWriter escritor = new FileWriter("sistema.json");
-            String jsonSistema = conversor.writeValueAsString(sistema);
+            String jsonSistema = conversor.writerWithDefaultPrettyPrinter().writeValueAsString(sistema);
             escritor.write(jsonSistema);
             escritor.close();
         }catch(Exception e){
