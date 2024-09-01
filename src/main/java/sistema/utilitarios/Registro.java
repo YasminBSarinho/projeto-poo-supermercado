@@ -1,25 +1,29 @@
 package sistema.utilitarios;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class Registro {
     private String codigo;
     private int unidades;
     private String nome;
     private BigDecimal valor;
-    private String data;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    private LocalDateTime data;
     private BigDecimal total;
 
     public Registro(){
         
     }
     
-    public Registro(String codigo, String nome, int unidades, BigDecimal valor, String data, BigDecimal total){
+    public Registro(String codigo, String nome, int unidades, BigDecimal valor, BigDecimal total){
         this.codigo = codigo;
         this.nome = nome;
         this.unidades = unidades;
         this.valor = valor;
-        this.data = data;
+        this.data = LocalDateTime.now();
         this.total = total;
     }
 
@@ -43,10 +47,10 @@ public class Registro {
     public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
-    public String getData() {
+    public LocalDateTime getData() {
         return data;
     }
-    public void setData(String data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 

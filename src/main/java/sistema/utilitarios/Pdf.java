@@ -4,7 +4,10 @@ import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Formatter;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
@@ -23,7 +26,7 @@ public class Pdf {
 
     public void gerarBalancoMensal(SistemaMercado sistema){
         try {
-			Document doc = new Document(PageSize.A4, 72, 72, 72, 72);
+			Document doc = new Document(PageSize.A4, 25, 25, 25, 25);
 			PdfWriter.getInstance(doc, new FileOutputStream("Balanco.pdf"));
             doc.open();
 
@@ -33,10 +36,10 @@ public class Pdf {
             titulo.setSpacingAfter(40);
         
             //Criando tabelas
-            PdfPTable tabelaVendas = criarTabela(5, "Vendas");
-            PdfPTable tabelaCompras  = criarTabela(5, "Compras");
+            PdfPTable tabelaVendas = criarTabela(6, "Vendas");
+            PdfPTable tabelaCompras  = criarTabela(6, "Compras");
             PdfPTable tabelaBalanco = criarTabela(3, "Balanço Mensal");
-            String[] tituloProdutos = {"Código", "Unidades", "Nome", "Valor Unit.", "Valor Pago"};
+            String[] tituloProdutos = {"Código", "Unidades", "Nome", "Valor Unit.", "Valor Pago", "Data"};
             String[] titulosBalanco = {"Total Comprado", "Total vendido","Total apurado"};
 
             BigDecimal totalComprado = sistema.calcularTotalDeCompras();
@@ -98,6 +101,9 @@ public class Pdf {
             tabelaInfo.addCell(nomeCliente);
             tabelaInfo.addCell("CPF");
             tabelaInfo.addCell(CPF);
+            tabelaInfo.addCell("Data");
+            DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            tabelaInfo.addCell(LocalDateTime.now().format(formatador));
 
             addTitulosColunas(titulosNota, tabelaNotaFiscal);
 
@@ -164,6 +170,8 @@ public class Pdf {
             tabela.addCell(registro.getNome());
             tabela.addCell(String.valueOf(registro.getValor()));
             tabela.addCell(String.valueOf(registro.getTotal()));
+            DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            tabela.addCell(registro.getData().format(formatador));
         }
     }
 

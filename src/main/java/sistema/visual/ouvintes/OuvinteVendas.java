@@ -41,9 +41,10 @@ public class OuvinteVendas extends OuvinteDeCampos{
             Cupom cupom = sistema.validarCupom(CodigoCupom);
             BigDecimal total = janela.getTotalDeVendas();
             BigDecimal totalComDesconto = null;
-            BigDecimal desconto = cupom.getDesconto();
+            BigDecimal desconto = new BigDecimal("1");
 
             if(!CodigoCupom.equals("_____") && cupom != null){
+                desconto = cupom.getDesconto();
                 BigDecimal valorDescontado = total.multiply(desconto);
                 totalComDesconto = total.subtract(valorDescontado);
                 janela.setTotalDeVendas(totalComDesconto);
@@ -56,13 +57,12 @@ public class OuvinteVendas extends OuvinteDeCampos{
                 BigDecimal totalProduto =  unidades.multiply(produto.getValorUnitarioDeVenda());
                 // Caso tenha havido desconto
                 if (totalComDesconto != null){
-                    totalProduto = totalProduto.subtract( totalProduto.multiply(desconto));
+                    totalProduto = totalProduto.subtract(totalProduto.multiply(desconto));
                     total = totalComDesconto;
                 }
-
                 //Registra a venda de um dos produtos
                 Registro registro = new Registro(produto.getCodigo(),  produto.getNome(), produto.getUnidade(), 
-                                                produto.getValorUnitarioDeVenda(), "", totalProduto);
+                                                produto.getValorUnitarioDeVenda(), totalProduto);
                 sistema.getRegistrosDeVenda().add(registro);
             }
 

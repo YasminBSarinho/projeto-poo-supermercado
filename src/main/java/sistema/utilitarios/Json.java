@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import sistema.SistemaMercado;
 
 public class Json {
@@ -10,6 +11,7 @@ public class Json {
 
     public Json(){
         setConversor(conversor);
+        conversor.registerModule(new JavaTimeModule());
     }
 
     public SistemaMercado lerJson(){
