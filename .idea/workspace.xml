@@ -6,19 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9a0a0f31-5803-4fa5-8505-721aa9ff75a9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/SistemaMercado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/SistemaMercado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/produtos/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/produtos/Produto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/utilitarios/Cupom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/utilitarios/Cupom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/utilitarios/Pdf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/utilitarios/Pdf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/utilitarios/Registro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/utilitarios/Registro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/ouvintes/OuvinteCadastroUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/ouvintes/OuvinteCadastroUsuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/ouvintes/OuvinteListarProdutos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/ouvintes/OuvinteListarProdutos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/ouvintes/OuvinteVendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/ouvintes/OuvinteVendas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaCupom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaCupom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaDeVendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaDeVendas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaEditar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaEditar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaEntradaEstoque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaEntradaEstoque.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -31,6 +31,10 @@ public class OuvinteVendas extends OuvinteDeCampos{
         JButton vender = janela.getBotaoVender();
         Pdf pdf = new Pdf();
 
+        //Adicionando ao carrinho;
+        super.actionPerformed(e);
+
+        //Finalizando
         if(e.getSource().equals(vender)){
             JTextField campoCupom  = janela.getCampoCupom();
             String CodigoCupom = campoCupom.getText();
@@ -38,13 +42,6 @@ public class OuvinteVendas extends OuvinteDeCampos{
             BigDecimal total = janela.getTotalDeVendas();
             BigDecimal totalComDesconto = null;
             BigDecimal desconto = cupom.getDesconto();
-
-            //Finalização da venda (mostra o total)
-            JOptionPane.showMessageDialog(janela, "total: " + total);
-            validarCPF();
-            janela.dispose();
-
-
 
             if(!CodigoCupom.equals("_____") && cupom != null){
                 BigDecimal valorDescontado = total.multiply(desconto);
@@ -68,13 +65,15 @@ public class OuvinteVendas extends OuvinteDeCampos{
                                                 produto.getValorUnitarioDeVenda(), "", totalProduto);
                 sistema.getRegistrosDeVenda().add(registro);
             }
-            String CPF = janela.getCampoCPF().getText();
-            Cliente cliente = sistema.buscarCliente(CPF);
-            pdf.emitirNotaFiscal(getSistema(), cliente, CPF, janela.getCarrinho(), total);
 
-        } 
-        //Adicionando ao carrinho;
-        super.actionPerformed(e);
+            //Finalização da venda (mostra o total)
+
+            JOptionPane.showMessageDialog(janela, "total: " + total);
+            Cliente cliente = validarCPF();
+            janela.dispose();
+            pdf.emitirNotaFiscal(getSistema(), cliente, janela.getCampoCPF().getText() , janela.getCarrinho(), total);
+        }
+
     }
 
     @Override
@@ -126,18 +125,20 @@ public class OuvinteVendas extends OuvinteDeCampos{
         janela.getBotaoVender().setEnabled(true);
         JOptionPane.showMessageDialog(janela, "O produto foi adicionado ao carrinho!");
     }
-    public void validarCPF(){
+    public Cliente validarCPF(){
         JTextField campoDoCPF = janela.getCampoCPF();
         String CPF = campoDoCPF.getText();
-
         Cliente cliente = sistema.buscarCliente(CPF);
-
+        JanelaCadastroCliente janelaCadastroCliente = null;
         if(cliente == null){
             int resposta = JOptionPane.showConfirmDialog(janela, "Deseja cadastrar o cliente?", "Cliente não possui cadastro", JOptionPane.YES_NO_OPTION);
             if(resposta == JOptionPane.YES_OPTION){
-                JanelaCadastroCliente janelaCadastroCliente = new JanelaCadastroCliente(sistema);
+                janelaCadastroCliente = new JanelaCadastroCliente(sistema);
+                janelaCadastroCliente.getCampoDoCPF().setText(CPF);
+                janelaCadastroCliente.getCampoDoCPF().setEnabled(false);
             }
         }
+        return cliente;
     }
 
     public JanelaDeVendas getJanela() {
