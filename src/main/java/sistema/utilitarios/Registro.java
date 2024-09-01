@@ -1,18 +1,20 @@
 package sistema.utilitarios;
 
+import java.math.BigDecimal;
+
 public class Registro {
     private String codigo;
     private int unidades;
     private String nome;
-    private float valor;
+    private BigDecimal valor;
     private String data;
-    private float total;
+    private BigDecimal total;
 
     public Registro(){
         
     }
     
-    public Registro(String codigo, String nome, int unidades, float valor, String data, float total){
+    public Registro(String codigo, String nome, int unidades, BigDecimal valor, String data, BigDecimal total){
         this.codigo = codigo;
         this.nome = nome;
         this.unidades = unidades;
@@ -35,10 +37,10 @@ public class Registro {
     public void setUnidades(int unidades) {
         this.unidades = unidades;
     }
-    public float getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
-    public void setValor(float valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
     public String getData() {
@@ -56,11 +58,11 @@ public class Registro {
         this.nome = nome;
     }
 
-    public float getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(float total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 }

@@ -1,13 +1,15 @@
 package sistema.produtos;
 import sistema.SistemaMercado;
 
+import java.math.BigDecimal;
+
 public class Produto {
 	private int identificador;
 	private String codigo;
 	private String nome;
 	private int unidade;
-	private float valorUnitarioDeCompra;
-	private float valorUnitarioDeVenda;
+	private BigDecimal valorUnitarioDeCompra;
+	private BigDecimal valorUnitarioDeVenda;
 
 	public Produto(){
 	}
@@ -15,8 +17,8 @@ public class Produto {
 	public Produto(String nome, SistemaMercado sistema) {
 		this.nome = nome;
 		this.unidade = 0;
-		this.valorUnitarioDeCompra = 0;
-		this.valorUnitarioDeVenda = 0;
+		this.valorUnitarioDeCompra = new BigDecimal("0");
+		this.valorUnitarioDeVenda = new BigDecimal("0");
 		this.identificador = sistema.getProdutosEmEstoque().size() + 1;
 		this.setCodigo(this.identificador);
 	}
@@ -72,19 +74,19 @@ public class Produto {
 		this.unidade = unidade;
 	}
 
-	public float getValorUnitarioDeCompra() {
+	public BigDecimal getValorUnitarioDeCompra() {
 		return valorUnitarioDeCompra;
 	}
 
-	public void setValorUnitarioDeCompra(float valorUnitarioDeCompra) {
+	public void setValorUnitarioDeCompra(BigDecimal valorUnitarioDeCompra) {
 		this.valorUnitarioDeCompra = valorUnitarioDeCompra;
 	}
 
-	public float getValorUnitarioDeVenda() {
+	public BigDecimal getValorUnitarioDeVenda() {
 		return valorUnitarioDeVenda;
 	}
 
-	public void setValorUnitarioDeVenda(float valorUnitarioDeVenda) {
+	public void setValorUnitarioDeVenda(BigDecimal valorUnitarioDeVenda) {
 		this.valorUnitarioDeVenda = valorUnitarioDeVenda;
 	}
 

@@ -2,6 +2,7 @@ package sistema.visual.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -59,7 +60,7 @@ public class OuvinteListarProdutos implements ActionListener{
                     break;
 
                 case "Valor unitário de venda":
-                    mudarValorDeVenda(produto, linhaSelecionada, 4);
+                    mudarValorDeVenda(produto, linhaSelecionada);
                     
                     break;
                 case "Registrar Entrada":
@@ -96,10 +97,10 @@ public class OuvinteListarProdutos implements ActionListener{
         return true;
     }
 
-    public void mudarValorDeVenda(Produto produto, int linha, int coluna){
+    public void mudarValorDeVenda(Produto produto, int linha){
         try{
-            float valor = Float.parseFloat(JOptionPane.showInputDialog(janela, "Digite o valor:"));
-            if(valor <= 0){
+            BigDecimal valor = new BigDecimal(JOptionPane.showInputDialog(janela, "Digite o valor:"));
+            if(valor.doubleValue() <= 0){
                 JOptionPane.showMessageDialog(janela, "Digite um valor acima de zero");
             }else{
                 produto.setValorUnitarioDeVenda(valor);

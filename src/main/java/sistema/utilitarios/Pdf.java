@@ -1,6 +1,7 @@
 package sistema.utilitarios;
 
 import java.io.FileOutputStream;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import java.util.ArrayList;
@@ -38,9 +39,9 @@ public class Pdf {
             String[] tituloProdutos = {"Código", "Unidades", "Nome", "Valor Unit.", "Valor Pago"};
             String[] titulosBalanco = {"Total Comprado", "Total vendido","Total apurado"};
 
-            float totalComprado = sistema.calcularTotalDeCompras();
-            float totalVendido = sistema.calcularTotalDeVendas();
-            float totalApurado = sistema.calcularTotalApurado();
+            BigDecimal totalComprado = sistema.calcularTotalDeCompras();
+            BigDecimal totalVendido = sistema.calcularTotalDeVendas();
+            BigDecimal totalApurado = sistema.calcularTotalApurado();
             
             // Adicionando titulos e valores das colunas
             addTitulosColunas(tituloProdutos, tabelaVendas);
@@ -67,7 +68,7 @@ public class Pdf {
 	}
 
     public void emitirNotaFiscal(SistemaMercado sistema, Cliente cliente, String CPF,
-                                 ArrayList<Produto> carrinho, float totalDesconto){
+                                 ArrayList<Produto> carrinho, BigDecimal totalDesconto){
         try {
             Document notaFiscal = new Document();
             String caminhoNota = CPF + "NotaFiscal.pdf";
@@ -100,12 +101,13 @@ public class Pdf {
 
             addTitulosColunas(titulosNota, tabelaNotaFiscal);
 
-            float totalDeCompras = 0;
-            float valorTotalNoProduto = 0;
+            BigDecimal totalDeCompras = new BigDecimal("0");
+            BigDecimal valorTotalNoProduto;
 
             for (Produto produto : carrinho) {
-                valorTotalNoProduto  = produto.getUnidade() * produto.getValorUnitarioDeVenda();
-                totalDeCompras += valorTotalNoProduto;
+                BigDecimal unidades = new BigDecimal(produto.getUnidade());
+                valorTotalNoProduto  = produto.getValorUnitarioDeVenda().multiply(unidades);
+                totalDeCompras = totalDeCompras.add(valorTotalNoProduto);
                 tabelaNotaFiscal.addCell(produto.getCodigo());
                 tabelaNotaFiscal.addCell(produto.getNome());
                 tabelaNotaFiscal.addCell(String.valueOf(produto.getUnidade()));

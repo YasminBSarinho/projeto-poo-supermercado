@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -113,8 +114,8 @@ public class JanelaEntradaEstoque extends JanelaDeCampos{
         protected void confirmar() {
             try{
                 int unidades = Integer.parseInt(campoDaUnidade.getText());
-                float valor = Float.parseFloat(campoDoValorCompra.getText());
-                float total = unidades * valor;
+                BigDecimal valor = new BigDecimal(campoDoValorCompra.getText());
+                BigDecimal total = valor.multiply(BigDecimal.valueOf(unidades));
                 produto.setUnidade(produto.getUnidade() + unidades);
                 produto.setValorUnitarioDeCompra(valor);
          

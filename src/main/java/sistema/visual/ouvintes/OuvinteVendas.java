@@ -2,6 +2,7 @@ package sistema.visual.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -34,9 +35,9 @@ public class OuvinteVendas extends OuvinteDeCampos{
             JTextField campoCupom  = janela.getCampoCupom();
             String CodigoCupom = campoCupom.getText();
             Cupom cupom = sistema.validarCupom(CodigoCupom);
-            float total = janela.getTotalDeVendas();
-            float totalComDesconto = 0;
-            float desconto = cupom.getDesconto();
+            BigDecimal total = janela.getTotalDeVendas();
+            BigDecimal totalComDesconto = null;
+            BigDecimal desconto = cupom.getDesconto();
 
             //Finalização da venda (mostra o total)
             JOptionPane.showMessageDialog(janela, "total: " + total);
@@ -46,17 +47,19 @@ public class OuvinteVendas extends OuvinteDeCampos{
 
 
             if(!CodigoCupom.equals("_____") && cupom != null){
-                totalComDesconto = total - (total * desconto);
+                BigDecimal valorDescontado = total.multiply(desconto);
+                totalComDesconto = total.subtract(valorDescontado);
                 janela.setTotalDeVendas(totalComDesconto);
                 JOptionPane.showMessageDialog(janela, "Total: " + total + "\nCom desconto: " + totalComDesconto);
             }
 
 
             for(Produto produto : janela.getCarrinho()){
-                float totalProduto = produto.getUnidade() * produto.getValorUnitarioDeVenda();
+                BigDecimal unidades = BigDecimal.valueOf(produto.getUnidade());
+                BigDecimal totalProduto =  unidades.multiply(produto.getValorUnitarioDeVenda());
                 // Caso tenha havido desconto
-                if (totalComDesconto != 0){
-                    totalProduto -= totalProduto * desconto;
+                if (totalComDesconto != null){
+                    totalProduto = totalProduto.subtract( totalProduto.multiply(desconto));
                     total = totalComDesconto;
                 }
 
@@ -96,23 +99,26 @@ public class OuvinteVendas extends OuvinteDeCampos{
             JOptionPane.showMessageDialog(janela, "Existem apenas" + produto.getUnidade() + "em estoque", "Aviso", JOptionPane.ERROR_MESSAGE);
 
         }else{
-            AdicionarAoCarrinho(produto, quantidade);
+            BigDecimal quantia = BigDecimal.valueOf(quantidade);
+            AdicionarAoCarrinho(produto, quantia);
         }
         janela.getCampoCodigo().setText("");
         janela.getCampoQTD().setText("");
         janela.getCampoCPF().setEnabled(false);
         janela.repaint();
     }
-    public void AdicionarAoCarrinho(Produto produto,int quantidade){
-        produto.setUnidade(produto.getUnidade() - quantidade);
-        float valorUnitario = produto.getValorUnitarioDeVenda();
-        float total = janela.getTotalDeVendas();
-        janela.setTotalDeVendas(total + (quantidade * valorUnitario));
+    public void AdicionarAoCarrinho(Produto produto, BigDecimal quantia){
+        produto.setUnidade(produto.getUnidade() - quantia.intValue());
+        BigDecimal valorUnitario = produto.getValorUnitarioDeVenda();
+        BigDecimal total = janela.getTotalDeVendas();
+
+        total = total.add(valorUnitario.multiply(quantia));
+        janela.setTotalDeVendas(total);
         Produto produtoComprado = new Produto();
 
         produtoComprado.setCodigo(produto.getCodigo());
         produtoComprado.setNome(produto.getNome());
-        produtoComprado.setUnidade(quantidade);
+        produtoComprado.setUnidade(quantia.intValue());
         produtoComprado.setValorUnitarioDeVenda(valorUnitario);
         produtoComprado.setValorUnitarioDeCompra(produto.getValorUnitarioDeCompra());
 

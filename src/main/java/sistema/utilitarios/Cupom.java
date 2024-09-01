@@ -1,14 +1,16 @@
 package sistema.utilitarios;
 
+import java.math.BigDecimal;
+
 public class Cupom {
     private String codigo;
-    private float desconto;
+    private BigDecimal desconto;
     
     public Cupom(){
         
     }
 
-    public Cupom(String codigo, float desconto){
+    public Cupom(String codigo, BigDecimal desconto){
         this.setCodigo(codigo);
         this.setDesconto(desconto);
     }
@@ -21,11 +23,11 @@ public class Cupom {
         this.codigo = codigo;
     }
 
-    public float getDesconto(){
+    public BigDecimal getDesconto(){
         return desconto;
     }
 
-    public void setDesconto(float desconto){
+    public void setDesconto(BigDecimal desconto){
         this.desconto = desconto;
     }
 }

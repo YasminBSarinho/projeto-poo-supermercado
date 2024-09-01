@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import sistema.SistemaMercado;
@@ -22,13 +23,13 @@ public class JanelaDeVendas extends JanelaDeCampos{
     private JTextField campoCupom;
     private JButton botaoVender;
     private ArrayList<Produto> carrinho = new ArrayList<>();
-    private float totalDeVendas;
+    private BigDecimal totalDeVendas;
 
     public JanelaDeVendas(SistemaMercado sistema) {
         super(sistema);
         setSize(650, 440);
         setLocationRelativeTo(null);
-        setTotalDeVendas(0);
+        this.totalDeVendas = new BigDecimal("0");
         JPanel painelTextos = new JPanel();
         JPanel painelCampos = new JPanel();
 
@@ -124,11 +125,11 @@ public class JanelaDeVendas extends JanelaDeCampos{
         this.carrinho = carrinho;
     }
 
-    public float getTotalDeVendas() {
+    public BigDecimal getTotalDeVendas() {
         return totalDeVendas;
     }
 
-    public void setTotalDeVendas(float totalDeVendas) {
+    public void setTotalDeVendas(BigDecimal totalDeVendas) {
         this.totalDeVendas = totalDeVendas;
     }
 

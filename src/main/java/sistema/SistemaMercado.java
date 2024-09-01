@@ -3,10 +3,17 @@ import sistema.pessoas.Cliente;
 import sistema.pessoas.usuarios.*;
 import sistema.produtos.*;
 import sistema.utilitarios.*;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Esta classe representa o Mercado em geral.
+ * Ela é responsável pela permanencia de todos os itens referentes ao mercadinho.(produtos, usuarios, registros, cupons)
+ * @author Lucas, Yasmin, Henrique
+ */
 public class SistemaMercado {
 	private ArrayList<Usuario> listaDeUsuarios = new ArrayList<>();
 	private ArrayList<Produto> produtosEmEstoque = new ArrayList<>();
@@ -66,24 +73,24 @@ public class SistemaMercado {
 		return null;
 	}
 
-	public float calcularTotalDeCompras(){
-		float total = 0;
+	public BigDecimal calcularTotalDeCompras(){
+		BigDecimal total = new BigDecimal("0");
 		for (Registro registro : registrosDeCompra){
-			total += registro.getTotal();
+			total = total.add(registro.getTotal());
 		}
 		return total;
 	}
 
-	public float calcularTotalDeVendas(){
-		float total = 0;
+	public BigDecimal calcularTotalDeVendas(){
+		BigDecimal total = new BigDecimal("0");
 		for (Registro registro : registrosDeVenda){
-			total += registro.getTotal();
+			total = total.add(registro.getTotal());
 		}
 		return total;
 	}
 
-	public float calcularTotalApurado(){
-		return calcularTotalDeVendas() - calcularTotalDeCompras();
+	public BigDecimal calcularTotalApurado(){
+		return calcularTotalDeVendas().subtract(calcularTotalDeCompras());
 	}
 
 	public ArrayList<Usuario> getListaDeUsuarios() {

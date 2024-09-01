@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
 
 import sistema.SistemaMercado;
 import sistema.produtos.Produto;
@@ -128,8 +129,8 @@ public class JanelaEditar extends JanelaDeCampos{
             try{
                 String nome = campoDoNome.getText();
                 int unidades = Integer.parseInt(campoDaUnidade.getText());
-                float valorCompra = Float.parseFloat(campoValorDeCompra.getText());
-                float valorVenda = Float.parseFloat(campoValorDeVenda.getText());
+                BigDecimal valorCompra = new BigDecimal(campoValorDeCompra.getText());
+                BigDecimal valorVenda = new BigDecimal(campoValorDeVenda.getText());
 
                 produto.setNome(nome);
                 produto.setUnidade(unidades);

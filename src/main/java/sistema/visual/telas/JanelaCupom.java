@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
+
 import sistema.SistemaMercado;
 import sistema.utilitarios.Cupom;
 import sistema.visual.ouvintes.OuvinteDeCampos;
@@ -103,8 +105,8 @@ public class JanelaCupom extends JanelaDeCampos{
         protected void confirmar(){
             String codigo = janela.getCampoCodigo().getText();
             String descontoTexto = janela.getCampoDesconto().getText();
-            float desconto = Float.parseFloat(descontoTexto)/100;
-            Cupom cupom = new Cupom(codigo, desconto);
+            BigDecimal percentual = BigDecimal.valueOf(Double.parseDouble(descontoTexto)/100);
+            Cupom cupom = new Cupom(codigo, percentual);
             String mensagem = campoMensagem.getText();
 
             if(getSistema().validarCupom(codigo) == null){
