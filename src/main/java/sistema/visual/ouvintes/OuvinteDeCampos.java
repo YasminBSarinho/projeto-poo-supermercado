@@ -55,7 +55,7 @@ public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
                 e.consume();
             }else if(campo.getTipo().equals(Tipos.NUMERICO) && !(Character.isDigit(caracter))){
                 e.consume();
-            }else if(tamanho > campo.getTamanho() && campo.getTamanho() != -1){ 
+            }else if(tamanho >= campo.getTamanho() && campo.getTamanho() != -1){
                 e.consume();
             }
         }
