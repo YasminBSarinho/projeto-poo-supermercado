@@ -2,21 +2,13 @@ package sistema.visual.telas;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.text.ParseException;
-
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.text.MaskFormatter;
-
 import sistema.SistemaMercado;
 import sistema.pessoas.Cliente;
+import sistema.utilitarios.CampoPersonalizado;
+import sistema.utilitarios.Tipos;
 import sistema.visual.ouvintes.OuvinteDeCampos;
 
 public class JanelaCadastroCliente extends JanelaDeCampos{
@@ -32,7 +24,7 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
         setSize(600, 450);
         adicionarCabecalho("Cadastro do Cliente");
         setLocationRelativeTo(null);
-
+        
         try {
             MaskFormatter maskCPF = new MaskFormatter("###.###.###-##");
             maskCPF.setPlaceholderCharacter('_');
@@ -62,7 +54,7 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
         JLabel textoEmail = new JLabel("E-mail:");
         JLabel textoEndereco = new JLabel("Endereço:");
 
-        campoDoNome = new JTextField(30);
+        campoDoNome = new CampoPersonalizado(Tipos.TEXTUAL);
         try {
             MaskFormatter maskCPF = new MaskFormatter("###.###.###-##");
             maskCPF.setPlaceholderCharacter('_');
@@ -71,8 +63,8 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
             e.printStackTrace();
             campoDoCPF = new JTextField();
         }
-        campoDoEmail = new JTextField(15);
-        campoDoEndereco = new JTextField(15);
+        campoDoEmail = new JTextField();
+        campoDoEndereco = new JTextField();
 
         campoDoEmail.setEnabled(false);
         campoDoEndereco.setEnabled(false);
@@ -110,6 +102,7 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
         
         getBotaoConfirmatorio().addActionListener(ouvinteCadastroCliente);
         getBotaoCancelatorio().addActionListener(ouvinteCadastroCliente);
+        campoDoNome.addKeyListener(ouvinteCadastroCliente);
         getCheckEmail().addActionListener(ouvinteCadastroCliente);
         getCheckEndereco().addActionListener(ouvinteCadastroCliente);
         setVisible(true);
@@ -162,12 +155,6 @@ public class JanelaCadastroCliente extends JanelaDeCampos{
                     janela.getCampoDoEndereco().setEnabled(isMarcado);
                 }
             }
-        }
-
-        @Override
-        public void keyTyped(KeyEvent e) {
-            
-            
         }
 
         public JanelaCadastroCliente getJanela() {

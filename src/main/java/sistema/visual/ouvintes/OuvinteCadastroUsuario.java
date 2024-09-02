@@ -123,12 +123,6 @@ public class OuvinteCadastroUsuario extends OuvinteDeCampos{
         }
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-        
-    }
-
-    //Getters e Setters
 
     public JanelaCadastroUsuario getJanela() {
         return janela;

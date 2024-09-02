@@ -17,6 +17,8 @@ import javax.swing.text.MaskFormatter;
 
 import sistema.SistemaMercado;
 import sistema.visual.ouvintes.OuvinteCadastroUsuario;
+import sistema.utilitarios.CampoPersonalizado;
+import sistema.utilitarios.Tipos;
 
 public class JanelaCadastroUsuario extends JanelaDeCampos{ 
     private JTextField campoDoNome;
@@ -61,11 +63,11 @@ public class JanelaCadastroUsuario extends JanelaDeCampos{
         JLabel textoEmail = new JLabel("E-mail:");
         JLabel textoMatricula = new JLabel("Pis/NIS: ");
 
-        campoDoNome = new JTextField(30);
-        campoDoLogin = new JTextField(15);
-        campoDaSenha = new JPasswordField(15);
-        campoConfirmar = new JPasswordField(15);
-        campoDoEmail = new JTextField(30);
+        campoDoNome = new CampoPersonalizado(Tipos.TEXTUAL);
+        campoDoLogin = new JTextField();
+        campoDaSenha = new JPasswordField();
+        campoConfirmar = new JPasswordField();
+        campoDoEmail = new JTextField();
         try {
             MaskFormatter maskMatricula = new MaskFormatter("###.#####.##-#");
             maskMatricula.setPlaceholderCharacter('_');
@@ -127,14 +129,13 @@ public class JanelaCadastroUsuario extends JanelaDeCampos{
 
 
         OuvinteCadastroUsuario ouvinteCadastro = new OuvinteCadastroUsuario(this, sistema);
-        
         getBotaoConfirmatorio().addActionListener(ouvinteCadastro);
         getBotaoCancelatorio().addActionListener(ouvinteCadastro);
         getCheckAlmoxarife().addActionListener(ouvinteCadastro);
         getCheckCaixa().addActionListener(ouvinteCadastro);
         getCheckEmail().addActionListener(ouvinteCadastro);
         getCheckNisPis().addActionListener(ouvinteCadastro);
-
+        campoDoNome.addKeyListener(ouvinteCadastro);
 
         setVisible(true);
     }

@@ -75,13 +75,6 @@ public class OuvinteVendas extends OuvinteDeCampos{
         }
 
     }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        if(e.getSource().equals(janela.getCampoQTD()) && !Character.isDigit(e.getKeyChar())){
-            e.consume();
-        }
-    }
     
     @Override
     protected void confirmar() {

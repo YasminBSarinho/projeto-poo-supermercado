@@ -9,11 +9,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 
 import sistema.SistemaMercado;
+import sistema.utilitarios.CampoPersonalizado;
 import sistema.utilitarios.Cupom;
+import sistema.utilitarios.Tipos;
 import sistema.visual.ouvintes.OuvinteDeCampos;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
@@ -48,8 +49,8 @@ public class JanelaCupom extends JanelaDeCampos{
         JLabel textoDesconto = new JLabel("Desconto(%):");
         JLabel textoMensagem = new JLabel("Mensagem:");
 
-        campoCodigo = new JTextField(5);
-        campoDesconto = new JTextField(3);
+        campoCodigo = new CampoPersonalizado(Tipos.NUMERICO_TEXTUAL, 5);
+        campoDesconto = new CampoPersonalizado(Tipos.NUMERICO,2);
         campoMensagem = new JTextArea();
         campoMensagem.setLineWrap(true);
         campoMensagem.setWrapStyleWord(true);
@@ -121,27 +122,7 @@ public class JanelaCupom extends JanelaDeCampos{
             }
 
         }    
-
-        @Override
-        public void keyTyped(KeyEvent e) {
-
-            JTextField campo = (JTextField) e.getSource();
-            JTextField campoCodigo = janela.getCampoCodigo();
-            String codigo = janela.getCampoCodigo().getText();
-            String desconto = janela.getCampoDesconto().getText();
-            char letra = e.getKeyChar();
             
-            if(campo.equals(campoCodigo)) {
-                if(codigo.length() > 4 || !Character.isLetterOrDigit(letra)){
-                    e.consume();
-                }
-            } else {
-                if(desconto.length() > 1 || !Character.isDigit(letra)){
-                    e.consume();
-                }
-            }
-        }
-    
         public JanelaCupom getJanela() {
             return janela;
         }

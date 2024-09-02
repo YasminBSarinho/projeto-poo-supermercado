@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 import sistema.SistemaMercado;
 import sistema.produtos.Produto;
+import sistema.utilitarios.CampoPersonalizado;
+import sistema.utilitarios.Tipos;
 import sistema.visual.ouvintes.OuvinteVendas;
 
 public class JanelaDeVendas extends JanelaDeCampos{
@@ -42,7 +44,7 @@ public class JanelaDeVendas extends JanelaDeCampos{
 
         campoCPF = criarCampoFormatado("###.###.###-##", '_');
         campoCodigo = criarCampoFormatado("#####", '_');
-        campoQTD = new JTextField();
+        campoQTD = new CampoPersonalizado(Tipos.NUMERICO, 3);
         campoCupom = criarCampoFormatado("AAAAA", '_');
         
         JLabel textoCPF = new JLabel("CPF do Cliente");

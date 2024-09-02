@@ -15,6 +15,8 @@ import java.math.BigDecimal;
 
 import sistema.SistemaMercado;
 import sistema.produtos.Produto;
+import sistema.utilitarios.CampoPersonalizado;
+import sistema.utilitarios.Tipos;
 import sistema.visual.ouvintes.OuvinteDeCampos;
 
 public class JanelaEditar extends JanelaDeCampos{
@@ -66,7 +68,7 @@ public class JanelaEditar extends JanelaDeCampos{
         campoDoCodigo = new JTextField();
         campoDoCodigo.setEnabled(false);
         campoDoNome = new JTextField();
-        campoDaUnidade = new JTextField();
+        campoDaUnidade = new CampoPersonalizado(Tipos.NUMERICO);
         campoValorDeCompra = new JTextField();
         campoValorDeVenda = new JTextField();
 
@@ -91,7 +93,7 @@ public class JanelaEditar extends JanelaDeCampos{
         OuvinteEditar ouvinteEditar = new OuvinteEditar(this, sistema);
         getBotaoConfirmatorio().addActionListener(ouvinteEditar);
         getBotaoCancelatorio().addActionListener(ouvinteEditar);
-
+        campoDaUnidade.addKeyListener(ouvinteEditar);
         add(painelTextos);
         add(painelCampos);
         add(painelBotoes);
@@ -117,11 +119,6 @@ public class JanelaEditar extends JanelaDeCampos{
         @Override
         public void actionPerformed(ActionEvent e) {
             super.actionPerformed(e);
-        }
-        
-        @Override
-        public void keyTyped(KeyEvent e) {
-            
         }
 
         @Override

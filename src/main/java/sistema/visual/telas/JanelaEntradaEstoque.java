@@ -16,7 +16,9 @@ import javax.swing.table.DefaultTableModel;
 
 import sistema.SistemaMercado;
 import sistema.produtos.Produto;
+import sistema.utilitarios.CampoPersonalizado;
 import sistema.utilitarios.Registro;
+import sistema.utilitarios.Tipos;
 import sistema.visual.ouvintes.OuvinteDeCampos;
 
 public class JanelaEntradaEstoque extends JanelaDeCampos{
@@ -52,12 +54,12 @@ public class JanelaEntradaEstoque extends JanelaDeCampos{
         JLabel unidade = new JLabel("Unidades:");
         JLabel valorCompra = new JLabel("Valor de compra:");
         
-        campoDoNome = new JTextField(1);
-        campoDoCodigo = new JTextField(1);
+        campoDoNome = new JTextField();
+        campoDoCodigo = new JTextField();
         campoDoNome.setEnabled(false);
         campoDoCodigo.setEnabled(false);
-        campoDaUnidade = new JTextField(1);
-        campoDoValorCompra = new JTextField(1);
+        campoDaUnidade = new CampoPersonalizado(Tipos.NUMERICO);
+        campoDoValorCompra = new JTextField();
         
         setBotaoConfirmatorio(new JButton("Cadastrar"));
         setBotaoCancelatorio(new JButton("Cancelar"));
@@ -83,6 +85,7 @@ public class JanelaEntradaEstoque extends JanelaDeCampos{
         OuvinteDoEstoque ouvinteEstoque = new OuvinteDoEstoque(this, sistema);
         getBotaoConfirmatorio().addActionListener(ouvinteEstoque);
         getBotaoCancelatorio().addActionListener(ouvinteEstoque);
+        campoDaUnidade.addKeyListener(ouvinteEstoque);
         setVisible(true);
     }
 
@@ -105,11 +108,6 @@ public class JanelaEntradaEstoque extends JanelaDeCampos{
             super.actionPerformed(e);
         }
         
-        @Override
-        public void keyTyped(KeyEvent e) {
-            
-        }
-
         @Override
         protected void confirmar() {
             try{

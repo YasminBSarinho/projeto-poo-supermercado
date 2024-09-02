@@ -9,7 +9,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import sistema.SistemaMercado;
+import sistema.utilitarios.CampoPersonalizado;
 import sistema.utilitarios.Json;
+import sistema.utilitarios.Tipos;
 import sistema.visual.telas.JanelaDeCampos;
 
 public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
@@ -40,6 +42,23 @@ public abstract class  OuvinteDeCampos implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        if(e.getSource() instanceof CampoPersonalizado){
+            CampoPersonalizado campo = (CampoPersonalizado) e.getSource();
+            Character caracter = e.getKeyChar();
+            int tamanho = campo.getText().length();
+
+            if(campo.getTipo().equals(Tipos.TEXTUAL) && !(Character.isLetter(caracter))){
+                e.consume();
+            }else if(campo.getTipo().equals(Tipos.NUMERICO) && !(Character.isDigit(caracter))){
+                e.consume();
+            }else if(tamanho > campo.getTamanho() && campo.getTamanho() != -1){ 
+                e.consume();
+            }
+        }
     }
     
     @Override

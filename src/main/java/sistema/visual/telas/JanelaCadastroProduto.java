@@ -9,7 +9,6 @@ import javax.swing.JTextField;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 
 import sistema.SistemaMercado;
 import sistema.produtos.Produto;
@@ -92,11 +91,6 @@ public class JanelaCadastroProduto extends JanelaDeCampos{
         @Override 
         public void actionPerformed(ActionEvent e){
             super.actionPerformed(e);
-        }
-
-        @Override
-        public void keyTyped(KeyEvent e) {
-
         }
 
         @Override

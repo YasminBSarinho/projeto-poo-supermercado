@@ -17,7 +17,6 @@ import sistema.visual.telas.usuarios.funcionarios.JanelaGerente;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 
 public class JanelaLogin extends JanelaDeCampos{
     private JTextField campoDoLogin;
@@ -44,8 +43,7 @@ public class JanelaLogin extends JanelaDeCampos{
 
         JLabel login = new  JLabel("Login:");
         JLabel senha = new  JLabel("Senha:");
-
-        campoDoLogin = new JTextField(15);
+        campoDoLogin = new JTextField();
         campoDaSenha = new JPasswordField(15);
 
         setBotaoConfirmatorio(new JButton("Login"));
@@ -70,6 +68,7 @@ public class JanelaLogin extends JanelaDeCampos{
         add(painelBotoes);
 
         OuvinteLogin ouvinteLogin = new OuvinteLogin(this, sistema);
+        getCampoDoLogin().addKeyListener(ouvinteLogin);
         getBotaoConfirmatorio().addActionListener(ouvinteLogin);
         getBotaoCancelatorio().addActionListener(ouvinteLogin);
         setVisible(true);
@@ -114,11 +113,6 @@ public class JanelaLogin extends JanelaDeCampos{
                         break;
                 }
             }  
-        }
-
-        @Override
-        public void keyTyped(KeyEvent e) {
-        
         }
 
         public JanelaLogin getJanela() {
