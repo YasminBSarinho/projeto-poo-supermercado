@@ -10,7 +10,6 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 
 import sistema.SistemaMercado;
