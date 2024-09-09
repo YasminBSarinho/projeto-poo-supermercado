@@ -2,11 +2,10 @@ package sistema.visual.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 
 import sistema.SistemaMercado;
-import sistema.visual.telas.JanelaCadastroCliente;
-import sistema.visual.telas.JanelaLogin;
+import sistema.visual.telas.JanelasDeCampos.JanelaCadastroCliente;
+import sistema.visual.telas.JanelasDeCampos.JanelaLogin;
 import sistema.visual.telas.usuarios.JanelaUsuario;
 
 public class OuvinteUsuario implements ActionListener{

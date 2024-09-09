@@ -1,4 +1,4 @@
-package sistema.visual.telas;
+package sistema.visual.telas.JanelasDeCampos;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;

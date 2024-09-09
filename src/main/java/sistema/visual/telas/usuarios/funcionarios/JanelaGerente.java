@@ -10,8 +10,8 @@ import sistema.SistemaMercado;
 import sistema.pessoas.usuarios.Usuario;
 import sistema.utilitarios.Pdf;
 import sistema.visual.ouvintes.OuvinteFuncionario;
-import sistema.visual.telas.JanelaCadastroUsuario;
-import sistema.visual.telas.JanelaCupom;
+import sistema.visual.telas.JanelasDeCampos.JanelaCadastroUsuario;
+import sistema.visual.telas.JanelasDeCampos.JanelaCupom;
 
 public class JanelaGerente extends JanelaFuncionario {
 

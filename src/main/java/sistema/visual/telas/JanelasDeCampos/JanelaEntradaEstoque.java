@@ -1,9 +1,8 @@
-package sistema.visual.telas;
+package sistema.visual.telas.JanelasDeCampos;
 
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 
 import javax.swing.JButton;

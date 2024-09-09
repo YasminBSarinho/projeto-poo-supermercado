@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sistema/SistemaMercado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/SistemaMercado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/ouvintes/OuvinteDeCampos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/ouvintes/OuvinteDeCampos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaLogin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,18 +27,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Programa.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projeto-poo-supermercado [org.apache.maven.plugins:maven-shade-plugin:3.2.4:shade].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;estrutura-maven&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projetos/projeto-exemplo&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Programa.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.projeto-poo-supermercado [org.apache.maven.plugins:maven-shade-plugin:3.2.4:shade].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "estrutura-maven",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Projetos/projeto-exemplo",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\untitled\src\main\resources" />

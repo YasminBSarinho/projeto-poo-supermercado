@@ -93,7 +93,7 @@ public class SistemaMercado {
 
 	/**
 	 * Método utilizado para validar se o código de um cupom é válido
-	 * @param codigo - em String
+	 * @param codigo em String
 	 * @return retorna {@link Cupom}, caso o código seja válido. Caso não, retorna null
 	 */
 	public Cupom validarCupom(String codigo){
@@ -135,49 +135,93 @@ public class SistemaMercado {
 		return calcularTotalDeVendas().subtract(calcularTotalDeCompras());
 	}
 
+// Getters e Setters
+
+	/**
+	 * Retorna a lista de usuários.
+	 * @hidden
+	 * @return a lista de usuários
+	 */
 	public ArrayList<Usuario> getListaDeUsuarios() {
 		return listaDeUsuarios;
 	}
-
+	/**
+	 * Define a lista de usuários.
+	 * @hidden
+	 * @param listaDeUsuarios a lista de usuários a ser definida
+	 */
 	public void setListaDeUsuarios(ArrayList<Usuario> listaDeUsuarios) {
 		this.listaDeUsuarios = listaDeUsuarios;
 	}
-
+	/**
+	 * @hidden
+	 * @return retorn os produtos em estoque
+	 */
 	public ArrayList<Produto> getProdutosEmEstoque() {
 		return produtosEmEstoque;
 	}
 
+	/**
+	 * @hidden
+	 * @param produtosEmEstoque os produtos em estoque
+	 */
 	public void setProdutosEmEstoque(ArrayList<Produto> produtosEmEstoque) {
 		this.produtosEmEstoque = produtosEmEstoque;
 	}
+
+	/**
+	 * @hidden
+	 * @return clientes do supermercado
+	 */
 	public ArrayList<Cliente> getClientes(){
 		return clientes;
 	}
-	
+	/**
+	 * @hidden
+	 * @param clientes clientes do supermercado
+	 */
 	public void setClientes(ArrayList<Cliente> clientes){
 		this.clientes = clientes;
 	}
-
+	/**
+	 * @hidden
+	 * @return registros de venda
+	 */
 	public ArrayList<Registro> getRegistrosDeVenda() {
 		return registrosDeVenda;
 	}
-
+	/**
+	 * @hidden
+	 * @param registrosDeVenda registros de venda
+	 */
 	public void setRegistrosDeVenda(ArrayList<Registro> registrosDeVenda) {
 		this.registrosDeVenda = registrosDeVenda;
 	}
-
+	/**
+	 * @hidden
+	 * @return registros de compra
+	 */
 	public ArrayList<Registro> getRegistrosDeCompra() {
 		return registrosDeCompra;
 	}
-
+	/**
+	 * @hidden
+	 * @param registrosDeCompra registros de compra
+	 */
 	public void setRegistrosDeCompra(ArrayList<Registro> registrosDeCompra) {
 		this.registrosDeCompra = registrosDeCompra;
 	}
-
+	/**
+	 * @hidden
+	 * @return cupons de desconto
+	 */
 	public ArrayList<Cupom> getCupons(){
 		return cupons;
 	}
-
+	/**
+	 * @hidden
+	 * @param cupons cupons de desconto
+	 */
 	public void setCupons(ArrayList<Cupom> cupons){
 		this.cupons = cupons;
 	}

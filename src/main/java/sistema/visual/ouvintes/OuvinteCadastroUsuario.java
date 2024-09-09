@@ -1,6 +1,5 @@
 package sistema.visual.ouvintes;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -12,8 +11,8 @@ import sistema.pessoas.usuarios.Usuario;
 import sistema.pessoas.usuarios.funcionarios.Almoxarife;
 import sistema.pessoas.usuarios.funcionarios.Gerente;
 import sistema.utilitarios.Json;
-import sistema.visual.telas.JanelaCadastroUsuario;
-import sistema.visual.telas.JanelaLogin;
+import sistema.visual.telas.JanelasDeCampos.JanelaCadastroUsuario;
+import sistema.visual.telas.JanelasDeCampos.JanelaLogin;
 
 public class OuvinteCadastroUsuario extends OuvinteDeCampos{
     private JanelaCadastroUsuario janela;

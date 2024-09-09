@@ -1,4 +1,4 @@
-package sistema.visual.telas;
+package sistema.visual.telas.JanelasDeCampos;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.text.ParseException;

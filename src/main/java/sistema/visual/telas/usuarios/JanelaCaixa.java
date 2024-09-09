@@ -5,7 +5,7 @@ import javax.swing.*;
 import sistema.SistemaMercado;
 import sistema.pessoas.usuarios.Usuario;
 import sistema.visual.ouvintes.OuvinteUsuario;
-import sistema.visual.telas.JanelaDeVendas;
+import sistema.visual.telas.JanelasDeCampos.JanelaDeVendas;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

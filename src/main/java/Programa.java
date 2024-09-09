@@ -1,7 +1,7 @@
 import sistema.SistemaMercado;
 import sistema.utilitarios.Json;
-import sistema.visual.telas.JanelaCadastroUsuario;
-import sistema.visual.telas.JanelaLogin;
+import sistema.visual.telas.JanelasDeCampos.JanelaCadastroUsuario;
+import sistema.visual.telas.JanelasDeCampos.JanelaLogin;
 
 public class Programa {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package sistema.visual.telas;
+package sistema.visual.telas.JanelasDeCampos;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -44,7 +44,7 @@ public class JanelaLogin extends JanelaDeCampos{
         JLabel login = new  JLabel("Login:");
         JLabel senha = new  JLabel("Senha:");
         campoDoLogin = new JTextField();
-        campoDaSenha = new JPasswordField(15);
+        campoDaSenha = new JPasswordField();
 
         setBotaoConfirmatorio(new JButton("Login"));
         setBotaoCancelatorio(new JButton("Cancelar"));
@@ -52,7 +52,7 @@ public class JanelaLogin extends JanelaDeCampos{
         JComponent[] componentesTextos = {login, senha};
         JTextField [] componentesCampos = {campoDoLogin, campoDaSenha};
         JComponent [] componentesBotoes = {getBotaoConfirmatorio(), getBotaoCancelatorio()};
-        
+
         setFonteDoBotao(new Font("arial",Font.BOLD, 15));
         adicionarFontes(componentesBotoes);
         adicionarAoPainel(componentesTextos, painelTextos);

@@ -1,7 +1,6 @@
 package sistema.visual.ouvintes;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 
 import javax.swing.*;
@@ -12,8 +11,8 @@ import sistema.produtos.Produto;
 import sistema.utilitarios.Cupom;
 import sistema.utilitarios.Pdf;
 import sistema.utilitarios.Registro;
-import sistema.visual.telas.JanelaCadastroCliente;
-import sistema.visual.telas.JanelaDeVendas;
+import sistema.visual.telas.JanelasDeCampos.JanelaCadastroCliente;
+import sistema.visual.telas.JanelasDeCampos.JanelaDeVendas;
 
 public class OuvinteVendas extends OuvinteDeCampos{
     private JanelaDeVendas janela;

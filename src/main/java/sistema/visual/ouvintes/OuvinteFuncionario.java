@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 
 import sistema.SistemaMercado;
 import sistema.pessoas.usuarios.Usuario;
-import sistema.visual.telas.JanelaCadastroProduto;
-import sistema.visual.telas.JanelaListarProdutos;
+import sistema.visual.telas.JanelasDeCampos.JanelaCadastroProduto;
+import sistema.visual.telas.JanelasDeCampos.JanelaListarProdutos;
 import sistema.visual.telas.usuarios.funcionarios.JanelaFuncionario;
 
 public class OuvinteFuncionario extends OuvinteUsuario {

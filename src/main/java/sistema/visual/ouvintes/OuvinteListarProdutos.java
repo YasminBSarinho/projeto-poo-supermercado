@@ -12,9 +12,9 @@ import sistema.SistemaMercado;
 import sistema.produtos.Produto;
 import sistema.utilitarios.Json;
 import sistema.utilitarios.Registro;
-import sistema.visual.telas.JanelaEditar;
-import sistema.visual.telas.JanelaEntradaEstoque;
-import sistema.visual.telas.JanelaListarProdutos;
+import sistema.visual.telas.JanelasDeCampos.JanelaEditar;
+import sistema.visual.telas.JanelasDeCampos.JanelaEntradaEstoque;
+import sistema.visual.telas.JanelasDeCampos.JanelaListarProdutos;
 
 public class OuvinteListarProdutos implements ActionListener{
     private SistemaMercado sistema;
