@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40083144-29bc-4103-bd8e-f146a1d056f9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/sistema/visual/telas/JanelaCupom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema/visual/telas/JanelaCupom.java" afterDir="false" />
+    <list default="true" id="9a0a0f31-5803-4fa5-8505-721aa9ff75a9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/ouvintes/OuvinteVendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/ouvintes/OuvinteVendas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaEditar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sistema/visual/telas/JanelaEditar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,31 +17,55 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
-  <component name="ProjectId" id="2iINTE3wjjNb3QWzGcoYU2IAzqJ" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2lNZjTuoCykVyA4L7jQjN11zkZw" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "interface",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Programa.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projeto-poo-supermercado [org.apache.maven.plugins:maven-shade-plugin:3.2.4:shade].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;estrutura-maven&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projetos/projeto-exemplo&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\untitled\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projeto-poo-supermercado\target" />
+      <recent name="D:\projeto-poo-supermercado" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="40083144-29bc-4103-bd8e-f146a1d056f9" name="Changes" comment="" />
-      <created>1719174150057</created>
+      <changelist id="9a0a0f31-5803-4fa5-8505-721aa9ff75a9" name="Changes" comment="" />
+      <created>1725022631381</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1719174150057</updated>
+      <updated>1725022631381</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
